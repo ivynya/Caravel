@@ -9,10 +9,21 @@ import { StorageService } from '../../../core/services';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  token: string;
+  showSettings = false;
+  showHelp = false;
   
   constructor(private storage: StorageService,
               private router: Router) { }
 
   ngOnInit(): void { }
+
+  toggleSettings(): void {
+    this.showSettings = !this.showSettings;
+    this.showHelp = false;
+  }
+
+  toggleHelp(): void {
+    this.showHelp = !this.showHelp;
+    this.showSettings = false;
+  }
 }

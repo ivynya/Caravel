@@ -5,6 +5,8 @@
 
   --bg-accent: #437;
   --bg-control: #335;
+  --bg-control-hover: #447;
+  --bg-dialog: #1A1A25;
 
   --text-primary: #eee;
   --text-secondary: #ddd;
@@ -24,3 +26,4 @@ html, body {
   font-family: 'Nunito', Helvetica, sans-serif;
 }
 
+@import 'sass/slider.scss';

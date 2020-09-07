@@ -5,9 +5,38 @@
       <button>≡</button>
     </div>
     <a routerLink="/account" class="nav-link" routerLinkActive="active">Account</a>
+    <hr>
     <a routerLink="/" class="nav-link" routerLinkActive="active">Dashboard</a>
+    <hr>
+    <a routerLink="/groups" class="nav-link" routerLinkActive="active">Groups</a>
+    <hr>
+    <a routerLink="/inbox" class="nav-link" routerLinkActive="active">Inbox</a>
+    <a routerLink="/calendar" class="nav-link" routerLinkActive="active">Calendar</a>
+    <a routerLink="/studio" class="nav-link" routerLinkActive="active">Studio</a>
   </div>
   <div class="sidebar-options">
-    <button>⚙</button>
+    <div *ngIf="showSettings" class="sidebar-dialog">
+      <h3>Sidebar Settings</h3>
+      <hr>
+      <label class="switch">Show Studio
+        <input type="checkbox">
+        <span class="slider round"></span>
+      </label>
+      <label class="switch">Enumerate Groups
+        <input type="checkbox">
+        <span class="slider round"></span>
+      </label>
+      <label class="switch">Enumerate Classes
+        <input type="checkbox">
+        <span class="slider round"></span>
+      </label>
+    </div>
+    <div *ngIf="showHelp" class="sidebar-dialog">
+      <h3>Caravan Help</h3>
+      <hr>
+      <p>Help resources go here.</p>
+    </div>
+    <button (click)="toggleHelp()">❔</button>
+    <button (click)="toggleSettings()">⚙</button>
   </div>
 </nav>

@@ -1,0 +1,58 @@
+
+/* W3 Schools modified custom CSS slider */
+
+.switch {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  height: 26px;
+  padding-right: 50px;
+  position: relative;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:checked + .slider {
+      background-color: var(--bg-control-hover);
+    }
+
+    &:focus + .slider {
+      box-shadow: 0 0 1px var(--bg-control-hover);
+    }
+
+    &:checked + .slider:before {
+      -webkit-transform: translateX(24px);
+      -ms-transform: translateX(24px);
+      transform: translateX(24px);
+    }
+  }
+
+  .slider {
+    background-color: #ccc;
+    border-radius: 34px;
+    cursor: pointer;
+  
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50px;
+    transition-duration: 0.2s;
+  
+    &:before {
+      background-color: white;
+      border-radius: 50%;
+      content: "";
+
+      position: absolute;
+      height: 18px;
+      width: 18px;
+      left: 4px;
+      bottom: 4px;
+      transition-duration: 0.2s;
+    }  
+  }
+}

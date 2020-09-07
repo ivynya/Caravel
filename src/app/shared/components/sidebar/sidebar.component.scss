@@ -4,16 +4,19 @@
   flex-direction: column;
   justify-content: space-between;
   width: 300px;
-  height: calc(100% - 20px);
+  height: calc(100% - 25px);
   padding: 10px 0;
+  padding-top: 15px;
   overflow: auto;
 
   hr {
+    border-color: var(--bg-accent);
     margin: 0;
   }
 
   .nav-link {
     color: var(--text-primary);
+    font-size: 18px;
     text-decoration: none;
 
     display: flex;
@@ -21,6 +24,11 @@
 
     min-height: 80px;
     padding-left: 40px;
+    transition-duration: 0.3s;
+
+    &:hover {
+      background-color: var(--bg-control-hover);
+    }
 
     &.active {
       background-color: var(--bg-primary);
@@ -31,6 +39,7 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    position: relative;
 
     padding: 10px 20px;
     padding-left: 40px;
@@ -45,6 +54,37 @@
       color: var(--text-primary);
       height: 30px;
       width: 30px;
+      margin-left: 10px;
+      transition-duration: 0.2s;
+
+      &:hover {
+        background-color: var(--bg-control-hover);
+      }
+    }
+
+    .sidebar-dialog {
+      background-color: var(--bg-dialog);
+      border-radius: 5px;
+      box-shadow: var(--bg-primary) 5px 5px 10px;
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 20px;
+      right: 20px;
+      
+      min-height: 120px;
+      padding: 20px;
+
+      h3 {
+        margin: 0;
+      }
+
+      hr {
+        margin-top: 5px;
+      }
+
+      .switch {
+        margin-top: 25px;
+      }
     }
   }
 
