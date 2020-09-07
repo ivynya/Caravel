@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     // User has not provided access token
     // Redirect to authorization page
-    if (!this.store.has("auth_token")) {
+    if (!this.store.has("oauth_token")) {
       this.router.navigateByUrl("/auth");
     }
   }
