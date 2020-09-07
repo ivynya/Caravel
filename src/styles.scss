@@ -1,0 +1,25 @@
+
+:root {
+  --bg-primary: #11111F;
+  --bg-secondary: #22223A;
+
+  --bg-control: #335;
+
+  --text-primary: #eee;
+  --text-secondary: #ddd;
+
+  --accent-primary: #00F2D2;
+  --accent-secondary: #00C2A2;
+}
+
+html, body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+
+  margin: 0;
+  padding: 0;
+
+  height: 100%;
+  font-family: 'Nunito', Helvetica, sans-serif;
+}
+

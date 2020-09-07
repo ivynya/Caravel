@@ -1,0 +1,26 @@
+os:
+  - linux
+  - osx
+language: node_js
+node_js:
+  - '14'
+  - '13'
+dist: xenial
+services:
+  - xvfb
+addons:
+  apt:
+    packages:
+    - libsecret-1-dev
+before_script:
+  - export DISPLAY=:99.0
+install:
+  - npm set progress=false
+  - npm install
+script:
+  - npm run lint
+  - npm run test
+  - npm run e2e
+  - npm run build
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
