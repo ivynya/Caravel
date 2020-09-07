@@ -5,8 +5,8 @@
       <h1>Caravan</h1>
     </div>
     <div class="cta">
-      <input type="text" placeholder="User Token">
-      <button>Log In</button>
+      <input type="text" placeholder="User Token" [(ngModel)]="token">
+      <button (click)="tryAuthorize()">Log In</button>
     </div>
     <br>
   </div>
