@@ -1,5 +1,6 @@
 .sidebar {
   background-color: var(--bg-secondary);
+  box-shadow: var(--box-shadow-primary) 0 8px 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -65,7 +66,7 @@
     .sidebar-dialog {
       background-color: var(--bg-dialog);
       border-radius: 5px;
-      box-shadow: var(--bg-primary) 5px 5px 10px;
+      box-shadow: var(--box-shadow-secondary) 5px 5px 10px;
       position: absolute;
       bottom: calc(100% + 10px);
       left: 20px;
