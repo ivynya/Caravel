@@ -17,9 +17,9 @@ export class UserService extends APIBaseService {
   async getProfile(): Promise<Profile> {
     return new Promise((resolve, reject) => {
       this.fetcher("self/profile", "GET")
-      .then(res => JSON.parse(res))
-      .then(res => resolve(<Profile>res))
-      .catch(ex => reject(ex));
+        .then(res => JSON.parse(res))
+        .then(res => resolve(<Profile>res))
+        .catch(ex => reject(ex));
     });
   }
 

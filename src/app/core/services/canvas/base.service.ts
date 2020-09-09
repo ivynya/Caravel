@@ -17,12 +17,12 @@ export abstract class APIBaseService {
       // Advisable to set up your own CORS proxy securely
       const token = this.storage.get("oauth_token");
       fetch(`http://localhost:3000/https://mvla.instructure.com/api/v1/${this.scope}/${endpoint}?access_token=${token}`,
-        {
-          method: method,
-          headers: {
-            'accept': 'application/json'
-          }
-        })
+            {
+              method: method,
+              headers: {
+                'accept': 'application/json'
+              }
+            })
         .then(res => res.text())
         .then(res => resolve(res))
         .catch(ex => reject(ex));

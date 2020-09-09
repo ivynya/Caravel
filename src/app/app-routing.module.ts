@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './shared/components';
 
 import { AuthRoutingModule } from './auth/auth-routing.module';
+import { AccountRoutingModule } from './account/account-routing.module';
 import { HomeRoutingModule } from './home/home-routing.module';
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes),
     AuthRoutingModule,
+    AccountRoutingModule,
     HomeRoutingModule
   ],
   exports: [RouterModule]
