@@ -16,6 +16,8 @@ describe('AccountComponent', () => {
   }));
 
   beforeEach(() => {
+    window.localStorage.setItem("oauth_token", "test");
+    
     fixture = TestBed.createComponent(AccountComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

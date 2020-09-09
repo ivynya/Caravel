@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { UserService } from '../core/services/canvas';
+import { Profile } from 'app/core/services/canvas/user/user';
 
 @Component({
   selector: 'app-account',
@@ -9,13 +10,13 @@ import { UserService } from '../core/services/canvas';
   styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
-  token: string;
+  profile: Profile;
   
   constructor(private userService: UserService,
               private router: Router) { }
 
   async ngOnInit(): Promise<void> { 
-    console.log(await this.userService.getProfile());
+    this.profile = await this.userService.getProfile();
   }
 
 }

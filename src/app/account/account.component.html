@@ -1,5 +1,16 @@
 <main class="page">
   <app-sidebar></app-sidebar>
+  <nav class="content-nav">
+    <h2>Account Options</h2>
+  </nav>
   <div class="content">
+    <div class="content-primary">
+      <img [src]="this.profile?.avatar_url" alt="Your Avatar">
+      {{ this.profile?.id }}
+    </div>
+    <div class="content-secondary">
+      <h2>Fast Access</h2>
+      <hr>
+    </div>
   </div>
 </main>

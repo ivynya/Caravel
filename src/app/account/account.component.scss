@@ -1,0 +1,14 @@
+.content-nav {
+  background-color: var(--bg-secondary);
+
+  width: 270px;
+  height: calc(100% - 25px);
+  padding: 10px 20px;
+  padding-top: 15px;
+  overflow: auto;
+
+  h2 {
+    margin: 0;
+    padding: 10px 20px;
+  }
+}
