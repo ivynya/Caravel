@@ -1,5 +1,5 @@
 .sidebar {
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-tertiary);
   box-shadow: var(--box-shadow-primary) 0 8px 10px;
   display: flex;
   flex-direction: column;
@@ -23,7 +23,7 @@
     display: flex;
     align-items: center;
 
-    min-height: 70px;
+    min-height: 60px;
     padding-left: 40px;
     transition-duration: 0.3s;
 
@@ -91,5 +91,6 @@
 
   .sidebar-title {
     justify-content: space-between;
+    padding-bottom: 20px;
   }
 }

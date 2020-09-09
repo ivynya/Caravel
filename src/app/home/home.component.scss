@@ -1,26 +1,121 @@
 
-.content {
-  display: flex;
-  flex-direction: row;
-
-  max-height: 100%;
-  padding: 50px 70px;
-
-  flex: 1 1;
-  overflow: auto;
-
-  .content-primary {
-    flex: 2 1;
-    margin-right: 100px;
-  }
-
-  .content-secondary {
-    flex: 1 1;
-  }
-
-  h2 {
-    font-size: 2rem;
-    margin: 0;
-  }
+.fast-access {
+  background-color: var(--bg-secondary);
+  border-radius: 5px;
+  color: var(--text-secondary);
   
+  margin-top: 20px;
+  padding: 20px;
+
+  .icon {
+    background-color: var(--bg-tertiary);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+
+    .icon {
+      background-color: var(--bg-accent);
+    }
+
+    h3 {
+      margin: 0;
+    }
+  }
+
+  h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .integrations {
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    padding-bottom: 8px;
+
+    .integration {
+      background-color: var(--bg-control);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      min-width: 50px;
+      height: 50px;
+      margin-right: 20px;
+      padding: 10px;
+
+      position: relative;
+      text-align: center;
+      font-size: 0.8rem;
+      transition-duration: 0.3s;
+
+      .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        margin-bottom: 15px;
+      }
+
+      .name {
+        position: absolute;
+        bottom: 5px;
+        left: 10px;
+        right: 10px;
+        
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      &:hover {
+        background-color: var(--bg-control-hover);
+        min-width: 100px;
+      }
+    }
+  }
+
+  .recents {
+    display: flex;
+    flex-direction: column;
+
+    .file {
+      background-color: var(--bg-control);
+      border-radius: 3px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      padding: 6px 10px;
+      transition-duration: 0.3s;
+
+      .icon {
+        width: 25px;
+        height: 25px;
+      }
+
+      .filename {
+        flex: 1 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .datetime {
+        padding-left: 10px;
+      }
+
+      &:hover {
+        background-color: var(--bg-control-hover);
+      }
+    }
+  }
 }

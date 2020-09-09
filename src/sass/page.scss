@@ -5,4 +5,34 @@
   display: flex;
   flex-direction: row;
   height: 100%;
+
+  .content {
+    display: flex;
+    flex-direction: row;
+  
+    max-height: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 50px 70px;
+  
+    position: relative;
+    flex: 1 1;
+    overflow: auto;
+  
+    .content-primary {
+      flex: 2 1;
+      margin-right: 100px;
+    }
+  
+    .content-secondary {
+      max-width: 500px;
+      min-width: 380px;
+      flex: 1 1;
+    }
+  
+    h2 {
+      font-size: 2rem;
+      margin: 0;
+    }
+  }
 }
