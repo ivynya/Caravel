@@ -16,6 +16,8 @@ describe('HomeComponent', () => {
   }));
 
   beforeEach(() => {
+    window.localStorage.setItem("oauth_token", "test");
+    
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
