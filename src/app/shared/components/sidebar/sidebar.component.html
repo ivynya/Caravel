@@ -7,27 +7,31 @@
     <a routerLink="/account" class="nav-link" routerLinkActive="active">Account</a>
     <hr>
     <a routerLink="/home" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
-    <hr>
+    <div class="sidebar-classes" *ngIf="this.enumerateClasses">
+      <a class="nav-link nav-sub" *ngFor="let course of courses">{{ course.name }}</a>
+    </div>
     <a routerLink="/groups" class="nav-link" routerLinkActive="active">Groups</a>
-    <hr>
+    <div class="sidebar-groups" *ngIf="this.enumerateGroups">
+
+    </div>
     <a routerLink="/inbox" class="nav-link" routerLinkActive="active">Inbox</a>
     <a routerLink="/calendar" class="nav-link" routerLinkActive="active">Calendar</a>
-    <a routerLink="/studio" class="nav-link" routerLinkActive="active">Studio</a>
+    <a routerLink="/studio" class="nav-link" routerLinkActive="active" *ngIf="this.showStudio">Studio</a>
   </div>
   <div class="sidebar-options">
     <div *ngIf="showSettings" class="sidebar-dialog">
       <h3>Sidebar Settings</h3>
       <hr>
       <label class="switch">Show Studio
-        <input type="checkbox">
+        <input type="checkbox" [(ngModel)]="this.showStudio">
         <span class="slider"></span>
       </label>
       <label class="switch">Enumerate Groups
-        <input type="checkbox">
+        <input type="checkbox"  [(ngModel)]="this.enumerateGroups">
         <span class="slider"></span>
       </label>
       <label class="switch">Enumerate Classes
-        <input type="checkbox">
+        <input type="checkbox" [(ngModel)]="this.enumerateClasses">
         <span class="slider"></span>
       </label>
     </div>

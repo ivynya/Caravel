@@ -34,6 +34,12 @@
     &.active {
       background-color: var(--bg-primary);
     }
+
+    &.nav-sub {
+      font-size: 14px;
+      min-height: 45px;
+      padding-left: 55px;
+    }
   }
 
   .sidebar-options {

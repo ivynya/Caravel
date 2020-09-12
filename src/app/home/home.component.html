@@ -5,6 +5,7 @@
       <div class="content-primary">
         <h2>Your To Do</h2>
         <hr>
+        <p *ngFor="let item of todo">{{ item.title }}</p>
       </div>
       <section class="content-secondary">
         <h2>Fast Access</h2>
