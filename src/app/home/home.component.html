@@ -1,14 +1,16 @@
 <main class="page">
   <app-sidebar></app-sidebar>
   <div class="content">
-    <div class="content-primary">
-      <h2>Your To Do</h2>
-      <hr>
+    <div class="content-wrapper">
+      <div class="content-primary">
+        <h2>Your To Do</h2>
+        <hr>
+      </div>
+      <section class="content-secondary">
+        <h2>Fast Access</h2>
+        <hr>
+        <home-accessor *ngFor="let course of courses" [course]="course"></home-accessor>
+      </section>
     </div>
-    <section class="content-secondary">
-      <h2>Fast Access</h2>
-      <hr>
-      <home-accessor *ngFor="let course of courses" [course]="course"></home-accessor>
-    </section>
   </div>
 </main>

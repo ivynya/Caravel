@@ -8,7 +8,6 @@
   padding: 20px;
 
   .icon {
-    background-color: var(--bg-tertiary);
     border-radius: 50%;
     width: 30px;
     height: 30px;
@@ -37,50 +36,10 @@
     display: flex;
     flex-direction: row;
     overflow: auto;
+    margin-top: 15px;
+    margin-left: -5px;
+    padding: 5px;
     padding-bottom: 8px;
-
-    .integration {
-      background-color: var(--bg-control);
-      border-radius: 3px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-
-      min-width: 50px;
-      height: 50px;
-      margin-right: 20px;
-      padding: 10px;
-
-      position: relative;
-      text-align: center;
-      font-size: 0.8rem;
-      transition-duration: 0.3s;
-
-      .icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0;
-        margin-bottom: 15px;
-      }
-
-      .name {
-        position: absolute;
-        bottom: 5px;
-        left: 10px;
-        right: 10px;
-        
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      &:hover {
-        background-color: var(--bg-control-hover);
-        min-width: 100px;
-      }
-    }
   }
 
   .recents {
@@ -98,6 +57,7 @@
       transition-duration: 0.3s;
 
       .icon {
+        background-color: var(--bg-tertiary);
         width: 25px;
         height: 25px;
       }

@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { TranslateModule } from '@ngx-translate/core';
 
-import { 
+import {
+  IconLTIComponent,
   PageNotFoundComponent,
   SidebarComponent
 } from './components/';
@@ -14,7 +15,8 @@ import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    PageNotFoundComponent, 
+    IconLTIComponent,
+    PageNotFoundComponent,
     SidebarComponent, 
     WebviewDirective
   ],
@@ -23,6 +25,7 @@ import { RouterModule } from '@angular/router';
     TranslateModule, 
     WebviewDirective, 
     FormsModule,
+    IconLTIComponent,
     SidebarComponent
   ]
 })

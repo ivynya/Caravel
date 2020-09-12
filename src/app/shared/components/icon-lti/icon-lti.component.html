@@ -1,0 +1,8 @@
+<a class="integration" [title]="lti?.name" [href]="lti?.url">
+  <span class="icon">
+    <svg *ngIf="this.lti">
+      <use [attr.xlink:href]="getSVGIconURL(lti?.name)" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+    </svg>
+    <span *ngIf="!this.lti && this.label">{{ this.label }}</span>
+  </span>
+</a>

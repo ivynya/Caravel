@@ -9,15 +9,22 @@
   .content {
     display: flex;
     flex-direction: row;
+    justify-content: center;
   
     max-height: 100%;
-    max-width: 1600px;
     margin: 0 auto;
     padding: 50px 70px;
   
     position: relative;
     flex: 1 1;
     overflow: auto;
+
+    .content-wrapper {
+      display: flex;
+      flex-direction: row;
+      max-width: 1600px;
+      flex: 1 1;
+    }
   
     .content-primary {
       flex: 2 1;
