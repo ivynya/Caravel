@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { CourseService, UserService } from 'app/core/services/canvas';
 import { Course } from '../core/services/canvas/course/course';
-import { ActivityStreamGeneric } from '../core/services/canvas/user/user';
+import { TodoGeneric } from '../core/services/canvas/user/user';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +12,8 @@ import { ActivityStreamGeneric } from '../core/services/canvas/user/user';
 })
 export class HomeComponent implements OnInit {
   courses: Course[];
-  todo: ActivityStreamGeneric[];
+  todo: TodoGeneric
+  [];
 
   constructor(private router: Router, 
               private courseService: CourseService,
@@ -20,7 +21,7 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit(): Promise<void> { 
     this.courses = await this.courseService.listCourses();
-    this.todo = await this.userService.getActivityStream();
+    this.todo = await this.userService.getTodo();
   }
 
 }

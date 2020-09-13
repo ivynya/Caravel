@@ -5,6 +5,7 @@ import { StorageService } from '../../storage/storage.service';
 
 import {
   ActivityStreamGeneric,
+  TodoGeneric,
   Profile 
 } from './user.d';
 
@@ -22,6 +23,15 @@ export class UserService extends APIBaseService {
       this.fetcher("self/activity_stream", "GET")
         .then(res => JSON.parse(res))
         .then(res => resolve(<ActivityStreamGeneric[]>res))
+        .catch(ex => reject(ex));
+    });
+  }
+
+  async getTodo(): Promise<TodoGeneric[]> {
+    return new Promise((resolve, reject) => {
+      this.fetcher("self/todo", "GET")
+        .then(res => JSON.parse(res))
+        .then(res => resolve(<TodoGeneric[]>res))
         .catch(ex => reject(ex));
     });
   }
