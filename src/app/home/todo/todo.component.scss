@@ -1,0 +1,21 @@
+
+.todo {
+  background-color: var(--bg-secondary);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  
+  margin: 20px 0;
+  padding: 15px 30px;
+
+  h4 {
+    margin: 0;
+    margin-bottom: 5px;
+  }
+
+  p {
+    margin: 0;
+  }
+}

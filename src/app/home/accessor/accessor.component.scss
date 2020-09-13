@@ -17,13 +17,25 @@
   .title {
     display: flex;
     align-items: center;
-
-    .icon {
-      background-color: var(--bg-accent);
-    }
+    justify-content: space-between;
 
     h3 {
       margin: 0;
+    }
+
+    button {
+      background-color: var(--bg-control);
+      border: none;
+      border-radius: 3px;
+      color: var(--accent-primary);
+
+      width: 25px;
+      height: 25px;
+      transition-duration: 0.3s;
+
+      &:hover {
+        background-color: var(--bg-control-hover);
+      }
     }
   }
 

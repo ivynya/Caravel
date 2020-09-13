@@ -1,0 +1,7 @@
+<div class="todo">
+  <div>
+    <h4>{{ todo.assignment?.name }}</h4>
+    <p>{{ todo.assignment?.course_id }}</p>
+  </div>
+  <p>Due {{ todo.assignment?.due_at | date: "E L/d h:mm a"}}</p>
+</div>

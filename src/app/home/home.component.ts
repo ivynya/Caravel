@@ -12,8 +12,7 @@ import { TodoGeneric } from '../core/services/canvas/user/user';
 })
 export class HomeComponent implements OnInit {
   courses: Course[];
-  todo: TodoGeneric
-  [];
+  todo: TodoGeneric[];
 
   constructor(private router: Router, 
               private courseService: CourseService,
@@ -21,7 +20,9 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit(): Promise<void> { 
     this.courses = await this.courseService.listCourses();
-    this.todo = await this.userService.getTodo();
+    this.todo = (await this.userService.getTodo()).sort((a, b) => {
+      return (new Date(a.assignment.due_at).getTime()) - (new Date(b.assignment.due_at).getTime())
+    });
   }
 
 }
