@@ -18,4 +18,54 @@
   p {
     margin: 0;
   }
+
+  .subtext {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    color: var(--text-tertiary);
+    font-size: 12px;
+  }
+
+  .separator::before {
+    background-color: var(--text-tertiary);
+    border-radius: 50%;
+    content: "";
+    display: inline-block;
+
+    width: 9px;
+    height: 9px;
+    margin: 0 10px;
+
+    opacity: 0.2;
+  }
+
+  &:hover {
+    background-color: var(--bg-tertiary);
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: row;
+
+    button {
+      background-color: var(--bg-control);
+      border: none;
+      border-radius: 5px;
+      color: var(--text-tertiary);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      
+      margin-left: 10px;
+      width: 28px;
+      height: 28px;
+
+      &:hover {
+        background-color: var(--bg-control-hover);
+      }
+    }
+  }
 }

@@ -14,6 +14,15 @@ export class CourseService extends APIBaseService {
     super("courses", storage);
   }
 
+  async getCourse(courseId: number): Promise<Course> {
+    return new Promise((resolve, reject) => {
+      this.fetcher(`${courseId}`, "GET")
+        .then(res => JSON.parse(res))
+        .then(res => resolve(<Course>res))
+        .catch(ex => reject(ex));
+    });
+  }
+
   async listCourses(): Promise<Course[]> {
     return new Promise((resolve, reject) => {
       this.fetcher("", "GET")

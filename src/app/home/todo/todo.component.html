@@ -1,7 +1,16 @@
 <div class="todo">
   <div>
     <h4>{{ todo.assignment?.name }}</h4>
-    <p>{{ todo.assignment?.course_id }}</p>
+    <p class="subtext">
+      <span>Due {{ todo.assignment?.due_at | date: "E L/d h:mm a"}}</span>
+      <span class="separator"></span>
+      <span>{{ todo.assignment?.points_possible }}pts</span>
+      <span class="separator"></span>
+      <span>{{ course?.name }}</span>
+    </p>
   </div>
-  <p>Due {{ todo.assignment?.due_at | date: "E L/d h:mm a"}}</p>
+  <div class="actions">
+    <button>-</button>
+    <button>✔</button>
+  </div>
 </div>
