@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { CourseService } from '../../core/services/canvas';
 import { Course, ExternalTool } from '../../core/services/canvas/course/course';

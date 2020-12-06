@@ -13,6 +13,9 @@ import { TodoGeneric } from '../core/services/canvas/user/user';
 export class HomeComponent implements OnInit {
   courses: Course[];
   todo: TodoGeneric[];
+  stream: {
+    [id: string]: TodoGeneric[];
+  }
 
   constructor(private router: Router, 
               private courseService: CourseService,
@@ -22,6 +25,12 @@ export class HomeComponent implements OnInit {
     this.courses = await this.courseService.listCourses();
     this.todo = (await this.userService.getTodo()).sort((a, b) => {
       return (new Date(a.assignment.due_at).getTime()) - (new Date(b.assignment.due_at).getTime())
+    });
+
+    this.todo.forEach(t => {
+      if (t.assignment?.due_at) {
+        console.log(t.assignment?.due_at);
+      }
     });
   }
 

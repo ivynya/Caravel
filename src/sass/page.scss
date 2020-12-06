@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: row;
   height: 100%;
+  margin-left: 340px;
 
   .content {
     display: flex;
@@ -22,22 +23,16 @@
     .content-wrapper {
       display: flex;
       flex-direction: row;
-      max-width: 1600px;
+      max-width: 1000px;
       flex: 1 1;
-    }
-  
-    .content-primary {
-      flex: 2 1;
-      margin-right: 100px;
-    }
-  
-    .content-secondary {
-      max-width: 500px;
-      min-width: 380px;
-      flex: 1 1;
+
+      section {
+        flex: 1 1;
+      }
     }
   
     h2 {
+      color: var(--text-inverse-primary);
       font-size: 2rem;
       margin: 0;
     }

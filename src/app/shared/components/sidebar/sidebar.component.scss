@@ -1,14 +1,22 @@
 .sidebar {
   background-color: var(--bg-tertiary);
-  box-shadow: var(--box-shadow-primary) 0 8px 10px;
+  box-shadow: var(--box-shadow-primary) 0 0 20px;
+  color: var(--text-primary);
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 300px;
-  height: calc(100% - 25px);
+
+  width: 340px;
   padding: 10px 0;
   padding-top: 15px;
   overflow: auto;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
 
   hr {
     border-color: var(--bg-accent);
@@ -27,12 +35,8 @@
     padding-left: 40px;
     transition-duration: 0.3s;
 
-    &:hover {
+    &:hover, &.active {
       background-color: var(--bg-control-hover);
-    }
-
-    &.active {
-      background-color: var(--bg-primary);
     }
 
     &.nav-sub {

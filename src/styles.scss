@@ -1,4 +1,5 @@
 
+/*
 :root {
   --bg-primary: #11111F;
   --bg-secondary: #1A1A2F;
@@ -15,6 +16,33 @@
   --text-primary: #eee;
   --text-secondary: #ddd;
   --text-tertiary: #aab;
+
+  --accent-primary: #00F2D2;
+  --accent-secondary: #00C2A2;
+}*/
+
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f6f6ff;
+  --bg-tertiary: #47475e;
+
+  --box-shadow-primary: #282241;
+  --box-shadow-secondary: #111;
+
+  --bg-control: #5c5c7e;
+  --bg-control-hover: #52527e;
+  --bg-control-light: #b8b8d6;
+  --bg-control-light-hover: #9090b8;
+
+  --bg-accent: #7261a3;
+  --bg-dialog: #515172;
+
+  --text-primary: #ffffff;
+  --text-secondary: #ddd;
+  --text-tertiary: #aab;
+
+  --text-inverse-primary: #000;
+  --text-inverse-secondary: #333;
 
   --accent-primary: #00F2D2;
   --accent-secondary: #00C2A2;
@@ -41,8 +69,7 @@
 
 html, body {
   background-color: var(--bg-primary);
-  color: var(--text-primary);
-
+  
   margin: 0;
   padding: 0;
 
