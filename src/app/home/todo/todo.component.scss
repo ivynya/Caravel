@@ -25,7 +25,7 @@
   }
 
   .separator::before {
-    background-color: var(--text-tertiary);
+    background-color: var(--text-inverse-tertiary);
     border-radius: 50%;
     content: "";
     display: block;
@@ -40,26 +40,10 @@
   .actions {
     display: flex;
     flex-direction: row;
-      
-    margin-right: 20px;
-
-    button {
-      background-color: transparent;
-      border: var(--bg-control-light) 1px solid;
-      border-radius: 5px;
-      color: var(--text-inverse-primary);
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      width: 28px;
-      height: 28px;
-      transition-duration: 0.2s;
-
-      &:hover {
-        background-color: var(--bg-control-light-hover);
-        color: var(--text-primary);
-      }
+    align-items: center;
+    
+    > * {
+      padding: 0 10px;
     }
   }
   

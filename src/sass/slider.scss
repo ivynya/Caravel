@@ -16,7 +16,7 @@
     height: 0;
 
     &:checked + .slider {
-      background-color: var(--bg-control-hover);
+      background-color: var(--accent-primary);
     }
 
     &:focus + .slider {

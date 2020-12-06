@@ -1,18 +1,16 @@
 <main class="page">
   <div class="content">
-    <div class="content-wrapper">
-      <section>
-        <h2>Your To Do</h2>
-        <hr>
-        <home-todo *ngFor="let item of todo" [todo]="item"></home-todo>
-      </section>
-      <!--
-      <section>
-        <h2>Fast Access</h2>
-        <hr>
-        <home-accessor *ngFor="let course of courses" [course]="course"></home-accessor>
-      </section>
-      -->
+    <section>
+      <h1>Your To Do</h1>
+      <hr>
+      <home-todo *ngFor="let item of todo" [todo]="item"></home-todo>
+    </section>
+    <!--
+    <section>
+      <h2>Fast Access</h2>
+      <hr>
+      <home-accessor *ngFor="let course of courses" [course]="course"></home-accessor>
+    </section>
+    -->
     </div>
-  </div>
 </main>

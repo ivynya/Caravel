@@ -2,10 +2,19 @@
   <nav class="content-nav">
     <h2>Account Options</h2>
   </nav>
-  <div class="content">
-    <section>
+  <section class="content">
+    <div>
+      <h1>Your Account</h1>
+      <hr>
+    </div>
+    <div class="header">
       <img [src]="this.profile?.avatar_url" alt="Your Avatar">
-      {{ this.profile?.id }}
-    </section>
-  </div>
+      <div>
+        <h2>{{ this.profile?.name }}</h2>
+        <p><b>{{ this.profile?.pronouns }}</b></p>
+      </div>
+    </div>
+    <div class="info">
+    </div>
+  </section>
 </main>

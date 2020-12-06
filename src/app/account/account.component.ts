@@ -17,7 +17,6 @@ export class AccountComponent implements OnInit {
 
   async ngOnInit(): Promise<void> { 
     this.profile = await this.userService.getProfile();
-    console.log(await (await this.userService.getActivityStream()));
   }
 
 }

@@ -18,11 +18,6 @@
   bottom: 0;
   z-index: 1;
 
-  hr {
-    border-color: var(--bg-accent);
-    margin: 0;
-  }
-
   .nav-link {
     color: var(--text-primary);
     font-size: 18px;
@@ -76,7 +71,7 @@
     .sidebar-dialog {
       background-color: var(--bg-dialog);
       border-radius: 5px;
-      box-shadow: var(--box-shadow-secondary) 5px 5px 10px;
+      box-shadow: var(--box-shadow-primary) 5px 5px 10px;
       position: absolute;
       bottom: calc(100% + 10px);
       left: 20px;

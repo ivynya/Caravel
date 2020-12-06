@@ -12,6 +12,7 @@ import { StorageService } from '../../../core/services';
 })
 export class SidebarComponent implements OnInit {
   courses: Course[];
+  isAuthorized: boolean;
 
   enumerateClasses = true;
   enumerateGroups = false;
@@ -24,8 +25,13 @@ export class SidebarComponent implements OnInit {
               private storage: StorageService,
               private router: Router) { }
 
-  async ngOnInit(): Promise<void> { 
-    this.courses = await this.courseService.listCourses();
+  async ngOnInit(): Promise<void> {
+    this.router.events.subscribe(async () => {
+      this.isAuthorized = this.storage.has("oauth_token");
+
+      if (this.isAuthorized)
+        this.courses = await this.courseService.listCourses();
+    });
   }
 
   toggleSettings(): void {

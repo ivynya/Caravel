@@ -6,6 +6,8 @@
   flex-direction: row;
   height: 100%;
   margin-left: 340px;
+  overflow: auto;
+  position: relative;
 
   .content {
     display: flex;
@@ -13,28 +15,21 @@
     justify-content: center;
   
     max-height: 100%;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 50px 70px;
   
     position: relative;
     flex: 1 1;
-    overflow: auto;
-
-    .content-wrapper {
-      display: flex;
-      flex-direction: row;
-      max-width: 1000px;
-      flex: 1 1;
-
-      section {
-        flex: 1 1;
-      }
-    }
   
-    h2 {
+    h1 {
       color: var(--text-inverse-primary);
       font-size: 2rem;
       margin: 0;
+    }
+
+    section {
+      flex: 1 1;
     }
   }
 }
