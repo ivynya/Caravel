@@ -9,7 +9,7 @@
   margin: 20px 0;
   padding: 15px 20px;
 
-  h4 {
+  h3 {
     margin: 0;
     margin-bottom: 5px;
   }
@@ -20,7 +20,7 @@
     align-items: center;
 
     color: var(--text-inverse-tertiary);
-    font-size: 12px;
+    font-size: 14px;
     margin: 0;
   }
 
@@ -43,7 +43,7 @@
     align-items: center;
     
     > * {
-      padding: 0 10px;
+      margin-right: 20px;
     }
   }
   

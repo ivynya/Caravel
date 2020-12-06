@@ -1,6 +1,6 @@
 
 .integration {
-  background-color: var(--bg-control);
+  background-color: var(--bg-control-light);
   border-radius: 3px;
   color: var(--text-secondary);
   display: flex;
@@ -26,14 +26,14 @@
     margin: 0;
 
     svg {
-      fill: var(--accent-secondary);
+      fill: var(--accent-primary);
       height: 25px;
       width: 25px;
     }
   }
 
   &:hover {
-    background-color: var(--bg-control-hover);
+    background-color: var(--bg-control-light-hover);
     transform: scale(1.05);
   }
 }
