@@ -25,12 +25,13 @@ export class SidebarComponent implements OnInit {
               private storage: StorageService,
               private router: Router) { }
 
-  async ngOnInit(): Promise<void> {
-    this.router.events.subscribe(async () => {
+  ngOnInit(): void {
+    this.router.events.subscribe(() => {
       this.isAuthorized = this.storage.has("oauth_token");
 
       if (this.isAuthorized)
-        this.courses = await this.courseService.listCourses();
+        this.courseService.listCourses()
+          .then(courses => this.courses = courses);
     });
   }
 
