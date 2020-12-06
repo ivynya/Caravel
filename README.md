@@ -1,9 +1,8 @@
 # Caravan
 
-Just-like-home Canvas client.
+Using Canvas in the next generation.
 
-This project was transferred from the corresponding branch of [SDBagel/Turbodrive](https://github.com/SDBagel/Turbodrive).
+Caravan is a custom Canvas client, making use of the Canvas APIs and services. Built on Angular, the goal is to load the app once and only once, cache applicable API requests, and deliver a faster and smoother experience than the current deployment provided by Instructure.
 
-Built on [this boilerplate](https://github.com/maximegris/angular-electron).
-
+This project is similar to [SDBagel/Turbodrive](https://github.com/SDBagel/Turbodrive).
 
