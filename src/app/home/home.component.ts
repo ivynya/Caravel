@@ -11,7 +11,6 @@ import { Course, TodoGeneric } from '../core/schemas';
 })
 export class HomeComponent implements OnInit {
   courses: Course[];
-  todo: TodoGeneric[];
   stream: Array<{
     id: string
     items: TodoGeneric[];
@@ -23,11 +22,11 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit(): Promise<void> { 
     //this.courses = await this.courseService.listCourses();
-    this.todo = (await this.userService.getTodo()).sort((a, b) => {
+    const todo = (await this.userService.getTodo()).sort((a, b) => {
       return (new Date(a.assignment.due_at).getTime()) - (new Date(b.assignment.due_at).getTime())
     });
 
-    this.todo.forEach(t => {
+    todo.forEach(t => {
       let date = new Date(t.assignment?.due_at).toDateString();
       if (date === new Date().toDateString()) date = "Today";
       const index = this.stream?.findIndex(i => i.id == date);

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Assignment } from 'app/core/schemas';
 
 @Component({
   selector: 'app-assignment',
@@ -6,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./assignment.component.scss']
 })
 export class AssignmentComponent implements OnInit {
+  assignment: Assignment;
 
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    
+  }
 
 }

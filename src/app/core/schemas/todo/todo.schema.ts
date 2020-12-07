@@ -1,4 +1,6 @@
 
+import { Assignment } from "../assignment/assignment.schema";
+
 export interface TodoGeneric {
   type: string // grading|submitting
   ignore: string // URL -> DELETE request
@@ -6,6 +8,6 @@ export interface TodoGeneric {
   html_url: string
   context_type: string // course|group
   course_id: number
-  assignment?: any
+  assignment?: Assignment
   quiz?: any
 }

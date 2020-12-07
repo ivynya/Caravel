@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 import { CourseService } from '../../../core/services/canvas';
 import { StorageService } from '../../../core/services';
@@ -26,12 +26,14 @@ export class SidebarComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    this.router.events.subscribe(() => {
+    this.router.events.subscribe((e) => {
+      if (!(e instanceof NavigationEnd)) return;
       this.isAuthorized = this.storage.has("oauth_token");
 
-      if (this.isAuthorized)
+      if (this.isAuthorized) {
         this.courseService.listCourses()
           .then(courses => this.courses = courses);
+      }
     });
   }
 
