@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { APIBaseService } from '../base.service';
 import { StorageService } from '../../storage/storage.service';
 
-import { Course, ExternalTool } from './course.d';
+import { Course, ExternalTool } from '../../../schemas';
 
 @Injectable({
   providedIn: 'root'

@@ -5,9 +5,9 @@ import { StorageService } from '../../storage/storage.service';
 
 import {
   ActivityStreamGeneric,
-  TodoGeneric,
-  Profile 
-} from './user.d';
+  Profile,
+  TodoGeneric
+} from '../../../schemas';
 
 @Injectable({
   providedIn: 'root'

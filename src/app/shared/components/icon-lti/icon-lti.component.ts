@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ExternalTool } from 'app/core/services/canvas/course/course';
+import { ExternalTool } from '../../../core/schemas';
 
 @Component({
   selector: 'app-icon-lti',

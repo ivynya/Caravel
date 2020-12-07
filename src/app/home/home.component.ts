@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { CourseService, UserService } from 'app/core/services/canvas';
-import { Course } from '../core/services/canvas/course/course';
-import { TodoGeneric } from '../core/services/canvas/user/user';
+import { CourseService, UserService } from '../core/services/canvas';
+import { Course, TodoGeneric } from '../core/schemas';
 
 @Component({
   selector: 'app-home',

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { UserService } from '../core/services/canvas';
-import { Profile } from 'app/core/services/canvas/user/user';
+import { Profile } from '../core/schemas';
 
 @Component({
   selector: 'app-account',

@@ -1,32 +1,4 @@
 
-export interface Profile {
-  id: number
-  name: string
-  short_name: string
-  sortable_name: string
-  title: string | null
-  bio: string | null
-  primary_email: string
-  login_id: string
-  sis_user_id: string
-  lti_user_id: string | null
-  avatar_url: string
-  calendar: { ics?: string } | null
-  time_zone: string
-  locale: string | null
-}
-
-export interface TodoGeneric {
-  type: string // grading|submitting
-  ignore: string // URL -> DELETE request
-  ignore_permanently: string
-  html_url: string
-  context_type: string // course|group
-  course_id: number
-  assignment?: any
-  quiz?: any
-}
-
 // Can be type-casted to a more specific object later
 // Based on 'type' property
 export interface ActivityStreamGeneric {

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { CourseService } from 'app/core/services/canvas';
-import { Course } from 'app/core/services/canvas/course/course';
+import { CourseService } from '../../../core/services/canvas';
 import { StorageService } from '../../../core/services';
+import { Course } from '../../../core/schemas';
 
 @Component({
   selector: 'app-sidebar',
