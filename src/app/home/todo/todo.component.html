@@ -6,13 +6,15 @@
     </label>
   </div>
   <div>
-    <h3>{{ todo?.assignment?.name }}</h3>
+    <h3><a [routerLink]="'/course/'+course?.id+'/assignment/'+todo?.assignment?.id">
+      {{ todo?.assignment?.name }}
+    </a></h3>
     <p class="subtext">
       <span>Due {{ todo?.assignment?.due_at | date: "E L/d h:mm a"}}</span>
       <span class="separator"></span>
       <span>{{ todo?.assignment?.points_possible }}pts</span>
       <span class="separator"></span>
-      <span>{{ course?.name }}</span>
+      <span><a [routerLink]="'/course/'+course?.id">{{ course?.name }}</a></span>
     </p>
   </div>
   <span class="spacer"></span>

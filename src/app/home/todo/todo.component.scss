@@ -12,6 +12,20 @@
   h3 {
     margin: 0;
     margin-bottom: 5px;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  a {
+    color: var(--text-inverse-primary);
+    text-decoration-color: var(--bg-secondary);
+    transition-duration: 0.1s;
+
+    &:hover {
+      color: var(--accent-secondary)
+    }
   }
 
   .subtext {

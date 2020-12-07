@@ -13,7 +13,12 @@
     <a routerLink="/account" class="nav-link" routerLinkActive="active">Account</a>
     <a routerLink="/home" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
     <div class="sidebar-classes" *ngIf="this.enumerateClasses">
-      <a class="nav-link nav-sub" *ngFor="let course of courses">{{ course.name }}</a>
+      <a class="nav-link nav-sub" 
+        *ngFor="let course of courses" 
+        routerLinkActive="active"
+        [routerLink]="'/course/'+course.id">
+        {{ course.name }}
+      </a>
     </div>
     <a routerLink="/groups" class="nav-link" routerLinkActive="active">Groups</a>
     <div class="sidebar-groups" *ngIf="this.enumerateGroups">
