@@ -14,9 +14,10 @@ export abstract class APIBaseService {
         reject("No oauth_token value found.");
 
       // API is always fetched with a CORS proxy due to Canvas limitations
-      // Advisable to set up your own CORS proxy securely
+      // Advisable to set up your own (secure) CORS proxy
       const token = this.storage.get("oauth_token");
-      fetch(`http://localhost:3000/https://mvla.instructure.com/api/v1/${this.scope}/${endpoint}?access_token=${token}`,
+      const url = `https://mvla.instructure.com/api/v1/${this.scope}/${endpoint}?access_token=${token}`;
+      fetch(`http://localhost:3000/${url}`,
             {
               method: method,
               headers: {

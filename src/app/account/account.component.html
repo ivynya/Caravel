@@ -1,7 +1,4 @@
 <main class="page">
-  <nav class="content-nav">
-    <h2>Account Options</h2>
-  </nav>
   <section class="content">
     <div>
       <h1>Your Account</h1>
@@ -14,6 +11,10 @@
         <p><b>{{ this.profile?.pronouns }}</b></p>
       </div>
     </div>
+    <h3>Biography</h3>
+    <p>{{ this.profile?.bio }}</p>
+    <h3>Primary Email</h3>
+    <p>{{ this.profile?.primary_email }}</p>
     <div class="info">
     </div>
   </section>

@@ -2,6 +2,7 @@
 export interface Profile {
   id: number
   name: string
+  pronouns: string
   short_name: string
   sortable_name: string
   title: string | null
