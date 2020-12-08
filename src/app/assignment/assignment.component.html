@@ -1,8 +1,15 @@
 <main class="page">
   <div class="content">
-    <section>
-      <h1>Assignment</h1>
+    <section class="assignment">
+      <p><b>Assignment: {{ this.course?.name }}</b></p>
+      <h1>{{ this.assignment?.name }}</h1>
       <hr>
+      <p *ngIf="this.assignment?.lock_explanation">{{ this.assignment?.lock_explanation }}</p>
+      <div [innerHtml]="this.assignment?.description" class="xss-sanitize"></div>
+      <br><br>
+      <div class="submitter">
+        <assignment-submitter></assignment-submitter>
+      </div>
     </section>
   </div>
 </main>

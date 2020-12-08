@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Assignment } from 'app/core/schemas';
+import { ActivatedRoute } from '@angular/router';
+
+import { Assignment, Course } from 'app/core/schemas';
+import { AssignmentService, CourseService } from 'app/core/services/canvas';
 
 @Component({
   selector: 'app-assignment',
@@ -8,11 +11,18 @@ import { Assignment } from 'app/core/schemas';
 })
 export class AssignmentComponent implements OnInit {
   assignment: Assignment;
+  course: Course;
 
-  constructor() { }
+  constructor(private assignmentService: AssignmentService,
+              private courseService: CourseService,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void { 
-    
+    this.route.params.subscribe(async params => {
+      this.assignment = await this.assignmentService.getAssignment(params.courseId, params.assignmentId);
+      console.log(this.assignment);
+      this.course = await this.courseService.getCourse(this.assignment.course_id);
+    });
   }
 
 }

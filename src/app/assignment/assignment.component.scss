@@ -1,0 +1,25 @@
+
+.assignment {
+  .xss-sanitize {
+    max-width: 1000px;
+    overflow: hidden;
+
+    ::ng-deep {
+      table {
+        width: 100%;
+      }
+
+      table td {
+        padding: 0 15px;
+      }
+
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+
+  .submitter {
+    padding-bottom: 250px;
+  }
+}

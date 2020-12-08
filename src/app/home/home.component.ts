@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
   async ngOnInit(): Promise<void> { 
     //this.courses = await this.courseService.listCourses();
     const upcoming = await this.userService.getUpcoming();
-    console.log(upcoming);
 
     upcoming.forEach(item => {
       let date: string;
