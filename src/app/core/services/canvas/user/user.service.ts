@@ -6,7 +6,8 @@ import { StorageService } from '../../storage/storage.service';
 import {
   ActivityStreamGeneric,
   Profile,
-  TodoGeneric
+  TodoAssignment,
+  TodoEvent
 } from '../../../schemas';
 
 @Injectable({
@@ -27,11 +28,20 @@ export class UserService extends APIBaseService {
     });
   }
 
-  async getTodo(): Promise<TodoGeneric[]> {
+  async getTodo(): Promise<TodoAssignment[]> {
     return new Promise((resolve, reject) => {
       this.fetcher("self/todo", "GET")
         .then(res => JSON.parse(res))
-        .then(res => resolve(<TodoGeneric[]>res))
+        .then(res => resolve(<TodoAssignment[]>res))
+        .catch(ex => reject(ex));
+    });
+  }
+
+  async getUpcoming(): Promise<Array<TodoAssignment|TodoEvent>> {
+    return new Promise((resolve, reject) => {
+      this.fetcher("self/upcoming_events", "GET")
+        .then(res => JSON.parse(res))
+        .then(res => resolve(<Array<TodoAssignment|TodoEvent>>res))
         .catch(ex => reject(ex));
     });
   }

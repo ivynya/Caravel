@@ -1,7 +1,8 @@
 
 import { Assignment } from "../assignment/assignment.schema";
 
-export interface TodoGeneric {
+export interface TodoAssignment {
+  title?: string // honestly idk this appears sometimes
   type: string // grading|submitting
   ignore: string // URL -> DELETE request
   ignore_permanently: string

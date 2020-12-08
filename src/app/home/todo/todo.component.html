@@ -5,9 +5,9 @@
       <span class="checkmark"></span>
     </label>
   </div>
-  <div>
+  <div *ngIf="!this.isEvent">
     <h3><a [routerLink]="'/course/'+course?.id+'/assignment/'+todo?.assignment?.id">
-      {{ todo?.assignment?.name }}
+      {{ todo?.title }}
     </a></h3>
     <p class="subtext">
       <span>Due {{ todo?.assignment?.due_at | date: "E L/d h:mm a"}}</span>
@@ -17,7 +17,14 @@
       <span><a [routerLink]="'/course/'+course?.id">{{ course?.name }}</a></span>
     </p>
   </div>
-  <span class="spacer"></span>
-  <div class="actions">
+  <div *ngIf="this.isEvent">
+    <h3><a [href]="todo?.html_url" target="_blank">
+      {{ todo?.title }}
+    </a></h3>
+    <p class="subtext">
+      <span>{{ todo?.start_at | date: "E L/d h:mm a"}}</span>
+      <span class="separator"></span>
+      <span>Course Event (External)</span>
+    </p>
   </div>
 </div>
