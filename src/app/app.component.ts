@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ElectronService } from './core/services';
 import { TranslateService } from '@ngx-translate/core';
@@ -17,7 +17,8 @@ export class AppComponent implements OnInit {
     private store: StorageService,
     electronService: ElectronService,
     private translate: TranslateService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.translate.setDefaultLang('en');
     console.log('AppConfig', AppConfig);
@@ -29,10 +30,12 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // User has not provided access token
-    // Redirect to authorization page
-    if (!this.store.has("oauth_token")) {
-      this.router.navigateByUrl("/auth");
-    }
+    this.route.params.subscribe(async params => {
+      // User has not provided access token
+      // Redirect to authorization page
+      if (!this.store.has("oauth_token")) {
+        this.router.navigateByUrl("/auth");
+      }
+    });
   }
 }
