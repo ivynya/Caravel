@@ -10,6 +10,9 @@ import { Course, Page } from '../core/schemas';
   styleUrls: ['./course.component.scss']
 })
 export class CourseComponent implements OnInit {
+  // Determines if redesign is used
+  useCanvasHomepage = !true;
+
   course: Course;
   frontPage: Page;
 
@@ -19,8 +22,9 @@ export class CourseComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(async params => {
       this.course = await this.courseService.getCourse(params.id);
-      this.frontPage = await this.courseService.getCourseFrontPage(params.id);
-      console.log(this.course);
+
+      if (this.useCanvasHomepage)
+        this.frontPage = await this.courseService.getCourseFrontPage(params.id);
     });
   }
 

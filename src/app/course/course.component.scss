@@ -1,20 +1,22 @@
 
-.recent-assignments {
+.recent-item-bar {
   display: flex;
+  margin-bottom: 30px;
 
-  .assignment {
-    box-shadow: #0003 0 0 10px;
+  .item {
+    border: var(--bg-secondary) 2px solid;
     border-radius: 5px;
     display: inline-flex;
     flex-direction: column;
 
     flex: 1 1;
-    height: 80px;
+    min-height: 80px;
     padding: 20px;
 
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    transition-duration: 0.5s;
 
     h3, p {
       margin: 0;
@@ -25,12 +27,24 @@
       font-size: 0.9rem;
     }
 
-    .spacer {
-      flex: 1 1;
+    blockquote {
+      border-left: var(--accent-primary) 2px solid;
+      margin: 0;
+      margin-top: 10px;
+      padding-left: 10px;
+      font-size: 0.9rem;
+      max-width: 100%;
+      
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
 
     &:not(:last-child) {
       margin-right: 25px;
+    }
+
+    &:hover {
+      flex: 2 1;
     }
   }
 }
