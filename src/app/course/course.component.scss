@@ -1,0 +1,36 @@
+
+.recent-assignments {
+  display: flex;
+
+  .assignment {
+    box-shadow: #0003 0 0 10px;
+    border-radius: 5px;
+    display: inline-flex;
+    flex-direction: column;
+
+    flex: 1 1;
+    height: 80px;
+    padding: 20px;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    h3, p {
+      margin: 0;
+    }
+
+    em {
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+    }
+
+    .spacer {
+      flex: 1 1;
+    }
+
+    &:not(:last-child) {
+      margin-right: 25px;
+    }
+  }
+}

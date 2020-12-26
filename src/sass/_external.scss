@@ -1,0 +1,20 @@
+
+// This file handles all external content loaded
+// For example, HTML in assignment bodies.
+
+.xss-sanitize {
+  max-width: 1000px;
+  overflow: hidden;
+
+  table {
+    width: 100%;
+  }
+
+  table td {
+    padding: 0 15px;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}

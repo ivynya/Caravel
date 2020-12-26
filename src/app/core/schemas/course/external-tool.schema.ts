@@ -1,4 +1,6 @@
 
+// Schema for an EXTERNALTOOL or LTI object.
+// Not useful without extra JS/TS to launch the LTI.
 export interface ExternalTool {
   id: number,
   domain: string,

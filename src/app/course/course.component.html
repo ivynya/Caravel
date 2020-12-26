@@ -1,8 +1,33 @@
 <main class="page">
   <div class="content">
     <section>
-      <h1>Course</h1>
+      <h1>{{ course?.name }}</h1>
       <hr>
+      <h2>Recent Assignments</h2>
+      <div class="recent-assignments">
+        <div class="assignment">
+          <h3>Assignment Title</h3>
+          <em>Due Sometime Soon</em>
+          <span class="spacer"></span>
+          <p><b>❌ Late (3 Days)</b></p>
+        </div>
+        <div class="assignment">
+          <h3>Assignment Title</h3>
+          <em>Due Sometime Soon</em>
+          <span class="spacer"></span>
+          <p><b>✅ Marked done by you.</b></p>
+        </div>
+        <div class="assignment">
+          <h3>Assignment Title</h3>
+          <em>Due Sometime Soon</em>
+          <span class="spacer"></span>
+          <p><b>✅ Submitted docx, pptx.</b></p>
+        </div>
+      </div>
+      <br>
+      <hr>
+      <h2>Course Home Page</h2>
+      <div [innerHtml]="this.frontPage?.body" class="xss-sanitize"></div>
     </section>
   </div>
 </main>

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { APIBaseService } from '../base.service';
 import { StorageService } from '../../storage/storage.service';
 
-import { Course, ExternalTool } from '../../../schemas';
+import { Course, ExternalTool, Page } from '../../../schemas';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,15 @@ export class CourseService extends APIBaseService {
       this.fetcher(`${courseId}`, "GET")
         .then(res => JSON.parse(res))
         .then(res => resolve(<Course>res))
+        .catch(ex => reject(ex));
+    });
+  }
+
+  async getCourseFrontPage(courseId: number): Promise<Page> {
+    return new Promise((resolve, reject) => {
+      this.fetcher(`${courseId}/front_page`, "GET")
+        .then(res => JSON.parse(res))
+        .then(res => resolve(<Page>res))
         .catch(ex => reject(ex));
     });
   }

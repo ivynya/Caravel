@@ -3,6 +3,7 @@ export * from './assignment/assignment.schema';
 
 export * from './course/course.schema';
 export * from './course/external-tool.schema';
+export * from './course/page.schema';
 
 export * from './todo/todo.schema';
 export * from './todo/event.schema';

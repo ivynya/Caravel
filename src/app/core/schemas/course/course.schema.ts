@@ -1,4 +1,6 @@
 
+// Schema for a COURSE object.
+// Basically only the super top levels of courses.
 export interface Course {
   id: number,
   sis_course_id: number | null,
@@ -17,9 +19,9 @@ export interface Course {
   start_at: string,
   end_at: string,
   locale: string,
-  enrollments: null,
+  enrollments: any, // See users enrolled
   total_students: number,
-  calendar: null,
+  calendar: string, // Link to an ICS file
   default_view: string,
   syllabus_body: string,
   needs_grading_count: number,
