@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { CourseService } from '../../core/services/canvas';
-import { Course, TodoEvent, TodoAssignment } from '../../core/schemas';
+import { CourseService } from '../../../core/services/canvas';
+import { Course, TodoEvent, TodoAssignment } from '../../../core/schemas';
 
 @Component({
   selector: 'home-todo',

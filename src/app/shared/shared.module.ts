@@ -6,7 +6,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import {
   IconLTIComponent,
   PageNotFoundComponent,
-  SidebarComponent
+  SidebarComponent,
+  TodoComponent
 } from './components/';
 
 import { WebviewDirective } from './directives/';
@@ -17,7 +18,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     IconLTIComponent,
     PageNotFoundComponent,
-    SidebarComponent, 
+    SidebarComponent,
+    TodoComponent,
     WebviewDirective
   ],
   imports: [CommonModule, RouterModule, TranslateModule, FormsModule],
@@ -26,7 +28,8 @@ import { RouterModule } from '@angular/router';
     WebviewDirective, 
     FormsModule,
     IconLTIComponent,
-    SidebarComponent
+    SidebarComponent,
+    TodoComponent
   ]
 })
 export class SharedModule {}
