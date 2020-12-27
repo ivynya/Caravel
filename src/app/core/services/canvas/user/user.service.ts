@@ -9,6 +9,7 @@ import {
   TodoAssignment,
   TodoEvent
 } from '../../../schemas';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -37,22 +38,25 @@ export class UserService extends APIBaseService {
     });
   }
 
-  async getUpcoming(): Promise<Array<TodoAssignment|TodoEvent>> {
-    return new Promise((resolve, reject) => {
-      this.fetcher("self/upcoming_events", "GET")
-        .then(res => JSON.parse(res))
-        .then(res => resolve(<Array<TodoAssignment|TodoEvent>>res))
-        .catch(ex => reject(ex));
-    });
+  async getUpcoming(callback: (data: Array<TodoAssignment|TodoEvent>) => void): Promise<void> {
+    const cached = this.getCached("self/upcoming_events");
+    if (cached) callback(JSON.parse(cached));
+    
+    this.fetcher("self/upcoming_events", "GET")
+      .then(res => JSON.parse(res))
+      .then(res => callback(<Array<TodoAssignment|TodoEvent>>res))
+      .catch(ex => console.error(ex));
   }
 
-  async getProfile(): Promise<Profile> {
-    return new Promise((resolve, reject) => {
-      this.fetcher("self/profile", "GET")
-        .then(res => JSON.parse(res))
-        .then(res => resolve(<Profile>res))
-        .catch(ex => reject(ex));
-    });
+  // Gets user profile. Used on accounts page.
+  async getProfile(callback: (data: Profile) => void): Promise<void> {
+    const cached = this.getCached("self/profile");
+    if (cached) callback(JSON.parse(cached));
+    
+    this.fetcher("self/profile", "GET")
+      .then(res => JSON.parse(res))
+      .then(res => callback(<Profile>res))
+      .catch(ex => console.error(ex));
   }
 
 }

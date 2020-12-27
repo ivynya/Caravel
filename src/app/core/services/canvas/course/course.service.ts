@@ -14,13 +14,14 @@ export class CourseService extends APIBaseService {
     super("courses", storage);
   }
 
-  async getCourse(courseId: number): Promise<Course> {
-    return new Promise((resolve, reject) => {
-      this.fetcher(`${courseId}`, "GET")
-        .then(res => JSON.parse(res))
-        .then(res => resolve(<Course>res))
-        .catch(ex => reject(ex));
-    });
+  async getCourse(courseId: number, callback: (data: Course) => void): Promise<void> {
+    const cached = this.getCached(`${courseId}`);
+    if (cached) callback(JSON.parse(cached));
+    
+    this.fetcher(`${courseId}`, "GET")
+      .then(res => JSON.parse(res))
+      .then(res => callback(<Course>res))
+      .catch(ex => console.error(ex));
   }
 
   async getCourseFrontPage(courseId: number): Promise<Page> {

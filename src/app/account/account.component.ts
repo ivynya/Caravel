@@ -16,7 +16,9 @@ export class AccountComponent implements OnInit {
               private router: Router) { }
 
   async ngOnInit(): Promise<void> { 
-    this.profile = await this.userService.getProfile();
+    this.userService.getProfile(data => {
+      this.profile = data;
+    });
   }
 
 }

@@ -1,4 +1,5 @@
 
+import { Subject } from 'rxjs';
 import { StorageService } from '../storage/storage.service';
 
 export abstract class APIBaseService {
@@ -25,9 +26,22 @@ export abstract class APIBaseService {
               }
             })
         .then(res => res.text())
-        .then(res => resolve(res))
+        .then(res => {
+          this.cache(endpoint, res);
+          resolve(res);
+        })
         .catch(ex => reject(ex));
     });
+  }
+
+  getCached(endpoint: string): string {
+    endpoint = endpoint.replace('/', '.');
+    return this.storage.get(`${this.scope}.${endpoint}`);
+  }
+
+  private cache(endpoint: string, value: string): void {
+    endpoint = endpoint.replace('/', '.');
+    this.storage.set(`${this.scope}.${endpoint}`, value);
   }
 
 }

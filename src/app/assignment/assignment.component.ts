@@ -21,7 +21,9 @@ export class AssignmentComponent implements OnInit {
     this.route.params.subscribe(async params => {
       this.assignment = await this.assignmentService.getAssignment(params.courseId, params.assignmentId);
       console.log(this.assignment);
-      this.course = await this.courseService.getCourse(this.assignment.course_id);
+      this.courseService.getCourse(this.assignment.course_id, course => {
+        this.course = course;
+      });
     });
   }
 

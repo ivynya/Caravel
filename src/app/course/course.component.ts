@@ -21,7 +21,9 @@ export class CourseComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(async params => {
-      this.course = await this.courseService.getCourse(params.id);
+      this.courseService.getCourse(params.id, async course => {
+        this.course = course;
+      });
 
       if (this.useCanvasHomepage)
         this.frontPage = await this.courseService.getCourseFrontPage(params.id);

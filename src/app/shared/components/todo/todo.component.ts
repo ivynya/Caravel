@@ -23,7 +23,9 @@ export class TodoComponent implements OnInit {
       this.isEvent = true;
 
     if (!this.isEvent)
-      this.course = await this.courseService.getCourse((<TodoAssignment>this.todo).assignment?.course_id);
+      this.courseService.getCourse((<TodoAssignment>this.todo).assignment?.course_id, course => {
+        this.course = course;
+      });
   }
 
 }

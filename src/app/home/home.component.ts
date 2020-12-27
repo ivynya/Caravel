@@ -22,8 +22,13 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit(): Promise<void> { 
     //this.courses = await this.courseService.listCourses();
-    const upcoming = await this.userService.getUpcoming();
+    this.userService.getUpcoming(upcoming => {
+      this.populateStream(upcoming);
+    });
+  }
 
+  // Populates stream with events from API
+  private populateStream(upcoming: Array<TodoAssignment|TodoEvent>): void {
     upcoming.forEach(item => {
       let date: string;
       if ((item as TodoAssignment).assignment)
