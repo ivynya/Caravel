@@ -9,7 +9,6 @@ import {
   TodoAssignment,
   TodoEvent
 } from '../../../schemas';
-import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +19,7 @@ export class UserService extends APIBaseService {
     super("users", storage);
   }
   
+  // Get activity stream for user. Ex: "Assignment created", etc.
   async getActivityStream(): Promise<ActivityStreamGeneric[]> {
     return new Promise((resolve, reject) => {
       this.fetcher("self/activity_stream", "GET")
@@ -29,6 +29,7 @@ export class UserService extends APIBaseService {
     });
   }
 
+  // Gets users remaining todo items. Does not include events.
   async getTodo(): Promise<TodoAssignment[]> {
     return new Promise((resolve, reject) => {
       this.fetcher("self/todo", "GET")
@@ -38,6 +39,7 @@ export class UserService extends APIBaseService {
     });
   }
 
+  // Get global "stream" of future items/events, to do
   async getUpcoming(callback: (data: Array<TodoAssignment|TodoEvent>) => void): Promise<void> {
     const cached = this.getCached("self/upcoming_events");
     if (cached) callback(JSON.parse(cached));

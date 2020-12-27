@@ -34,6 +34,7 @@ export abstract class APIBaseService {
     });
   }
 
+  // Get cache of an endpoint from storage service
   getCached(endpoint: string): string {
     endpoint = endpoint.replace('/', '.');
     return this.storage.get(`${this.scope}.${endpoint}`);
