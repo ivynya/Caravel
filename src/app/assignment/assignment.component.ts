@@ -11,9 +11,9 @@ import { AssignmentService, CourseService } from 'app/core/services/canvas';
 })
 export class AssignmentComponent implements OnInit {
   assignment: Assignment;
-  isFocusSubmission: boolean;
   latestSubmission: Submission;
   unlimitedAttempts: boolean;
+  isFocusSubmission = true;
 
   course: Course;
 

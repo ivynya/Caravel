@@ -28,7 +28,7 @@
       <p *ngIf="this.assignment?.lock_explanation">{{ assignment?.lock_explanation }}</p>
       <div [innerHtml]="this.assignment?.description" class="xss-sanitize"></div>
       <br><br>
-      <div class="submitter">
+      <div class="assignment-submitter">
         <div class="attempts">
           <button [ngClass]="{'active': isFocusSubmission}" (click)="focusSubmission(true)">
             Latest Submission ({{ latestSubmission?.attempt }})
@@ -38,7 +38,15 @@
           </button>
         </div>
         <hr>
-        <assignment-submitter></assignment-submitter>
+        <div class="submitter">
+          <assignment-submission 
+            *ngIf="isFocusSubmission" 
+            [submission]="latestSubmission">
+          </assignment-submission>
+          <assignment-submitter 
+            *ngIf="!isFocusSubmission">
+          </assignment-submitter>
+        </div>
       </div>
     </section>
   </div>

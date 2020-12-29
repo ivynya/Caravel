@@ -28,7 +28,7 @@
     }
   }
 
-  .submitter {
+  .assignment-submitter {
     padding-bottom: 250px;
 
     .attempts {
@@ -52,6 +52,15 @@
           border-color: var(--accent-primary);
         }
       }
+    }
+
+    .submitter {
+      border: var(--bg-secondary) 3px solid;
+      border-radius: 5px;
+      display: block;
+      min-height: 100px;
+      margin-top: 20px;
+      padding: 20px;
     }
   }
 
