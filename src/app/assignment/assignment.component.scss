@@ -45,6 +45,12 @@
 
         margin-right: 25px;
         padding: 5px;
+        
+        transition-duration: 0.2s;
+
+        &:hover, &.active {
+          border-color: var(--accent-primary);
+        }
       }
     }
   }

@@ -11,7 +11,10 @@ import { AssignmentService, CourseService } from 'app/core/services/canvas';
 })
 export class AssignmentComponent implements OnInit {
   assignment: Assignment;
+  isFocusSubmission: boolean;
   latestSubmission: Submission;
+  unlimitedAttempts: boolean;
+
   course: Course;
 
   constructor(private assignmentService: AssignmentService,
@@ -21,6 +24,11 @@ export class AssignmentComponent implements OnInit {
   ngOnInit(): void { 
     this.route.params.subscribe(async params => {
       this.assignment = await this.assignmentService.getAssignment(params.courseId, params.assignmentId);
+      this.unlimitedAttempts = this.assignment.allowed_attempts === -1;
+
+      console.log(this.assignment.allowed_attempts);
+      console.log(this.assignment.allowed_attempts > 0);
+      console.log(this.assignment.allowed_attempts < 0);
 
       // API limitation means that only the latest submission can be
       // retrived. No further submissions, unless admin privileges.
@@ -33,6 +41,10 @@ export class AssignmentComponent implements OnInit {
         this.course = course;
       });
     });
+  }
+
+  focusSubmission(t: boolean): void {
+    this.isFocusSubmission = t;
   }
 
 }

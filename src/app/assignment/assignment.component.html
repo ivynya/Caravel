@@ -15,8 +15,8 @@
           <span *ngIf="latestSubmission">{{ latestSubmission?.attempt }}</span>
           <span *ngIf="!latestSubmission">-</span>
           <span> / </span>
-          <span *ngIf="assigment?.allowed_attempts === -1">unlimited</span>
-          <span *ngIf="assigment?.allowed_attempts != -1">{{ assignment?.allowed_attempts }}</span>
+          <span *ngIf="unlimitedAttempts">unlimited</span>
+          <span *ngIf="!unlimitedAttempts">{{ assignment?.allowed_attempts }}</span>
           <span> attempts</span>
         </p>
         <p>Due: {{ assignment?.due_at | date: 'medium' }}</p>
@@ -30,10 +30,10 @@
       <br><br>
       <div class="submitter">
         <div class="attempts">
-          <button>
+          <button [ngClass]="{'active': isFocusSubmission}" (click)="focusSubmission(true)">
             Latest Submission ({{ latestSubmission?.attempt }})
           </button>
-          <button>
+          <button [ngClass]="{'active': !isFocusSubmission}" (click)="focusSubmission(false)">
             New Submission
           </button>
         </div>
