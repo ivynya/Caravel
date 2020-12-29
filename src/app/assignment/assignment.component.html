@@ -1,13 +1,43 @@
 <main class="page">
   <div class="content">
     <section class="assignment">
-      <p><b>Assignment: {{ this.course?.name }}</b></p>
-      <h1>{{ this.assignment?.name }}</h1>
+      <div class="info-bar">
+        <p><b>Assignment: {{ course?.name }}</b></p>
+      </div>
+      <h1>{{ assignment?.name }}</h1>
+      <div class="info-bar">
+        <p class="grade">
+          <span *ngIf="latestSubmission">{{ latestSubmission?.grade }}</span>
+          <span *ngIf="!latestSubmission">--</span>
+          <span> / {{ assignment?.points_possible }} points</span>
+        </p>
+        <p class="attempts">
+          <span *ngIf="latestSubmission">{{ latestSubmission?.attempt }}</span>
+          <span *ngIf="!latestSubmission">-</span>
+          <span> / </span>
+          <span *ngIf="assigment?.allowed_attempts === -1">unlimited</span>
+          <span *ngIf="assigment?.allowed_attempts != -1">{{ assignment?.allowed_attempts }}</span>
+          <span> attempts</span>
+        </p>
+        <p>Due: {{ assignment?.due_at | date: 'medium' }}</p>
+        <p *ngIf="latestSubmission?.late" class="late">
+          Submitted Late (-{{ latestSubmission?.points_deducted }} points)
+        </p>
+      </div>
       <hr>
-      <p *ngIf="this.assignment?.lock_explanation">{{ this.assignment?.lock_explanation }}</p>
+      <p *ngIf="this.assignment?.lock_explanation">{{ assignment?.lock_explanation }}</p>
       <div [innerHtml]="this.assignment?.description" class="xss-sanitize"></div>
       <br><br>
       <div class="submitter">
+        <div class="attempts">
+          <button>
+            Latest Submission ({{ latestSubmission?.attempt }})
+          </button>
+          <button>
+            New Submission
+          </button>
+        </div>
+        <hr>
         <assignment-submitter></assignment-submitter>
       </div>
     </section>

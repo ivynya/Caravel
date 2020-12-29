@@ -1,5 +1,14 @@
 
 .assignment {
+  .info-bar {
+    display: flex;
+    align-items: center;
+    
+    p {
+      margin-right: 30px;
+    }
+  }
+
   .xss-sanitize {
     max-width: 1000px;
     overflow: hidden;
@@ -21,5 +30,26 @@
 
   .submitter {
     padding-bottom: 250px;
+
+    .attempts {
+      margin-bottom: 10px;
+
+      button {
+        background-color: transparent;
+        border: none;
+        border-bottom: var(--bg-control) 2px solid;
+        border-radius: 0;
+
+        font-family: inherit;
+        font-size: 1rem;
+
+        margin-right: 25px;
+        padding: 5px;
+      }
+    }
+  }
+
+  .late {
+    color: red;
   }
 }

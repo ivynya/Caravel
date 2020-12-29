@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Assignment, Course } from 'app/core/schemas';
+import { Assignment, Course, Submission } from 'app/core/schemas';
 import { AssignmentService, CourseService } from 'app/core/services/canvas';
 
 @Component({
@@ -11,6 +11,7 @@ import { AssignmentService, CourseService } from 'app/core/services/canvas';
 })
 export class AssignmentComponent implements OnInit {
   assignment: Assignment;
+  latestSubmission: Submission;
   course: Course;
 
   constructor(private assignmentService: AssignmentService,
@@ -20,7 +21,14 @@ export class AssignmentComponent implements OnInit {
   ngOnInit(): void { 
     this.route.params.subscribe(async params => {
       this.assignment = await this.assignmentService.getAssignment(params.courseId, params.assignmentId);
-      console.log(this.assignment);
+
+      // API limitation means that only the latest submission can be
+      // retrived. No further submissions, unless admin privileges.
+      this.assignmentService.getLatestSubmission(params.courseId, params.assignmentId, submission => {
+        console.log(submission);
+        this.latestSubmission = submission;
+      });
+
       this.courseService.getCourse(this.assignment.course_id, course => {
         this.course = course;
       });
