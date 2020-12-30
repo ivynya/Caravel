@@ -36,7 +36,8 @@ export class NotificationBannerComponent implements OnInit {
 
       setTimeout(() => {
         this.notifs.shift();
-        this.notifStyle = this.convertNotifStyle(this.notifs?.[0].type);
+        if (this.notifs.length > 0)
+          this.notifStyle = this.convertNotifStyle(this.notifs?.[0].type);
       }, 3000);
     });
   }

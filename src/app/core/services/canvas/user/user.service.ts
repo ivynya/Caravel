@@ -52,6 +52,41 @@ export class UserService extends APIBaseService {
       .catch(ex => console.error(ex));
   }
 
+  // Gets user planner items (assignments, events, etc.)
+  async getPlanner(start: Date, end: Date,
+      callback: (data: any) => void): Promise<void> {
+    const qp = {
+      start_date: start.toISOString(),
+      end_date: end.toISOString()
+    }
+    const query = new URLSearchParams(qp).toString();
+    const cached = this.getCached(`self/planner/items?${query}`);
+    if (cached) callback(JSON.parse(cached));
+    
+    this.fetcher(`self/planner/items?${query}`, "GET")
+      .then(res => JSON.parse(res))
+      .then(res => callback(<any>res))
+      .catch(ex => console.error(ex));
+  }
+
+  // Gets user planner items for specified courses/groups
+  async getCoursePlanner(start: Date, end: Date, codes: string,
+      callback: (data: any) => void): Promise<void> {
+    const qp = {
+      start_date: start.toISOString(),
+      end_date: end.toISOString(),
+      context_codes: codes
+    }
+    const query = new URLSearchParams(qp).toString();
+    const cached = this.getCached(`self/planner/items?${query}`);
+    if (cached) callback(JSON.parse(cached));
+    
+    this.fetcher(`self/planner/items?${query}`, "GET")
+      .then(res => JSON.parse(res))
+      .then(res => callback(<any>res))
+      .catch(ex => console.error(ex));
+  }
+
   // Gets user profile. Used on accounts page.
   async getProfile(callback: (data: Profile) => void): Promise<void> {
     const cached = this.getCached("self/profile");

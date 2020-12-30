@@ -42,7 +42,6 @@ export abstract class APIBaseService {
           this.notifService.triggerNotification(message, 2);
         })
         .catch(ex => {
-          reject(ex);
           this.notifService.triggerActionFinished();
           // Does a cache exist for the item fetched?
           if (this.getCached(endpoint))
@@ -51,6 +50,7 @@ export abstract class APIBaseService {
           else
             // Data has failed to load because of a network issue.
             this.notifService.triggerNotification('Failed to get data (network error).', 0);
+          console.error(ex);
         });
     });
   }
