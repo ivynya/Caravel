@@ -23,6 +23,11 @@ export class NotificationBannerComponent implements OnInit {
         this.waitingOn++;
       else
         this.waitingOn--;
+      
+      // This should never happen, but
+      // may as well prepare for it.
+      if (this.waitingOn < 0)
+        this.waitingOn = 0;
     });
 
     this.notifService.notif.subscribe(notif => {

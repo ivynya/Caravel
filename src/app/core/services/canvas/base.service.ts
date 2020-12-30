@@ -14,6 +14,7 @@ export abstract class APIBaseService {
     return new Promise((resolve, reject) => {
       if (!this.storage.has("oauth_token")) {
         reject("No oauth_token value found.");
+        this.notifService.triggerNotification("You are not authorized!", 0);
         return;
       }
       
@@ -43,6 +44,13 @@ export abstract class APIBaseService {
         .catch(ex => {
           reject(ex);
           this.notifService.triggerActionFinished();
+          // Does a cache exist for the item fetched?
+          if (this.getCached(endpoint))
+            // The user is seeing stale data. Inform them.
+            this.notifService.triggerNotification('You are seeing stale data. It may not be up to date.', 1);
+          else
+            // Data has failed to load because of a network issue.
+            this.notifService.triggerNotification('Failed to get data (network error).', 0);
         });
     });
   }
