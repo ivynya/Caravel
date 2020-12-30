@@ -5,6 +5,7 @@ import { StorageService } from '../../storage/storage.service';
 
 import {
   ActivityStreamGeneric,
+  PlannerItem,
   Profile,
   TodoAssignment,
   TodoEvent
@@ -54,7 +55,7 @@ export class UserService extends APIBaseService {
 
   // Gets user planner items (assignments, events, etc.)
   async getPlanner(start: Date, end: Date,
-      callback: (data: any) => void): Promise<void> {
+      callback: (data: PlannerItem[]) => void): Promise<void> {
     const qp = {
       start_date: start.toISOString(),
       end_date: end.toISOString()
@@ -65,13 +66,13 @@ export class UserService extends APIBaseService {
     
     this.fetcher(`self/planner/items?${query}`, "GET")
       .then(res => JSON.parse(res))
-      .then(res => callback(<any>res))
+      .then(res => callback(<PlannerItem[]>res))
       .catch(ex => console.error(ex));
   }
 
   // Gets user planner items for specified courses/groups
   async getCoursePlanner(start: Date, end: Date, codes: string,
-      callback: (data: any) => void): Promise<void> {
+      callback: (data: PlannerItem[]) => void): Promise<void> {
     const qp = {
       start_date: start.toISOString(),
       end_date: end.toISOString(),
@@ -83,7 +84,7 @@ export class UserService extends APIBaseService {
     
     this.fetcher(`self/planner/items?${query}`, "GET")
       .then(res => JSON.parse(res))
-      .then(res => callback(<any>res))
+      .then(res => callback(<PlannerItem[]>res))
       .catch(ex => console.error(ex));
   }
 
