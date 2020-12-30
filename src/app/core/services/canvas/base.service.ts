@@ -1,18 +1,24 @@
 
-import { Subject } from 'rxjs';
+import { NotificationService } from '../notification/notification.service';
 import { StorageService } from '../storage/storage.service';
 
 export abstract class APIBaseService {
   
   constructor(private scope: string,
-              private storage: StorageService) {}
+              private storage: StorageService,
+              private notifService: NotificationService) {}
 
   // Fetcher function shared by all API calls
   // Automatically appends CORS proxy & access token
   async fetcher(endpoint: string, method: string): Promise<string> {
     return new Promise((resolve, reject) => {
-      if (!this.storage.has("oauth_token"))
+      if (!this.storage.has("oauth_token")) {
         reject("No oauth_token value found.");
+        return;
+      }
+      
+      // Initiate UI for a long running action
+      this.notifService.triggerActionLoading();
 
       // API is always fetched with a CORS proxy due to Canvas limitations
       // Advisable to set up your own (secure) CORS proxy
@@ -27,10 +33,17 @@ export abstract class APIBaseService {
             })
         .then(res => res.text())
         .then(res => {
+          // Cache, return, and resolve long running action
           this.cache(endpoint, res);
           resolve(res);
+          this.notifService.triggerActionFinished();
+          const message = `Updated data at ${new Date().toLocaleTimeString()}.`;
+          this.notifService.triggerNotification(message, 2);
         })
-        .catch(ex => reject(ex));
+        .catch(ex => {
+          reject(ex);
+          this.notifService.triggerActionFinished();
+        });
     });
   }
 

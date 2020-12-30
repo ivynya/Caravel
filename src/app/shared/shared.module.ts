@@ -5,6 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import {
   IconLTIComponent,
+  NotificationBannerComponent,
   PageNotFoundComponent,
   SidebarComponent,
   TodoComponent
@@ -20,7 +21,8 @@ import { RouterModule } from '@angular/router';
     PageNotFoundComponent,
     SidebarComponent,
     TodoComponent,
-    WebviewDirective
+    WebviewDirective,
+    NotificationBannerComponent
   ],
   imports: [CommonModule, RouterModule, TranslateModule, FormsModule],
   exports: [
@@ -29,7 +31,8 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     IconLTIComponent,
     SidebarComponent,
-    TodoComponent
+    TodoComponent,
+    NotificationBannerComponent
   ]
 })
 export class SharedModule {}

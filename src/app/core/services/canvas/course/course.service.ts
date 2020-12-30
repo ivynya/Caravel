@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { APIBaseService } from '../base.service';
+import { NotificationService } from '../../notification/notification.service';
 import { StorageService } from '../../storage/storage.service';
 
 import { Course, ExternalTool, Page } from '../../../schemas';
@@ -10,8 +11,9 @@ import { Course, ExternalTool, Page } from '../../../schemas';
 })
 export class CourseService extends APIBaseService {
   
-  constructor(storage: StorageService) {
-    super("courses", storage);
+  constructor(storage: StorageService,
+              notifService: NotificationService) {
+    super("courses", storage, notifService);
   }
 
   async getCourse(courseId: number, callback: (data: Course) => void): Promise<void> {

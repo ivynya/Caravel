@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { NotificationService } from 'app/core/services';
 import { Submission } from '../../core/schemas';
 
 @Component({
@@ -12,7 +13,8 @@ export class SubmissionComponent implements OnChanges {
   previewUrl: SafeResourceUrl;
   type: string;
 
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor(private sanitizer: DomSanitizer,
+              private notif: NotificationService) { }
 
   ngOnChanges(): void {
     this.type = this.convertTypeToReadable(this.submission?.submission_type);
@@ -32,6 +34,20 @@ export class SubmissionComponent implements OnChanges {
       default:
         return 'Unknown';
     }
+  }
+
+  long(): void {
+    this.notif.triggerActionLoading();
+  }
+
+  resolve(): void {
+    this.notif.triggerActionFinished();
+  }
+
+  num = 0;
+  notify(): void {
+    this.notif.triggerNotification("Notification "+this.num, 0);
+    this.num++;
   }
 
 }

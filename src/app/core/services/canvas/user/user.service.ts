@@ -9,14 +9,16 @@ import {
   TodoAssignment,
   TodoEvent
 } from '../../../schemas';
+import { NotificationService } from '../../notification/notification.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService extends APIBaseService {
   
-  constructor(storage: StorageService) {
-    super("users", storage);
+  constructor(storage: StorageService,
+              notifService: NotificationService) {
+    super("users", storage, notifService);
   }
   
   // Get activity stream for user. Ex: "Assignment created", etc.

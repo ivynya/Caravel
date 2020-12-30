@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { APIBaseService } from '../base.service';
+import { NotificationService } from '../../notification/notification.service';
 import { StorageService } from '../../storage/storage.service';
 
 import { Assignment, Submission } from '../../../../core/schemas';
@@ -10,8 +11,9 @@ import { Assignment, Submission } from '../../../../core/schemas';
 })
 export class AssignmentService extends APIBaseService {
 
-  constructor(storage: StorageService) {
-    super("courses", storage);
+  constructor(storage: StorageService,
+              notifService: NotificationService) {
+    super("courses", storage, notifService);
   }
 
   async getAssignment(courseId: number, assignmentId: number): Promise<Assignment> {

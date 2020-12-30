@@ -1,0 +1,7 @@
+
+<div class="notification-banner">
+    <div class="loading-bar" [ngClass]="{'shown': waitingOn > 0}"></div>
+    <div class="notifications" [class]="notifStyle" [ngClass]="{'shown': notifs.length > 0}">
+        <p>{{ notifs[0]?.msg }}</p>
+    </div>
+</div>

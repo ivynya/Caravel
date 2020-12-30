@@ -1,4 +1,5 @@
 
+// Canvas schemas
 export * from './assignment/assignment.schema';
 export * from './assignment/submission.schema';
 
@@ -11,3 +12,6 @@ export * from './todo/event.schema';
 
 export * from './user/activity-stream.schema';
 export * from './user/profile.schema';
+
+// Caravan schemas
+export * from './notification/notification.schema';

@@ -19,4 +19,7 @@
     <div *ngIf="submission?.submission_type === 'media_recording'">
         <p>We can't preview media recordings.</p>
     </div>
+    <button (click)="long()">Trigger Long Running Action</button>
+    <button (click)="resolve()">Resolve Long Running Action</button>
+    <button (click)="notify()">Notify</button>
 </div>
