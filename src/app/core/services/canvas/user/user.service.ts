@@ -64,7 +64,7 @@ export class UserService extends APIBaseService {
     const cached = this.getCached(`self/planner/items?${query}`);
     if (cached) callback(JSON.parse(cached));
     
-    this.fetcher(`self/planner/items?${query}`, "GET")
+    this.fetchp('self/planner/items', query, "GET")
       .then(res => JSON.parse(res))
       .then(res => callback(<PlannerItem[]>res))
       .catch(ex => console.error(ex));
@@ -82,7 +82,7 @@ export class UserService extends APIBaseService {
     const cached = this.getCached(`self/planner/items?${query}`);
     if (cached) callback(JSON.parse(cached));
     
-    this.fetcher(`self/planner/items?${query}`, "GET")
+    this.fetchp('self/planner/items', query, "GET")
       .then(res => JSON.parse(res))
       .then(res => callback(<PlannerItem[]>res))
       .catch(ex => console.error(ex));

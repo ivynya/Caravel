@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { CourseService } from '../../../core/services/canvas';
-import { Course, TodoEvent, TodoAssignment } from '../../../core/schemas';
+import { Course, PlannerItem } from '../../../core/schemas';
 
 @Component({
   selector: 'home-todo',
@@ -10,22 +10,14 @@ import { Course, TodoEvent, TodoAssignment } from '../../../core/schemas';
 })
 export class TodoComponent implements OnInit {
   course: Course;
-  @Input() todo?: TodoAssignment|TodoEvent;
-  private isEvent = false;
+  @Input() item: PlannerItem;
 
   constructor(private courseService: CourseService) { }
 
-  async ngOnInit(): Promise<void> {
-    if (!this.todo) return;
-
-    let todo = this.todo as TodoEvent;
-    if (todo.location_name)
-      this.isEvent = true;
-
-    if (!this.isEvent)
-      this.courseService.getCourse((<TodoAssignment>this.todo).assignment?.course_id, course => {
-        this.course = course;
-      });
+  ngOnInit(): void {
+    this.courseService.getCourse(this.item.course_id, course => {
+      this.course = course;
+    });
   }
 
 }

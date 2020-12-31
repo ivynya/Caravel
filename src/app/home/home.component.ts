@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
-import { CourseService, UserService } from '../core/services/canvas';
-import { Course, TodoAssignment, TodoEvent } from '../core/schemas';
+import { UserService } from '../core/services/canvas';
+import { Course, PlannerItem } from '../core/schemas';
 
 @Component({
   selector: 'app-home',
@@ -13,30 +12,27 @@ export class HomeComponent implements OnInit {
   courses: Course[];
   stream: Array<{
     id: string
-    items: Array<TodoAssignment|TodoEvent>;
+    items: PlannerItem[];
   }> = [];
 
-  constructor(private router: Router, 
-              private courseService: CourseService,
-              private userService: UserService) { }
+  constructor(private userService: UserService) { }
 
   async ngOnInit(): Promise<void> { 
-    //this.courses = await this.courseService.listCourses();
-    this.userService.getUpcoming(upcoming => {
-      this.populateStream(upcoming);
+    let now = new Date();
+    let end = new Date(now.getTime() + 86400*1000*31);
+
+    this.userService.getPlanner(now, end, items => {
+      this.populateStream(items);
     });
   }
 
   // Populates stream with events from API
-  private populateStream(upcoming: Array<TodoAssignment|TodoEvent>): void {
+  private populateStream(upcoming: PlannerItem[]): void {
+    this.stream = [];
     upcoming.forEach(item => {
-      let date: string;
-      if ((item as TodoAssignment).assignment)
-        date = new Date((<TodoAssignment>item).assignment?.due_at).toDateString();
-      else if ((item as TodoEvent).start_at)
-        date = new Date((<TodoEvent>item).start_at).toDateString();
-        
+      let date = new Date(item.plannable_date).toDateString();
       if (date === new Date().toDateString()) date = "Today";
+
       const index = this.stream?.findIndex(i => i.id == date);
       if (index == -1 || !index)
         this.stream.push({ id: date, items: [item] });

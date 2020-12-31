@@ -26,17 +26,13 @@ export class AssignmentComponent implements OnInit {
       this.assignment = await this.assignmentService.getAssignment(params.courseId, params.assignmentId);
       this.unlimitedAttempts = this.assignment.allowed_attempts === -1;
 
-      console.log(this.assignment.allowed_attempts);
-      console.log(this.assignment.allowed_attempts > 0);
-      console.log(this.assignment.allowed_attempts < 0);
-
       // API limitation means that only the latest submission can be
       // retrived. No further submissions, unless admin privileges.
       this.assignmentService.getLatestSubmission(params.courseId, params.assignmentId, submission => {
-        console.log(submission);
         this.latestSubmission = submission;
       });
 
+      // Get related course
       this.courseService.getCourse(this.assignment.course_id, course => {
         this.course = course;
       });
