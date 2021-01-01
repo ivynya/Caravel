@@ -5,17 +5,21 @@
       <hr>
     </div>
     <div class="header">
-      <img [src]="this.profile?.avatar_url" alt="Your Avatar">
+      <img [src]="profile?.avatar_url" alt="Your Avatar">
       <div>
-        <h2>{{ this.profile?.name }}</h2>
-        <p><b>{{ this.profile?.pronouns }}</b></p>
+        <h2>{{ profile?.name }}</h2>
+        <p><b>{{ profile?.pronouns }}</b></p>
+        <p>Primary Email: {{ profile?.primary_email }}</p>
       </div>
     </div>
     <h3>Biography</h3>
-    <p>{{ this.profile?.bio }}</p>
-    <h3>Primary Email</h3>
-    <p>{{ this.profile?.primary_email }}</p>
-    <div class="info">
+    <p>{{ profile?.bio }}</p>
+    <div class="settings">
+      <h3>Caravan Settings (Local Only)</h3>
+      <div class="configurable">
+        
+      </div>
     </div>
+    <span class="spacer"></span>
   </section>
 </main>

@@ -35,7 +35,18 @@
     margin-bottom: 0;
   }
 
-  .info {
+  .settings {
+    border: var(--bg-secondary) 2px solid;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 20px;
+
+    h3 {
+      margin: 0;
+    }
+  }
+
+  .spacer {
     flex: 1 1;
   }
 }
