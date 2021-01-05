@@ -30,10 +30,9 @@ export class SidebarComponent implements OnInit {
       if (!(e instanceof NavigationEnd)) return;
       this.isAuthorized = this.storage.has("oauth_token");
 
-      if (this.isAuthorized) {
-        this.courseService.listCourses()
-          .then(courses => this.courses = courses);
-      }
+      if (!this.isAuthorized) return;
+
+      this.courseService.listCourses(courses => this.courses = courses);
     });
   }
 

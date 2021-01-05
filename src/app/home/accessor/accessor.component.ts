@@ -16,6 +16,6 @@ export class AccessorComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     if (!this.course) return;
-    this.integrations = await this.courseService.listExternalTools(this.course.id);
+    this.courseService.listExternalTools(this.course.id, int => this.integrations = int);
   }
 }

@@ -26,31 +26,36 @@ export class CourseService extends APIBaseService {
       .catch(ex => console.error(ex));
   }
 
-  async getCourseFrontPage(courseId: number): Promise<Page> {
-    return new Promise((resolve, reject) => {
-      this.fetcher(`${courseId}/front_page`, "GET")
-        .then(res => JSON.parse(res))
-        .then(res => resolve(<Page>res))
-        .catch(ex => reject(ex));
-    });
+  async getCourseFrontPage(courseId: number,
+      callback: (data: Page) => void): Promise<void> {
+    const cached = this.getCached(`${courseId}/front_page`);
+    if (cached) callback(JSON.parse(cached));
+
+    this.fetcher(`${courseId}/front_page`, "GET")
+      .then(res => JSON.parse(res))
+      .then(res => callback(<Page>res))
+      .catch(ex => console.error(ex));
   }
 
-  async listCourses(): Promise<Course[]> {
-    return new Promise((resolve, reject) => {
-      this.fetcher("", "GET")
-        .then(res => JSON.parse(res))
-        .then(res => resolve(<Course[]>res))
-        .catch(ex => reject(ex));
-    });
+  async listCourses(callback: (data: Course[]) => void): Promise<void> {
+    const cached = this.getCached("");
+    if (cached) callback(JSON.parse(cached));
+
+    this.fetcher("", "GET")
+      .then(res => JSON.parse(res))
+      .then(res => callback(<Course[]>res))
+      .catch(ex => console.error(ex));
   }
 
-  async listExternalTools(courseId: number): Promise<ExternalTool[]> {
-    return new Promise((resolve, reject) => {
-      this.fetcher(`${courseId}/external_tools`, "GET")
-        .then(res => JSON.parse(res))
-        .then(res => resolve(<ExternalTool[]>res))
-        .catch(ex => reject(ex));
-    });
+  async listExternalTools(courseId: number,
+      callback: (data: ExternalTool[]) => void): Promise<void> {
+    const cached = this.getCached(`${courseId}/external_tools`);
+    if (cached) callback(JSON.parse(cached));
+
+    this.fetcher(`${courseId}/external_tools`, "GET")
+      .then(res => JSON.parse(res))
+      .then(res => callback(<ExternalTool[]>res))
+      .catch(ex => console.error(ex));
   }
 
 }
