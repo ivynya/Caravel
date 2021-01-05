@@ -28,17 +28,28 @@ export class HomeComponent implements OnInit {
 
   // Populates stream with events from API
   private populateStream(upcoming: PlannerItem[]): void {
-    this.stream = [];
     upcoming.forEach(item => {
-      let date = new Date(item.plannable_date).toDateString();
-      if (date === new Date().toDateString()) date = "Today";
+      let date = this.formatDate(item.plannable_date);
 
       const index = this.stream?.findIndex(i => i.id == date);
-      if (index == -1 || !index)
+      if (index == -1)
         this.stream.push({ id: date, items: [item] });
       else
         this.stream[index].items.push(item);
     });
+  }
+
+  private formatDate(date: string): string {
+    let f = new Date(date);
+    let today = new Date();
+    let tmmrw = new Date(today.getTime() + 86400*1000);
+
+    if (f.toDateString() === today.toDateString())
+      return "Today";
+    else if (f.toDateString() === tmmrw.toDateString())
+      return `Tomorrow (${f.toDateString()})`;
+    else
+      return f.toDateString();
   }
 
 }
