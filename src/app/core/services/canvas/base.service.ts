@@ -27,7 +27,7 @@ export abstract class APIBaseService {
       const url = `${base}/${this.scope}/${endpoint}?access_token=${token}&${params}`;
       // API is always fetched with a CORS proxy due to Canvas limitations
       // Advisable to set up your own (secure) CORS proxy
-      fetch(`http://localhost:3000/${url}`,
+      fetch(`https://cors.sdbagel.com/${url}`,
             {
               method: method,
               headers: { 'accept': 'application/json' }
