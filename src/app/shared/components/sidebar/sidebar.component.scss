@@ -7,27 +7,26 @@
   flex-direction: column;
   justify-content: space-between;
 
-  width: 320px;
+  height: calc(100% - 25px);
+  width: 300px;
   padding: 10px 0;
   padding-top: 15px;
   overflow: auto;
 
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  z-index: 1;
-
   .nav-link {
     color: var(--text-primary);
-    font-size: 18px;
+    font-size: 1.2rem;
     text-decoration: none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 
-    display: flex;
-    align-items: center;
+    display: block;
+    line-height: 4.5rem;
 
-    min-height: 60px;
+    min-height: 4.5rem;
     padding-left: 40px;
+    padding-right: 20px;
     transition-duration: 0.3s;
 
     &:hover, &.active {
@@ -35,8 +34,8 @@
     }
 
     &.nav-sub {
-      font-size: 14px;
-      min-height: 50px;
+      font-size: 1rem;
+      min-height: 4rem;
       padding-left: 55px;
     }
   }
@@ -97,5 +96,9 @@
   .sidebar-title {
     justify-content: space-between;
     padding-bottom: 20px;
+  }
+
+  @media (min-width: 2000px) {
+    width: 350px;
   }
 }

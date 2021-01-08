@@ -6,10 +6,13 @@
   flex-direction: row;
   align-items: center;
   
+  max-width: 100%;
   margin: 20px 0;
   padding: 15px 20px;
+  overflow: hidden;
 
   h3 {
+    font-size: 1.2rem;
     margin: 0;
     margin-bottom: 5px;
 
@@ -21,6 +24,9 @@
   a {
     color: var(--text-inverse-primary);
     text-decoration-color: var(--bg-secondary);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
     transition-duration: 0.1s;
 
     &:hover {
@@ -34,7 +40,7 @@
     align-items: center;
 
     color: var(--text-inverse-tertiary);
-    font-size: 14px;
+    font-size: 1rem;
     margin: 0;
   }
 
