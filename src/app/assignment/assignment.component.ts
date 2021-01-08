@@ -40,6 +40,10 @@ export class AssignmentComponent implements OnInit {
       // retrived. No further submissions, unless admin privileges.
       this.assignmentService.getLatestSubmission(params.courseId, params.assignmentId, submission => {
         this.latestSubmission = submission;
+        
+        // If no submission, remove viewing option
+        if (!submission.posted_at)
+          this.isFocusSubmission = false;
       });
     });
   }
