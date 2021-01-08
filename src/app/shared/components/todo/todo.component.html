@@ -5,6 +5,18 @@
       <span class="checkmark"></span>
     </label>
   </div>
+  <div *ngIf="item.plannable_type === 'announcement'">
+    <h3><a [routerLink]="item.html_url">
+      {{ item.plannable.title }}
+    </a></h3>
+    <p class="subtext">
+      <span>Posted {{ item.plannable.created_at | date: "E L/d h:mm a"}}</span>
+      <span class="separator"></span>
+      <span>{{ item.plannable.unread_count }} Unread Replies</span>
+      <span class="separator"></span>
+      <span><a [routerLink]="'/course/'+item.course_id">{{ item.context_name }}</a></span>
+    </p>
+  </div>
   <div *ngIf="item.plannable_type === 'assignment'">
     <h3><a [routerLink]="'/course/'+item.course_id+'/assignment/'+item.plannable.id">
       {{ item.plannable.title }}
@@ -30,13 +42,13 @@
     </p>
   </div>
   <div *ngIf="item.plannable_type === 'wiki_page'">
-    <h3><a [href]="item.html_url" target="_blank">
+    <h3><a [href]="item.html_url">
       {{ item.plannable.title }}
     </a></h3>
     <p class="subtext">
       <span>Due {{ item.plannable.todo_date | date: "E L/d h:mm a"}}</span>
       <span class="separator"></span>
-      <span>Wiki Page (External Link)</span>
+      <span>Wiki Page</span>
       <span class="separator"></span>
       <span><a [routerLink]="'/course/'+item.course_id">{{ item.context_name }}</a></span>
     </p>
