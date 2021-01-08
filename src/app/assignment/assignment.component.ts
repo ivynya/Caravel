@@ -23,18 +23,23 @@ export class AssignmentComponent implements OnInit {
 
   ngOnInit(): void { 
     this.route.params.subscribe(async params => {
-      this.assignment = await this.assignmentService.getAssignment(params.courseId, params.assignmentId);
-      this.unlimitedAttempts = this.assignment.allowed_attempts === -1;
+      // Get assignment from API/Cache
+      this.assignmentService.getAssignment(params.courseId, params.assignmentId,
+        assignment => {
+          // Set assignment information.
+          this.assignment = assignment;
+          this.unlimitedAttempts = assignment.allowed_attempts === -1;
+
+          // Get related course
+          this.courseService.getCourse(this.assignment.course_id, course => {
+            this.course = course;
+          });
+        });
 
       // API limitation means that only the latest submission can be
       // retrived. No further submissions, unless admin privileges.
       this.assignmentService.getLatestSubmission(params.courseId, params.assignmentId, submission => {
         this.latestSubmission = submission;
-      });
-
-      // Get related course
-      this.courseService.getCourse(this.assignment.course_id, course => {
-        this.course = course;
       });
     });
   }

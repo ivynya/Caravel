@@ -16,13 +16,15 @@ export class AssignmentService extends APIBaseService {
     super("courses", storage, notifService);
   }
 
-  async getAssignment(courseId: number, assignmentId: number): Promise<Assignment> {
-    return new Promise((resolve, reject) => {
-      this.fetcher(`${courseId}/assignments/${assignmentId}`, "GET")
-        .then(res => JSON.parse(res))
-        .then(res => resolve(<Assignment>res))
-        .catch(ex => reject(ex));
-    });
+  async getAssignment(cId: number, aId: number,
+      callback: (data: Assignment) => void): Promise<void> {
+    const cached = this.getCached(`${cId}/assignments/${aId}`);
+    if (cached) callback(JSON.parse(cached));
+
+    this.fetcher(`${cId}/assignments/${aId}`, "GET")
+      .then(res => JSON.parse(res))
+      .then(res => callback(<Assignment>res))
+      .catch(ex => console.error(ex));
   }
 
   // Given course, assignment, and user ID, get latest submission
