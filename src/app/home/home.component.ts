@@ -22,17 +22,19 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     // Get current date and end date, rounded to 12AM.
-    // Set to get today and tomorrow (Canvas limit).
+    // Large date range to get as much data as possible from Canvas.
+    // Use last returned assignment to determine loaded range.
     let now = new Date();
     now = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    let end = new Date(now.getTime() + 86400*1000*2);
-    
-    // Record what part of the stream is loaded.
-    this.streamState = { start: now, end: end };
+    let end = new Date(now.getTime() + 86400*1000*31);
 
     // Get planner items in this interval.
     this.userService.getPlanner(now, end, items => {
       this.populateStream(items);
+
+      // Record what part of the stream is loaded.
+      const endDate = new Date(items[items.length-1].plannable_date);
+      this.streamState = { start: now, end: endDate };
     });
   }
 
