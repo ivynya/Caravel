@@ -10,9 +10,11 @@
       {{ item.plannable.title }}
     </a></h3>
     <p class="subtext">
-      <span>Posted {{ item.plannable.created_at | date: "E L/d h:mm a"}}</span>
+      <span>{{ item.plannable.created_at | date: "E L/d h:mm a"}}</span>
       <span class="separator"></span>
-      <span>{{ item.plannable.unread_count }} Unread Replies</span>
+      <span>Announcement</span>
+      <span class="separator"></span>
+      <span>{{ item.plannable.unread_count }} Unread</span>
       <span class="separator"></span>
       <span><a [routerLink]="'/course/'+item.course_id">{{ item.context_name }}</a></span>
     </p>
@@ -23,6 +25,8 @@
     </a></h3>
     <p class="subtext">
       <span>Due {{ item.plannable.due_at | date: "E L/d h:mm a"}}</span>
+      <span class="separator"></span>
+      <span>Assignment</span>
       <span class="separator"></span>
       <span>{{ item.plannable.points_possible }}pts</span>
       <span class="separator"></span>
@@ -36,7 +40,7 @@
     <p class="subtext">
       <span>{{ item.plannable.start_at | date: "E L/d h:mm a"}}</span>
       <span class="separator"></span>
-      <span>Event (External Link)</span>
+      <span>Event</span>
       <span class="separator"></span>
       <span><a [routerLink]="'/course/'+item.course_id">{{ item.context_name }}</a></span>
     </p>
@@ -58,9 +62,9 @@
       {{ item.plannable.title }}
     </a></h3>
     <p class="subtext">
-      <span>Due {{ item.plannable.todo_date | date: "E L/d h:mm a"}}</span>
-      <span class="separator"></span>
       <span>Wiki Page</span>
+      <span class="separator"></span>
+      <span>Due {{ item.plannable.todo_date | date: "E L/d h:mm a"}}</span>
       <span class="separator"></span>
       <span><a [routerLink]="'/course/'+item.course_id">{{ item.context_name }}</a></span>
     </p>
