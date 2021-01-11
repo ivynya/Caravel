@@ -41,6 +41,18 @@
       <span><a [routerLink]="'/course/'+item.course_id">{{ item.context_name }}</a></span>
     </p>
   </div>
+  <div *ngIf="item.plannable_type === 'assessment_request'">
+    <h3><a [href]="item.html_url" target="_blank">
+      {{ item.plannable.title }}
+    </a></h3>
+    <p class="subtext">
+      <span>{{ item.plannable_date | date: "E L/d h:mm a"}}</span>
+      <span class="separator"></span>
+      <span>Peer Review</span>
+      <span class="separator"></span>
+      <span><a [routerLink]="'/course/'+item.course_id">{{ item.context_name }}</a></span>
+    </p>
+  </div>
   <div *ngIf="item.plannable_type === 'wiki_page'">
     <h3><a [href]="item.html_url">
       {{ item.plannable.title }}

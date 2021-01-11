@@ -18,6 +18,7 @@ export class TodoComponent implements OnInit {
     this.courseService.getCourse(this.item.course_id, course => {
       this.course = course;
     });
+    console.log(this.item);
   }
 
 }
