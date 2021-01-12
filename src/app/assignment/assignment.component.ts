@@ -41,8 +41,9 @@ export class AssignmentComponent implements OnInit {
       this.assignmentService.getLatestSubmission(params.courseId, params.assignmentId, submission => {
         this.latestSubmission = submission;
         
+        console.log(submission);
         // If no submission, remove viewing option
-        if (!submission.posted_at)
+        if (!submission.submitted_at)
           this.isFocusSubmission = false;
       });
     });

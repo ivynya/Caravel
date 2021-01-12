@@ -30,9 +30,7 @@
       <br><br>
       <div class="assignment-submitter">
         <div class="attempts">
-          <button *ngIf="latestSubmission?.posted_at"
-              [ngClass]="{'active': isFocusSubmission}"
-              (click)="focusSubmission(true)">
+          <button [ngClass]="{'active': isFocusSubmission}" (click)="focusSubmission(true)">
             Latest Submission ({{ latestSubmission?.attempt }})
           </button>
           <button [ngClass]="{'active': !isFocusSubmission}" (click)="focusSubmission(false)">
@@ -42,7 +40,7 @@
         <hr>
         <div class="submitter">
           <assignment-submission 
-            *ngIf="isFocusSubmission && latestSubmission?.posted_at" 
+            *ngIf="isFocusSubmission" 
             [submission]="latestSubmission">
           </assignment-submission>
           <assignment-submitter 

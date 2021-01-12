@@ -1,7 +1,7 @@
 
 <div class="submission">
     <h3>Attempt {{ submission?.attempt }}</h3>
-    <em>{{ type }} at {{ submission?.posted_at | date: 'medium' }}</em>
+    <em>{{ type }} at {{ submission?.submitted_at | date: 'medium' }}</em>
     <hr>
     <div *ngIf="submission?.submission_type === 'online_url'">
         <p><a [href]="submission?.url" target="_blank" rel="noreferrer">
