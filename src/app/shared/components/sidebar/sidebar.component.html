@@ -20,7 +20,7 @@
     </a>
     <div class="sidebar-classes" *ngIf="this.enumerateClasses">
       <a class="nav-link nav-sub" *ngFor="let course of courses" 
-        routerLinkActive="active" [routerLink]="'/course/'+course.id">
+        routerLinkActive="active" [routerLink]="'/courses/'+course.id">
         {{ course.name }}
       </a>
     </div>
