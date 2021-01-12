@@ -5,7 +5,11 @@ import { AssignmentComponent } from './assignment.component';
 
 const routes: Routes = [
   {
-    path: 'course/:courseId/assignment/:assignmentId',
+    path: 'courses/:courseId/assignments/:assignmentId',
+    component: AssignmentComponent
+  },
+  {
+    path: 'c/:courseId/a/:assignmentId',
     component: AssignmentComponent
   }
 ];
