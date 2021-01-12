@@ -44,6 +44,29 @@
     h3 {
       margin: 0;
     }
+
+    button {
+      background-color: transparent;
+      border: var(--bg-secondary) 2px solid;
+      border-radius: 5px;
+      margin-left: 5px;
+      padding: 5px 10px;
+      transition-duration: 0.2s;
+
+      &:hover {
+        border-color: var(--warning);
+      }
+    }
+
+    .settings-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .actions {
+        display: flex;
+      }
+    }
   }
 
   .spacer {

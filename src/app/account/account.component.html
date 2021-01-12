@@ -15,7 +15,13 @@
     <h3>Biography</h3>
     <p>{{ profile?.bio }}</p>
     <div class="settings">
-      <h3>Caravan Settings (Local Only)</h3>
+      <div class="settings-title">
+        <h3>Caravan Settings (Local Only)</h3>
+        <div class="actions">
+          <button (click)="clearCache()">Reset Config</button>
+          <button (click)="clearCache()">Clear Cache and Config</button>
+        </div>
+      </div>
       <div class="configurable">
         
       </div>

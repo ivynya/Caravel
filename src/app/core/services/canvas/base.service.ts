@@ -1,4 +1,5 @@
 
+import { CacheService } from '../cache/cache.service';
 import { NotificationService } from '../notification/notification.service';
 import { StorageService } from '../storage/storage.service';
 
@@ -6,7 +7,8 @@ export abstract class APIBaseService {
   
   constructor(private scope: string,
               private storage: StorageService,
-              private notifService: NotificationService) {}
+              private notifService: NotificationService,
+              private cacheService: CacheService) {}
 
   // Fetcher function shared by all API calls
   // Automatically appends CORS proxy & access token
@@ -64,16 +66,14 @@ export abstract class APIBaseService {
     return this.fetchp(endpoint, "", method);
   }
 
-  // Get cache of an endpoint from storage service
+  // Get cache with caching service
   getCached(endpoint: string): string {
-    endpoint = endpoint.replace('/', '.').replace('?', '.');
-    return this.storage.get(`${this.scope}.${endpoint}`);
+    return this.cacheService.getCached(this.scope, endpoint);
   }
 
-  // Set cache of an endpoint with storage service
+  // Set cache of an endpoint
   private cache(endpoint: string, value: string): void {
-    endpoint = endpoint.replace('/', '.').replace('?', '.');
-    this.storage.set(`${this.scope}.${endpoint}`, value);
+    this.cacheService.cache(this.scope, `${this.scope}.${endpoint}`, value);
   }
 
 }

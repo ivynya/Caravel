@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
-import { ConfigurationService } from '../core/services';
+import { CacheService, ConfigurationService, NotificationService } from '../core/services';
 import { UserService } from '../core/services/canvas';
 import { Profile } from '../core/schemas';
 
@@ -13,9 +12,10 @@ import { Profile } from '../core/schemas';
 export class AccountComponent implements OnInit {
   profile: Profile;
   
-  constructor(private config: ConfigurationService,
-              private userService: UserService,
-              private router: Router) { }
+  constructor(private cache: CacheService,
+              private config: ConfigurationService,
+              private notif: NotificationService,
+              private userService: UserService) { }
 
   async ngOnInit(): Promise<void> { 
     this.userService.getProfile(data => {
@@ -23,6 +23,20 @@ export class AccountComponent implements OnInit {
     });
     this.config.resetToDefault();
     console.log(this.config.getAll());
+  }
+
+  // Clear all user cache. Does not sign user out.
+  // This resets the user configuration as well.
+  clearCache(): void {
+    const freed = this.cache.clear();
+    this.config.resetToDefault();
+    this.notif.triggerNotification(`Cleared cache and freed ${freed}KB.`, 2);
+  }
+
+  // Reset configuration in localstorage.
+  resetConfig(): void {
+    this.config.resetToDefault();
+    this.notif.triggerNotification('Reset configuration to default.', 2);
   }
 
 }

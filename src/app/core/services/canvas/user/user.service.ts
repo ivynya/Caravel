@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { APIBaseService } from '../base.service';
 import { StorageService } from '../../storage/storage.service';
+import { NotificationService } from '../../notification/notification.service';
+import { CacheService } from '../../cache/cache.service';
 
 import {
   ActivityStreamGeneric,
@@ -10,7 +12,6 @@ import {
   TodoAssignment,
   TodoEvent
 } from '../../../schemas';
-import { NotificationService } from '../../notification/notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,9 @@ import { NotificationService } from '../../notification/notification.service';
 export class UserService extends APIBaseService {
   
   constructor(storage: StorageService,
-              notifService: NotificationService) {
-    super("users", storage, notifService);
+              notifService: NotificationService,
+              cacheService: CacheService) {
+    super("users", storage, notifService, cacheService);
   }
   
   // Get activity stream for user. Ex: "Assignment created", etc.

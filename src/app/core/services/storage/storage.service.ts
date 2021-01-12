@@ -21,4 +21,11 @@ export class StorageService {
   set(key: string, value: string): void {
     this.lstore.setItem(key, value);
   }
+
+  // Clear storage and return KB freed.
+  clear(): number {
+    const bytes = JSON.stringify(this.lstore).length;
+    this.lstore.clear();
+    return Math.round(bytes / 1000);
+  }
 }
