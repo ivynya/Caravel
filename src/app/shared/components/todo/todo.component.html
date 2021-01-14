@@ -5,68 +5,90 @@
       <span class="checkmark"></span>
     </label>
   </div>
-  <div *ngIf="item.plannable_type === 'announcement'">
-    <h3><a [routerLink]="item.html_url">
-      {{ item.plannable.title }}
-    </a></h3>
-    <p class="subtext">
-      <span>{{ item.plannable.created_at | date: "E L/d h:mm a"}}</span>
-      <span class="separator"></span>
-      <span>Announcement</span>
-      <span class="separator"></span>
-      <span>{{ item.plannable.unread_count }} Unread</span>
-      <span class="separator"></span>
-      <span><a [routerLink]="'/courses/'+item.course_id">{{ item.context_name }}</a></span>
-    </p>
-  </div>
-  <div *ngIf="item.plannable_type === 'assignment'">
-    <h3><a [routerLink]="'/courses/'+item.course_id+'/assignments/'+item.plannable.id">
-      {{ item.plannable.title }}
-    </a></h3>
-    <p class="subtext">
-      <span>Due {{ item.plannable.due_at | date: "E L/d h:mm a"}}</span>
-      <span class="separator"></span>
-      <span>Assignment</span>
-      <span class="separator"></span>
-      <span>{{ item.plannable.points_possible }}pts</span>
-      <span class="separator"></span>
-      <span><a [routerLink]="'/courses/'+item.course_id">{{ item.context_name }}</a></span>
-    </p>
-  </div>
-  <div *ngIf="item.plannable_type === 'calendar_event'">
-    <h3><a [href]="item.html_url" target="_blank">
-      {{ item.plannable.title }}
-    </a></h3>
-    <p class="subtext">
-      <span>{{ item.plannable.start_at | date: "E L/d h:mm a"}}</span>
-      <span class="separator"></span>
-      <span>Event</span>
-      <span class="separator"></span>
-      <span><a [routerLink]="'/courses/'+item.course_id">{{ item.context_name }}</a></span>
-    </p>
-  </div>
-  <div *ngIf="item.plannable_type === 'assessment_request'">
-    <h3><a [href]="item.html_url" target="_blank">
-      {{ item.plannable.title }}
-    </a></h3>
-    <p class="subtext">
-      <span>{{ item.plannable_date | date: "E L/d h:mm a"}}</span>
-      <span class="separator"></span>
-      <span>Peer Review</span>
-      <span class="separator"></span>
-      <span><a [routerLink]="'/courses/'+item.course_id">{{ item.context_name }}</a></span>
-    </p>
-  </div>
-  <div *ngIf="item.plannable_type === 'wiki_page'">
-    <h3><a [href]="item.html_url">
-      {{ item.plannable.title }}
-    </a></h3>
-    <p class="subtext">
-      <span>Wiki Page</span>
-      <span class="separator"></span>
-      <span>Due {{ item.plannable.todo_date | date: "E L/d h:mm a"}}</span>
-      <span class="separator"></span>
-      <span><a [routerLink]="'/courses/'+item.course_id">{{ item.context_name }}</a></span>
-    </p>
-  </div>
+  <ng-container [ngSwitch]="item.plannable_type">
+    <div *ngSwitchCase="'announcement'">
+      <h3><a [routerLink]="item.html_url">
+        {{ item.plannable.title }}
+      </a></h3>
+      <p class="subtext">
+        <span>{{ item.plannable.created_at | date: "E L/d h:mm a"}}</span>
+        <span class="separator"></span>
+        <span>Announcement</span>
+        <span class="separator"></span>
+        <span>{{ item.plannable.unread_count }} Unread</span>
+        <span class="separator"></span>
+        <span><a [routerLink]="'/courses/'+item.course_id">{{ item.context_name }}</a></span>
+      </p>
+    </div>
+    <div *ngSwitchCase="'assessment_request'">
+      <h3><a [href]="item.html_url">
+        {{ item.plannable.title }}
+      </a></h3>
+      <p class="subtext">
+        <span>{{ item.plannable_date | date: "E L/d h:mm a"}}</span>
+        <span class="separator"></span>
+        <span>Peer Review</span>
+        <span class="separator"></span>
+        <span><a [routerLink]="'/courses/'+item.course_id">{{ item.context_name }}</a></span>
+      </p>
+    </div>
+    <div *ngSwitchCase="'assignment'">
+      <h3><a [routerLink]="'/courses/'+item.course_id+'/assignments/'+item.plannable.id">
+        {{ item.plannable.title }}
+      </a></h3>
+      <p class="subtext">
+        <span>Due {{ item.plannable.due_at | date: "E L/d h:mm a"}}</span>
+        <span class="separator"></span>
+        <span>Assignment</span>
+        <span class="separator"></span>
+        <span>{{ item.plannable.points_possible }}pts</span>
+        <span class="separator"></span>
+        <span><a [routerLink]="'/courses/'+item.course_id">{{ item.context_name }}</a></span>
+      </p>
+    </div>
+    <div *ngSwitchCase="'calendar_event'">
+      <h3><a [href]="item.html_url">
+        {{ item.plannable.title }}
+      </a></h3>
+      <p class="subtext">
+        <span>{{ item.plannable.start_at | date: "E L/d h:mm a"}}</span>
+        <span class="separator"></span>
+        <span>Event</span>
+        <span class="separator"></span>
+        <span><a [routerLink]="'/courses/'+item.course_id">{{ item.context_name }}</a></span>
+      </p>
+    </div>
+    <div *ngSwitchCase="'quiz'">
+      <h3><a [href]="item.html_url">
+        {{ item.plannable.title }}
+      </a></h3>
+      <p class="subtext">
+        <span>Due {{ item.plannable_date | date: "E L/d h:mm a"}}</span>
+        <span class="separator"></span>
+        <span>Quiz</span>
+        <span class="separator"></span>
+        <span><a [routerLink]="'/courses/'+item.course_id">{{ item.context_name }}</a></span>
+      </p>
+    </div>
+    <div *ngSwitchCase="'wiki_page'">
+      <h3><a [href]="item.html_url">
+        {{ item.plannable.title }}
+      </a></h3>
+      <p class="subtext">
+        <span>Wiki Page</span>
+        <span class="separator"></span>
+        <span>Due {{ item.plannable.todo_date | date: "E L/d h:mm a"}}</span>
+        <span class="separator"></span>
+        <span><a [routerLink]="'/courses/'+item.course_id">{{ item.context_name }}</a></span>
+      </p>
+    </div>
+    <div *ngSwitchDefault>
+      <h3>
+        {{ item.plannable.title }}
+      </h3>
+      <p class="subtext">
+        <span>{{ item.plannable_type }}</span>
+      </p>
+    </div>
+  </ng-container>
 </div>
