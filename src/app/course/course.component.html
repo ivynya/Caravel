@@ -1,52 +1,74 @@
 <main class="page">
   <div class="content">
-    <section *ngIf="!useCanvasHomepage">
-      <h1>{{ course?.name }}</h1>
-      <hr>
-      <h2>Recent Feedback</h2>
-      <div class="recent-item-bar">
-        <div class="item">
-          <h3>Assignment Title</h3>
-          <em>Due Sometime Soon</em>
-          <blockquote>This assignment is late!</blockquote>
-        </div>
-        <div class="item">
-          <h3>Assignment Title</h3>
-          <em>Due Sometime Soon</em>
-          <blockquote>Excellent work.</blockquote>
-        </div>
-        <div class="item">
-          <h3>Assignment Title</h3>
-          <em>Due Sometime Soon</em>
-          <blockquote>This file format is inaccessible. Please resubmit this.</blockquote>
-        </div>
-      </div>
-      <h2>Course Stream</h2>
-    </section>
-    <section *ngIf="useCanvasHomepage">
-      <h1>{{ course?.name }}</h1>
-      <hr>
-      <h2>Recent Activity</h2>
-      <div class="recent-item-bar">
-        <div class="item">
-          <h3>Assignment Title</h3>
-          <em>Due Sometime Soon</em>
-          <p><b>❌ Late (3 Days)</b></p>
-        </div>
-        <div class="item">
-          <h3>Assignment Title</h3>
-          <em>Due Sometime Soon</em>
-          <p><b>✅ Marked done by you.</b></p>
-        </div>
-        <div class="item">
-          <h3>Assignment Title</h3>
-          <em>Due Sometime Soon</em>
-          <p><b>✅ Submitted docx, pptx.</b></p>
-        </div>
+    <section>
+      <div class="title-row">
+        <h1>{{ course?.name }}</h1>
+        <label class="switch">Use Redesign
+          <input type="checkbox" [(ngModel)]="useRedesign">
+          <span class="slider"></span>
+        </label>
       </div>
       <hr>
-      <h2>Course Home Page</h2>
-      <div [innerHtml]="this.frontPage?.body" class="xss-sanitize"></div>
+      <ng-container *ngIf="useRedesign">
+        <div class="quick-access">
+          <a href="https://flipgrid.com" target="_blank" class="accessor">
+            <svg><use href="assets/integrations/icons.svg#flipgrid"/></svg>
+          </a>
+          <a href="https://drive.google.com" target="_blank" class="accessor">
+            <svg><use href="assets/integrations/icons.svg#googledrive"/></svg>
+          </a>
+          <a href="https://live.com" target="_blank" class="accessor">
+            <svg><use href="assets/integrations/icons.svg#microsoftonenote"/></svg>
+          </a>
+          <a href="https://www.allthingssecured.com/tips/stop-using-zoom/" target="_blank" class="accessor">
+            <svg><use href="assets/integrations/icons.svg#zoom"/></svg>
+          </a>
+          <a class="accessor">+</a>
+        </div>
+        <h2>Recent Feedback</h2>
+        <div class="recent-item-bar">
+          <div class="item">
+            <h3>Assignment Title</h3>
+            <em>Due Sometime Soon</em>
+            <blockquote>This assignment is late!</blockquote>
+          </div>
+          <div class="item">
+            <h3>Assignment Title</h3>
+            <em>Due Sometime Soon</em>
+            <blockquote>Excellent work.</blockquote>
+          </div>
+          <div class="item">
+            <h3>Assignment Title</h3>
+            <em>Due Sometime Soon</em>
+            <blockquote>This file format is inaccessible. Please resubmit this.</blockquote>
+          </div>
+        </div>
+        <h2>Course Stream</h2>
+        <home-todo *ngFor="let item of stream" [item]="item"></home-todo>
+      </ng-container>
+      <ng-container *ngIf="!useRedesign">
+        <h2>Recent Activity</h2>
+        <div class="recent-item-bar">
+          <div class="item">
+            <h3>Assignment Title</h3>
+            <em>Due Sometime Soon</em>
+            <p><b>❌ Late (3 Days)</b></p>
+          </div>
+          <div class="item">
+            <h3>Assignment Title</h3>
+            <em>Due Sometime Soon</em>
+            <p><b>✅ Marked done by you.</b></p>
+          </div>
+          <div class="item">
+            <h3>Assignment Title</h3>
+            <em>Due Sometime Soon</em>
+            <p><b>✅ Submitted docx, pptx.</b></p>
+          </div>
+        </div>
+        <hr>
+        <h2>Course Home Page</h2>
+        <div [innerHtml]="this.frontPage?.body" class="xss-sanitize"></div>
+      </ng-container>
     </section>
   </div>
 </main>

@@ -11,7 +11,7 @@ import { Course, PlannerItem } from '../../../core/schemas';
 export class TodoComponent implements OnInit {
   course: Course;
   @Input() item: PlannerItem;
-  @Input() isComplete = false;
+  isComplete = false;
 
   constructor(private courseService: CourseService) { }
 
@@ -19,6 +19,13 @@ export class TodoComponent implements OnInit {
     this.courseService.getCourse(this.item.course_id, course => {
       this.course = course;
     });
+
+    if (this.item.submissions.submitted ||
+        this.item.submissions.graded ||
+        this.item.planner_override?.dismissed ||
+        this.item.planner_override?.marked_complete ||
+        this.item.plannable?.workflow_state === "completed")
+      this.isComplete = true;
   }
 
 }
