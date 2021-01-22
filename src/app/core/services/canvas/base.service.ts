@@ -73,7 +73,7 @@ export abstract class APIBaseService {
 
   // Set cache of an endpoint
   private cache(endpoint: string, value: string): void {
-    this.cacheService.cache(this.scope, `${this.scope}.${endpoint}`, value);
+    this.cacheService.cache(this.scope, endpoint, value);
   }
 
 }
