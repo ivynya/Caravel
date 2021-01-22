@@ -36,7 +36,7 @@
   }
 
   .settings {
-    border: var(--bg-secondary) 2px solid;
+    border: var(--border-secondary) 2px solid;
     border-radius: 5px;
     margin-top: 20px;
     padding: 20px;
@@ -47,8 +47,9 @@
 
     button {
       background-color: transparent;
-      border: var(--bg-secondary) 2px solid;
+      border: var(--border-primary) 2px solid;
       border-radius: 5px;
+      color: var(--text-inverse-primary);
       margin-left: 5px;
       padding: 5px 10px;
       transition-duration: 0.2s;

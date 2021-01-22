@@ -10,7 +10,7 @@
   margin-bottom: 30px;
 
   .item {
-    border: var(--bg-secondary) 2px solid;
+    border: var(--border-secondary) 2px solid;
     border-radius: 5px;
     display: inline-flex;
     flex-direction: column;
@@ -56,7 +56,7 @@
 }
 
 .quick-access {
-  border-bottom: var(--bg-secondary) 2px solid;
+  border-bottom: var(--border-primary) 2px solid;
   display: flex;
 
   margin: 20px 0;

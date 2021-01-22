@@ -20,7 +20,7 @@
     }
 
     &:focus + .slider {
-      box-shadow: 0 0 1px var(--bg-control-hover);
+      box-shadow: 0 0 1px var(--box-shadow-primary);
     }
 
     &:checked + .slider:before {
@@ -31,7 +31,7 @@
   }
 
   .slider {
-    background-color: #ccc;
+    background-color: var(--bg-control);
     border-radius: 34px;
     cursor: pointer;
   
@@ -43,7 +43,7 @@
     transition-duration: 0.2s;
   
     &:before {
-      background-color: #fff;
+      background-color: #eee;
       border-radius: 50%;
       content: "";
 
