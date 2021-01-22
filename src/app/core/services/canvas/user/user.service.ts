@@ -64,7 +64,7 @@ export class UserService extends APIBaseService {
     }
     const query = new URLSearchParams(qp).toString();
     const cached = this.getCached(`self/planner/items?${query}`);
-    if (cached) callback(JSON.parse(cached));
+    //if (cached) callback(JSON.parse(cached));
     
     this.fetchp('self/planner/items', query, "GET")
       .then(res => JSON.parse(res))

@@ -48,8 +48,6 @@ export class HomeComponent implements OnInit {
 
   // Populates stream with events from API
   private populateStream(upcoming: PlannerItem[]): void {
-    // Remove the previous 10 items.
-    this.stream = this.stream.splice(this.stream.length - 11, 10);
     upcoming.forEach(item => {
       let date = this.formatDate(item.plannable_date);
 
