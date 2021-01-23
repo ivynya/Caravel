@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { ConfigurationService } from '../core/services';
 import { CourseService, UserService } from '../core/services/canvas';
 import { Course, ExternalTool, Page, PlannerItem } from '../core/schemas';
 
@@ -21,7 +22,12 @@ export class CourseComponent implements OnInit {
 
   constructor(private courseService: CourseService,
               private userService: UserService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private config: ConfigurationService) {
+    config.config.subscribe({next: data => {
+      this.useRedesign = data["course"]["use_redesign"].value;
+    }});
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -44,6 +50,11 @@ export class CourseComponent implements OnInit {
       // Course front page is used in legacy mode
       this.courseService.getCourseFrontPage(params.id, page => this.frontPage = page);
     });
+  }
+
+  // Synchronize config with settings here.
+  syncConfig(val: boolean): void {
+    this.config.set("course", "use_redesign", val);
   }
 
   getSVGIconURL(name: string): string {

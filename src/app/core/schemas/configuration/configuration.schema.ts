@@ -1,13 +1,17 @@
 
 export interface Configuration {
+  [scope: string]: {
+    [key: string]: Configurable
+  }
+}
+
+export interface Configurable {
   // Display name of config value
   name: string,
-  // Determines if display slider, boolean, etc.
+  // Determines if display toggle, slider, etc.
   type: string,
   // Default value of config
-  default: number
+  default: boolean
   // Actual value of config
-  value: number
-  // Units of config (ex: seconds)
-  unit: string
+  value: boolean
 }

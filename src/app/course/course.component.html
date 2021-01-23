@@ -4,7 +4,7 @@
       <div class="title-row">
         <h1>{{ course?.name }}</h1>
         <label class="switch">Use Redesign
-          <input type="checkbox" [(ngModel)]="useRedesign">
+          <input type="checkbox" [(ngModel)]="useRedesign" (change)="syncConfig(useRedesign)">
           <span class="slider"></span>
         </label>
       </div>

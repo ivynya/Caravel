@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { CacheService, ConfigurationService, NotificationService } from '../core/services';
 import { UserService } from '../core/services/canvas';
-import { Profile } from '../core/schemas';
+import { Configuration, Configurable, Profile } from '../core/schemas';
 
 @Component({
   selector: 'app-account',
@@ -10,6 +10,7 @@ import { Profile } from '../core/schemas';
   styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
+  configuration: Configuration;
   profile: Profile;
   
   constructor(private cache: CacheService,
@@ -18,24 +19,27 @@ export class AccountComponent implements OnInit {
               private userService: UserService) { }
 
   async ngOnInit(): Promise<void> { 
-    this.userService.getProfile(data => {
-      this.profile = data;
-    });
-    this.config.resetToDefault();
-    console.log(this.config.getAll());
+    this.userService.getProfile(data => this.profile = data);
+    this.configuration = this.config.getAll();
+  }
+
+  upd(scope: string, key: string, val: boolean): void {
+    this.config.set(scope, key, val);
   }
 
   // Clear all user cache. Does not sign user out.
   // This resets the user configuration as well.
-  clearCache(): void {
+  async clearCache(): Promise<void> {
     const freed = this.cache.clear();
-    this.config.resetToDefault();
+    await this.config.resetToDefault();
+    this.configuration = this.config.getAll();
     this.notif.triggerNotification(`Cleared cache and freed ${freed}KB.`, 2);
   }
 
   // Reset configuration in localstorage.
-  resetConfig(): void {
-    this.config.resetToDefault();
+  async resetConfig(): Promise<void> {
+    await this.config.resetToDefault();
+    this.configuration = this.config.getAll();
     this.notif.triggerNotification('Reset configuration to default.', 2);
   }
 

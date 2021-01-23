@@ -38,6 +38,10 @@
   .settings {
     border: var(--border-secondary) 2px solid;
     border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
     margin-top: 20px;
     padding: 20px;
 
@@ -63,9 +67,19 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      width: 100%;
 
       .actions {
         display: flex;
+      }
+    }
+
+    .config-scope {
+      margin-bottom: 20px;
+      width: 45%;
+
+      .configurable {
+        margin-bottom: 10px;
       }
     }
   }

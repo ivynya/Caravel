@@ -26,13 +26,13 @@ export class HomeComponent implements OnInit {
     now = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     this.streamState = { start: now, end: now };
 
-    // Load three "intervals" (up to 30 items or 3 days of content)
+    // Load three "intervals" (up to 30 items or 9 days of content)
     this.getItems(3);
   }
 
   private getItems(intervals: number) {
-    // Get new interval of items day-by-day
-    const next = new Date(this.streamState.end.getTime() + 86400*1000);
+    // Get new interval of items in 3 day segments (max 10 items)
+    const next = new Date(this.streamState.end.getTime() + 86400*1000*3);
     this.userService.getPlanner(this.streamState.end, next, items => {
       this.populateStream(items);
 

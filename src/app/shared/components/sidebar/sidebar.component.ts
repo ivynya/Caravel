@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
 import { CourseService } from '../../../core/services/canvas';
-import { StorageService } from '../../../core/services';
+import { ConfigurationService, StorageService } from '../../../core/services';
 import { Course } from '../../../core/schemas';
 
 @Component({
@@ -23,7 +23,14 @@ export class SidebarComponent implements OnInit {
   
   constructor(private courseService: CourseService,
               private storage: StorageService,
-              private router: Router) { }
+              private router: Router,
+              config: ConfigurationService) {
+    config.config.subscribe({next: data => {
+      this.enumerateClasses = data["sidebar"]["enumerate_courses"].value;
+      this.enumerateGroups = data["sidebar"]["enumerate_groups"].value;
+      this.showStudio = data["sidebar"]["show_studio"].value;
+    }});
+  }
 
   ngOnInit(): void {
     this.router.events.subscribe((e) => {

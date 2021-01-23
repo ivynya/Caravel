@@ -1,29 +1,31 @@
 
 {
-  "config_scope": {
-    "key": {
-      "name": "Key",
-      "type": "input",
-      "default": 5,
-      "value": 4.5,
-      "unit": "s"
-    },
-    "key_2": {
-      "name": "Key 2",
-      "type": "slider",
-      "default": 5,
-      "value": 7,
-      "unit": "s"
+  "course": {
+    "use_redesign": {
+      "name": "Use Redesigned Home",
+      "type": "toggle",
+      "default": true,
+      "value": true
     }
   },
-  "cache_duration": {
-    "courses": {
-      "get_assignment": 5,
-      "get_submission": 5,
-      "get_course": 60,
-      "get_course_front_page": 15,
-      "list_courses": 60,
-      "list_external_tools": 60
+  "sidebar": {
+    "enumerate_courses": {
+      "name": "Enumerate Courses",
+      "type": "toggle",
+      "default": true,
+      "value": true
+    },
+    "enumerate_groups": {
+      "name": "Enumerate Groups",
+      "type": "toggle",
+      "default": false,
+      "value": false
+    },
+    "show_studio": {
+      "name": "Show Studio",
+      "type": "toggle",
+      "default": true,
+      "value": true
     }
   }
 }
