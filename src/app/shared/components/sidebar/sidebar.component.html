@@ -1,4 +1,4 @@
-<nav class="sidebar">
+<nav class="sidebar" [ngClass]="{'compact': useCompact}">
   <div *ngIf="!isAuthorized">
     <div class="sidebar-options sidebar-title">
       <h2>Caravan</h2>
@@ -8,7 +8,7 @@
   <div *ngIf="isAuthorized">
     <div class="sidebar-options sidebar-title">
       <h2>Caravan</h2>
-      <button>≡</button>
+      <button (click)="toggleCompact()">≡</button>
     </div>
     <a routerLink="/account" class="nav-link" routerLinkActive="active">
       <img src="/assets/icons/Icon_Account.svg" alt="Account">
@@ -39,34 +39,17 @@
       <img src="/assets/icons/Icon_Calendar.svg" alt="Calendar">
       Calendar
     </a>
-    <a routerLink="/studio" class="nav-link" routerLinkActive="active" *ngIf="this.showStudio">
+    <a routerLink="/studio" class="nav-link" routerLinkActive="active">
       <img src="/assets/icons/Icon_Studio.svg" alt="Studio">
       Studio
     </a>
   </div>
   <div class="sidebar-options" *ngIf="isAuthorized">
-    <div *ngIf="showSettings" class="sidebar-dialog">
-      <h3>Sidebar Settings</h3>
-      <hr>
-      <label class="switch">Show Studio
-        <input type="checkbox" [(ngModel)]="this.showStudio">
-        <span class="slider"></span>
-      </label>
-      <label class="switch">Enumerate Groups
-        <input type="checkbox"  [(ngModel)]="this.enumerateGroups">
-        <span class="slider"></span>
-      </label>
-      <label class="switch">Enumerate Classes
-        <input type="checkbox" [(ngModel)]="this.enumerateClasses">
-        <span class="slider"></span>
-      </label>
-    </div>
     <div *ngIf="showHelp" class="sidebar-dialog">
       <h3>Caravan Help</h3>
       <hr>
       <p>Help resources go here.</p>
     </div>
     <button (click)="toggleHelp()">❔</button>
-    <button (click)="toggleSettings()">⚙</button>
   </div>
 </nav>

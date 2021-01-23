@@ -16,9 +16,8 @@ export class SidebarComponent implements OnInit {
 
   enumerateClasses = true;
   enumerateGroups = false;
-  showStudio = true;
+  useCompact = false;
 
-  showSettings = false;
   showHelp = false;
   
   constructor(private courseService: CourseService,
@@ -26,9 +25,9 @@ export class SidebarComponent implements OnInit {
               private router: Router,
               config: ConfigurationService) {
     config.config.subscribe({next: data => {
+      this.useCompact = data["sidebar"]["compact_mode"].value;
       this.enumerateClasses = data["sidebar"]["enumerate_courses"].value;
       this.enumerateGroups = data["sidebar"]["enumerate_groups"].value;
-      this.showStudio = data["sidebar"]["show_studio"].value;
     }});
   }
 
@@ -43,13 +42,11 @@ export class SidebarComponent implements OnInit {
     });
   }
 
-  toggleSettings(): void {
-    this.showSettings = !this.showSettings;
-    this.showHelp = false;
+  toggleCompact(): void {
+    this.useCompact = !this.useCompact;
   }
 
   toggleHelp(): void {
     this.showHelp = !this.showHelp;
-    this.showSettings = false;
   }
 }

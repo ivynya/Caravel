@@ -31,6 +31,12 @@
     }
   },
   "sidebar": {
+    "compact_mode": {
+      "name": "Compact Sidebar",
+      "type": "toggle",
+      "default": false,
+      "value": false
+    },
     "enumerate_courses": {
       "name": "Enumerate Courses",
       "type": "toggle",
@@ -42,12 +48,6 @@
       "type": "toggle",
       "default": false,
       "value": false
-    },
-    "show_studio": {
-      "name": "Show Studio",
-      "type": "toggle",
-      "default": true,
-      "value": true
     }
   }
 }

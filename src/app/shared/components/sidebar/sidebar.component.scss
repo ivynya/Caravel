@@ -110,3 +110,44 @@
     width: 350px;
   }
 }
+
+.sidebar.compact {
+  width: 110px;
+
+  .nav-link {
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1rem;
+    line-height: unset;
+    height: 85px;
+    padding-left: 0;
+    padding-right: 0;
+
+    img {
+      height: 35px;
+      width: 35px;
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+
+    &.nav-sub {
+      font-size: 0.8rem;
+      height: 65px;
+      max-width: 80px;
+      margin: auto;
+    }
+  }
+
+  .sidebar-title {
+    justify-content: center;
+    padding: 10px 0;
+
+    h2 {
+      display: none;
+    }
+
+    button {
+      margin-left: 0;
+    }
+  }
+}
