@@ -11,14 +11,14 @@
       <hr>
       <ng-container *ngIf="useRedesign">
         <div class="quick-access">
-          <a href="https://flipgrid.com" target="_blank" class="accessor">
-            <svg><use href="assets/integrations/icons.svg#flipgrid"/></svg>
+          <a *ngFor="let tool of tools" target="_blank" class="accessor">
+            <svg><use [attr.href]="getSVGIconURL(tool.name)"/></svg>
           </a>
           <a href="https://drive.google.com" target="_blank" class="accessor">
             <svg><use href="assets/integrations/icons.svg#googledrive"/></svg>
           </a>
           <a href="https://live.com" target="_blank" class="accessor">
-            <svg><use href="assets/integrations/icons.svg#microsoftonenote"/></svg>
+            <svg><use href="assets/integrations/icons.svg#onedrive"/></svg>
           </a>
           <a href="https://www.allthingssecured.com/tips/stop-using-zoom/" target="_blank" class="accessor">
             <svg><use href="assets/integrations/icons.svg#zoom"/></svg>
