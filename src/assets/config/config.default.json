@@ -8,6 +8,28 @@
       "value": true
     }
   },
+  "networking": {
+    "stop_calls_if_cached": {
+      "name": "Low Bandwidth Mode",
+      "type": "toggle",
+      "default": false,
+      "value": false
+    }
+  },
+  "notifications": {
+    "compact_banners": {
+      "name": "Use Compact Banners",
+      "type": "toggle",
+      "default": false,
+      "value": false
+    },
+    "suppress_non_critical": {
+      "name": "Show Critical Alerts for Longer",
+      "type": "toggle",
+      "default": true,
+      "value": true
+    }
+  },
   "sidebar": {
     "enumerate_courses": {
       "name": "Enumerate Courses",
