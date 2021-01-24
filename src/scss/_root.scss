@@ -23,6 +23,9 @@
   --text-inverse-secondary: #ddd;
   --text-inverse-tertiary: #aab;
 
+  --scrollbar-primary: var(--bg-accent);
+  --scrollbar-secondary: #64a;
+
   --accent-primary: #00F2D2;
   --accent-secondary: #00C2A2;
 
@@ -71,12 +74,12 @@
 }
 
 ::-webkit-scrollbar-track {
-  background-color: var(--bg-accent);
+  background-color: var(--scrollbar-primary);
   border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--accent-secondary);
+  background-color: var(--scrollbar-secondary);
   border-radius: 2px;
 }
 

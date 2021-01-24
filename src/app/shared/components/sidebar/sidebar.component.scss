@@ -1,13 +1,14 @@
 .sidebar {
   background-color: var(--bg-tertiary);
   box-shadow: var(--box-shadow-primary) 0 0 20px;
+  box-sizing: border-box;
   color: var(--text-primary);
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  height: calc(100% - 25px);
+  height: 100%;
   width: 300px;
   padding: 10px 0;
   padding-top: 15px;
@@ -35,10 +36,29 @@
     }
 
     &.nav-sub {
+      display: flex;
       font-size: 1rem;
       line-height: 4rem;
       min-height: 4rem;
-      padding-left: 55px;
+      padding-left: 50px;
+
+      .icon {
+        border: var(--accent-primary) 2.5px solid;
+        border-radius: 6px;
+        box-sizing: border-box;
+        color: var(--accent-primary);
+        display: none;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 0.9rem;
+        font-weight: bold;
+        margin: 2px;
+        margin-right: 10px;
+        padding: 5px;
+        height: 21px;
+        width: 21px;
+      }
     }
 
     img {
@@ -64,6 +84,7 @@
     button {
       background-color: var(--bg-control);
       border: none;
+      border-radius: 3px;
       color: var(--text-primary);
       height: 30px;
       width: 30px;
@@ -72,31 +93,6 @@
 
       &:hover {
         background-color: var(--bg-control-hover);
-      }
-    }
-
-    .sidebar-dialog {
-      background-color: var(--bg-dialog);
-      border-radius: 5px;
-      box-shadow: var(--box-shadow-primary) 5px 5px 10px;
-      position: absolute;
-      bottom: calc(100% + 10px);
-      left: 20px;
-      right: 20px;
-      
-      min-height: 120px;
-      padding: 20px;
-
-      h3 {
-        margin: 0;
-      }
-
-      hr {
-        margin-top: 5px;
-      }
-
-      .switch {
-        margin-top: 25px;
       }
     }
   }
@@ -112,14 +108,15 @@
 }
 
 .sidebar.compact {
-  width: 110px;
+  padding-top: 0;
+  width: 90px;
 
   .nav-link {
     flex-direction: column;
     justify-content: center;
     font-size: 1rem;
     line-height: unset;
-    height: 85px;
+    height: 90px;
     padding-left: 0;
     padding-right: 0;
 
@@ -127,20 +124,29 @@
       height: 35px;
       width: 35px;
       margin-right: 0;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
 
     &.nav-sub {
-      font-size: 0.8rem;
-      height: 65px;
-      max-width: 80px;
+      height: 60px;
       margin: auto;
+
+      .icon {
+        display: flex;
+        margin: 0;
+        height: 30px;
+        width: 30px;
+      }
+
+      .course-name {
+        display: none;
+      }
     }
   }
 
   .sidebar-title {
     justify-content: center;
-    padding: 10px 0;
+    padding: 20px 0;
 
     h2 {
       display: none;
@@ -149,5 +155,10 @@
     button {
       margin-left: 0;
     }
+  }
+
+  .sidebar-classes {
+    border-top: var(--bg-accent) 2px solid;
+    border-bottom: var(--bg-accent) 2px solid;
   }
 }

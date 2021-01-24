@@ -21,7 +21,8 @@
     <div class="sidebar-classes" *ngIf="this.enumerateClasses">
       <a class="nav-link nav-sub" *ngFor="let course of courses" 
         routerLinkActive="active" [routerLink]="'/courses/'+course.id">
-        {{ course.name }}
+        <span class="icon">{{ course.name[0] }}{{ course.name[1] }}</span>
+        <span class="course-name">{{ course.name }}</span>
       </a>
     </div>
     <a routerLink="/groups" class="nav-link" routerLinkActive="active">
@@ -44,12 +45,5 @@
       Studio
     </a>
   </div>
-  <div class="sidebar-options" *ngIf="isAuthorized">
-    <div *ngIf="showHelp" class="sidebar-dialog">
-      <h3>Caravan Help</h3>
-      <hr>
-      <p>Help resources go here.</p>
-    </div>
-    <button (click)="toggleHelp()">❔</button>
-  </div>
+  <br>
 </nav>
