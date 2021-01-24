@@ -21,7 +21,7 @@
     <div class="sidebar-classes" *ngIf="this.enumerateClasses">
       <a class="nav-link nav-sub" *ngFor="let course of courses" 
         routerLinkActive="active" [routerLink]="'/courses/'+course.id">
-        <span class="icon">{{ course.name[0] }}{{ course.name[1] }}</span>
+        <span class="icon">{{ course.name | abbreviateCourse }}</span>
         <span class="course-name">{{ course.name }}</span>
       </a>
     </div>

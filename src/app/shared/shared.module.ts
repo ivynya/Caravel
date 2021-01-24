@@ -14,6 +14,7 @@ import {
 import { WebviewDirective } from './directives/';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { CoreModule } from 'app/core/core.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,13 @@ import { RouterModule } from '@angular/router';
     WebviewDirective,
     NotificationBannerComponent
   ],
-  imports: [CommonModule, RouterModule, TranslateModule, FormsModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    TranslateModule,
+    FormsModule,
+    CoreModule
+  ],
   exports: [
     TranslateModule, 
     WebviewDirective, 
