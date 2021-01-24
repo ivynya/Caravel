@@ -5,7 +5,7 @@ import { CacheService } from '../../cache/cache.service';
 import { NotificationService } from '../../notification/notification.service';
 import { StorageService } from '../../storage/storage.service';
 
-import { Course, ExternalTool, Page } from '../../../schemas';
+import { Course, ExternalTool, Page, Submission } from '../../../schemas';
 
 @Injectable({
   providedIn: 'root'
@@ -57,6 +57,23 @@ export class CourseService extends APIBaseService {
     this.fetcher(`${courseId}/external_tools`, "GET")
       .then(res => JSON.parse(res))
       .then(res => callback(<ExternalTool[]>res))
+      .catch(ex => console.error(ex));
+  }
+
+  async listCourseRecentSubmissions(cId: number,
+      callback: (data: Submission[]) => void): Promise<void> {
+    const qp = {
+      graded_since: new Date(new Date().getTime() - 86400*1000*31).toISOString(),
+      order_direction: "descending",
+      include: "assignment",
+    }
+    const query = new URLSearchParams(qp).toString();
+    const cached = this.getCached(`${cId}/students/submissions?${query}`);
+    if (cached) callback(JSON.parse(cached));
+
+    this.fetchp(`${cId}/students/submissions`, query, "GET")
+      .then(res => JSON.parse(res))
+      .then(res => callback(<Submission[]>res))
       .catch(ex => console.error(ex));
   }
 

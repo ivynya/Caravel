@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { ConfigurationService } from '../core/services';
 import { CourseService, UserService } from '../core/services/canvas';
-import { Course, ExternalTool, Page, PlannerItem } from '../core/schemas';
+import { Course, ExternalTool, Page, PlannerItem, Submission } from '../core/schemas';
 
 @Component({
   selector: 'app-course',
@@ -14,8 +14,9 @@ export class CourseComponent implements OnInit {
   // Determines if redesigned course home is used
   useRedesign = true;
   course: Course;
-  tools: ExternalTool[];
+  recent: Submission[];
   stream: PlannerItem[];
+  tools: ExternalTool[];
 
   // Front page if using legacy home page
   frontPage: Page;
@@ -32,6 +33,9 @@ export class CourseComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.courseService.getCourse(params.id, course => this.course = course);
+      this.courseService.listCourseRecentSubmissions(params.id, data => {
+        this.recent = data.slice(0, 3);
+      });
 
       // Get course stream (max 10 items or 7 days)
       let now = new Date();
@@ -42,10 +46,7 @@ export class CourseComponent implements OnInit {
       });
 
       // Get course external tools
-      this.courseService.listExternalTools(params.id, data => {
-        console.log(data);
-        this.tools = data;
-      });
+      this.courseService.listExternalTools(params.id, data => this.tools = data);
 
       // Course front page is used in legacy mode
       this.courseService.getCourseFrontPage(params.id, page => this.frontPage = page);

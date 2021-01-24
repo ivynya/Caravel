@@ -8,11 +8,12 @@
 .recent-item-bar {
   display: flex;
   margin-bottom: 30px;
+  max-width: 100%;
 
   .item {
     border: var(--border-secondary) 2px solid;
     border-radius: 5px;
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
 
     flex: 1 1;
@@ -26,11 +27,29 @@
 
     h3, p {
       margin: 0;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    a {
+      color: var(--text-inverse-primary);
+      text-decoration-color: var(--bg-secondary);
+      transition-duration: 0.1s;
+  
+      &:hover {
+        color: var(--accent-secondary)
+      }
     }
 
     em {
-      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      margin: 3px 0;
       font-size: 0.9rem;
+
+      .late {
+        color: var(--error);
+      }
     }
 
     blockquote {

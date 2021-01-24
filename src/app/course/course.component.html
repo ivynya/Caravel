@@ -25,49 +25,33 @@
           </a>
           <a class="accessor">+</a>
         </div>
-        <h2>Recent Feedback</h2>
-        <div class="recent-item-bar">
-          <div class="item">
-            <h3>Assignment Title</h3>
-            <em>Due Sometime Soon</em>
-            <blockquote>This assignment is late!</blockquote>
-          </div>
-          <div class="item">
-            <h3>Assignment Title</h3>
-            <em>Due Sometime Soon</em>
-            <blockquote>Excellent work.</blockquote>
-          </div>
-          <div class="item">
-            <h3>Assignment Title</h3>
-            <em>Due Sometime Soon</em>
-            <blockquote>This file format is inaccessible. Please resubmit this.</blockquote>
-          </div>
-        </div>
-        <h2>Course Stream</h2>
-        <home-todo *ngFor="let item of stream" [item]="item"></home-todo>
       </ng-container>
-      <ng-container *ngIf="!useRedesign">
-        <h2>Recent Activity</h2>
-        <div class="recent-item-bar">
-          <div class="item">
-            <h3>Assignment Title</h3>
-            <em>Due Sometime Soon</em>
-            <p><b>❌ Late (3 Days)</b></p>
-          </div>
-          <div class="item">
-            <h3>Assignment Title</h3>
-            <em>Due Sometime Soon</em>
-            <p><b>✅ Marked done by you.</b></p>
-          </div>
-          <div class="item">
-            <h3>Assignment Title</h3>
-            <em>Due Sometime Soon</em>
-            <p><b>✅ Submitted docx, pptx.</b></p>
-          </div>
+      <h2>Recent Feedback</h2>
+      <div class="recent-item-bar">
+        <div class="item" *ngFor="let submission of recent">
+          <h3><a [routerLink]="'/c/'+course?.id+'/a/'+submission.assignment.id">
+            {{ submission.assignment.name }}
+          </a></h3>
+          <em>
+            <span>Submitted {{ submission.submitted_at | date }}</span>
+            <span *ngIf="submission.late" class="late">(Late)</span>
+          </em>
+          <blockquote>
+            Grade:
+            <span *ngIf="submission.graded_at">{{ submission.score }}</span>
+            <span *ngIf="!submission.graded_at">ungraded</span>
+            / {{ submission.assignment.points_possible }}
+          </blockquote>
         </div>
+      </div>
+      <ng-container *ngIf="!useRedesign">
         <hr>
         <h2>Course Home Page</h2>
         <div [innerHtml]="this.frontPage?.body" class="xss-sanitize"></div>
+      </ng-container>
+      <ng-container *ngIf="useRedesign">
+        <h2>Course Stream</h2>
+        <home-todo *ngFor="let item of stream" [item]="item"></home-todo>
       </ng-container>
     </section>
   </div>
