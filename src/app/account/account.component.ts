@@ -20,7 +20,7 @@ export class AccountComponent implements OnInit {
 
   async ngOnInit(): Promise<void> { 
     this.userService.getProfile(data => this.profile = data);
-    this.configuration = this.config.getAll();
+    this.config.config.subscribe(data => this.configuration = data);
   }
 
   upd(scope: string, key: string, val: boolean): void {

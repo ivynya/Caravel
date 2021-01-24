@@ -23,7 +23,7 @@ export class SidebarComponent implements OnInit {
   constructor(private courseService: CourseService,
               private storage: StorageService,
               private router: Router,
-              config: ConfigurationService) {
+              private config: ConfigurationService) {
     config.config.subscribe({next: data => {
       this.useCompact = data["sidebar"]["compact_mode"].value;
       this.enumerateClasses = data["sidebar"]["enumerate_courses"].value;
@@ -43,7 +43,7 @@ export class SidebarComponent implements OnInit {
   }
 
   toggleCompact(): void {
-    this.useCompact = !this.useCompact;
+    this.config.set("sidebar", "compact_mode", !this.useCompact);
   }
 
   toggleHelp(): void {
