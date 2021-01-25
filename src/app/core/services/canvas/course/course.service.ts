@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { APIBaseService } from '../base.service';
 import { 
   CacheService,
+  ConfigurationService,
   NotificationService,
   StorageService
 } from '../../';
@@ -23,8 +24,9 @@ export class CourseService extends APIBaseService {
   constructor(private roundDate: RoundDatePipe,
               storageService: StorageService,
               notifService: NotificationService,
-              cacheService: CacheService) {
-    super("courses", storageService, notifService, cacheService);
+              cacheService: CacheService,
+              configService: ConfigurationService) {
+    super("courses", storageService, notifService, cacheService, configService);
   }
 
   async getCourse(courseId: number, callback: (data: Course) => void): Promise<void> {

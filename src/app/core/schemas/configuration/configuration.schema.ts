@@ -13,5 +13,5 @@ export interface Configurable {
   // Default value of config
   default: boolean
   // Actual value of config
-  value: boolean
+  value: boolean|string
 }

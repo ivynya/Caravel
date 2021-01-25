@@ -28,7 +28,7 @@ export class ConfigurationService {
     return JSON.parse(this.storage.get('config'));
   }
 
-  set(scope: string, key: string, val: boolean): void {
+  set(scope: string, key: string, val: boolean|string): void {
     this._configuration[scope][key].value = val;
     this._config.next(this._configuration);
     this.storage.set('config', JSON.stringify(this._configuration));

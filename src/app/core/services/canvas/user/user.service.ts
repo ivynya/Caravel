@@ -4,6 +4,7 @@ import { APIBaseService } from '../base.service';
 import { StorageService } from '../../storage/storage.service';
 import { NotificationService } from '../../notification/notification.service';
 import { CacheService } from '../../cache/cache.service';
+import { ConfigurationService } from '../../configuration/configuration.service';
 
 import {
   ActivityStreamGeneric,
@@ -20,8 +21,9 @@ export class UserService extends APIBaseService {
   
   constructor(storage: StorageService,
               notifService: NotificationService,
-              cacheService: CacheService) {
-    super("users", storage, notifService, cacheService);
+              cacheService: CacheService,
+              configService: ConfigurationService) {
+    super("users", storage, notifService, cacheService, configService);
   }
   
   // Get activity stream for user. Ex: "Assignment created", etc.

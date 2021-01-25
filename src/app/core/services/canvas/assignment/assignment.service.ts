@@ -4,6 +4,7 @@ import { APIBaseService } from '../base.service';
 import { NotificationService } from '../../notification/notification.service';
 import { StorageService } from '../../storage/storage.service';
 import { CacheService } from '../../cache/cache.service';
+import { ConfigurationService } from '../../configuration/configuration.service';
 
 import { Assignment, Submission } from '../../../../core/schemas';
 
@@ -14,8 +15,9 @@ export class AssignmentService extends APIBaseService {
 
   constructor(storage: StorageService,
               notifService: NotificationService,
-              cacheService: CacheService) {
-    super("courses", storage, notifService, cacheService);
+              cacheService: CacheService,
+              configService: ConfigurationService) {
+    super("courses", storage, notifService, cacheService, configService);
   }
 
   async getAssignment(cId: number, aId: number,

@@ -29,7 +29,7 @@ export class CourseComponent implements OnInit {
               private route: ActivatedRoute,
               private roundDate: RoundDatePipe) {
     configService.config.subscribe({next: data => {
-      this.useRedesign = data["course"]["use_redesign"].value;
+      this.useRedesign = <boolean>data["course"]["use_redesign"].value;
     }});
   }
 

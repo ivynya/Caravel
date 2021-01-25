@@ -1,14 +1,18 @@
 
-import { CacheService } from '../cache/cache.service';
-import { NotificationService } from '../notification/notification.service';
-import { StorageService } from '../storage/storage.service';
+import { 
+  CacheService,
+  ConfigurationService,
+  NotificationService,
+  StorageService
+} from '../';
 
 export abstract class APIBaseService {
   
   constructor(private scope: string,
               private storage: StorageService,
               private notifService: NotificationService,
-              private cacheService: CacheService) {}
+              private cacheService: CacheService,
+              private configService: ConfigurationService) {}
 
   // Fetcher function shared by all API calls
   // Automatically appends CORS proxy & access token
@@ -23,9 +27,16 @@ export abstract class APIBaseService {
       // Initiate UI for a long running action
       this.notifService.triggerActionLoading();
 
+      // Get app domain
+      const domain = this.configService.get("caravan", "domain").value;
+      if (!domain) {
+        this.notifService.triggerNotification("There is a caravan.domain configuration error.", 0);
+        return;
+      }
+
       // Construct the endpoint URL.
       const token = this.storage.get("oauth_token");
-      const base = `https://mvla.instructure.com/api/v1`;
+      const base = `https://${domain}.instructure.com/api/v1`;
       const url = `${base}/${this.scope}/${endpoint}?access_token=${token}&${params}`;
       // API is always fetched with a CORS proxy due to Canvas limitations
       // Advisable to set up your own (secure) CORS proxy

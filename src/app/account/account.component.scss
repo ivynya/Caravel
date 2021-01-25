@@ -80,6 +80,21 @@
 
       .configurable {
         margin-bottom: 10px;
+
+        div {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          input {
+            background-color: var(--bg-control);
+            border: none;
+            border-radius: 3px;
+            color: var(--text-inverse-primary);
+            padding: 5px 10px;
+            max-width: 100px;
+          }
+        }
       }
     }
   }

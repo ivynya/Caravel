@@ -1,5 +1,13 @@
 
 {
+  "caravan": {
+    "domain": {
+      "name": "App Domain",
+      "type": "text",
+      "default": "mvla",
+      "value": "mvla"
+    }
+  },
   "course": {
     "use_redesign": {
       "name": "Use Redesigned Home",

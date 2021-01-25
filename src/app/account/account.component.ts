@@ -23,7 +23,7 @@ export class AccountComponent implements OnInit {
     this.config.config.subscribe(data => this.configuration = data);
   }
 
-  upd(scope: string, key: string, val: boolean): void {
+  upd(scope: string, key: string, val: boolean|string): void {
     this.config.set(scope, key, val);
   }
 

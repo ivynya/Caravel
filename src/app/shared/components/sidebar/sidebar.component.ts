@@ -25,9 +25,9 @@ export class SidebarComponent implements OnInit {
               private router: Router,
               private config: ConfigurationService) {
     config.config.subscribe({next: data => {
-      this.useCompact = data["sidebar"]["compact_mode"].value;
-      this.enumerateClasses = data["sidebar"]["enumerate_courses"].value;
-      this.enumerateGroups = data["sidebar"]["enumerate_groups"].value;
+      this.useCompact = <boolean>data["sidebar"]["compact_mode"].value;
+      this.enumerateClasses = <boolean>data["sidebar"]["enumerate_courses"].value;
+      this.enumerateGroups = <boolean>data["sidebar"]["enumerate_groups"].value;
     }});
   }
 
