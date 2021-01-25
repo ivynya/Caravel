@@ -1,21 +1,30 @@
 import { Injectable } from '@angular/core';
 
 import { APIBaseService } from '../base.service';
-import { CacheService } from '../../cache/cache.service';
-import { NotificationService } from '../../notification/notification.service';
-import { StorageService } from '../../storage/storage.service';
+import { 
+  CacheService,
+  NotificationService,
+  StorageService
+} from '../../';
+import {
+  Course,
+  ExternalTool,
+  Page,
+  Submission
+} from '../../../schemas';
 
-import { Course, ExternalTool, Page, Submission } from '../../../schemas';
+import { RoundDatePipe } from 'app/core/pipes/round-date/round-date.pipe';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourseService extends APIBaseService {
   
-  constructor(storage: StorageService,
+  constructor(private roundDate: RoundDatePipe,
+              storageService: StorageService,
               notifService: NotificationService,
               cacheService: CacheService) {
-    super("courses", storage, notifService, cacheService);
+    super("courses", storageService, notifService, cacheService);
   }
 
   async getCourse(courseId: number, callback: (data: Course) => void): Promise<void> {
@@ -62,8 +71,9 @@ export class CourseService extends APIBaseService {
 
   async listCourseRecentSubmissions(cId: number,
       callback: (data: Submission[]) => void): Promise<void> {
+    const loadTo = this.roundDate.transform(new Date(new Date().getTime() - 86400000*31));
     const qp = {
-      graded_since: new Date(new Date().getTime() - 86400*1000*31).toISOString(),
+      graded_since: loadTo.toISOString(),
       order_direction: "descending",
       include: "assignment",
     }

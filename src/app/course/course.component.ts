@@ -5,6 +5,8 @@ import { ConfigurationService } from '../core/services';
 import { CourseService, UserService } from '../core/services/canvas';
 import { Course, ExternalTool, Page, PlannerItem, Submission } from '../core/schemas';
 
+import { RoundDatePipe } from 'app/core/pipes/round-date/round-date.pipe';
+
 @Component({
   selector: 'app-course',
   templateUrl: './course.component.html',
@@ -21,11 +23,12 @@ export class CourseComponent implements OnInit {
   // Front page if using legacy home page
   frontPage: Page;
 
-  constructor(private courseService: CourseService,
+  constructor(private configService: ConfigurationService,
+              private courseService: CourseService,
               private userService: UserService,
               private route: ActivatedRoute,
-              private config: ConfigurationService) {
-    config.config.subscribe({next: data => {
+              private roundDate: RoundDatePipe) {
+    configService.config.subscribe({next: data => {
       this.useRedesign = data["course"]["use_redesign"].value;
     }});
   }
@@ -38,8 +41,7 @@ export class CourseComponent implements OnInit {
       });
 
       // Get course stream (max 10 items or 7 days)
-      let now = new Date();
-      now = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      let now = this.roundDate.transform(new Date());
       let loadTo = new Date(now.getTime() + 86400*1000*7);
       this.userService.getCoursePlanner(now, loadTo, `course_${params.id}`, data => {
         this.stream = data;
@@ -55,7 +57,7 @@ export class CourseComponent implements OnInit {
 
   // Synchronize config with settings here.
   syncConfig(val: boolean): void {
-    this.config.set("course", "use_redesign", val);
+    this.configService.set("course", "use_redesign", val);
   }
 
   getSVGIconURL(name: string): string {

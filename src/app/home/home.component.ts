@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { UserService } from '../core/services/canvas';
-import { Course, PlannerItem } from '../core/schemas';
+import { PlannerItem } from '../core/schemas';
+import { RoundDatePipe } from 'app/core/pipes/round-date/round-date.pipe';
 
 @Component({
   selector: 'app-home',
@@ -18,12 +19,12 @@ export class HomeComponent implements OnInit {
   // Records what portion of the stream is loaded.
   streamState: { start: Date, end: Date };
 
-  constructor(private userService: UserService) { }
+  constructor(private roundDate: RoundDatePipe,
+              private userService: UserService) { }
 
   async ngOnInit(): Promise<void> {
     // Initialize streamstate with date, rounded to 12AM.
-    let now = new Date();
-    now = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    let now = this.roundDate.transform(new Date());
     this.streamState = { start: now, end: now };
 
     // Load three "intervals" (up to 30 items or 9 days of content)
