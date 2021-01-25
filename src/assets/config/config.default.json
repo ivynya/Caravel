@@ -23,7 +23,7 @@
       "default": false,
       "value": false
     },
-    "suppress_non_critical": {
+    "extend_critical_alerts": {
       "name": "Show Critical Alerts for Longer",
       "type": "toggle",
       "default": true,

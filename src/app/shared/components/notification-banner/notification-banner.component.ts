@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { C$Notification, C$NotificationType } from '../../../core/schemas';
-import { NotificationService } from '../../../core/services';
+import { ConfigurationService, NotificationService } from '../../../core/services';
 
 @Component({
   selector: 'app-notification-banner',
@@ -10,12 +11,13 @@ import { NotificationService } from '../../../core/services';
 export class NotificationBannerComponent implements OnInit {
   // Number of API calls still loading.
   waitingOn = 0;
-  // Notifications to be displayed
-  notifs: C$Notification[] = [];
+  // Notification with duration to be displayed
+  notifs: [C$Notification, number][] = [];
   // CSS-friendly style for current notif.
   notifStyle: string;
 
-  constructor(private notifService: NotificationService) { }
+  constructor(private configService: ConfigurationService,
+              private notifService: NotificationService) { }
 
   ngOnInit(): void {
     this.notifService.load.subscribe(isLoad => {
@@ -31,14 +33,18 @@ export class NotificationBannerComponent implements OnInit {
     });
 
     this.notifService.notif.subscribe(notif => {
-      this.notifs.push(notif);
-      this.notifStyle = this.convertNotifStyle(this.notifs?.[0].type);
+      // Depending on settings, show critical alerts for 9s vs 3s
+      const ext = this.configService.get("notifications", "extend_critical_alerts").value;
+      const duration = (ext && notif.type < 2) ? 9000 : 3000;
+
+      this.notifs.push([notif, duration]);
+      this.notifStyle = this.convertNotifStyle(this.notifs?.[0][0].type);
 
       setTimeout(() => {
         this.notifs.shift();
         if (this.notifs.length > 0)
-          this.notifStyle = this.convertNotifStyle(this.notifs?.[0].type);
-      }, 3000);
+          this.notifStyle = this.convertNotifStyle(this.notifs?.[0][0].type);
+      }, duration);
     });
   }
 
