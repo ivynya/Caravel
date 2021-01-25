@@ -10,18 +10,7 @@
       <hr>
       <ng-container *ngIf="useRedesign">
         <div class="quick-access">
-          <a *ngFor="let tool of tools" target="_blank" class="accessor">
-            <svg><use [attr.href]="getSVGIconURL(tool.name)"/></svg>
-          </a>
-          <a href="https://drive.google.com" target="_blank" class="accessor">
-            <svg><use href="assets/integrations/icons.svg#googledrive"/></svg>
-          </a>
-          <a href="https://live.com" target="_blank" class="accessor">
-            <svg><use href="assets/integrations/icons.svg#onedrive"/></svg>
-          </a>
-          <a href="https://www.allthingssecured.com/tips/stop-using-zoom/" target="_blank" class="accessor">
-            <svg><use href="assets/integrations/icons.svg#zoom"/></svg>
-          </a>
+          <app-icon-lti *ngFor="let lti of tools" [lti]="lti" [label]="lti.name"></app-icon-lti>
           <a class="accessor">+</a>
         </div>
       </ng-container>

@@ -60,26 +60,4 @@ export class CourseComponent implements OnInit {
     this.configService.set("course", "use_redesign", val);
   }
 
-  getSVGIconURL(name: string): string {
-    const svgName = this.getSVGNameFromTool(name);
-    return `assets/integrations/icons.svg#${svgName}`;
-  }
-
-  private getSVGNameFromTool(name: string): string {
-    switch (name) {
-      case "Flipgrid":
-        return "flipgrid";
-      case "GitHubClassroom":
-        return "github";
-      case "Google Drive":
-        return "googledrive";
-      case "Khan Academy":
-        return "khanacademy";
-      case "OneNote Class Notebook":
-        return "onenote";
-      default:
-        return name.toLowerCase().replace(' ', '');
-    }
-  }
-
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ExternalTool } from '../../../core/schemas';
@@ -8,13 +8,11 @@ import { ExternalTool } from '../../../core/schemas';
   templateUrl: './icon-lti.component.html',
   styleUrls: ['./icon-lti.component.scss']
 })
-export class IconLTIComponent implements OnInit {
+export class IconLTIComponent {
   @Input() lti?: ExternalTool;
   @Input() label?: string;
   
-  constructor(private router: Router) { }
-
-  ngOnInit(): void { }
+  constructor(private router: Router) {}
 
   getSVGIconURL(name: string): string {
     const identifier = this.nameMapper(name);
@@ -24,11 +22,18 @@ export class IconLTIComponent implements OnInit {
   // Matches Canvas integration name to asset name
   nameMapper(name: string): string {
     switch (name) {
-      case "Flipgrid": return "flipgrid";
-      case "Google Drive": return "googledrive";
-      case "Khan Academy": return "khanacademy";
-      case "OneNote Class Notebook": return "microsoftonenote";
-      default: return name.toLowerCase().replace(' ', '');
+      case "Flipgrid":
+        return "flipgrid";
+      case "GitHubClassroom":
+        return "github";
+      case "Google Drive":
+        return "googledrive";
+      case "Khan Academy":
+        return "khanacademy";
+      case "OneNote Class Notebook":
+        return "onenote";
+      default:
+        return name.toLowerCase().replace(' ', '');
     }
   }
 }

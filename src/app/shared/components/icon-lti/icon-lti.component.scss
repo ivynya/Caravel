@@ -1,39 +1,30 @@
 
 .integration {
-  background-color: var(--bg-control-light);
-  border-radius: 3px;
-  color: var(--text-secondary);
+  background-color: var(--bg-control);
+  border-radius: 5px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
 
-  min-width: 30px;
-  height: 30px;
-  margin-right: 15px;
-  padding: 10px;
-
-  position: relative;
-  text-align: center;
+  color: var(--accent-primary);
   text-decoration: none;
-  transition-duration: 0.3s;
 
-  .icon {
-    border-radius: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
+  margin-right: 20px;
+  padding: 10px;
+  height: 30px;
+  width: 30px;
 
-    svg {
-      fill: var(--accent-primary);
-      height: 25px;
-      width: 25px;
-    }
+  transition-duration: 0.2s;
+
+  svg {
+    fill: var(--accent-primary);
+    height: 100%;
+    width: 100%;
   }
 
   &:hover {
-    background-color: var(--bg-control-light-hover);
+    background-color: var(--bg-control-hover);
     transform: scale(1.05);
   }
 }
