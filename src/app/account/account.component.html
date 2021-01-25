@@ -1,48 +1,50 @@
 <main class="page">
-  <section class="content">
-    <div>
-      <h1>Your Account</h1>
-      <hr>
-    </div>
-    <div class="header">
-      <img [src]="profile?.avatar_url" alt="Your Avatar">
+  <div class="content">
+    <section class="account">
       <div>
-        <h2>{{ profile?.name }}</h2>
-        <p><b>{{ profile?.pronouns }}</b></p>
-        <p>Primary Email: {{ profile?.primary_email }}</p>
+        <h1>Your Account</h1>
+        <hr>
       </div>
-    </div>
-    <h3>Biography</h3>
-    <p>{{ profile?.bio }}</p>
-    <div class="settings">
-      <div class="settings-title">
-        <h3>Caravan Settings (Local Only)</h3>
-        <div class="actions">
-          <button (click)="resetConfig()">Reset Config</button>
-          <button (click)="clearCache()">Clear Cache and Config</button>
+      <div class="header">
+        <img [src]="profile?.avatar_url" alt="Your Avatar">
+        <div>
+          <h2>{{ profile?.name }}</h2>
+          <p><b>{{ profile?.pronouns }}</b></p>
+          <p>Primary Email: {{ profile?.primary_email }}</p>
         </div>
       </div>
-      <div *ngFor="let scope of configuration | keyvalue" class="config-scope">
-        <h4>{{ scope.key }}</h4>
-        <div *ngFor="let conf of scope.value | keyvalue" class="configurable">
-          <ng-container *ngIf="conf.value.type === 'toggle'">
-            <label class="switch">{{ conf.value.name }}
-              <input 
-                type="checkbox"
+      <h3>Biography</h3>
+      <p>{{ profile?.bio }}</p>
+      <div class="settings">
+        <div class="settings-title">
+          <h3>Caravan Settings (Local Only)</h3>
+          <div class="actions">
+            <button (click)="resetConfig()">Reset Config</button>
+            <button (click)="clearCache()">Clear Cache and Config</button>
+          </div>
+        </div>
+        <div *ngFor="let scope of configuration | keyvalue" class="config-scope">
+          <h4>{{ scope.key }}</h4>
+          <div *ngFor="let conf of scope.value | keyvalue" class="configurable">
+            <ng-container *ngIf="conf.value.type === 'toggle'">
+              <label class="switch">{{ conf.value.name }}
+                <input 
+                  type="checkbox"
+                  [(ngModel)]="conf.value.value"
+                  (change)="upd(scope.key, conf.key, conf.value.value)">
+                <span class="slider"></span>
+              </label>
+            </ng-container>
+            <div *ngIf="conf.value.type === 'text'">
+              <label>{{ conf.value.name }}</label>
+              <input type="text"
                 [(ngModel)]="conf.value.value"
                 (change)="upd(scope.key, conf.key, conf.value.value)">
-              <span class="slider"></span>
-            </label>
-          </ng-container>
-          <div *ngIf="conf.value.type === 'text'">
-            <label>{{ conf.value.name }}</label>
-            <input type="text"
-              [(ngModel)]="conf.value.value"
-              (change)="upd(scope.key, conf.key, conf.value.value)">
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <span class="spacer"></span>
-  </section>
+      <br><br>
+    </section>
+  </div>
 </main>

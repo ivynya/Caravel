@@ -1,7 +1,5 @@
 
-.content {
-  flex-direction: column;
-
+.account {
   > div {
     margin-bottom: 20px;
   }
@@ -97,9 +95,5 @@
         }
       }
     }
-  }
-
-  .spacer {
-    flex: 1 1;
   }
 }
