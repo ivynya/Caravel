@@ -49,9 +49,11 @@ export class NotificationBannerComponent implements OnInit {
   }
 
   convertNotifStyle(style: C$NotificationType): string {
+    const useCompact = this.configService.get("notifications", "compact_banners").value;
     switch (style) {
       case C$NotificationType.Info:
-        return 'info';
+        if (useCompact) return 'info compact';
+        else return 'info';
       case C$NotificationType.Warning:
         return 'warning';
       case C$NotificationType.Error:

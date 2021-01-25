@@ -34,6 +34,14 @@
 
     &.shown {
       height: 35px;
+
+      &.compact {
+        height: 10px;
+        
+        p {
+          display: none;
+        }
+      }
     }
 
     &.info {
