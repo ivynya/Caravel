@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 
 import { APIBaseService } from '../base.service';
-import { NotificationService } from '../../notification/notification.service';
-import { StorageService } from '../../storage/storage.service';
-import { CacheService } from '../../cache/cache.service';
-import { ConfigurationService } from '../../configuration/configuration.service';
+import {
+  CacheService,
+  ConfigurationService,
+  NotificationService,
+  StorageService
+} from '../../';
 
 import { Assignment, Submission } from '../../../../core/schemas';
 
@@ -20,8 +22,8 @@ export class AssignmentService extends APIBaseService {
     super("courses", storage, notifService, cacheService, configService);
   }
 
-  async getAssignment(cId: number, aId: number,
-      callback: (data: Assignment) => void): Promise<void> {
+  getAssignment(cId: number, aId: number,
+                callback: (data: Assignment) => void): void {
     const cached = this.getCached(`${cId}/assignments/${aId}`);
     if (cached) callback(JSON.parse(cached));
 
@@ -32,8 +34,8 @@ export class AssignmentService extends APIBaseService {
   }
 
   // Given course, assignment, and user ID, get latest submission
-  async getLatestSubmission(cId: number, aId: number,
-      callback: (data: Submission) => void): Promise<void> {
+  getLatestSubmission(cId: number, aId: number,
+                      callback: (data: Submission) => void): void {
     const cached = this.getCached(`${cId}/assignments/${aId}/submissions/self`);
     if (cached) callback(JSON.parse(cached));
     

@@ -10,7 +10,7 @@ describe('SubmitterComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ SubmitterComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

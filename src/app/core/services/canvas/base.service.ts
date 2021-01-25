@@ -28,7 +28,7 @@ export abstract class APIBaseService {
       this.notifService.triggerActionLoading();
 
       // Get app domain
-      const domain = this.configService.get("caravan", "domain").value;
+      const domain = <boolean>this.configService.get("caravan", "domain").value;
       if (!domain) {
         this.notifService.triggerNotification("There is a caravan.domain configuration error.", 0);
         return;

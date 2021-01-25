@@ -3,6 +3,7 @@ import { NavigationEnd, Router } from '@angular/router';
 
 import { CourseService } from '../../../core/services/canvas';
 import { ConfigurationService, StorageService } from '../../../core/services';
+
 import { Course } from '../../../core/schemas';
 
 @Component({

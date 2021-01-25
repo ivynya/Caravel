@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 
 import { APIBaseService } from '../base.service';
-import { StorageService } from '../../storage/storage.service';
-import { NotificationService } from '../../notification/notification.service';
-import { CacheService } from '../../cache/cache.service';
-import { ConfigurationService } from '../../configuration/configuration.service';
-
+import { 
+  CacheService,
+  ConfigurationService,
+  NotificationService,
+  StorageService
+} from '../../';
 import {
   ActivityStreamGeneric,
   PlannerItem,
@@ -47,7 +48,7 @@ export class UserService extends APIBaseService {
   }
 
   // Get global "stream" of future items/events, to do
-  async getUpcoming(callback: (data: Array<TodoAssignment|TodoEvent>) => void): Promise<void> {
+  getUpcoming(callback: (data: Array<TodoAssignment|TodoEvent>) => void): void {
     const cached = this.getCached("self/upcoming_events");
     if (cached) callback(JSON.parse(cached));
     
@@ -58,8 +59,8 @@ export class UserService extends APIBaseService {
   }
 
   // Gets user planner items (assignments, events, etc.)
-  async getPlanner(start: Date, end: Date,
-      callback: (data: PlannerItem[]) => void): Promise<void> {
+  getPlanner(start: Date, end: Date,
+             callback: (data: PlannerItem[]) => void): void {
     const qp = {
       start_date: start.toISOString(),
       end_date: end.toISOString()
@@ -75,8 +76,7 @@ export class UserService extends APIBaseService {
   }
 
   // Gets user planner items for specified courses/groups
-  async getCoursePlanner(start: Date, end: Date, codes: string,
-      callback: (data: PlannerItem[]) => void): Promise<void> {
+  getCoursePlanner(start: Date, end: Date, codes: string, callback: (data: PlannerItem[]) => void): void {
     const qp = {
       start_date: start.toISOString(),
       end_date: end.toISOString(),
@@ -93,7 +93,7 @@ export class UserService extends APIBaseService {
   }
 
   // Gets user profile. Used on accounts page.
-  async getProfile(callback: (data: Profile) => void): Promise<void> {
+  getProfile(callback: (data: Profile) => void): void {
     const cached = this.getCached("self/profile");
     if (cached) callback(JSON.parse(cached));
     

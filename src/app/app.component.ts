@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(async params => {
+    this.route.params.subscribe(() => {
       // User has not provided access token
       // Redirect to authorization page
       if (!this.store.has("oauth_token")) {

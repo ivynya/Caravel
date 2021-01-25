@@ -11,7 +11,7 @@ export class ToggleComponent {
 
   constructor() { }
 
-  change(newVal: boolean) {
+  change(newVal: boolean): void {
     this.value = newVal;
     this.valueChange.emit(this.value);
   }

@@ -5,7 +5,7 @@ import { ConfigurationService } from '../core/services';
 import { CourseService, UserService } from '../core/services/canvas';
 import { Course, ExternalTool, Page, PlannerItem, Submission } from '../core/schemas';
 
-import { RoundDatePipe } from 'app/core/pipes/round-date/round-date.pipe';
+import { RoundDatePipe } from 'app/core/pipes';
 
 @Component({
   selector: 'app-course',
@@ -41,8 +41,8 @@ export class CourseComponent implements OnInit {
       });
 
       // Get course stream (max 10 items or 7 days)
-      let now = this.roundDate.transform(new Date());
-      let loadTo = new Date(now.getTime() + 86400*1000*7);
+      const now = this.roundDate.transform(new Date());
+      const loadTo = new Date(now.getTime() + 86400*1000*7);
       this.userService.getCoursePlanner(now, loadTo, `course_${params.id}`, data => {
         this.stream = data;
       });

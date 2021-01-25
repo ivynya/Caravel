@@ -1,5 +1,5 @@
 
- export interface TodoEvent {
+export interface TodoEvent {
   id: number,
   title: string,
   description: string,

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Assignment, Course, Submission } from 'app/core/schemas';
-import { AssignmentService, CourseService } from 'app/core/services/canvas';
+import { Assignment, Course, Submission } from '../core/schemas';
+import { AssignmentService, CourseService } from '../core/services/canvas';
 
 @Component({
   selector: 'app-assignment',
@@ -11,42 +11,40 @@ import { AssignmentService, CourseService } from 'app/core/services/canvas';
 })
 export class AssignmentComponent implements OnInit {
   assignment: Assignment;
+  course: Course;
+
   latestSubmission: Submission;
   unlimitedAttempts: boolean;
   isFocusSubmission = true;
-
-  course: Course;
 
   constructor(private assignmentService: AssignmentService,
               private courseService: CourseService,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void { 
-    this.route.params.subscribe(async params => {
+    this.route.params.subscribe(params => {
       // Get assignment from API/Cache
-      this.assignmentService.getAssignment(params.courseId, params.assignmentId,
-        assignment => {
-          // Set assignment information.
-          this.assignment = assignment;
-          this.unlimitedAttempts = assignment.allowed_attempts === -1;
-
-          // Get related course
-          this.courseService.getCourse(this.assignment.course_id, course => {
-            this.course = course;
-          });
-        });
+      this.assignmentService.getAssignment(params.cId, params.aId, a => this.setAssignment(a));
 
       // API limitation means that only the latest submission can be
       // retrived. No further submissions, unless admin privileges.
-      this.assignmentService.getLatestSubmission(params.courseId, params.assignmentId, submission => {
+      this.assignmentService.getLatestSubmission(params.cId, params.aId, submission => {
         this.latestSubmission = submission;
         
-        console.log(submission);
         // If no submission, remove viewing option
         if (!submission.submitted_at)
           this.isFocusSubmission = false;
       });
     });
+  }
+
+  private setAssignment(assignment: Assignment): void {
+    // Set assignment information.
+    this.assignment = assignment;
+    this.unlimitedAttempts = (assignment.allowed_attempts === -1);
+
+    // Get related course
+    this.courseService.getCourse(this.assignment.course_id, course => this.course = course);
   }
 
   focusSubmission(t: boolean): void {

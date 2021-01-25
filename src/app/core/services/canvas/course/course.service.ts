@@ -14,7 +14,7 @@ import {
   Submission
 } from '../../../schemas';
 
-import { RoundDatePipe } from 'app/core/pipes/round-date/round-date.pipe';
+import { RoundDatePipe } from '../../../../core/pipes';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,7 @@ export class CourseService extends APIBaseService {
     super("courses", storageService, notifService, cacheService, configService);
   }
 
-  async getCourse(courseId: number, callback: (data: Course) => void): Promise<void> {
+  getCourse(courseId: number, callback: (data: Course) => void): void {
     const cached = this.getCached(`${courseId}`);
     if (cached) callback(JSON.parse(cached));
     
@@ -39,8 +39,7 @@ export class CourseService extends APIBaseService {
       .catch(ex => console.error(ex));
   }
 
-  async getCourseFrontPage(courseId: number,
-      callback: (data: Page) => void): Promise<void> {
+  getCourseFrontPage(courseId: number, callback: (data: Page) => void): void {
     const cached = this.getCached(`${courseId}/front_page`);
     if (cached) callback(JSON.parse(cached));
 
@@ -50,7 +49,7 @@ export class CourseService extends APIBaseService {
       .catch(ex => console.error(ex));
   }
 
-  async listCourses(callback: (data: Course[]) => void): Promise<void> {
+  listCourses(callback: (data: Course[]) => void): void {
     const cached = this.getCached("");
     if (cached) callback(JSON.parse(cached));
 
@@ -60,8 +59,7 @@ export class CourseService extends APIBaseService {
       .catch(ex => console.error(ex));
   }
 
-  async listExternalTools(courseId: number,
-      callback: (data: ExternalTool[]) => void): Promise<void> {
+  listExternalTools(courseId: number, callback: (data: ExternalTool[]) => void): void {
     const cached = this.getCached(`${courseId}/external_tools`);
     if (cached) callback(JSON.parse(cached));
 
@@ -71,8 +69,7 @@ export class CourseService extends APIBaseService {
       .catch(ex => console.error(ex));
   }
 
-  async listCourseRecentSubmissions(cId: number,
-      callback: (data: Submission[]) => void): Promise<void> {
+  listCourseRecentSubmissions(cId: number, callback: (data: Submission[]) => void): void {
     const loadTo = this.roundDate.transform(new Date(new Date().getTime() - 86400000*31));
     const qp = {
       graded_since: loadTo.toISOString(),

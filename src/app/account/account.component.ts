@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CacheService, ConfigurationService, NotificationService } from '../core/services';
+import {
+  CacheService,
+  ConfigurationService,
+  NotificationService
+} from '../core/services';
 import { UserService } from '../core/services/canvas';
-import { Configuration, Configurable, Profile } from '../core/schemas';
+import { Configuration, Profile } from '../core/schemas';
 
 @Component({
   selector: 'app-account',
@@ -18,7 +22,7 @@ export class AccountComponent implements OnInit {
               private notif: NotificationService,
               private userService: UserService) { }
 
-  async ngOnInit(): Promise<void> { 
+  ngOnInit(): void { 
     this.userService.getProfile(data => this.profile = data);
     this.config.config.subscribe(data => this.configuration = data);
   }

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { UserService } from '../core/services/canvas';
 import { PlannerItem } from '../core/schemas';
-import { RoundDatePipe } from 'app/core/pipes/round-date/round-date.pipe';
+
+import { RoundDatePipe } from 'app/core/pipes';
 
 @Component({
   selector: 'app-home',
@@ -22,9 +23,9 @@ export class HomeComponent implements OnInit {
   constructor(private roundDate: RoundDatePipe,
               private userService: UserService) { }
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
     // Initialize streamstate with date, rounded to 12AM.
-    let now = this.roundDate.transform(new Date());
+    const now = this.roundDate.transform(new Date());
     this.streamState = { start: now, end: now };
 
     // Load three "intervals" (up to 30 items or 9 days of content)
@@ -50,7 +51,7 @@ export class HomeComponent implements OnInit {
   // Populates stream with events from API
   private populateStream(upcoming: PlannerItem[]): void {
     upcoming.forEach(item => {
-      let date = this.formatDate(item.plannable_date);
+      const date = this.formatDate(item.plannable_date);
 
       let complete = false;
       if (item.submissions.submitted ||
@@ -61,25 +62,27 @@ export class HomeComponent implements OnInit {
         complete = true;
 
       const index = this.stream?.findIndex(i => i.id == date);
-      if (index == -1)
+      if (index == -1) {
         if (complete)
           this.stream.push({ id: date, items: [], completed: [item] });
         else
           this.stream.push({ id: date, items: [item], completed: [] });
-      else
+      }
+      else {
         if (complete)
           this.stream[index].completed.push(item);
         else
           this.stream[index].items.push(item);
+      }
     });
   }
 
   // Formats a datestring into a human readable date.
   private formatDate(date: string): string {
-    let f = new Date(date);
-    let today = new Date();
-    let tmmrw = new Date(today.getTime() + 86400*1000);
-    let ystdy = new Date(today.getTime() - 86400*1000);
+    const f = new Date(date);
+    const today = new Date();
+    const tmmrw = new Date(today.getTime() + 86400*1000);
+    const ystdy = new Date(today.getTime() - 86400*1000);
 
     if (f.toDateString() === today.toDateString())
       return "Today";

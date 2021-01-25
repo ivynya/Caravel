@@ -1,7 +1,7 @@
 <div class="todo">
   <div class="actions">
     <label class="checkbox">
-      <input class="checkbox" type="checkbox" name="" id="" [(ngModel)]="isComplete">
+      <input class="checkbox" type="checkbox" [(ngModel)]="isComplete">
       <span class="checkmark"></span>
     </label>
   </div>
@@ -75,17 +75,15 @@
         {{ item.plannable.title }}
       </a></h3>
       <p class="subtext">
-        <span>Wiki Page</span>
-        <span class="separator"></span>
         <span>Due {{ item.plannable.todo_date | date: "E L/d h:mm a"}}</span>
+        <span class="separator"></span>
+        <span>Wiki Page</span>
         <span class="separator"></span>
         <span><a [routerLink]="'/courses/'+item.course_id">{{ item.context_name }}</a></span>
       </p>
     </div>
     <div *ngSwitchDefault>
-      <h3>
-        {{ item.plannable.title }}
-      </h3>
+      <h3>{{ item.plannable.title }}</h3>
       <p class="subtext">
         <span>{{ item.plannable_type }}</span>
       </p>
