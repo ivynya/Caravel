@@ -15,6 +15,7 @@ import { WebviewDirective } from './directives/';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CoreModule } from 'app/core/core.module';
+import { ToggleComponent } from './components/toggle/toggle.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CoreModule } from 'app/core/core.module';
     SidebarComponent,
     TodoComponent,
     WebviewDirective,
-    NotificationBannerComponent
+    NotificationBannerComponent,
+    ToggleComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +41,8 @@ import { CoreModule } from 'app/core/core.module';
     IconLTIComponent,
     SidebarComponent,
     TodoComponent,
-    NotificationBannerComponent
+    NotificationBannerComponent,
+    ToggleComponent
   ]
 })
 export class SharedModule {}

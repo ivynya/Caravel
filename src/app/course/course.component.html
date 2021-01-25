@@ -3,10 +3,9 @@
     <section>
       <div class="title-row">
         <h1>{{ course?.name }}</h1>
-        <label class="switch">Use Redesign
-          <input type="checkbox" [(ngModel)]="useRedesign" (change)="syncConfig(useRedesign)">
-          <span class="slider"></span>
-        </label>
+        <app-toggle [(value)]="useRedesign" (change)="syncConfig(useRedesign)">
+          Use Redesign
+        </app-toggle>
       </div>
       <hr>
       <ng-container *ngIf="useRedesign">
@@ -52,6 +51,7 @@
       <ng-container *ngIf="useRedesign">
         <h2>Course Stream</h2>
         <home-todo *ngFor="let item of stream" [item]="item"></home-todo>
+        <br><br>
       </ng-container>
     </section>
   </div>

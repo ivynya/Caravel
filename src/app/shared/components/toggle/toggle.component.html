@@ -1,0 +1,8 @@
+
+<label class="toggle">
+  <ng-content></ng-content>
+  <input type="checkbox"
+    [(ngModel)]="value"
+    (change)="change(value)">
+  <span class="slider"></span>
+</label>
