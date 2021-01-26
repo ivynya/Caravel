@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-
-import { ElectronService } from './core/services';
+import { Title } from '@angular/platform-browser';
+import { NavigationStart, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { AppConfig } from '../environments/environment';
 
 import { StorageService } from './core/services';
 
@@ -13,29 +11,24 @@ import { StorageService } from './core/services';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor(
-    private store: StorageService,
-    electronService: ElectronService,
-    private translate: TranslateService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {
-    this.translate.setDefaultLang('en');
-    console.log('AppConfig', AppConfig);
 
-    if (electronService.isElectron)
-      console.log(process.env);
-    else
-      console.log('Running in browser');
+  constructor(private storageService: StorageService,
+              private titleService: Title,
+              private translate: TranslateService,
+              private router: Router) {
+    this.translate.setDefaultLang('en');
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(() => {
-      // User has not provided access token
-      // Redirect to authorization page
-      if (!this.store.has("oauth_token")) {
+    this.router.events.subscribe((e) => {
+      if (!(e instanceof NavigationStart)) return;
+
+      // Prompt auth if no token found
+      if (!this.storageService.has("oauth_token"))
         this.router.navigateByUrl("/auth");
-      }
+
+      // Set default page title
+      this.titleService.setTitle("Caravan");
     });
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 
 import { Assignment, Course, Submission } from '../core/schemas';
@@ -19,6 +20,7 @@ export class AssignmentComponent implements OnInit {
 
   constructor(private assignmentService: AssignmentService,
               private courseService: CourseService,
+              private titleService: Title,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void { 
@@ -42,6 +44,7 @@ export class AssignmentComponent implements OnInit {
     // Set assignment information.
     this.assignment = assignment;
     this.unlimitedAttempts = (assignment.allowed_attempts === -1);
+    this.titleService.setTitle(`${assignment.name} | Caravan`);
 
     // Get related course
     this.courseService.getCourse(this.assignment.course_id, course => this.course = course);

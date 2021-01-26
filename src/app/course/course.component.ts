@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 
 import { ConfigurationService } from '../core/services';
@@ -26,6 +27,7 @@ export class CourseComponent implements OnInit {
   constructor(private configService: ConfigurationService,
               private courseService: CourseService,
               private userService: UserService,
+              private titleService: Title,
               private route: ActivatedRoute,
               private roundDate: RoundDatePipe) {
     configService.config.subscribe({next: data => {
@@ -35,7 +37,10 @@ export class CourseComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.courseService.getCourse(params.id, course => this.course = course);
+      this.courseService.getCourse(params.id, course => {
+        this.course = course;
+        this.titleService.setTitle(`${course.name} | Caravan`);
+      });
       this.courseService.listCourseRecentSubmissions(params.id, data => {
         this.recent = data.slice(0, 3);
       });
