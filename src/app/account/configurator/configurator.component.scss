@@ -1,0 +1,64 @@
+
+.configurator {
+  border: var(--border-secondary) 2px solid;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  margin-top: 20px;
+  padding: 20px;
+
+  h3 {
+    margin: 0;
+  }
+
+  button {
+    background-color: transparent;
+    border: var(--border-primary) 2px solid;
+    border-radius: 5px;
+    color: var(--text-inverse-primary);
+    margin-left: 5px;
+    padding: 5px 10px;
+    transition-duration: 0.2s;
+
+    &:hover {
+      border-color: var(--warning);
+    }
+  }
+
+  .settings-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    .actions {
+      display: flex;
+    }
+  }
+
+  .config-scope {
+    margin-bottom: 20px;
+    width: 45%;
+
+    .configurable {
+      margin-bottom: 10px;
+
+      div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        input {
+          background-color: var(--bg-control);
+          border: none;
+          border-radius: 3px;
+          color: var(--text-inverse-primary);
+          padding: 5px 10px;
+          max-width: 100px;
+        }
+      }
+    }
+  }
+}
