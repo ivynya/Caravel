@@ -2,47 +2,7 @@
   <div class="content">
     <course-nav *ngIf="course" [course]="course"></course-nav>
     <section class="course-home">
-      <div class="title-row">
-        <h1>{{ course?.name }}</h1>
-        <app-toggle [(value)]="useRedesign" (change)="syncConfig(useRedesign)">
-          Use Redesign
-        </app-toggle>
-      </div>
-      <hr>
-      <ng-container *ngIf="useRedesign">
-        <div class="quick-access">
-          <app-icon-lti *ngFor="let lti of tools" [lti]="lti" [label]="lti.name"></app-icon-lti>
-          <a class="accessor">+</a>
-        </div>
-      </ng-container>
-      <h2>Recent Feedback</h2>
-      <div class="recent-item-bar">
-        <div class="item" *ngFor="let submission of recent">
-          <h3><a [routerLink]="'/c/'+course?.id+'/a/'+submission.assignment.id">
-            {{ submission.assignment.name }}
-          </a></h3>
-          <em>
-            <span>Submitted {{ submission.submitted_at | date }}</span>
-            <span *ngIf="submission.late" class="late">(Late)</span>
-          </em>
-          <blockquote>
-            Grade:
-            <span *ngIf="submission.graded_at">{{ submission.score }}</span>
-            <span *ngIf="!submission.graded_at">ungraded</span>
-            / {{ submission.assignment.points_possible }}
-          </blockquote>
-        </div>
-      </div>
-      <ng-container *ngIf="!useRedesign">
-        <hr>
-        <h2>Course Home Page</h2>
-        <div [innerHtml]="this.frontPage?.body" class="xss-sanitize"></div>
-      </ng-container>
-      <ng-container *ngIf="useRedesign">
-        <h2>Course Stream</h2>
-        <home-todo *ngFor="let item of stream" [item]="item"></home-todo>
-        <br><br>
-      </ng-container>
+      <router-outlet></router-outlet>
     </section>
   </div>
 </main>

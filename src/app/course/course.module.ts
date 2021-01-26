@@ -8,9 +8,10 @@ import { SharedModule } from '../shared/shared.module';
 
 import { RoundDatePipe } from 'app/core/pipes/round-date/round-date.pipe';
 import { CourseNavComponent } from './course-nav/course-nav.component';
+import { CourseHomeComponent } from './course-home/course-home.component';
 
 @NgModule({
-  declarations: [CourseComponent, CourseNavComponent],
+  declarations: [CourseComponent, CourseNavComponent, CourseHomeComponent],
   imports: [CommonModule, SharedModule, CourseRoutingModule],
   providers: [RoundDatePipe]
 })

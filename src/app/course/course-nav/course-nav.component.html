@@ -1,26 +1,26 @@
 
 <nav class="course-nav">
-  <a [routerLink]="'/c/'+course.id">
+  <a [routerLink]="['/course/', course.id]">
     <img src="assets/icons/Icon_Home.svg" alt="">
     <span>Course Home</span>
   </a>
-  <a [routerLink]="'/c/'+course.id+'/assignments'">
+  <a [routerLink]="['/course/', course.id, 'assignments']">
     <img src="assets/icons/Icon_Default.svg" alt="">
     <span>Assignments</span>
   </a>
-  <a [routerLink]="'/c/'+course.id+'/discussions'">
+  <a [routerLink]="['/course/', course.id, 'discussions']">
     <img src="assets/icons/Icon_Default.svg" alt="">
     <span>Discussions</span>
   </a>
-  <a [routerLink]="'/c/'+course.id+'/grades'">
+  <a [routerLink]="['/course/', course.id, 'grades']">
     <img src="assets/icons/Icon_Default.svg" alt="">
     <span>Grades</span>
   </a>
-  <a [routerLink]="'/c/'+course.id+'/modules'">
+  <a [routerLink]="['/course/', course.id, 'modules']">
     <img src="assets/icons/Icon_Default.svg" alt="">
     <span>Modules</span>
   </a>
-  <a [routerLink]="'/c/'+course.id+'/quizzes'">
+  <a [routerLink]="['/course/', course.id, 'quizzes']">
     <img src="assets/icons/Icon_Default.svg" alt="">
     <span>Quizzes</span>
   </a>
