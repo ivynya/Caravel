@@ -48,7 +48,8 @@ export abstract class APIBaseService {
         .then(res => res.text())
         .then(res => {
           // Cache value in localstorage
-          this.cache(`${endpoint}.${params}`, res);
+          if (params) this.cache(`${endpoint}.${params}`, res);
+          else this.cache(`${endpoint}`, res);
 
           // Resolve action and inform user
           this.notifService.triggerActionFinished();
