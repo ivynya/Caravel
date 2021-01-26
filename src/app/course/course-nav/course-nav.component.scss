@@ -1,0 +1,56 @@
+
+.course-nav {
+  background-color: var(--bg-tertiary);
+  border-radius: 5px;
+  box-shadow: var(--box-shadow-secondary) 2px 2px 10px;
+  display: flex;
+  flex-direction: column;
+
+  height: max-content;
+  width: 50px;
+  margin-right: 3rem;
+
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  transition-duration: 0.25s;
+  transition-delay: 0.1s;
+
+  a {
+    background-color: transparent;
+    border-radius: 5px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+
+    white-space: nowrap;
+    text-decoration: none;
+
+    overflow: hidden;
+    padding: 10px;
+    transition-duration: 0.2s;
+
+    img {
+      height: 30px;
+      width: 30px;
+      margin-right: 10px;
+    }
+
+    span {
+      display: none;
+    }
+
+    &:hover {
+      background-color: var(--bg-control-hover);
+    }
+  }
+
+  &:hover {
+    width: 200px;
+    margin-right: calc(-150px + 3rem);
+
+    a span {
+      display: unset;
+    }
+  }
+}

@@ -7,8 +7,9 @@
 
 .recent-item-bar {
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 30px;
-  max-width: 100%;
+  width: 100%;
 
   .item {
     border: var(--border-secondary) 2px solid;
@@ -24,6 +25,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
     transition-duration: 0.5s;
+    transition-delay: 0.1s;
 
     h3, p {
       margin: 0;
@@ -69,7 +71,7 @@
     }
 
     &:hover {
-      flex: 2 1;
+      flex: 1.5 1;
     }
   }
 }
@@ -87,25 +89,17 @@
     background-color: var(--bg-control);
     border-radius: 5px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
 
     color: var(--accent-primary);
     text-decoration: none;
 
-    margin-right: 20px;
     padding: 10px;
     height: 30px;
     width: 30px;
 
     transition-duration: 0.2s;
-
-    svg {
-      fill: var(--accent-primary);
-      height: 100%;
-      width: 100%;
-    }
 
     &:hover {
       background-color: var(--bg-control-hover);
