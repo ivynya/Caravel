@@ -24,50 +24,30 @@ import { RoundDatePipe } from '../../../../core/pipes';
 export class CourseService extends APIBaseService {
   
   constructor(private roundDate: RoundDatePipe,
-              storageService: StorageService,
-              notifService: NotificationService,
-              cacheService: CacheService,
-              configService: ConfigurationService) {
-    super("courses", storageService, notifService, cacheService, configService);
+              cache: CacheService,
+              config: ConfigurationService,
+              notif: NotificationService,
+              storage: StorageService) {
+    super("courses", storage, notif, cache, config);
   }
 
-  getCourse(courseId: number, callback: (data: Course) => void): void {
-    const cached = this.getCached(`${courseId}`);
-    if (cached) callback(JSON.parse(cached));
-    
-    this.fetcher(`${courseId}`, "GET")
-      .then(res => JSON.parse(res))
-      .then(res => callback(<Course>res))
+  getCourse(cId: number, callback: (data: Course) => void): void {
+    this.xfetch(`${cId}`, res => {callback(res.data)})
       .catch(ex => console.error(ex));
   }
 
-  getCourseFrontPage(courseId: number, callback: (data: Page) => void): void {
-    const cached = this.getCached(`${courseId}/front_page`);
-    if (cached) callback(JSON.parse(cached));
-
-    this.fetcher(`${courseId}/front_page`, "GET")
-      .then(res => JSON.parse(res))
-      .then(res => callback(<Page>res))
+  getCourseFrontPage(cId: number, callback: (data: Page) => void): void {
+    this.xfetch(`${cId}/front_page`, res => {callback(res.data)})
       .catch(ex => console.error(ex));
   }
 
   listCourses(callback: (data: Course[]) => void): void {
-    const cached = this.getCached("");
-    if (cached) callback(JSON.parse(cached));
-
-    this.fetcher("", "GET")
-      .then(res => JSON.parse(res))
-      .then(res => callback(<Course[]>res))
+    this.xfetch("", res => {callback(res.data)})
       .catch(ex => console.error(ex));
   }
 
-  listExternalTools(courseId: number, callback: (data: ExternalTool[]) => void): void {
-    const cached = this.getCached(`${courseId}/external_tools`);
-    if (cached) callback(JSON.parse(cached));
-
-    this.fetcher(`${courseId}/external_tools`, "GET")
-      .then(res => JSON.parse(res))
-      .then(res => callback(<ExternalTool[]>res))
+  listExternalTools(cId: number, callback: (data: ExternalTool[]) => void): void {
+    this.xfetch(`${cId}/external_tools`, res => {callback(res.data)})
       .catch(ex => console.error(ex));
   }
 
@@ -78,33 +58,20 @@ export class CourseService extends APIBaseService {
       order_direction: "descending",
       include: "assignment",
     }
-    const query = new URLSearchParams(qp).toString();
-    const cached = this.getCached(`${cId}/students/submissions?${query}`);
-    if (cached) callback(JSON.parse(cached));
 
-    this.fetchp(`${cId}/students/submissions`, query, "GET")
-      .then(res => JSON.parse(res))
-      .then(res => callback(<Submission[]>res))
+    this.xfetch(`${cId}/students/submissions`,
+                res => {callback(res.data)},
+                { params: new URLSearchParams(qp) })
       .catch(ex => console.error(ex));
   }
 
   listModules(cId: number, callback: (data: Module[]) => void): void {
-    const cached = this.getCached(`${cId}/modules`);
-    if (cached) callback(JSON.parse(cached));
-
-    this.fetcher(`${cId}/modules`, "GET")
-      .then(res => JSON.parse(res))
-      .then(res => callback(<Module[]>res))
+    this.xfetch(`${cId}/modules`, res => {callback(res.data)})
       .catch(ex => console.error(ex));
   }
 
   getModuleItems(cId: number, mId: number, callback: (data: ModuleItem[]) => void): void {
-    const cached = this.getCached(`${cId}/modules/${mId}/items`);
-    if (cached) callback(JSON.parse(cached));
-
-    this.fetcher(`${cId}/modules/${mId}/items`, "GET")
-      .then(res => JSON.parse(res))
-      .then(res => callback(<ModuleItem[]>res))
+    this.xfetch(`${cId}/modules/${mId}/items`, res => {callback(res.data)})
       .catch(ex => console.error(ex));
   }
 

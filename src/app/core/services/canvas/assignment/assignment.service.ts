@@ -24,24 +24,14 @@ export class AssignmentService extends APIBaseService {
 
   getAssignment(cId: number, aId: number,
                 callback: (data: Assignment) => void): void {
-    const cached = this.getCached(`${cId}/assignments/${aId}`);
-    if (cached) callback(JSON.parse(cached));
-
-    this.fetcher(`${cId}/assignments/${aId}`, "GET")
-      .then(res => JSON.parse(res))
-      .then(res => callback(<Assignment>res))
+    this.xfetch(`${cId}/assignments/${aId}`, res => {callback(res.data)})
       .catch(ex => console.error(ex));
   }
 
   // Given course, assignment, and user ID, get latest submission
   getLatestSubmission(cId: number, aId: number,
                       callback: (data: Submission) => void): void {
-    const cached = this.getCached(`${cId}/assignments/${aId}/submissions/self`);
-    if (cached) callback(JSON.parse(cached));
-    
-    this.fetcher(`${cId}/assignments/${aId}/submissions/self`, "GET")
-      .then(res => JSON.parse(res))
-      .then(res => callback(<Submission>res))
+    this.xfetch(`${cId}/assignments/${aId}/submissions/self`, res => {callback(res.data)})
       .catch(ex => console.error(ex));
   }
 

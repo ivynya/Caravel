@@ -35,11 +35,14 @@ export class HomeComponent implements OnInit {
   private getItems(intervals: number) {
     // Get new interval of items in 3 day segments (max 10 items)
     const next = new Date(this.streamState.end.getTime() + 86400*1000*3);
-    this.userService.getPlanner(this.streamState.end, next, items => {
-      this.populateStream(items);
+    this.userService.getPlanner(this.streamState.end, next, res => {
+      // Ignore cached values (for now)
+      if (res.isCache) return;
+
+      this.populateStream(res.data);
 
       // Record what part of the stream is loaded.
-      const endDate = new Date(items[items.length-1].plannable_date);
+      const endDate = new Date(res.data[res.data.length-1].plannable_date);
       this.streamState.end = new Date(endDate.getTime() + 1);
 
       // If target not reached, do a recursion

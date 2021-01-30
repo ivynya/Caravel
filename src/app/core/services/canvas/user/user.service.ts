@@ -1,19 +1,13 @@
 import { Injectable } from '@angular/core';
 
-import { APIBaseService } from '../base.service';
+import { APIBaseService, Result } from '../base.service';
 import { 
   CacheService,
   ConfigurationService,
   NotificationService,
   StorageService
 } from '../../';
-import {
-  ActivityStreamGeneric,
-  PlannerItem,
-  Profile,
-  TodoAssignment,
-  TodoEvent
-} from '../../../schemas';
+import { PlannerItem, Profile } from '../../../schemas';
 
 @Injectable({
   providedIn: 'root'
@@ -26,80 +20,37 @@ export class UserService extends APIBaseService {
               configService: ConfigurationService) {
     super("users", storage, notifService, cacheService, configService);
   }
-  
-  // Get activity stream for user. Ex: "Assignment created", etc.
-  async getActivityStream(): Promise<ActivityStreamGeneric[]> {
-    return new Promise((resolve, reject) => {
-      this.fetcher("self/activity_stream", "GET")
-        .then(res => JSON.parse(res))
-        .then(res => resolve(<ActivityStreamGeneric[]>res))
-        .catch(ex => reject(ex));
-    });
-  }
-
-  // Gets users remaining todo items. Does not include events.
-  async getTodo(): Promise<TodoAssignment[]> {
-    return new Promise((resolve, reject) => {
-      this.fetcher("self/todo", "GET")
-        .then(res => JSON.parse(res))
-        .then(res => resolve(<TodoAssignment[]>res))
-        .catch(ex => reject(ex));
-    });
-  }
-
-  // Get global "stream" of future items/events, to do
-  getUpcoming(callback: (data: Array<TodoAssignment|TodoEvent>) => void): void {
-    const cached = this.getCached("self/upcoming_events");
-    if (cached) callback(JSON.parse(cached));
-    
-    this.fetcher("self/upcoming_events", "GET")
-      .then(res => JSON.parse(res))
-      .then(res => callback(<Array<TodoAssignment|TodoEvent>>res))
-      .catch(ex => console.error(ex));
-  }
 
   // Gets user planner items (assignments, events, etc.)
-  getPlanner(start: Date, end: Date,
-             callback: (data: PlannerItem[]) => void): void {
+  getPlanner(start: Date, end: Date, callback: (data: Result) => void): void {
     const qp = {
       start_date: start.toISOString(),
       end_date: end.toISOString()
     }
-    const query = new URLSearchParams(qp).toString();
-    const cached = this.getCached(`self/planner/items?${query}`);
-    //if (cached) callback(JSON.parse(cached));
     
-    this.fetchp('self/planner/items', query, "GET")
-      .then(res => JSON.parse(res))
-      .then(res => callback(<PlannerItem[]>res))
+    this.xfetch(`self/planner/items`, callback,
+                { params: new URLSearchParams(qp) })
       .catch(ex => console.error(ex));
   }
 
   // Gets user planner items for specified courses/groups
-  getCoursePlanner(start: Date, end: Date, codes: string, callback: (data: PlannerItem[]) => void): void {
+  getCoursePlanner(start: Date, end: Date, codes: string,
+                   callback: (data: PlannerItem[]) => void): void {
     const qp = {
       start_date: start.toISOString(),
       end_date: end.toISOString(),
       context_codes: codes
     }
-    const query = new URLSearchParams(qp).toString();
-    const cached = this.getCached(`self/planner/items?${query}`);
-    if (cached) callback(JSON.parse(cached));
     
-    this.fetchp('self/planner/items', query, "GET")
-      .then(res => JSON.parse(res))
-      .then(res => callback(<PlannerItem[]>res))
+    this.xfetch(`self/planner/items`,
+                res => {callback(res.data)},
+                { params: new URLSearchParams(qp) })
       .catch(ex => console.error(ex));
   }
 
   // Gets user profile. Used on accounts page.
   getProfile(callback: (data: Profile) => void): void {
-    const cached = this.getCached("self/profile");
-    if (cached) callback(JSON.parse(cached));
-    
-    this.fetcher("self/profile", "GET")
-      .then(res => JSON.parse(res))
-      .then(res => callback(<Profile>res))
+    this.xfetch(`self/profile`, res => {callback(res.data)})
       .catch(ex => console.error(ex));
   }
 

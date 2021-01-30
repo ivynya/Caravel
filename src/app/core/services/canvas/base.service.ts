@@ -6,76 +6,87 @@ import {
   StorageService
 } from '../';
 
+// Options for xfetch requests
+interface XOptions {
+  method?: string,
+  params?: URLSearchParams
+}
+// Result object returned by xfetch
+export interface Result {
+  data: any,
+  isCache: boolean
+}
+// Callback used by xfetch
+type ResultHandler = (res: Result) => void;
+
 export abstract class APIBaseService {
   
   constructor(private scope: string,
-              private storage: StorageService,
+              private storageService: StorageService,
               private notifService: NotificationService,
               private cacheService: CacheService,
               private configService: ConfigurationService) {}
 
-  // Fetcher function shared by all API calls
-  // Automatically appends CORS proxy & access token
-  async fetchp(endpoint: string, params: string, method: string): Promise<string> {
-    return new Promise((resolve, reject) => {
-      if (!this.storage.has("oauth_token")) {
-        reject("No oauth_token value found.");
-        this.notifService.triggerNotification("You are not authorized!", 0);
-        return;
-      }
-      
-      // Initiate UI for a long running action
-      this.notifService.triggerActionLoading();
+  // Shared by all API calls, appends auth and handles cache/configurables
+  async xfetch(endpoint: string, callback: ResultHandler, options?: XOptions): Promise<void> {
+    if (!this.storageService.has("oauth_token")) {
+      this.notifService.triggerNotification("You are not authorized!", 0);
+      throw new Error("No oauth_token value found.");
+    }
+    
+    // Initiate UI for a long running action
+    this.notifService.triggerActionLoading();
 
-      // Get app domain
-      const domain = <boolean>this.configService.get("caravan", "domain").value;
-      if (!domain) {
-        this.notifService.triggerNotification("There is a caravan.domain configuration error.", 0);
-        return;
-      }
+    // Return the cached value, if it exists
+    const cacheId = options?.params ? `${endpoint}.${options.params}` : endpoint;
+    const cachedValue = this.getCached(cacheId);
+    if (cachedValue) {
+      callback({data: JSON.parse(cachedValue), isCache: true});
+    }
 
-      // Construct the endpoint URL.
-      const token = this.storage.get("oauth_token");
-      const base = `https://${domain}.instructure.com/api/v1`;
-      const url = `${base}/${this.scope}/${endpoint}?access_token=${token}&${params}`;
-      // API is always fetched with a CORS proxy due to Canvas limitations
-      // Advisable to set up your own (secure) CORS proxy
-      fetch(`https://cors.sdbagel.com/${url}`,
-            {
-              method: method,
-              headers: { 'accept': 'application/json' }
-            })
-        .then(res => res.text())
-        .then(res => {
-          // Cache value in localstorage
-          if (params) this.cache(`${endpoint}.${params}`, res);
-          else this.cache(`${endpoint}`, res);
+    // Get app domain for API calls
+    const domain = <string>this.configService.get("caravan", "domain").value;
+    if (!domain) {
+      this.notifService.triggerNotification("There is a caravan.domain configuration error.", 0);
+      return;
+    }
 
-          // Resolve action and inform user
-          this.notifService.triggerActionFinished();
-          const message = `Updated data at ${new Date().toLocaleTimeString()}.`;
-          this.notifService.triggerNotification(message, 2);
+    // Construct the endpoint URL
+    const token = this.storageService.get("oauth_token");
+    const base = `https://${domain}.instructure.com/api/v1`;
+    const url = `${base}/${this.scope}/${endpoint}?access_token=${token}&${options?.params}`;
+    // API is always fetched with a CORS proxy due to Canvas limitations
+    // Advisable to set up your own (secure) CORS proxy
+    fetch(`https://cors.sdbagel.com/${url}`,
+          {
+            method: options?.method ?? "GET",
+            headers: { 'accept': 'application/json' }
+          })
+      .then(res => res.text())
+      .then(res => {
+        // Cache in localstorage with cacheId
+        this.cache(cacheId, res);
 
-          resolve(res);
-        })
-        .catch(ex => {
-          // Resolve long-running action
-          this.notifService.triggerActionFinished();
+        // Resolve action and inform user
+        this.notifService.triggerActionFinished();
+        const message = `Updated data at ${new Date().toLocaleTimeString()}.`;
+        this.notifService.triggerNotification(message, 2);
 
-          // Inform user of failure to load or stale data.
-          if (this.getCached(`${endpoint}.${params}`))
-            this.notifService.triggerNotification('You are seeing stale data. It may not be up to date.', 1);
-          else
-            this.notifService.triggerNotification('Failed to get data (network error).', 0);
+        // Return the data and denote is fresh
+        callback({data: JSON.parse(res), isCache: false});
+      })
+      .catch(ex => {
+        // Resolve long-running action
+        this.notifService.triggerActionFinished();
 
-          console.error(ex);
-        });
-    });
-  }
+        // Inform user of failure to load or stale data.
+        if (cachedValue)
+          this.notifService.triggerNotification('You are seeing stale data. It may not be up to date.', 1);
+        else
+          this.notifService.triggerNotification('Failed to get data (network error).', 0);
 
-  // Backport fetcher without extra url parameters
-  async fetcher(endpoint: string, method: string): Promise<string> {
-    return this.fetchp(endpoint, "", method);
+        throw new Error(ex);
+      });
   }
 
   // Get cache with caching service
