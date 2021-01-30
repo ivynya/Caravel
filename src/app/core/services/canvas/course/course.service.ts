@@ -10,6 +10,8 @@ import {
 import {
   Course,
   ExternalTool,
+  Module,
+  ModuleItem,
   Page,
   Submission
 } from '../../../schemas';
@@ -83,6 +85,26 @@ export class CourseService extends APIBaseService {
     this.fetchp(`${cId}/students/submissions`, query, "GET")
       .then(res => JSON.parse(res))
       .then(res => callback(<Submission[]>res))
+      .catch(ex => console.error(ex));
+  }
+
+  listModules(cId: number, callback: (data: Module[]) => void): void {
+    const cached = this.getCached(`${cId}/modules`);
+    if (cached) callback(JSON.parse(cached));
+
+    this.fetcher(`${cId}/modules`, "GET")
+      .then(res => JSON.parse(res))
+      .then(res => callback(<Module[]>res))
+      .catch(ex => console.error(ex));
+  }
+
+  getModuleItems(cId: number, mId: number, callback: (data: ModuleItem[]) => void): void {
+    const cached = this.getCached(`${cId}/modules/${mId}/items`);
+    if (cached) callback(JSON.parse(cached));
+
+    this.fetcher(`${cId}/modules/${mId}/items`, "GET")
+      .then(res => JSON.parse(res))
+      .then(res => callback(<ModuleItem[]>res))
       .catch(ex => console.error(ex));
   }
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { CourseService } from 'app/core/services/canvas';
-import { Course } from 'app/core/schemas';
+import { Course, Module } from 'app/core/schemas';
 
 @Component({
   selector: 'app-course-modules',
@@ -11,6 +11,7 @@ import { Course } from 'app/core/schemas';
 })
 export class CourseModulesComponent implements OnInit {
   course: Course;
+  modules: Module[];
   
   constructor(private courseService: CourseService,
               private route: ActivatedRoute) { }
@@ -18,6 +19,11 @@ export class CourseModulesComponent implements OnInit {
   ngOnInit(): void {
     this.route.parent.params.subscribe(params => {
       this.courseService.getCourse(params.id, course => this.course = course);
+
+      this.courseService.listModules(params.id, modules => {
+        this.modules = modules;
+        console.log(modules);
+      });
     });
   }
 

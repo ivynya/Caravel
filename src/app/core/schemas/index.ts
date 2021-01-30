@@ -7,6 +7,8 @@ export * from './course/course.schema';
 export * from './course/external-tool.schema';
 export * from './course/page.schema';
 
+export * from './module/module.schema';
+
 export * from './planner/planner.schema';
 
 export * from './todo/todo.schema';

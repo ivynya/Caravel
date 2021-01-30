@@ -1,5 +1,8 @@
 
-<section>
+<section class="modules">
   <h1>{{ course?.name }}: Modules</h1>
-  <hr>
+  <hr><br>
+  <details *ngFor="let mod of modules" class="expandable">
+    <summary>{{ mod.name }}</summary>
+  </details>
 </section>
