@@ -45,10 +45,20 @@
     }
   }
 
-  &:hover {
-    width: 200px;
-    margin-right: calc(-150px + 3rem);
+  @media (max-width: 1400px) {
+    &:hover {
+      width: 200px;
+      margin-right: calc(-150px + 3rem);
+  
+      a span {
+        display: unset;
+      }
+    }
+  }
 
+  @media (min-width: 1500px) {
+    width: 200px;
+    
     a span {
       display: unset;
     }

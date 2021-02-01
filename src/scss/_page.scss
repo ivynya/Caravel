@@ -26,5 +26,9 @@
     section {
       flex: 1 1;
     }
+
+    @media (min-width: 1500px) {
+      max-width: 1200px;
+    }
   }
 }
