@@ -22,7 +22,8 @@ export class UserService extends APIBaseService {
   }
 
   // Gets user planner items (assignments, events, etc.)
-  getPlanner(start: Date, end: Date, callback: (data: Result) => void): void {
+  getPlanner(start: Date, end: Date, callback:
+            (res: {data: PlannerItem[]} & Omit<Result, "data">) => void): void {
     const qp = {
       start_date: start.toISOString(),
       end_date: end.toISOString()
