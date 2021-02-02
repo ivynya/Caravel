@@ -11,6 +11,7 @@
         {{ item.plannable.title }}
       </a></h3>
       <p class="subtext">
+        <img *ngIf="isLocked" src="assets/icons/Icon_Locked.svg" alt="Locked">
         <span>{{ item.plannable.created_at | date: "E L/d h:mm a"}}</span>
         <span class="separator"></span>
         <span>Announcement</span>
@@ -25,6 +26,7 @@
         {{ item.plannable.title }}
       </a></h3>
       <p class="subtext">
+        <img *ngIf="isLocked" src="assets/icons/Icon_Locked.svg" alt="Locked">
         <span>{{ item.plannable_date | date: "E L/d h:mm a"}}</span>
         <span class="separator"></span>
         <span>Peer Review</span>
@@ -37,6 +39,7 @@
         {{ item.plannable.title }}
       </a></h3>
       <p class="subtext">
+        <img *ngIf="isLocked" src="assets/icons/Icon_Locked.svg" alt="Locked">
         <span>Due {{ item.plannable.due_at | date: "E L/d h:mm a"}}</span>
         <span class="separator"></span>
         <span>Assignment</span>
@@ -51,6 +54,7 @@
         {{ item.plannable.title }}
       </a></h3>
       <p class="subtext">
+        <img *ngIf="isLocked" src="assets/icons/Icon_Locked.svg" alt="Locked">
         <span>{{ item.plannable.start_at | date: "E L/d h:mm a"}}</span>
         <span class="separator"></span>
         <span>Event</span>
@@ -63,6 +67,7 @@
         {{ item.plannable.title }}
       </a></h3>
       <p class="subtext">
+        <img *ngIf="isLocked" src="assets/icons/Icon_Locked.svg" alt="Locked">
         <span>Due {{ item.plannable_date | date: "E L/d h:mm a"}}</span>
         <span class="separator"></span>
         <span>Quiz</span>
@@ -75,6 +80,7 @@
         {{ item.plannable.title }}
       </a></h3>
       <p class="subtext">
+        <img *ngIf="isLocked" src="assets/icons/Icon_Locked.svg" alt="Locked">
         <span>Due {{ item.plannable.todo_date | date: "E L/d h:mm a"}}</span>
         <span class="separator"></span>
         <span>Wiki Page</span>

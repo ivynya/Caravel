@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { CourseService } from '../../../core/services/canvas';
+import { AssignmentService, CourseService } from '../../../core/services/canvas';
 import { Course, PlannerItem } from '../../../core/schemas';
 
 @Component({
@@ -12,8 +12,10 @@ export class TodoComponent implements OnInit {
   course: Course;
   @Input() item: PlannerItem;
   isComplete = false;
+  isLocked = false;
 
-  constructor(private courseService: CourseService) { }
+  constructor(private assignmentService: AssignmentService,
+              private courseService: CourseService) { }
 
   ngOnInit(): void {
     this.courseService.getCourse(this.item.course_id, course => {
@@ -26,6 +28,11 @@ export class TodoComponent implements OnInit {
         this.item.planner_override?.marked_complete ||
         this.item.plannable?.workflow_state === "completed")
       this.isComplete = true;
+
+    if (this.item.plannable_type != 'assignment') return;
+    this.assignmentService.getAssignment(this.item.course_id, this.item.plannable.id, a => {
+      this.isLocked = a.locked_for_user;
+    });
   }
 
 }

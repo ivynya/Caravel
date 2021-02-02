@@ -42,6 +42,12 @@
     color: var(--text-inverse-tertiary);
     font-size: 1rem;
     margin: 0;
+
+    img {
+      height: 16px;
+      width: 16px;
+      margin-right: 3px;
+    }
   }
 
   .separator::before {
