@@ -10,9 +10,10 @@ export class CacheService {
   constructor(private storage: StorageService) { }
 
   // Get cache value and age of an endpoint
-  getCached(scope: string, endpoint: string): { cachedAt: number, value: string } {
+  getCached(scope: string, endpoint: string): { cachedAt: number, value: string } | undefined {
     endpoint = endpoint.replace('/', '.').replace('?', '.');
     const item = JSON.parse(this.storage.get(`${scope}.${endpoint}`));
+    if (!item) return undefined;
     return { cachedAt: item.cachedAt, value: item.value };
   }
 

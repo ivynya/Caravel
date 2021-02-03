@@ -3,7 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { NavigationStart, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
-import { StorageService } from './core/services';
+import { ConfigurationService, StorageService } from './core/services';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,8 @@ import { StorageService } from './core/services';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private storageService: StorageService,
+  constructor(private configService: ConfigurationService,
+              private storageService: StorageService,
               private titleService: Title,
               private translate: TranslateService,
               private router: Router) {
@@ -20,6 +21,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // Validate app version and update if needed
+    this.configService.updateApp();
+
+    // Subscribe to route change for default ops
     this.router.events.subscribe((e) => {
       if (!(e instanceof NavigationStart)) return;
 

@@ -37,24 +37,26 @@ export abstract class APIBaseService {
     // Return the cached value, if it exists
     const cacheId = options?.params ? `${endpoint}.${options.params}` : endpoint;
     const cached = this.getCached(cacheId);
-    if (cached.value) {
-      callback({data: JSON.parse(cached.value), isCache: true});
-    }
+    if (cached) {
+      if (cached.value) {
+        callback({data: JSON.parse(cached.value), isCache: true});
+      }
 
-    // If there is a cached value and it is less than
-    // ten seconds old, do not initiate a network request.
-    const cacheElapsedTime = new Date().getTime() - cached.cachedAt;
-    if (cached.value && cacheElapsedTime < 10000) {
-      this.notifService.triggerNotification("Loaded cached data.", 2);
-      return;
-    }
+      // If there is a cached value and it is less than
+      // ten seconds old, do not initiate a network request.
+      const cacheElapsedTime = new Date().getTime() - cached.cachedAt;
+      if (cached.value && cacheElapsedTime < 10000) {
+        this.notifService.triggerNotification("Loaded cached data.", 2);
+        return;
+      }
 
-    // Low bandwidth mode extends the pure-cached limit to 30s.
-    // TODO: in the future, this would be configurable per endpoint.
-    const reducedNetwork = <boolean>this.configService.get("networking", "stop_calls_if_cached").value;
-    if (cached.value && reducedNetwork && cacheElapsedTime < 30000) {
-      this.notifService.triggerNotification("Low Bandwith Mode: You might be seeing stale data.", 1);
-      return;
+      // Low bandwidth mode extends the pure-cached limit to 30s.
+      // TODO: in the future, this would be configurable per endpoint.
+      const reducedNetwork = <boolean>this.configService.get("networking", "stop_calls_if_cached").value;
+      if (cached.value && reducedNetwork && cacheElapsedTime < 30000) {
+        this.notifService.triggerNotification("Low Bandwith Mode: You might be seeing stale data.", 1);
+        return;
+      }
     }
 
     // If offline mode (frozen data) is enabled, flat out stop extras requests.
@@ -113,7 +115,7 @@ export abstract class APIBaseService {
   }
 
   // Get cache with caching service
-  getCached(endpoint: string): { cachedAt: number, value: string } {
+  getCached(endpoint: string): { cachedAt: number, value: string } | undefined {
     return this.cacheService.getCached(this.scope, endpoint);
   }
 

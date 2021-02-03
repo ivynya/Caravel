@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
+import { CacheService } from '../cache/cache.service';
 import { StorageService } from '../storage/storage.service';
 import { Configurable, Configuration } from '../../../core/schemas';
 
@@ -12,7 +13,8 @@ export class ConfigurationService {
   private _config: BehaviorSubject<Configuration>;
   private _configuration: Configuration;
 
-  constructor(private storage: StorageService) { 
+  constructor(private cache: CacheService,
+              private storage: StorageService) { 
     this._configuration = this.getAll();
     this._config = new BehaviorSubject(this._configuration);
     this.config = this._config.asObservable();
@@ -40,6 +42,23 @@ export class ConfigurationService {
       .then(() => {
         this._configuration = this.getAll();
         this._config.next(this._configuration);
+      });
+  }
+
+  getAppInfo(): { version: string } {
+    return JSON.parse(this.storage.get('version'));
+  }
+
+  async updateApp(): Promise<void> {
+    await fetch("/assets/config/version.json")
+      .then(res => res.text())
+      .then(res => {
+        if (this.storage.get('version') != res) {
+          this.cache.clear();
+          this.resetToDefault();
+          console.log(`Updated app to ${JSON.parse(res).version}`);
+          this.storage.set('version', res);
+        }
       });
   }
   

@@ -13,6 +13,7 @@ import { Configuration } from '../../core/schemas';
   styleUrls: ['./configurator.component.scss']
 })
 export class ConfiguratorComponent implements OnInit {
+  appInfo: { version: string };
   configuration: Configuration;
 
   constructor(private cache: CacheService,
@@ -21,6 +22,7 @@ export class ConfiguratorComponent implements OnInit {
 
   ngOnInit(): void {
     this.config.config.subscribe(data => this.configuration = data);
+    this.appInfo = this.config.getAppInfo();
   }
 
   // Updates an item in the cache
@@ -33,14 +35,18 @@ export class ConfiguratorComponent implements OnInit {
   async clearCache(): Promise<void> {
     const freed = this.cache.clear();
     await this.config.resetToDefault();
+    await this.config.updateApp();
     this.configuration = this.config.getAll();
+    this.appInfo = this.config.getAppInfo();
     this.notif.triggerNotification(`Cleared cache and freed ${freed}KB.`, 2);
   }
 
   // Reset configuration in localstorage.
   async resetConfig(): Promise<void> {
     await this.config.resetToDefault();
+    await this.config.updateApp();
     this.configuration = this.config.getAll();
+    this.appInfo = this.config.getAppInfo();
     this.notif.triggerNotification('Reset configuration to default.', 2);
   }
 
