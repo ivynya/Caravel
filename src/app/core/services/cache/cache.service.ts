@@ -9,16 +9,18 @@ export class CacheService {
 
   constructor(private storage: StorageService) { }
 
-  // Get cache of an endpoint from storage service
-  getCached(scope: string, endpoint: string): string {
+  // Get cache value and age of an endpoint
+  getCached(scope: string, endpoint: string): { cachedAt: number, value: string } {
     endpoint = endpoint.replace('/', '.').replace('?', '.');
-    return this.storage.get(`${scope}.${endpoint}`);
+    const item = JSON.parse(this.storage.get(`${scope}.${endpoint}`));
+    return { cachedAt: item.cachedAt, value: item.value };
   }
 
-  // Set cache of an endpoint with storage service
+  // Set cache of an endpoint with cache time (number, ms)
   cache(scope: string, endpoint: string, value: string): void {
     endpoint = endpoint.replace('/', '.').replace('?', '.');
-    this.storage.set(`${scope}.${endpoint}`, value);
+    this.storage.set(`${scope}.${endpoint}`, 
+      JSON.stringify({ cachedAt: new Date().getTime(), value: value }));
   }
 
   // Clear everything except oauth_token. Return KB freed.

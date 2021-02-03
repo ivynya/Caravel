@@ -22,6 +22,12 @@
       "type": "toggle",
       "default": false,
       "value": false
+    },
+    "offline_mode": {
+      "name": "Freeze App Data",
+      "type": "toggle",
+      "default": false,
+      "value": false
     }
   },
   "notifications": {

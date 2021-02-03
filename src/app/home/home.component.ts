@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
     this.streamState = { start: now, end: now };
 
     // Load three "intervals" (up to 30 items or 9 days of content)
-    this.getItems(3);
+    this.getItems(1);
   }
 
   private getItems(intervals: number) {
@@ -39,10 +39,11 @@ export class HomeComponent implements OnInit {
       // Ignore cached values (for now)
       if (res.isCache) return;
 
-      this.populateStream(res.data);
+      const items = res.data;
+      this.populateStream(items);
 
       // Record what part of the stream is loaded.
-      const endDate = new Date(res.data[res.data.length-1].plannable_date);
+      const endDate = new Date(items[items.length-1].plannable_date);
       this.streamState.end = new Date(endDate.getTime() + 1);
 
       // If target not reached, do a recursion

@@ -33,16 +33,39 @@ export abstract class APIBaseService {
       this.notifService.triggerNotification("You are not authorized!", 0);
       throw new Error("No oauth_token value found.");
     }
-    
-    // Initiate UI for a long running action
-    this.notifService.triggerActionLoading();
 
     // Return the cached value, if it exists
     const cacheId = options?.params ? `${endpoint}.${options.params}` : endpoint;
-    const cachedValue = this.getCached(cacheId);
-    if (cachedValue) {
-      callback({data: JSON.parse(cachedValue), isCache: true});
+    const cached = this.getCached(cacheId);
+    if (cached.value) {
+      callback({data: JSON.parse(cached.value), isCache: true});
     }
+
+    // If there is a cached value and it is less than
+    // ten seconds old, do not initiate a network request.
+    const cacheElapsedTime = new Date().getTime() - cached.cachedAt;
+    if (cached.value && cacheElapsedTime < 10000) {
+      this.notifService.triggerNotification("Loaded cached data.", 2);
+      return;
+    }
+
+    // Low bandwidth mode extends the pure-cached limit to 30s.
+    // TODO: in the future, this would be configurable per endpoint.
+    const reducedNetwork = <boolean>this.configService.get("networking", "stop_calls_if_cached").value;
+    if (cached.value && reducedNetwork && cacheElapsedTime < 30000) {
+      this.notifService.triggerNotification("Low Bandwith Mode: You might be seeing stale data.", 1);
+      return;
+    }
+
+    // If offline mode (frozen data) is enabled, flat out stop extras requests.
+    const offlineMode = <boolean>this.configService.get("networking", "offline_mode").value;
+    if (offlineMode) {
+      this.notifService.triggerNotification("Your data is frozen. Network requests to get new data are paused.", 0);
+      return;
+    }
+
+    // Initiate UI for a long running action
+    this.notifService.triggerActionLoading();
 
     // Get app domain for API calls
     const domain = <string>this.configService.get("caravan", "domain").value;
@@ -80,7 +103,7 @@ export abstract class APIBaseService {
         this.notifService.triggerActionFinished();
 
         // Inform user of failure to load or stale data.
-        if (cachedValue)
+        if (cached.value)
           this.notifService.triggerNotification('You are seeing stale data. It may not be up to date.', 1);
         else
           this.notifService.triggerNotification('Failed to get data (network error).', 0);
@@ -90,7 +113,7 @@ export abstract class APIBaseService {
   }
 
   // Get cache with caching service
-  getCached(endpoint: string): string {
+  getCached(endpoint: string): { cachedAt: number, value: string } {
     return this.cacheService.getCached(this.scope, endpoint);
   }
 
