@@ -101,14 +101,14 @@ export abstract class APIBaseService {
         const callEnd = new Date();
         const callElapsed = callEnd.getTime() - callStart.getTime();
         if (callElapsed > 2000)
-          console.warn(`[WARN] [${this.scope}] Encountered slow network: ${callElapsed}ms`);
+          console.warn(`[WARN] [${this.scope}, ${endpoint}] Encountered slow network: ${callElapsed}ms`);
       })
       .catch(ex => {
         // Resolve long-running action
         this.notifService.triggerActionFinished();
 
         // Inform user of failure to load or stale data.
-        if (cached.value)
+        if (cached?.value)
           this.notifService.notify('You are seeing stale data. It may not be up to date.', 1);
         else
           this.notifService.notify('Failed to get data (network error).', 0);

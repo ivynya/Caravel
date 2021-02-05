@@ -11,14 +11,16 @@ import { RoundDatePipe } from 'app/core/pipes';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  // Unprocessed stream items for sorting
+  private _streamItems: PlannerItem[][] = [];
+  // Records what portion of the stream is loaded.
+  streamState: { start: Date, end: Date };
   // Holds all stream items (planner) by date.
   stream: {
     id: string
     items: PlannerItem[];
     completed: PlannerItem[];
   }[] = [];
-  // Records what portion of the stream is loaded.
-  streamState: { start: Date, end: Date };
 
   constructor(private roundDate: RoundDatePipe,
               private userService: UserService) { }
@@ -28,32 +30,43 @@ export class HomeComponent implements OnInit {
     const now = this.roundDate.transform(new Date());
     this.streamState = { start: now, end: now };
 
-    // Load three "intervals" (up to 30 items or 9 days of content)
-    this.getItems(1);
+    // Load intervals
+    this.getItems(0, 1);
   }
 
-  private getItems(intervals: number) {
-    // Get new interval of items in 3 day segments (max 10 items)
-    const next = new Date(this.streamState.end.getTime() + 86400*1000*3);
+  private getItems(at: number, to: number) {
+    // Get new interval of items (max 7 days or 10 items)
+    const next = new Date(this.streamState.end.getTime() + 86400*1000*7);
     this.userService.getPlanner(this.streamState.end, next, res => {
-      // Ignore cached values (for now)
-      if (res.isCache) return;
-
       const items = res.data;
-      this.populateStream(items);
 
-      // Record what part of the stream is loaded.
-      const endDate = new Date(items[items.length-1].plannable_date);
-      this.streamState.end = new Date(endDate.getTime() + 1);
+      if (items.length === 0) {
+        // No items, so set end date to load period
+        console.warn("[WARN] No items for load period.")
+        this.streamState.end = next;
+      }
+      else {
+        // Record what part of the stream is loaded.
+        const endDate = new Date(items[items.length-1].plannable_date);
+        this.streamState.end = new Date(endDate.getTime() + 1);
+      }
+
+      // Add or overwrite added items to memory
+      if (this._streamItems.length < at)
+        this._streamItems.push([]);
+      this._streamItems[at] = items;
 
       // If target not reached, do a recursion
-      if (intervals > 0)
-        this.getItems(intervals - 1);
+      if (at < to)
+        this.getItems(at + 1, to);
+      else if (at === to)
+        this.populateStream([].concat.apply([], this._streamItems));
     });
   }
 
   // Populates stream with events from API
   private populateStream(upcoming: PlannerItem[]): void {
+    this.stream = [];
     upcoming.forEach(item => {
       const date = this.formatDate(item.plannable_date);
 
