@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../core/services/canvas';
 import { PlannerItem } from '../core/schemas';
 
-import { RoundDatePipe } from 'app/core/pipes';
+import { RoundDatePipe } from '../core/pipes';
 
 @Component({
   selector: 'app-home',

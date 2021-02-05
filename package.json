@@ -1,11 +1,11 @@
 {
-  "name": "angular-electron",
-  "version": "8.0.3",
+  "name": "caravan",
+  "version": "0.1.1",
   "description": "Angular 10 with Electron (Typescript + SASS + Hot Reload)",
-  "homepage": "https://github.com/maximegris/angular-electron",
+  "homepage": "https://github.com/SDBagel/Caravan",
   "author": {
-    "name": "Maxime GRIS",
-    "email": "maxime.gris@gmail.com"
+    "name": "Kyle | SDBagel",
+    "email": "sdbagel@gmail.com"
   },
   "keywords": [
     "angular",
@@ -18,7 +18,8 @@
     "sass",
     "windows",
     "mac",
-    "linux"
+    "linux",
+    "caravan"
   ],
   "main": "main.js",
   "private": true,

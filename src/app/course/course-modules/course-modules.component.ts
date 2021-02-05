@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { CourseService } from 'app/core/services/canvas';
-import { Course, Module } from 'app/core/schemas';
+import { CourseService } from '../../core/services/canvas';
+import { Course, Module } from '../../core/schemas';
 
 @Component({
   selector: 'app-course-modules',

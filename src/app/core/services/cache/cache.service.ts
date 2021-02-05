@@ -20,8 +20,8 @@ export class CacheService {
   // Set cache of an endpoint with cache time (number, ms)
   cache(scope: string, endpoint: string, value: string): void {
     endpoint = endpoint.replace('/', '.').replace('?', '.');
-    this.storage.set(`${scope}.${endpoint}`, 
-      JSON.stringify({ cachedAt: new Date().getTime(), value: value }));
+    const item = { cachedAt: new Date().getTime(), value: value };
+    this.storage.set(`${scope}.${endpoint}`, JSON.stringify(item));
   }
 
   // Clear everything except oauth_token. Return KB freed.

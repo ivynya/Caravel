@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     this.translate.setDefaultLang('en');
   }
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
     // Validate app version and update if needed
     this.configService.updateApp()
       .then(() => { this.isLoaded = true; });

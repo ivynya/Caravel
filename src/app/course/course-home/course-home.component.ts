@@ -5,7 +5,7 @@ import { ConfigurationService } from '../../core/services';
 import { CourseService, UserService } from '../../core/services/canvas';
 import { Course, ExternalTool, Page, PlannerItem, Submission } from '../../core/schemas';
 
-import { RoundDatePipe } from 'app/core/pipes';
+import { RoundDatePipe } from '../../core/pipes';
 
 @Component({
   selector: 'app-course-home',

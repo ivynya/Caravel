@@ -35,7 +35,7 @@ export abstract class APIBaseService {
     }
 
     // Return the cached value, if it exists
-    const cacheId = options?.params ? `${endpoint}.${options.params}` : endpoint;
+    const cacheId = options?.params ? `${endpoint}.${options.params.toString()}` : endpoint;
     const cached = this.getCached(cacheId);
     if (cached && cached.value) {
       callback({data: JSON.parse(cached.value), isCache: true});
@@ -78,14 +78,15 @@ export abstract class APIBaseService {
     // Construct the endpoint URL
     const token = this.storageService.get("oauth_token");
     const base = `https://${domain}.instructure.com/api/v1`;
-    const url = `${base}/${this.scope}/${endpoint}?access_token=${token}&${options?.params}`;
+    const params = `access_token=${token}&${options?.params.toString()}`;
+    const url = `${base}/${this.scope}/${endpoint}?${params}`;
     // API is always fetched with a CORS proxy due to Canvas limitations
     // Advisable to set up your own (secure) CORS proxy
-    fetch(`https://cors.sdbagel.com/${url}`,
-          {
-            method: options?.method ?? "GET",
-            headers: { 'accept': 'application/json' }
-          })
+    await fetch(`https://cors.sdbagel.com/${url}`,
+                {
+                  method: options?.method ?? "GET",
+                  headers: { 'accept': 'application/json' }
+                })
       .then(res => res.text())
       .then(res => {
         // Cache in localstorage with cacheId

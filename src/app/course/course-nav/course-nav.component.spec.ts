@@ -10,7 +10,7 @@ describe('CourseNavComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ CourseNavComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
