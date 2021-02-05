@@ -52,11 +52,11 @@ export class ConfigurationService {
   async updateApp(): Promise<void> {
     await fetch("/assets/config/version.json")
       .then(res => res.text())
-      .then(res => {
+      .then(async res => {
         if (this.storage.get('version') != res) {
           this.cache.clear();
-          this.resetToDefault();
-          console.log(`Updated app to ${JSON.parse(res).version}`);
+          await this.resetToDefault();
+          console.log(`[LOG] Updated Caravan to ${JSON.parse(res).version}`);
           this.storage.set('version', res);
         }
       });

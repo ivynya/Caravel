@@ -11,6 +11,7 @@ import { ConfigurationService, StorageService } from './core/services';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  isLoaded = false;
 
   constructor(private configService: ConfigurationService,
               private storageService: StorageService,
@@ -20,9 +21,10 @@ export class AppComponent implements OnInit {
     this.translate.setDefaultLang('en');
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     // Validate app version and update if needed
-    this.configService.updateApp();
+    this.configService.updateApp()
+      .then(() => { this.isLoaded = true; });
 
     // Subscribe to route change for default ops
     this.router.events.subscribe((e) => {

@@ -33,14 +33,18 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.checkAuthAndUpdateInfo();
     this.router.events.subscribe((e) => {
       if (!(e instanceof NavigationEnd)) return;
-      this.isAuthorized = this.storage.has("oauth_token");
-
-      if (!this.isAuthorized) return;
-
-      this.courseService.listCourses(courses => this.courses = courses);
+      this.checkAuthAndUpdateInfo();
     });
+  }
+
+  checkAuthAndUpdateInfo(): void {
+    this.isAuthorized = this.storage.has("oauth_token");
+    if (!this.isAuthorized) return;
+
+    this.courseService.listCourses(courses => this.courses = courses);
   }
 
   toggleCompact(): void {
