@@ -59,7 +59,7 @@ export abstract class APIBaseService {
       }
     }
 
-    // If offline mode (frozen data) is enabled, flat out stop extras requests.
+    // If offline mode (frozen data) is enabled, stop API requests.
     const offlineMode = <boolean>this.configService.get("networking", "offline_mode").value;
     if (offlineMode) {
       this.notifService.triggerNotification("Your data is frozen. Network requests to get new data are paused.", 0);
@@ -68,6 +68,8 @@ export abstract class APIBaseService {
 
     // Initiate UI for a long running action
     this.notifService.triggerActionLoading();
+    // Note start time for API call (perf log)
+    const callStart = new Date();
 
     // Get app domain for API calls
     const domain = <string>this.configService.get("caravan", "domain").value;
@@ -99,6 +101,12 @@ export abstract class APIBaseService {
 
         // Return the data and denote is fresh
         callback({data: JSON.parse(res), isCache: false});
+
+        // Note end time and warn in console if slow network (>2000ms)
+        const callEnd = new Date();
+        const callElapsed = callEnd.getTime() - callStart.getTime();
+        if (callElapsed > 2000)
+          console.warn(`[WARN] [${this.scope}] Encountered slow network: ${callElapsed}ms`);
       })
       .catch(ex => {
         // Resolve long-running action
