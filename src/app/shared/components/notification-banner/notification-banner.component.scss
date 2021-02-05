@@ -25,36 +25,82 @@
   }
 
   .notifications {
-    background-color: var(--error);
     color: #333;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
     height: 0;
 
     &.shown {
       height: 35px;
+      line-height: 35px;
+      overflow: hidden;
 
       &.compact {
         height: 10px;
-        
+
         p {
-          display: none;
+          opacity: 0;
         }
       }
     }
 
-    &.info {
-      background-color: var(--info);
+    &:hover {
+      background-color: var(--bg-tertiary);
+      height: unset;
+      overflow: unset;
+      transition-duration: 0s;
+      
+      p {
+        border-radius: 3px;
+        margin: 10px auto;
+        padding: 2px;
+        width: 90%;
+      }
+
+      p + p {
+        opacity: 1;
+
+        @for $i from 1 through 25 {
+          &:nth-child(#{$i}) {
+            transition-delay: $i * 10ms;
+          }
+        }
+      }
+
+      &.compact {
+        height: unset;
+
+        p {
+          opacity: 1;
+        }
+      }
     }
 
-    &.warning {
-      background-color: var(--warning);
+    p {
+      text-align: center;
+      margin: 0 auto;
+      width: 100%;
+      transition-duration: 0.3s;
     }
 
-    &.error {
-      background-color: var(--error);
+    p + p {
+      opacity: 0;
+      width: 90%;
+      transition-delay: 0ms;
     }
+  }
+  
+  .info {
+    background-color: var(--info);
+  }
+  
+  .warning {
+    background-color: var(--warning);
+  }
+  
+  .error {
+    background-color: var(--error);
   }
 }
 

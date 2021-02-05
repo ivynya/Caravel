@@ -38,7 +38,7 @@ export class ConfiguratorComponent implements OnInit {
     await this.config.updateApp();
     this.configuration = this.config.getAll();
     this.appInfo = this.config.getAppInfo();
-    this.notif.triggerNotification(`Cleared cache and freed ${freed}KB.`, 2);
+    this.notif.notify(`Cleared cache and freed ${freed}KB.`, 2);
   }
 
   // Reset configuration in localstorage.
@@ -47,7 +47,7 @@ export class ConfiguratorComponent implements OnInit {
     await this.config.updateApp();
     this.configuration = this.config.getAll();
     this.appInfo = this.config.getAppInfo();
-    this.notif.triggerNotification('Reset configuration to default.', 2);
+    this.notif.notify('Reset configuration to default.', 2);
   }
 
 }

@@ -20,15 +20,18 @@ export class NotificationService {
     this.load = this._load.asObservable();
   }
 
+  // Creates a notification banner with message
+  notify(msg: string, type: C$NotificationType): void {
+    this._notif.next({msg: msg, type: type});
+  }
+
+  // Notify listeners of a long running action
   triggerActionLoading(): void {
     this._load.next(true);
   }
 
+  // Notify listeners that the action is done
   triggerActionFinished(): void {
     this._load.next(false);
-  }
-
-  triggerNotification(msg: string, type: C$NotificationType): void {
-    this._notif.next({msg: msg, type: type});
   }
 }
