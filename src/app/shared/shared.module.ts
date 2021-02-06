@@ -5,29 +5,31 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import {
   IconLTIComponent,
+  ModuleComponent,
+  ModalComponent,
   NotificationBannerComponent,
   PageNotFoundComponent,
   SidebarComponent,
-  TodoComponent
+  TodoComponent,
+  ToggleComponent
 } from './components/';
 
 import { WebviewDirective } from './directives/';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CoreModule } from 'app/core/core.module';
-import { ToggleComponent } from './components/toggle/toggle.component';
-import { ModuleComponent } from './components/module/module.component';
 
 @NgModule({
   declarations: [
     IconLTIComponent,
     PageNotFoundComponent,
+    WebviewDirective,
+    ModalComponent,
+    ModuleComponent,
+    NotificationBannerComponent,
     SidebarComponent,
     TodoComponent,
-    WebviewDirective,
-    NotificationBannerComponent,
-    ToggleComponent,
-    ModuleComponent
+    ToggleComponent
   ],
   imports: [
     CommonModule,
@@ -41,11 +43,12 @@ import { ModuleComponent } from './components/module/module.component';
     WebviewDirective, 
     FormsModule,
     IconLTIComponent,
+    ModalComponent,
+    ModuleComponent,
+    NotificationBannerComponent,
     SidebarComponent,
     TodoComponent,
-    NotificationBannerComponent,
-    ToggleComponent,
-    ModuleComponent
+    ToggleComponent
   ]
 })
 export class SharedModule {}

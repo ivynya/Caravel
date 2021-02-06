@@ -49,8 +49,8 @@ export class ConfigurationService {
     return JSON.parse(this.storage.get('version'));
   }
 
-  async updateApp(): Promise<void> {
-    await fetch("/assets/config/version.json")
+  async updateApp(): Promise<boolean> {
+    return await fetch("/assets/config/version.json")
       .then(res => res.text())
       .then(async res => {
         if (this.storage.get('version') != res) {
@@ -58,7 +58,9 @@ export class ConfigurationService {
           await this.resetToDefault();
           console.log(`[LOG] Updated Caravan to ${JSON.parse(res).version}`);
           this.storage.set('version', res);
+          return true;
         }
+        else return false;
       });
   }
   

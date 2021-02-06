@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { NavigationStart, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
-import { ConfigurationService, StorageService } from './core/services';
+import { ConfigurationService, ModalService, StorageService } from './core/services';
 
 @Component({
   selector: 'app-root',
@@ -11,19 +11,25 @@ import { ConfigurationService, StorageService } from './core/services';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  @ViewChild('whatsNew') template: TemplateRef<any>;
   isLoaded = false;
 
   constructor(private configService: ConfigurationService,
               private storageService: StorageService,
               private titleService: Title,
               private translate: TranslateService,
-              private router: Router) {
+              private router: Router,
+              private modal: ModalService) {
     this.translate.setDefaultLang('en');
   }
 
   ngOnInit(): void {
     // Validate app version and update if needed
     this.configService.updateApp()
+      .then(didUpdate => {
+        if (didUpdate)
+          setTimeout(() => this.modal.openModal(this.template), 500);
+      })
       .then(() => { this.isLoaded = true; });
 
     // Subscribe to route change for default ops

@@ -1,0 +1,138 @@
+
+.modal-page {
+  background-color: #0006;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: -1000px;
+  left: -1000px;
+  z-index: 10;
+  margin: auto;
+  width: 105vmax;
+  height: 105vmax;
+
+  overflow: hidden;
+  transition-duration: 0.5s;
+
+  .modal {
+    background-color: #fff;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+
+    min-width: 300px;
+    max-width: 350px;
+    margin: auto;
+    padding: 20px;
+
+    overflow: hidden;
+    opacity: 1;
+    transition-duration: 0.6s;
+    transition-delay: 0.1s;
+  }
+
+  // !!! DEPRECATED NG-DEEP
+  // but theres no other solutions so lmao whatever
+  // https://stackoverflow.com/a/49308475/9627251
+  .modal ::ng-deep {
+    h2, p {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .modal-tabs {
+      margin-bottom: 10px;
+
+      button {
+        background-color: #fff;
+        border: none;
+        border-bottom: #000 2px solid;
+        border-radius: 0;
+        color: #000;
+        font-family: inherit;
+        font-weight: bold;
+        text-align: left;
+        text-transform: uppercase;
+        padding: 5px 15px;
+        transition-duration: 0.3s;
+
+        &:hover, &.active {
+          background-color: #000;
+          border-radius: 3px;
+          color: #fff;
+        }
+      }
+
+      button:not(:first-of-type) {
+        margin-left: 10px;
+      }
+    }
+
+    .modal-tab-group {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+
+      .modal-tab-content {
+        grid-column: 1;
+        grid-row: 1;
+      }
+    }
+
+    .modal-tab-content {
+      display: flex;
+      flex-direction: column;
+      transition-duration: 0.3s;
+      transform: translateY(50px);
+      opacity: 0;
+      visibility: hidden;
+
+      &.active {
+        transform: translateX(0px);
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    label {
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    input, select {
+      background-color: #eee;
+      border: none;
+      border-bottom: 2px solid #555;
+      font-family: inherit;
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      padding: 10px;
+    }
+
+    .spacer {
+      flex: 1 1;
+    }
+
+    .badge-btn:not(:first-of-type) {
+      margin-top: 10px;
+    }
+  }
+
+  &.collapsed {
+    border-radius: 300%;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+
+    .modal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition-delay: 0s;
+    }
+  }
+}
