@@ -10,7 +10,7 @@
   right: 0;
 
   .dialog {
-    background-color: var(--bg-secondary);
+    border: var(--border-primary) 3px solid;
     border-radius: 10px;
 
     padding: 25px 50px;
