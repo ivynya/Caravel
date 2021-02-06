@@ -27,4 +27,10 @@ export class CourseModulesComponent implements OnInit {
     });
   }
 
+  getModuleItems(m: Module): void {
+    this.courseService.getModuleItems(this.course.id, m.id, items => {
+      m.items = items;
+    });
+  }
+
 }

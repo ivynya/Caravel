@@ -1,0 +1,37 @@
+
+<div class="module">
+  <div class="spacer" [style.width]="item.indent*30 + 'px'"></div>
+  <ng-container [ngSwitch]="item.type">
+    <div *ngSwitchCase="'Assignment'">
+      <h3><a [routerLink]="['/courses', course.id, 'assignments', item.content_id]">
+        {{ item.title }}
+      </a></h3>
+      <p class="subtext">
+        <span *ngIf="!item.quiz_lti">Assignment</span>
+        <span *ngIf="item.quiz_lti">Quiz</span>
+        <span class="separator"></span>
+        <span>{{ item.html_url }}</span>
+      </p>
+    </div>
+    <div *ngSwitchCase="'ExternalUrl'">
+      <h3><a [href]="item.html_url" target="_blank">
+        {{ item.title }}
+      </a></h3>
+      <p class="subtext">
+        <span>External URL</span>
+        <span class="separator"></span>
+        <span>{{ item.html_url }}</span>
+      </p>
+    </div>
+    <div *ngSwitchCase="'SubHeader'">
+      <h3>{{ item.title }}</h3>
+      <hr>
+    </div>
+    <div *ngSwitchDefault>
+      <h3>{{ item.title }}</h3>
+      <p class="subtext">
+        <span>{{ item.type }}</span>
+      </p>
+    </div>
+  </ng-container>
+</div>
