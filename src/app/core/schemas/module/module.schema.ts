@@ -51,6 +51,8 @@ export interface ModuleItem {
   // the type of object referred to one of 'File', 'Page', 'Discussion',
   // 'Assignment', 'Quiz', 'SubHeader', 'ExternalUrl', 'ExternalTool'
   type: string,
+  // if this item uses a quiz lti
+  quiz_lti: boolean,
   // the id of the object referred to applies to 'File', 'Discussion',
   // 'Assignment', 'Quiz', 'ExternalTool' types
   content_id: number,
