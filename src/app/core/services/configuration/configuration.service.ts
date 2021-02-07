@@ -45,7 +45,7 @@ export class ConfigurationService {
       });
   }
 
-  getAppInfo(): { version: string } {
+  getAppInfo(): { version: string, updateInfo: any[] } {
     return JSON.parse(this.storage.get('version'));
   }
 

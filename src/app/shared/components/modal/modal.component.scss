@@ -20,8 +20,10 @@
   transition-duration: 0.5s;
 
   .modal {
-    background-color: #fff;
+    background-color: var(--bg-primary);
+    border: var(--border-primary) 2px solid;
     border-radius: 5px;
+    color: var(--text-inverse-primary);
 
     display: flex;
     flex-direction: column;
@@ -46,80 +48,8 @@
       margin-bottom: 10px;
     }
 
-    .modal-tabs {
-      margin-bottom: 10px;
-
-      button {
-        background-color: #fff;
-        border: none;
-        border-bottom: #000 2px solid;
-        border-radius: 0;
-        color: #000;
-        font-family: inherit;
-        font-weight: bold;
-        text-align: left;
-        text-transform: uppercase;
-        padding: 5px 15px;
-        transition-duration: 0.3s;
-
-        &:hover, &.active {
-          background-color: #000;
-          border-radius: 3px;
-          color: #fff;
-        }
-      }
-
-      button:not(:first-of-type) {
-        margin-left: 10px;
-      }
-    }
-
-    .modal-tab-group {
-      display: grid;
-      grid-template-columns: repeat(1, 1fr);
-
-      .modal-tab-content {
-        grid-column: 1;
-        grid-row: 1;
-      }
-    }
-
-    .modal-tab-content {
-      display: flex;
-      flex-direction: column;
-      transition-duration: 0.3s;
-      transform: translateY(50px);
-      opacity: 0;
-      visibility: hidden;
-
-      &.active {
-        transform: translateX(0px);
-        opacity: 1;
-        visibility: visible;
-      }
-    }
-
-    label {
-      font-weight: 700;
-      margin-bottom: 5px;
-    }
-
-    input, select {
-      background-color: #eee;
-      border: none;
-      border-bottom: 2px solid #555;
-      font-family: inherit;
-      font-size: 1.2rem;
-      margin-bottom: 15px;
-      padding: 10px;
-    }
-
     .spacer {
       flex: 1 1;
-    }
-
-    .badge-btn:not(:first-of-type) {
-      margin-top: 10px;
     }
   }
 

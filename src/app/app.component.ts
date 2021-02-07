@@ -13,6 +13,7 @@ import { ConfigurationService, ModalService, StorageService } from './core/servi
 export class AppComponent implements OnInit {
   @ViewChild('whatsNew') template: TemplateRef<any>;
   isLoaded = false;
+  appInfo: { version: string, updateInfo: any[] };
 
   constructor(private configService: ConfigurationService,
               private storageService: StorageService,
@@ -27,6 +28,7 @@ export class AppComponent implements OnInit {
     // Validate app version and update if needed
     this.configService.updateApp()
       .then(didUpdate => {
+        this.appInfo = this.configService.getAppInfo();
         if (didUpdate)
           setTimeout(() => this.modal.openModal(this.template), 500);
       })

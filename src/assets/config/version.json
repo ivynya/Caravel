@@ -1,4 +1,34 @@
 
 {
-  "version": "0.1.2"
+  "version": "0.2.0",
+  "updateInfo": [
+    {
+      "title": "The Latest and Greatest",
+      "desc": "From now on, when a new version of Caravan is released, you'll see this update summary. Neato!"
+    },
+    {
+      "title": "Revamped Notifications",
+      "desc": "Hover over notifications to show all future notifications, including in compact mode."
+    },
+    {
+      "title": "Got Networking?",
+      "stage": "Beta",
+      "desc": "Have slow internet, or want to save internet bandwidth? Try enabling Low Bandwidth Mode in Caravan account settings."
+    },
+    {
+      "title": "Cracking Modules",
+      "stage": "Alpha",
+      "desc": "You can now view your course modules. Try navigating to the modules page on the course home page. (limit most recent 10 modules and module items per module)"
+    },
+    {
+      "title": "Features on the Side",
+      "desc": "With extra dipping sauce.",
+      "features": [
+        "Dashboard uses new performance enhancements.",
+        "Pre-load asssignments for extra performance.",
+        "Dashboard and course show locked assignments.",
+        "Smarter caching to save network bandwidth."
+      ]
+    }
+  ]
 }

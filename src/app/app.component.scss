@@ -16,3 +16,34 @@
     position: relative;
   }
 }
+
+.update-info {
+  .title {
+    color: var(--accent-primary);
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-decoration: underline;
+    text-transform: uppercase;
+  }
+
+  .stage {
+    color: var(--warning);
+    text-decoration: underline;
+  }
+  
+  .desc {
+    margin: 0;
+  }
+
+  ul {
+    font-size: 0.9rem;
+    margin: 5px 0;
+    padding-left: 20px;
+
+    li p {
+      margin: 2px 0;
+    }
+  }
+}
