@@ -109,14 +109,14 @@
 
 .sidebar.compact {
   padding-top: 0;
-  width: 90px;
+  width: 70px;
 
   .nav-link {
     flex-direction: column;
     justify-content: center;
     font-size: 1rem;
     line-height: unset;
-    height: 90px;
+    height: 70px;
     padding-left: 0;
     padding-right: 0;
 
@@ -127,8 +127,12 @@
       margin-bottom: 5px;
     }
 
+    img + span {
+      display: none;
+    }
+
     &.nav-sub {
-      height: 60px;
+      height: 70px;
       margin: auto;
 
       .icon {

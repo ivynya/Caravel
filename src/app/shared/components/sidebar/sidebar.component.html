@@ -12,11 +12,11 @@
     </div>
     <a routerLink="/account" class="nav-link" routerLinkActive="active">
       <img src="/assets/icons/Icon_Account.svg" alt="Account">
-      Account
+      <span>Account</span>
     </a>
     <a routerLink="/home" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
       <img src="/assets/icons/Icon_Dashboard.svg" alt="Dashboard">
-      Dashboard
+      <span>Dashboard</span>
     </a>
     <div class="sidebar-classes" *ngIf="this.enumerateClasses">
       <a class="nav-link nav-sub" *ngFor="let course of courses" 
@@ -27,22 +27,22 @@
     </div>
     <a routerLink="/groups" class="nav-link" routerLinkActive="active">
       <img src="/assets/icons/Icon_Group.svg" alt="Groups">
-      Groups
+      <span>Groups</span>
     </a>
     <div class="sidebar-groups" *ngIf="this.enumerateGroups">
 
     </div>
     <a routerLink="/inbox" class="nav-link" routerLinkActive="active">
       <img src="/assets/icons/Icon_Inbox.svg" alt="Inbox">
-      Inbox
+      <span>Inbox</span>
     </a>
     <a routerLink="/calendar" class="nav-link" routerLinkActive="active">
       <img src="/assets/icons/Icon_Calendar.svg" alt="Calendar">
-      Calendar
+      <span>Calendar</span>
     </a>
     <a routerLink="/studio" class="nav-link" routerLinkActive="active">
       <img src="/assets/icons/Icon_Studio.svg" alt="Studio">
-      Studio
+      <span>Studio</span>
     </a>
   </div>
   <br>
