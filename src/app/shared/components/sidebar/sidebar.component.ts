@@ -41,8 +41,12 @@ export class SidebarComponent implements OnInit {
   }
 
   checkAuthAndUpdateInfo(): void {
-    this.isAuthorized = this.storage.has("oauth_token");
-    if (!this.isAuthorized) return;
+    const token = this.storage.get("oauth_token");
+    this.isAuthorized = (token && token !== "null");
+    if (!this.isAuthorized) {
+      this.router.navigateByUrl("/auth");
+      return;
+    }
 
     this.courseService.listCourses(courses => this.courses = courses);
   }

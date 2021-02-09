@@ -8,6 +8,8 @@ import {
 
 // Options for xfetch requests
 interface XOptions {
+  cacheShort?: number,
+  cacheLong?: number,
   method?: string,
   params?: URLSearchParams
 }
@@ -38,19 +40,21 @@ export abstract class APIBaseService {
     const cacheId = options?.params ? `${endpoint}.${options.params.toString()}` : endpoint;
     const cached = this.getCached(cacheId);
     if (cached && cached.value) {
-      callback({data: JSON.parse(cached.value), isCache: true});
+      callback({ data: JSON.parse(cached.value), isCache: true });
 
-      // If cache less than ten seconds old, do not make network request.
+      // If cache less than max short duration, stop network request.
       const cacheElapsedTime = new Date().getTime() - cached.cachedAt;
-      if (cacheElapsedTime < 10000) {
+      // Either a specified value in options or fifteen seconds.
+      const cacheMaxShortDuration = options?.cacheShort ?? 15000;
+      if (cacheElapsedTime < cacheMaxShortDuration) {
         this.notifService.notify("Loaded cached data.", 2);
         return;
       }
 
-      // Low bandwidth mode extends the pure-cached limit to 30s.
-      // TODO: in the future, this would be configurable per endpoint.
+      // Low bandwidth mode extends the time limit to set value or short value + 20 seconds.
       const reducedNetwork = <boolean>this.configService.get("networking", "stop_calls_if_cached").value;
-      if (reducedNetwork && cacheElapsedTime < 30000) {
+      const cacheMaxLongDuration = options?.cacheLong ?? cacheMaxShortDuration + 20000;
+      if (reducedNetwork && cacheElapsedTime < cacheMaxLongDuration) {
         this.notifService.notify("Low Bandwith Mode: You might be seeing stale data.", 1);
         return;
       }
@@ -78,7 +82,7 @@ export abstract class APIBaseService {
     // Construct the endpoint URL
     const token = this.storageService.get("oauth_token");
     const base = `https://${domain}.instructure.com/api/v1`;
-    const params = `access_token=${token}&${options?.params.toString()}`;
+    const params = `access_token=${token}&${options?.params?.toString()}`;
     const url = `${base}/${this.scope}/${endpoint}?${params}`;
     // API is always fetched with a CORS proxy due to Canvas limitations
     // Advisable to set up your own (secure) CORS proxy

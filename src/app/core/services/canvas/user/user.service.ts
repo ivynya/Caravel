@@ -51,7 +51,9 @@ export class UserService extends APIBaseService {
 
   // Gets user profile. Used on accounts page.
   getProfile(callback: (data: Profile) => void): void {
-    this.xfetch(`self/profile`, res => {callback(res.data)})
+    this.xfetch(`self/profile`,
+                res => { callback(res.data) },
+                { cacheShort: 360000000, cacheLong: 864000000 })
       .catch(ex => console.error(ex));
   }
 
