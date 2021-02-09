@@ -40,7 +40,7 @@
 
   .config-scope {
     margin-bottom: 20px;
-    width: 45%;
+    width: 100%;
 
     .configurable {
       margin-bottom: 10px;
@@ -59,6 +59,10 @@
           max-width: 100px;
         }
       }
+    }
+
+    @media (min-width: 992px) {
+      width: 45%;
     }
   }
 }
