@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 
-import { Assignment, Course, Submission } from '../core/schemas';
-import { AssignmentService, CourseService } from '../core/services/canvas';
+import { Assignment, Course, Submission } from '../../core/schemas';
+import { AssignmentService, CourseService } from '../../core/services/canvas';
 
 @Component({
   selector: 'app-assignment',
@@ -23,14 +23,16 @@ export class AssignmentComponent implements OnInit {
               private titleService: Title,
               private route: ActivatedRoute) { }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
+    const courseId = parseInt(this.route.parent.snapshot.paramMap.get("id"));
+    console.log(courseId)
     this.route.params.subscribe(params => {
       // Get assignment from API/Cache
-      this.assignmentService.getAssignment(params.cId, params.aId, a => this.setAssignment(a));
+      this.assignmentService.getAssignment(courseId, params.aId, a => this.setAssignment(a));
 
       // API limitation means that only the latest submission can be
       // retrived. No further submissions, unless admin privileges.
-      this.assignmentService.getLatestSubmission(params.cId, params.aId, submission => {
+      this.assignmentService.getLatestSubmission(courseId, params.aId, submission => {
         this.latestSubmission = submission;
         
         // If no submission, remove viewing option

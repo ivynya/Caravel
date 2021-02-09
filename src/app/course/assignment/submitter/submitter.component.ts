@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { Assignment } from '../../core/schemas';
+import { Assignment } from '../../../core/schemas';
 
 @Component({
   selector: 'assignment-submitter',

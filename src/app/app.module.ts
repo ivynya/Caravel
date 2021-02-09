@@ -16,8 +16,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AuthModule } from './auth/auth.module';
 import { AccountModule } from './account/account.module';
-import { AssignmentModule } from './assignment/assignment.module';
 import { CourseModule } from './course/course.module';
+import { AssignmentModule } from './course/assignment/assignment.module';
 import { HomeModule } from './home/home.module';
 
 import { AppComponent } from './app.component';

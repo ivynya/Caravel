@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CourseComponent } from './course.component';
 import { CourseHomeComponent } from './course-home/course-home.component';
 import { CourseModulesComponent } from './course-modules/course-modules.component';
+import { AssignmentComponent } from './assignment/assignment.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,14 @@ const routes: Routes = [
       {
         path: '',
         component: CourseHomeComponent
+      },
+      {
+        path: 'assignments/:aId',
+        component: AssignmentComponent
+      },
+      {
+        path: 'a/:aId',
+        redirectTo: 'assignments/:aId'
       },
       {
         path: 'modules',
