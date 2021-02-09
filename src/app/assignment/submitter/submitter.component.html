@@ -1,6 +1,10 @@
 
 <div class="submitter">
   <h3>New Attempt</h3>
-  <em>Submit as: [Valid submission types]</em>
+  <em>Submit as:
+    <span *ngFor="let t of assignment?.submission_types">
+      [{{ t | mapSubmitType }}]
+    </span>
+  </em>
   <hr>
 </div>

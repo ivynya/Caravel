@@ -1,22 +1,25 @@
 
 <div class="submission">
-    <h3>Attempt {{ submission?.attempt }}</h3>
-    <em>{{ type }} at {{ submission?.submitted_at | date: 'medium' }}</em>
-    <hr>
-    <div *ngIf="submission?.submission_type === 'online_url'">
-        <p><a [href]="submission?.url" target="_blank" rel="noreferrer">
-            {{submission?.url}}
-        </a></p>
-    </div>
-    <div *ngIf="submission?.submission_type === 'online_text_entry'">
-        <p>{{ submission?.body }}</p>
-    </div>
-    <div *ngIf="submission?.submission_type === 'online_upload'">
-        <p><a [href]="previewUrl" target="_blank" rel="noreferrer">
-            View file preview in a new window.
-        </a></p>
-    </div>
-    <div *ngIf="submission?.submission_type === 'media_recording'">
-        <p>We can't preview media recordings.</p>
-    </div>
+  <h3>Attempt {{ submission?.attempt }}</h3>
+  <em>
+    {{ submission?.submission_type | mapSubmitType }}
+    at {{ submission?.submitted_at | date: 'medium' }}
+  </em>
+  <hr>
+  <div *ngIf="submission?.submission_type === 'online_url'">
+    <p><a [href]="submission?.url" target="_blank" rel="noreferrer">
+      {{submission?.url}}
+    </a></p>
+  </div>
+  <div *ngIf="submission?.submission_type === 'online_text_entry'">
+    <div [innerHtml]="submission?.body"></div>
+  </div>
+  <div *ngIf="submission?.submission_type === 'online_upload'">
+    <p><a [href]="previewUrl" target="_blank" rel="noreferrer">
+      View file preview in a new window.
+    </a></p>
+  </div>
+  <div *ngIf="submission?.submission_type === 'media_recording'">
+    <p>We can't preview media recordings.</p>
+  </div>
 </div>

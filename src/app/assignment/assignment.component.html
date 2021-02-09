@@ -44,7 +44,8 @@
             [submission]="latestSubmission">
           </assignment-submission>
           <assignment-submitter 
-            *ngIf="!isFocusSubmission">
+            *ngIf="!isFocusSubmission"
+            [assignment]="assignment">
           </assignment-submitter>
         </div>
       </div>
