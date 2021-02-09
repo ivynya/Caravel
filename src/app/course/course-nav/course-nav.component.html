@@ -1,26 +1,32 @@
 
 <nav class="course-nav">
-  <a [routerLink]="['/courses/', course.id]">
+  <a [routerLink]="['/courses/', course.id]"
+      routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
     <img src="assets/icons/Icon_Home.svg" alt="">
     <span>Course Home</span>
   </a>
-  <a [routerLink]="['/courses/', course.id, 'assignments']">
+  <a [routerLink]="['/courses/', course.id, 'assignments']"
+      routerLinkActive="active">
     <img src="assets/icons/Icon_Default.svg" alt="">
     <span>Assignments</span>
   </a>
-  <a [routerLink]="['/courses/', course.id, 'discussions']">
+  <a [routerLink]="['/courses/', course.id, 'discussions']"
+      routerLinkActive="active">
     <img src="assets/icons/Icon_Default.svg" alt="">
     <span>Discussions</span>
   </a>
-  <a [routerLink]="['/courses/', course.id, 'grades']">
+  <a [routerLink]="['/courses/', course.id, 'grades']"
+      routerLinkActive="active">
     <img src="assets/icons/Icon_Default.svg" alt="">
     <span>Grades</span>
   </a>
-  <a [routerLink]="['/courses/', course.id, 'modules']">
+  <a [routerLink]="['/courses/', course.id, 'modules']"
+      routerLinkActive="active">
     <img src="assets/icons/Icon_Default.svg" alt="">
     <span>Modules</span>
   </a>
-  <a [routerLink]="['/courses/', course.id, 'quizzes']">
+  <a [routerLink]="['/courses/', course.id, 'quizzes']"
+      routerLinkActive="active">
     <img src="assets/icons/Icon_Default.svg" alt="">
     <span>Quizzes</span>
   </a>

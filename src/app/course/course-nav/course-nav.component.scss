@@ -17,7 +17,7 @@
   transition-delay: 0.1s;
 
   a {
-    background-color: transparent;
+    background-color: var(--bg-tertiary);
     border-radius: 5px;
     color: var(--text-primary);
     display: flex;
@@ -40,12 +40,14 @@
       display: none;
     }
 
-    &:hover {
+    &:hover, &:focus, &.active {
       background-color: var(--bg-control-hover);
+      border-width: 6px;
+      border-color: var(--accent-primary);
     }
   }
 
-  @media (max-width: 1400px) {
+  @media (max-width: 1300px) {
     &:hover {
       width: 200px;
       margin-right: calc(-150px + 3rem);
@@ -56,11 +58,32 @@
     }
   }
 
-  @media (min-width: 1500px) {
-    width: 200px;
-    
-    a span {
-      display: unset;
+  @media (min-width: 1300px) {
+    background-color: transparent;
+    box-shadow: none;
+    width: 150px;
+    margin-right: 5rem;
+
+    a {
+      background-color: transparent;
+      border-right: var(--border-primary) 3px solid;
+      border-radius: 0;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      color: var(--text-inverse-primary);
+
+      img {
+        display: none;
+      }
+
+      span {
+        display: unset;
+        padding: 5px 8px;
+      }
+
+      &:hover, &:focus, &.active {
+        background-color: transparent;
+      }
     }
   }
 }
