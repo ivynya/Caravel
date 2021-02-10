@@ -1,0 +1,51 @@
+
+/* CSS Hover Tooltip */
+
+[data-tt] {
+  position: relative;
+
+  /* Positioning and visibility */
+  &:before {
+    position: absolute;
+    left: calc(100% + 5px);
+    top: inherit;
+    z-index: 10;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition-duration: 0.1s;
+    -moz-transition-duration: 0s;
+    will-change: transform;
+  }
+
+  /* Dynamic-width tooltip */
+  &:before {
+    background-color: var(--bg-primary);
+    border: var(--accent-primary) 1px solid;
+    color: var(--text-primary);
+    content: attr(data-tt);
+    padding: 8px 14px;
+    line-height: 18px;
+    height: 18px;
+    min-width: 50px;
+    max-width: 300px;
+    width: max-content;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+    white-space: pre-wrap;
+    transform: scale(0.7);
+  }
+
+  &:hover {
+    /* Tooltip becomes visible on hover */
+    &:before {
+      visibility: visible;
+      opacity: 1;
+    }
+    /* Effects */
+    &:before {
+      transform: scale(1);
+    }
+  }
+}

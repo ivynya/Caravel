@@ -19,7 +19,7 @@ export class SidebarComponent implements OnInit {
   enumerateGroups = false;
   useCompact = false;
 
-  showHelp = false;
+  ttOffset = 90;
   
   constructor(private courseService: CourseService,
               private storage: StorageService,
@@ -55,7 +55,10 @@ export class SidebarComponent implements OnInit {
     this.config.set("sidebar", "compact_mode", !this.useCompact);
   }
 
-  toggleHelp(): void {
-    this.showHelp = !this.showHelp;
+  // On navlink hover, align the tooltip position to element
+  alignTT(e: MouseEvent): void {
+    const target = e.currentTarget as HTMLElement;
+    const top = target.getBoundingClientRect().top;
+    this.ttOffset = top + 0.5*target.offsetHeight - 18;
   }
 }

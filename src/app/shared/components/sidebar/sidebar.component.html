@@ -1,46 +1,86 @@
 <nav class="sidebar" [ngClass]="{'compact': useCompact}">
   <div *ngIf="!isAuthorized">
-    <div class="sidebar-options sidebar-title">
+    <div class="sidebar-title">
       <h2>Caravan</h2>
     </div>
-    <a routerLink="/auth" class="nav-link" routerLinkActive="active">Authorize</a>
+    <a routerLink="/auth"
+        class="nav-link"
+        routerLinkActive="active">
+      Authorize
+    </a>
   </div>
   <div *ngIf="isAuthorized">
-    <div class="sidebar-options sidebar-title">
+    <div class="sidebar-title">
       <h2>Caravan</h2>
       <button (click)="toggleCompact()">≡</button>
     </div>
-    <a routerLink="/account" class="nav-link" routerLinkActive="active">
+    <a class="nav-link"
+        data-tt="Account"
+        [style.top]="ttOffset+'px'"
+        (mouseenter)="alignTT($event)"
+        routerLink="/account"
+        routerLinkActive="active">
       <img src="/assets/icons/Icon_Account.svg" alt="Account">
       <span>Account</span>
     </a>
-    <a routerLink="/home" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+    <a class="nav-link"
+        data-tt="Dashboard"
+        [style.top]="ttOffset+'px'"
+        (mouseenter)="alignTT($event)"
+        routerLink="/home"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">
       <img src="/assets/icons/Icon_Dashboard.svg" alt="Dashboard">
       <span>Dashboard</span>
     </a>
     <div class="sidebar-classes" *ngIf="this.enumerateClasses">
-      <a class="nav-link nav-sub" *ngFor="let course of courses" 
-        routerLinkActive="active" [routerLink]="'/courses/'+course.id">
+      <a class="nav-link nav-sub"
+          [attr.data-tt]="course.name"
+          [style.top]="ttOffset+'px'"
+          (mouseenter)="alignTT($event)"
+          *ngFor="let course of courses" 
+          [routerLink]="'/courses/'+course.id"
+          routerLinkActive="active">
         <span class="icon">{{ course.name | abbreviateCourse }}</span>
         <span class="course-name">{{ course.name }}</span>
       </a>
     </div>
-    <a routerLink="/groups" class="nav-link" routerLinkActive="active">
+    <a class="nav-link"
+        data-tt="Groups"
+        [style.top]="ttOffset+'px'"
+        (mouseenter)="alignTT($event)"
+        routerLink="/groups"
+        routerLinkActive="active">
       <img src="/assets/icons/Icon_Group.svg" alt="Groups">
       <span>Groups</span>
     </a>
     <div class="sidebar-groups" *ngIf="this.enumerateGroups">
 
     </div>
-    <a routerLink="/inbox" class="nav-link" routerLinkActive="active">
+    <a class="nav-link"
+        data-tt="Inbox"
+        [style.top]="ttOffset+'px'"
+        (mouseenter)="alignTT($event)"
+        routerLink="/inbox"
+        routerLinkActive="active">
       <img src="/assets/icons/Icon_Inbox.svg" alt="Inbox">
       <span>Inbox</span>
     </a>
-    <a routerLink="/calendar" class="nav-link" routerLinkActive="active">
+    <a class="nav-link"
+        data-tt="Calendar"
+        [style.top]="ttOffset+'px'"
+        (mouseenter)="alignTT($event)"
+        routerLink="/calendar"
+        routerLinkActive="active">
       <img src="/assets/icons/Icon_Calendar.svg" alt="Calendar">
       <span>Calendar</span>
     </a>
-    <a routerLink="/studio" class="nav-link" routerLinkActive="active">
+    <a class="nav-link"
+        data-tt="Studio"
+        [style.top]="ttOffset+'px'"
+        (mouseenter)="alignTT($event)"
+        routerLink="/studio"
+        routerLinkActive="active">
       <img src="/assets/icons/Icon_Studio.svg" alt="Studio">
       <span>Studio</span>
     </a>

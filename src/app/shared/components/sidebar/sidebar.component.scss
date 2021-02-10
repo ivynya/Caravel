@@ -10,9 +10,11 @@
 
   height: 100%;
   width: 300px;
-  padding: 10px 0;
-  padding-top: 15px;
-  overflow: auto;
+  
+  > div {
+    min-height: 100%;
+    overflow: auto;
+  }
 
   .nav-link {
     color: var(--text-primary);
@@ -20,12 +22,12 @@
     text-decoration: none;
     white-space: nowrap;
     text-overflow: ellipsis;
-    overflow: hidden;
 
     display: flex;
     align-items: center;
     line-height: 4.5rem;
 
+    position: static;
     min-height: 4.5rem;
     padding-left: 30px;
     padding-right: 20px;
@@ -68,14 +70,10 @@
     }
   }
 
-  .sidebar-options {
+  .sidebar-title {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    position: relative;
-
-    padding: 10px 20px;
-    padding-left: 30px;
+    justify-content: space-between;
+    padding: 20px;
 
     h2 {
       margin: 0;
@@ -97,11 +95,6 @@
     }
   }
 
-  .sidebar-title {
-    justify-content: space-between;
-    padding-bottom: 20px;
-  }
-
   @media (min-width: 2000px) {
     width: 350px;
   }
@@ -110,6 +103,7 @@
 .sidebar.compact {
   padding-top: 0;
   width: 70px;
+  position: relative;
 
   .nav-link {
     flex-direction: column;
