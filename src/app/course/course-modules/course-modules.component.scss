@@ -1,15 +1,29 @@
 
 .modules {
-
-  .expandable {
-    border: var(--border-primary) 2px solid;
-    border-radius: 5px;
-
-    margin-bottom: 20px;
-    padding: 20px;
-
+  .module {
     summary {
+      border: var(--border-secondary) 2px solid;
+      border-radius: 5px;
       font-size: 16px;
+      outline: none;
+      transition-duration: 0.2s;
+  
+      margin-bottom: 20px;
+      padding: 15px 20px;
+    }
+
+    &[open] summary {
+      border-color: var(--border-primary);
+    }
+
+    &[open] {
+      margin-bottom: 30px;
+    }
+
+    .module-items {
+      border-left: var(--accent-secondary) 3px solid;
+      border-radius: 2px;
+      padding-left: 20px;
     }
   }
 }

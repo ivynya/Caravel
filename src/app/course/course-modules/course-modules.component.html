@@ -2,10 +2,12 @@
 <section class="modules">
   <h1>{{ course?.name }}: Modules</h1>
   <hr><br>
-  <details *ngFor="let mod of modules" class="expandable">
+  <details *ngFor="let mod of modules" class="module">
     <summary (click)="getModuleItems(mod)">{{ mod.name }}</summary>
-    <app-module *ngFor="let item of mod.items" [item]="item" [course]="course"></app-module>
-    <p *ngIf="mod.items?.length === 10">Not all module items may be loaded.</p>
+    <div class="module-items">
+      <app-module *ngFor="let item of mod.items" [item]="item" [course]="course"></app-module>
+      <p *ngIf="mod.items?.length === 10">Not all module items may be loaded.</p>
+    </div>
   </details>
   <p *ngIf="modules.length === 10">Not all modules may be loaded.</p>
   <br><br>
