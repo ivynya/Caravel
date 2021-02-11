@@ -1,0 +1,19 @@
+domains:
+- domain: caravan.sdbagel.com
+  type: PRIMARY
+  zone: sdbagel.com
+name: caravan
+region: nyc
+static_sites:
+- build_command: npm run build:prod
+  environment_slug: node-js
+  github:
+    branch: master
+    repo: SDBagel/Caravan
+  name: caravan
+  catchall_document: index.html
+  routes:
+  - path: /
+  - path: /auth
+  - path: /account
+  - path: /home
