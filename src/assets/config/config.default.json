@@ -56,12 +56,6 @@
       "type": "toggle",
       "default": true,
       "value": true
-    },
-    "enumerate_groups": {
-      "name": "Enumerate Groups",
-      "type": "toggle",
-      "default": false,
-      "value": false
     }
   }
 }

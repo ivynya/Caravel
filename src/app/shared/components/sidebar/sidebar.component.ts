@@ -16,7 +16,6 @@ export class SidebarComponent implements OnInit {
   isAuthorized: boolean;
 
   enumerateClasses = true;
-  enumerateGroups = false;
   useCompact = false;
 
   ttOffset = 90;
@@ -28,7 +27,6 @@ export class SidebarComponent implements OnInit {
     config.config.subscribe({next: data => {
       this.useCompact = <boolean>data["sidebar"]["compact_mode"].value;
       this.enumerateClasses = <boolean>data["sidebar"]["enumerate_courses"].value;
-      this.enumerateGroups = <boolean>data["sidebar"]["enumerate_groups"].value;
     }});
   }
 
