@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 
 import {
+  ExpandableComponent,
   IconLTIComponent,
   ModuleComponent,
   ModalComponent,
@@ -29,7 +30,8 @@ import { CoreModule } from 'app/core/core.module';
     NotificationBannerComponent,
     SidebarComponent,
     TodoComponent,
-    ToggleComponent
+    ToggleComponent,
+    ExpandableComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +50,8 @@ import { CoreModule } from 'app/core/core.module';
     NotificationBannerComponent,
     SidebarComponent,
     TodoComponent,
-    ToggleComponent
+    ToggleComponent,
+    ExpandableComponent
   ]
 })
 export class SharedModule {}

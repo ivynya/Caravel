@@ -6,10 +6,11 @@
       <div *ngFor="let group of stream">
         <h2>{{ group.id }}</h2>
         <home-todo *ngFor="let item of group.items" [item]="item"></home-todo>
-        <details *ngIf="group.completed.length > 0">
-          <summary>Completed Items ({{ group.completed.length }})</summary>
+        <app-expandable
+            *ngIf="group.completed.length > 0"
+            [name]="'Completed Items ('+group.completed.length+')'">
           <home-todo *ngFor="let item of group.completed" [item]="item"></home-todo>
-        </details>
+        </app-expandable>
       </div>
       <br><br>
     </section>

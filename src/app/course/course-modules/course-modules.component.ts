@@ -22,7 +22,6 @@ export class CourseModulesComponent implements OnInit {
 
       this.courseService.listModules(params.id, modules => {
         this.modules = modules;
-        console.log(modules);
       });
     });
   }
