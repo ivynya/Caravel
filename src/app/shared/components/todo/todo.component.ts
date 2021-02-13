@@ -29,10 +29,14 @@ export class TodoComponent implements OnInit {
         this.item.plannable?.workflow_state === "completed")
       this.isComplete = true;
 
-    if (this.item.plannable_type != 'assignment') return;
-    this.assignmentService.getAssignment(this.item.course_id, this.item.plannable.id, a => {
-      this.isLocked = a.locked_for_user;
-    });
+    if (this.item.plannable_type === 'assignment')
+      this.assignmentService.getAssignment(this.item.course_id, this.item.plannable.id, a => {
+        this.isLocked = a.locked_for_user;
+      });
+    else if (this.item.plannable_type === 'wiki_page')
+      this.courseService.getCoursePage(this.item.course_id, this.item.plannable.url, p => {
+        this.isLocked = p.locked_for_user;
+      });
   }
 
 }
