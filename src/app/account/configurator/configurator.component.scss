@@ -50,13 +50,18 @@
         align-items: center;
         justify-content: space-between;
 
-        input {
+        input, select {
           background-color: var(--bg-control);
           border: none;
           border-radius: 3px;
+          box-sizing: border-box;
           color: var(--text-primary);
           padding: 5px 10px;
-          max-width: 100px;
+          width: 150px;
+        }
+
+        select {
+          appearance: none;
         }
       }
     }

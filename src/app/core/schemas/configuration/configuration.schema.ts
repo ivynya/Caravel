@@ -11,7 +11,9 @@ export interface Configurable {
   // Determines if display toggle, slider, etc.
   type: string,
   // Default value of config
-  default: boolean
+  default: boolean,
   // Actual value of config
-  value: boolean|string
+  value: any,
+  // If type "select", these are valid options
+  options?: string[]
 }

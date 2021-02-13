@@ -1,5 +1,5 @@
 
-:root {
+:root, :root[theme="dark"] {
   --bg-primary: #11111F;
   --bg-secondary: #1A1A2F;
   --bg-tertiary: #22223A;
@@ -70,6 +70,42 @@
     --warning: #FA0;
     --info: #00F2D2;
   }
+}
+
+:root[theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #b4a1e4;
+  --bg-tertiary: #47475e;
+
+  --box-shadow-primary: #403668;
+  --box-shadow-secondary: #7c73a7;
+
+  --border-primary: #437;
+  --border-secondary: #326;
+
+  --bg-control: #5c5c7e;
+  --bg-control-hover: #52527e;
+
+  --bg-accent: #7261a3;
+  --bg-dialog: #515172;
+
+  --text-primary: #ffffff;
+  --text-secondary: #ddd;
+  --text-tertiary: #aab;
+
+  --text-inverse-primary: #000;
+  --text-inverse-secondary: #222;
+  --text-inverse-tertiary: #555;
+
+  --scrollbar-primary: var(--bg-accent);
+  --scrollbar-secondary: #64a;
+
+  --accent-primary: #00F2D2;
+  --accent-secondary: #00b5c2;
+
+  --error: #F50;
+  --warning: #FA0;
+  --info: #00F2D2;
 }
 
 ::selection {

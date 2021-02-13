@@ -21,6 +21,18 @@
           [(ngModel)]="conf.value.value"
           (change)="upd(scope.key, conf.key, conf.value.value)">
       </div>
+      <div *ngIf="conf.value.type === 'select'">
+        <label>{{ conf.value.name }}</label>
+        <select 
+            [(ngModel)]="conf.value.value"
+            (change)="upd(scope.key, conf.key, conf.value.value)">
+          <option
+            *ngFor="let opt of conf.value.options"
+            [value]="opt">
+            {{ opt }}
+          </option>
+        </select>
+      </div>
     </div>
   </div>
 </div>

@@ -6,6 +6,17 @@
       "type": "text",
       "default": "mvla.instructure.com",
       "value": "mvla.instructure.com"
+    },
+    "theme": {
+      "name": "App Theme",
+      "type": "select",
+      "default": "system",
+      "value": "system",
+      "options": [
+        "system",
+        "dark",
+        "light"
+      ]
     }
   },
   "course": {

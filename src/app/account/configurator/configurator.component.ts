@@ -21,12 +21,18 @@ export class ConfiguratorComponent implements OnInit {
               private notif: NotificationService) { }
 
   ngOnInit(): void {
-    this.config.config.subscribe(data => this.configuration = data);
+    this.config.config.subscribe(data => {
+      this.configuration = data;
+
+      // Change app theme if it is updated
+      const theme = this.configuration["caravan"]["theme"].value;
+      document.documentElement.setAttribute('theme', theme);
+    });
     this.appInfo = this.config.getAppInfo();
   }
 
   // Updates an item in the cache
-  upd(scope: string, key: string, val: boolean|string): void {
+  upd(scope: string, key: string, val: any): void {
     this.config.set(scope, key, val);
   }
 
