@@ -23,6 +23,16 @@
         <span>{{ item.html_url }}</span>
       </p>
     </div>
+    <div *ngSwitchCase="'Page'">
+      <h3><a [routerLink]="['/courses', course.id, 'pages', item.page_url]">
+        {{ item.title }}
+      </a></h3>
+      <p class="subtext">
+        <span>Page</span>
+        <span class="separator"></span>
+        <span>{{ item.html_url }}</span>
+      </p>
+    </div>
     <div *ngSwitchCase="'SubHeader'">
       <h3>{{ item.title }}</h3>
     </div>

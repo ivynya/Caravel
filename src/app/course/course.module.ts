@@ -10,13 +10,15 @@ import { RoundDatePipe } from 'app/core/pipes/round-date/round-date.pipe';
 import { CourseNavComponent } from './course-nav/course-nav.component';
 import { CourseHomeComponent } from './course-home/course-home.component';
 import { CourseModulesComponent } from './course-modules/course-modules.component';
+import { CoursePageComponent } from './course-page/course-page.component';
 
 @NgModule({
   declarations: [
     CourseComponent,
     CourseNavComponent,
     CourseHomeComponent,
-    CourseModulesComponent
+    CourseModulesComponent,
+    CoursePageComponent
   ],
   imports: [CommonModule, SharedModule, CourseRoutingModule],
   providers: [RoundDatePipe]

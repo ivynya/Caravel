@@ -6,6 +6,7 @@ import { CourseComponent } from './course.component';
 import { CourseHomeComponent } from './course-home/course-home.component';
 import { CourseModulesComponent } from './course-modules/course-modules.component';
 import { AssignmentComponent } from './assignment/assignment.component';
+import { CoursePageComponent } from './course-page/course-page.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
       {
         path: 'modules',
         component: CourseModulesComponent
+      },
+      {
+        path: 'pages/:pId',
+        component: CoursePageComponent
       }
     ]
   }

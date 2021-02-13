@@ -35,7 +35,7 @@
       </p>
     </div>
     <div *ngSwitchCase="'assignment'">
-      <h3><a [routerLink]="'/courses/'+item.course_id+'/assignments/'+item.plannable.id">
+      <h3><a [routerLink]="['/courses',item.course_id,'assignments',item.plannable.id]">
         {{ item.plannable.title }}
       </a></h3>
       <p class="subtext">
@@ -76,7 +76,7 @@
       </p>
     </div>
     <div *ngSwitchCase="'wiki_page'">
-      <h3><a [href]="item.html_url">
+      <h3><a [routerLink]="['/courses',item.course_id,'pages',item.plannable.url]">
         {{ item.plannable.title }}
       </a></h3>
       <p class="subtext">

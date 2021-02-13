@@ -37,6 +37,13 @@ export class CourseService extends APIBaseService {
       .catch(ex => console.error(ex));
   }
 
+  getCoursePage(cId: number, pId: string, callback: (data: Page) => void): void {
+    this.xfetch(`${cId}/pages/${pId}`,
+                res => {callback(res.data)},
+                { cacheShort: 120000 })
+      .catch(ex => console.error(ex));
+  }
+
   getCourseFrontPage(cId: number, callback: (data: Page) => void): void {
     this.xfetch(`${cId}/front_page`, res => {callback(res.data)},
                 { cacheShort: 360000000, cacheLong: 864000000 })
