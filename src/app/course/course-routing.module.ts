@@ -21,18 +21,10 @@ const routes: Routes = [
         component: AssignmentComponent
       },
       {
-        path: 'a/:aId',
-        redirectTo: 'assignments/:aId'
-      },
-      {
         path: 'modules',
         component: CourseModulesComponent
       }
     ]
-  },
-  {
-    path: 'c/:id',
-    redirectTo: 'courses/:id'
   }
 ];
 
