@@ -34,7 +34,7 @@
   <ng-container *ngIf="!useRedesign">
     <hr>
     <h2>Course Home Page</h2>
-    <div [innerHtml]="this.frontPage?.body" class="xss-sanitize"></div>
+    <div [innerHtml]="frontPage" class="xss-sanitize"></div>
   </ng-container>
   <ng-container *ngIf="useRedesign">
     <h2>Course Stream</h2>

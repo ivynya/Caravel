@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml, Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 
 import { Assignment, Course, Submission } from '../../core/schemas';
@@ -12,6 +12,7 @@ import { AssignmentService, CourseService } from '../../core/services/canvas';
 })
 export class AssignmentComponent implements OnInit {
   assignment: Assignment;
+  assignmentBody: SafeHtml;
   course: Course;
 
   latestSubmission: Submission;
@@ -20,12 +21,12 @@ export class AssignmentComponent implements OnInit {
 
   constructor(private assignmentService: AssignmentService,
               private courseService: CourseService,
+              private sanitizer: DomSanitizer,
               private titleService: Title,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     const courseId = parseInt(this.route.parent.snapshot.paramMap.get("id"));
-    console.log(courseId)
     this.route.params.subscribe(params => {
       // Get assignment from API/Cache
       this.assignmentService.getAssignment(courseId, params.aId, a => this.setAssignment(a));
@@ -45,6 +46,7 @@ export class AssignmentComponent implements OnInit {
   private setAssignment(assignment: Assignment): void {
     // Set assignment information.
     this.assignment = assignment;
+    this.assignmentBody = this.sanitizer.bypassSecurityTrustHtml(assignment.description);
     this.unlimitedAttempts = (assignment.allowed_attempts === -1);
     this.titleService.setTitle(`${assignment.name} | Caravan`);
 

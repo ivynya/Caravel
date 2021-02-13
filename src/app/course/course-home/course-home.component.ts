@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 
 import { ConfigurationService } from '../../core/services';
@@ -6,7 +7,6 @@ import { CourseService, UserService } from '../../core/services/canvas';
 import { Course, ExternalTool, Page, PlannerItem, Submission } from '../../core/schemas';
 
 import { RoundDatePipe } from '../../core/pipes';
-
 @Component({
   selector: 'app-course-home',
   templateUrl: './course-home.component.html',
@@ -21,11 +21,12 @@ export class CourseHomeComponent implements OnInit {
   tools: ExternalTool[];
 
   // Front page if using legacy home page
-  frontPage: Page;
+  frontPage: SafeHtml;
 
   constructor(private configService: ConfigurationService,
               private courseService: CourseService,
               private userService: UserService,
+              private sanitizer: DomSanitizer,
               private route: ActivatedRoute,
               private roundDate: RoundDatePipe) { }
 
@@ -47,7 +48,9 @@ export class CourseHomeComponent implements OnInit {
       this.courseService.listExternalTools(params.id, data => this.tools = data);
 
       // Course front page is used in legacy mode
-      this.courseService.getCourseFrontPage(params.id, page => this.frontPage = page);
+      this.courseService.getCourseFrontPage(params.id, page => {
+        this.frontPage = this.sanitizer.bypassSecurityTrustHtml(page.body);
+      });
     });
   }
 

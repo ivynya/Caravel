@@ -10,6 +10,6 @@
   </div>
   <hr><br>
   <p *ngIf="page?.lock_explanation">{{ page?.lock_explanation }}</p>
-  <div [innerHtml]="page?.body" class="xss-sanitize"></div>
+  <div [innerHtml]="pageBody" class="xss-sanitize"></div>
   <br><br>
 </section>

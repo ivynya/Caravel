@@ -25,7 +25,7 @@
   </div>
   <hr>
   <p *ngIf="this.assignment?.lock_explanation">{{ assignment?.lock_explanation }}</p>
-  <div [innerHtml]="this.assignment?.description" class="xss-sanitize"></div>
+  <div [innerHtml]="assignmentBody" class="xss-sanitize"></div>
   <br><br>
   <div class="assignment-submitter">
     <div class="attempts">
