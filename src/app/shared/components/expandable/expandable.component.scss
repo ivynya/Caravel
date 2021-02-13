@@ -4,12 +4,16 @@
     border: var(--border-secondary) 2px solid;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
     outline: none;
     user-select: none;
     transition-duration: 0.2s;
 
     margin-bottom: 20px;
+    padding: 10px 20px;
+  }
+
+  &.bold summary {
+    font-size: 16px;
     padding: 15px 20px;
   }
 

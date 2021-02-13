@@ -4,7 +4,7 @@
   <hr><br>
   <app-expandable
       *ngFor="let mod of modules"
-      [name]="mod.name"
+      [name]="mod.name" [bold]="true"
       (expanded)="getModuleItems(mod)">
     <app-module *ngFor="let item of mod.items" [item]="item" [course]="course"></app-module>
     <p *ngIf="mod.items?.length === 10">Not all module items may be loaded.</p>

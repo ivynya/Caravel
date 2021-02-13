@@ -1,5 +1,5 @@
 
-<details class="expandable">
+<details class="expandable" [ngClass]="{'bold': bold}">
   <summary (click)="clicked()">{{ name }}</summary>
   <div class="items">
     <ng-content></ng-content>

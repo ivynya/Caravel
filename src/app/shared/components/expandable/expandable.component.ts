@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ExpandableComponent {
   @Input() name: string;
+  @Input() bold = false;
   @Input() opened = false;
   @Output() expanded: EventEmitter<void>;
 
