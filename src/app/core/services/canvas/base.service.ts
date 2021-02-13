@@ -81,7 +81,7 @@ export abstract class APIBaseService {
 
     // Construct the endpoint URL
     const token = this.storageService.get("oauth_token");
-    const base = `https://${domain}.instructure.com/api/v1`;
+    const base = `https://${domain}/api/v1`;
     const params = `access_token=${token}&${options?.params?.toString()}`;
     const url = `${base}/${this.scope}/${endpoint}?${params}`;
     // API is always fetched with a CORS proxy due to Canvas limitations

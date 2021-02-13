@@ -24,7 +24,6 @@ export class ModalComponent implements OnInit {
       this.collapsed = false;
       this.template = template;
     }
-    console.log("tried to open modal")
   }
 
   collapse(): void {

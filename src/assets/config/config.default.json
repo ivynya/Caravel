@@ -4,8 +4,8 @@
     "domain": {
       "name": "App Domain",
       "type": "text",
-      "default": "mvla",
-      "value": "mvla"
+      "default": "mvla.instructure.com",
+      "value": "mvla.instructure.com"
     }
   },
   "course": {
