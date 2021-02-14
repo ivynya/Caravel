@@ -87,10 +87,9 @@ export class CourseService extends APIBaseService {
       .catch(ex => console.error(ex));
   }
 
-  getModuleItems(cId: number, mId: number, callback: (data: ModuleItem[]) => void): void {
+  getModuleItems(cId: number, mId: number, callback: ResultHandler<ModuleItem[]>): void {
     this.xfetch<ModuleItem[]>(
-        `${cId}/modules/${mId}/items`,
-        res => {callback(res.data)})
+        `${cId}/modules/${mId}/items`, callback)
       .catch(ex => console.error(ex));
   }
 

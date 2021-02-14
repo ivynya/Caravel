@@ -31,36 +31,20 @@ export class HomeComponent implements OnInit {
     this.streamState = { start: now, end: now };
 
     // Load intervals
-    this.getItems(0, 1);
+    this.getItems(2);
   }
 
-  private getItems(at: number, to: number) {
-    // Get new interval of items (max 7 days or 10 items)
-    const next = new Date(this.streamState.end.getTime() + 86400*1000*7);
+  private getItems(to: number) {
+    const next = new Date(this.streamState.end.getTime() + 86400*1000*31);
     this.userService.getPlanner(this.streamState.end, next, res => {
-      const items = res.data;
-
-      if (items.length === 0) {
-        // No items, so set end date to load period
-        console.warn("[WARN] No items for load period.")
-        this.streamState.end = next;
-      }
-      else {
-        // Record what part of the stream is loaded.
-        const endDate = new Date(items[items.length-1].plannable_date);
-        this.streamState.end = new Date(endDate.getTime() + 1);
-      }
-
       // Add or overwrite added items to memory
-      if (this._streamItems.length < at)
-        this._streamItems.push([]);
-      this._streamItems[at] = items;
+      this._streamItems[res.page] = res.data;
+      this.streamState.end = new Date(res.data[res.data.length-1].plannable_date);
+      this.populateStream([].concat.apply([], this._streamItems));
 
       // If target not reached, do a recursion
-      if (at < to)
-        this.getItems(at + 1, to);
-      else if (at === to)
-        this.populateStream([].concat.apply([], this._streamItems));
+      if (to > 0 && res.pagination?.next)
+        { to--; res.pagination.next(); }
     });
   }
 

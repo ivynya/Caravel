@@ -32,8 +32,12 @@ export class CourseModulesComponent implements OnInit {
   }
 
   getModuleItems(m: Module): void {
-    this.courseService.getModuleItems(this.course.id, m.id, items => {
-      m.items = items;
+    this.courseService.getModuleItems(this.course.id, m.id, res => {
+      if (!m.items) m.items = [];
+      m.items[res.page] = res.data;
+
+      if (res.pagination?.next)
+        res.pagination.next();
     });
   }
 
