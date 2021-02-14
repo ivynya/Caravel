@@ -163,7 +163,9 @@ export abstract class APIBaseService {
       const key = l.match(/rel="(.+)"/)[1];
       const url = l.match(/<(.+)>;/)[1];
       // Get the endpoint and params from the URL
-      const endpoint = url.match(/api\/v1\/[^\/]+\/(.+)\?/)[1];
+      let endpoint = "";
+      const urlMatch = url.match(/api\/v1\/[^\/]+\/(.+)\?/);
+      if (urlMatch) endpoint = urlMatch[1];
       const params = new URLSearchParams(url.match(/\?(.+)/)[1]);
 
       // Generate a page number for identity
