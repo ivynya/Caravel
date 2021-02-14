@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { APIBaseService } from '../base.service';
+import { APIBaseService, Result } from '../base.service';
 import { 
   CacheService,
   ConfigurationService,
@@ -76,8 +76,8 @@ export class CourseService extends APIBaseService {
       .catch(ex => console.error(ex));
   }
 
-  listModules(cId: number, callback: (data: Module[]) => void): void {
-    this.xfetch(`${cId}/modules`, res => {callback(res.data)})
+  listModules(cId: number, callback: (res: {data: Module[]} & Omit<Result, "data">) => void): void {
+    this.xfetch(`${cId}/modules`, callback)
       .catch(ex => console.error(ex));
   }
 

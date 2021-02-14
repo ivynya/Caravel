@@ -11,13 +11,27 @@ interface XOptions {
   cacheShort?: number,
   cacheLong?: number,
   method?: string,
+  page?: number,
   params?: URLSearchParams
 }
+
 // Result object returned by xfetch
 export interface Result {
   data: any,
-  isCache: boolean
+  isCache: boolean,
+  page?: number,
+  pagination?: PaginationInfo
 }
+
+// Callable functions to load more data
+interface PaginationInfo {
+  current?: () => void;
+  next?: () => void;
+  prev?: () => void;
+  first?: () => void;
+  last?: () => void;
+}
+
 // Callback used by xfetch
 type ResultHandler = (res: Result) => void;
 
@@ -31,6 +45,7 @@ export abstract class APIBaseService {
 
   // Shared by all API calls, appends auth and handles cache/configurables
   async xfetch(endpoint: string, callback: ResultHandler, options?: XOptions): Promise<void> {
+    // User must be authorized to make API calls.
     if (!this.storageService.has("oauth_token")) {
       this.notifService.notify("You are not authorized!", 0);
       throw new Error("No oauth_token value found.");
@@ -40,7 +55,11 @@ export abstract class APIBaseService {
     const cacheId = options?.params ? `${endpoint}.${options.params.toString()}` : endpoint;
     const cached = this.getCached(cacheId);
     if (cached && cached.value) {
-      callback({ data: JSON.parse(cached.value), isCache: true });
+      callback({
+        data: JSON.parse(cached.value),
+        isCache: true,
+        page: options?.page ?? 0
+      });
 
       // If cache less than max short duration, stop network request.
       const cacheElapsedTime = new Date().getTime() - cached.cachedAt;
@@ -81,9 +100,9 @@ export abstract class APIBaseService {
 
     // Construct the endpoint URL
     const token = this.storageService.get("oauth_token");
-    const base = `https://${domain}/api/v1`;
+    const base = `https://${domain}/api/v1/${this.scope}`;
     const params = `access_token=${token}&${options?.params?.toString()}`;
-    const url = `${base}/${this.scope}/${endpoint}?${params}`;
+    const url = `${base}/${endpoint}?${params}`;
     // API is always fetched with a CORS proxy due to Canvas limitations
     // Advisable to set up your own (secure) CORS proxy
     await fetch(`https://cors.sdbagel.com/${url}`,
@@ -91,8 +110,16 @@ export abstract class APIBaseService {
                   method: options?.method ?? "GET",
                   headers: { 'accept': 'application/json' }
                 })
-      .then(res => res.text())
-      .then(res => {
+      .then(async response => {
+        const res = await response.text();
+
+        // If pagination info exists, build response object
+        let pageInfo: PaginationInfo = undefined;
+        if (response.headers.has('link')) {
+          const linkHeader = response.headers.get('link');
+          pageInfo = this.buildPaginationInfo(linkHeader, callback, options);
+        }
+
         // Cache in localstorage with cacheId
         this.cache(cacheId, res);
 
@@ -100,7 +127,12 @@ export abstract class APIBaseService {
         this.notifService.triggerActionFinished();
 
         // Return the data and denote is fresh
-        callback({data: JSON.parse(res), isCache: false});
+        callback({
+          data: JSON.parse(res),
+          isCache: false,
+          page: options?.page ?? 0,
+          pagination: pageInfo
+        });
 
         // Note end time and warn in console if slow network (>2000ms)
         const callEnd = new Date();
@@ -121,9 +153,45 @@ export abstract class APIBaseService {
         throw new Error(ex);
       });
   }
+  
+  private buildPaginationInfo(link: string, callback: ResultHandler, options?: XOptions): PaginationInfo {
+    const pageInfo = {};
+    const links = link.split(',');
+    
+    links.forEach(l => {
+      // Get the key (current, next, etc.) and API URL
+      const key = l.match(/rel="(.+)"/)[1];
+      const url = l.match(/<(.+)>;/)[1];
+      // Get the endpoint and params from the URL
+      const endpoint = url.match(/api\/v1\/[^\/]+\/(.+)\?/)[1];
+      const params = new URLSearchParams(url.match(/\?(.+)/)[1]);
+
+      // Generate a page number for identity
+      let pageNumber = options?.page ?? 0;
+      switch (key) {
+        case 'next': pageNumber++; break;
+        case 'prev': pageNumber--; break;
+        case 'first': pageNumber = 0; break;
+      }
+
+      // Generate a callable function to load data
+      pageInfo[key] = async () => {
+        this.xfetch(endpoint,
+          res => { callback(res); },
+          {
+            cacheShort: options?.cacheShort,
+            cacheLong: options?.cacheLong,
+            params: params,
+            page: pageNumber
+          });
+      };
+    });
+
+    return pageInfo;
+  }
 
   // Get cache with caching service
-  getCached(endpoint: string): { cachedAt: number, value: string } | undefined {
+  private getCached(endpoint: string): { cachedAt: number, value: string } | undefined {
     return this.cacheService.getCached(this.scope, endpoint);
   }
 

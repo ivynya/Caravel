@@ -12,6 +12,7 @@ import { Course, Module } from '../../core/schemas';
 export class CourseModulesComponent implements OnInit {
   course: Course;
   modules: Module[];
+  private _modules: Module[][] = [];
   
   constructor(private courseService: CourseService,
               private route: ActivatedRoute) { }
@@ -20,8 +21,12 @@ export class CourseModulesComponent implements OnInit {
     this.route.parent.params.subscribe(params => {
       this.courseService.getCourse(params.id, course => this.course = course);
 
-      this.courseService.listModules(params.id, modules => {
-        this.modules = modules;
+      this.courseService.listModules(params.id, res => {
+        this._modules[res.page] = res.data;
+        this.modules = [].concat.apply([], this._modules);
+
+        if (res.pagination?.next)
+          res.pagination.next();
       });
     });
   }
