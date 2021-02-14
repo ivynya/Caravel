@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { APIBaseService, Result } from '../base.service';
+import { APIBaseService, ResultHandler } from '../base.service';
 import { 
   CacheService,
   ConfigurationService,
@@ -32,33 +32,38 @@ export class CourseService extends APIBaseService {
   }
 
   getCourse(cId: number, callback: (data: Course) => void): void {
-    this.xfetch(`${cId}`, res => {callback(res.data)},
-                { cacheShort: 360000000, cacheLong: 864000000 })
+    this.xfetch<Course>(
+        `${cId}`, res => {callback(res.data)},
+        { cacheShort: 360000000, cacheLong: 864000000 })
       .catch(ex => console.error(ex));
   }
 
   getCoursePage(cId: number, pId: string, callback: (data: Page) => void): void {
-    this.xfetch(`${cId}/pages/${pId}`,
-                res => {callback(res.data)},
-                { cacheShort: 120000 })
+    this.xfetch<Page>(
+        `${cId}/pages/${pId}`,
+        res => {callback(res.data)},
+        { cacheShort: 120000 })
       .catch(ex => console.error(ex));
   }
 
   getCourseFrontPage(cId: number, callback: (data: Page) => void): void {
-    this.xfetch(`${cId}/front_page`, res => {callback(res.data)},
-                { cacheShort: 360000000, cacheLong: 864000000 })
+    this.xfetch<Page>(
+        `${cId}/front_page`, res => {callback(res.data)},
+        { cacheShort: 360000000, cacheLong: 864000000 })
       .catch(ex => console.error(ex));
   }
 
   listCourses(callback: (data: Course[]) => void): void {
-    this.xfetch("", res => {callback(res.data)},
-                { cacheShort: 360000000, cacheLong: 864000000 })
+    this.xfetch<Course[]>(
+        '', res => {callback(res.data)},
+        { cacheShort: 360000000, cacheLong: 864000000 })
       .catch(ex => console.error(ex));
   }
 
   listExternalTools(cId: number, callback: (data: ExternalTool[]) => void): void {
-    this.xfetch(`${cId}/external_tools`, res => {callback(res.data)},
-                { cacheShort: 360000000, cacheLong: 864000000 })
+    this.xfetch<ExternalTool[]>(
+        `${cId}/external_tools`, res => {callback(res.data)},
+        { cacheShort: 360000000, cacheLong: 864000000 })
       .catch(ex => console.error(ex));
   }
 
@@ -70,19 +75,22 @@ export class CourseService extends APIBaseService {
       include: "assignment",
     }
 
-    this.xfetch(`${cId}/students/submissions`,
-                res => {callback(res.data)},
-                { cacheShort: 120000, params: new URLSearchParams(qp) })
+    this.xfetch<Submission[]>(
+        `${cId}/students/submissions`,
+        res => {callback(res.data)},
+        { cacheShort: 120000, params: new URLSearchParams(qp) })
       .catch(ex => console.error(ex));
   }
 
-  listModules(cId: number, callback: (res: {data: Module[]} & Omit<Result, "data">) => void): void {
-    this.xfetch(`${cId}/modules`, callback)
+  listModules(cId: number, callback: ResultHandler<Module[]>): void {
+    this.xfetch<Module[]>(`${cId}/modules`, callback)
       .catch(ex => console.error(ex));
   }
 
   getModuleItems(cId: number, mId: number, callback: (data: ModuleItem[]) => void): void {
-    this.xfetch(`${cId}/modules/${mId}/items`, res => {callback(res.data)})
+    this.xfetch<ModuleItem[]>(
+        `${cId}/modules/${mId}/items`,
+        res => {callback(res.data)})
       .catch(ex => console.error(ex));
   }
 

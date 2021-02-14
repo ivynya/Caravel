@@ -16,8 +16,8 @@ interface XOptions {
 }
 
 // Result object returned by xfetch
-export interface Result {
-  data: any,
+interface Result<T> {
+  data: T,
   isCache: boolean,
   page?: number,
   pagination?: PaginationInfo
@@ -33,7 +33,7 @@ interface PaginationInfo {
 }
 
 // Callback used by xfetch
-type ResultHandler = (res: Result) => void;
+export type ResultHandler<T> = (res: Result<T>) => void;
 
 export abstract class APIBaseService {
   
@@ -44,7 +44,7 @@ export abstract class APIBaseService {
               private configService: ConfigurationService) {}
 
   // Shared by all API calls, appends auth and handles cache/configurables
-  async xfetch(endpoint: string, callback: ResultHandler, options?: XOptions): Promise<void> {
+  async xfetch<T>(endpoint: string, callback: ResultHandler<T>, options?: XOptions): Promise<void> {
     // User must be authorized to make API calls.
     if (!this.storageService.has("oauth_token")) {
       this.notifService.notify("You are not authorized!", 0);
@@ -117,7 +117,7 @@ export abstract class APIBaseService {
         let pageInfo: PaginationInfo = undefined;
         if (response.headers.has('link')) {
           const linkHeader = response.headers.get('link');
-          pageInfo = this.buildPaginationInfo(linkHeader, callback, options);
+          pageInfo = this.buildPaginationInfo<T>(linkHeader, callback, options);
         }
 
         // Cache in localstorage with cacheId
@@ -154,7 +154,7 @@ export abstract class APIBaseService {
       });
   }
   
-  private buildPaginationInfo(link: string, callback: ResultHandler, options?: XOptions): PaginationInfo {
+  private buildPaginationInfo<T>(link: string, callback: ResultHandler<T>, options?: XOptions): PaginationInfo {
     const pageInfo = {};
     const links = link.split(',');
     
@@ -178,8 +178,7 @@ export abstract class APIBaseService {
 
       // Generate a callable function to load data
       pageInfo[key] = async () => {
-        this.xfetch(endpoint,
-          res => { callback(res); },
+        this.xfetch(endpoint, callback,
           {
             cacheShort: options?.cacheShort,
             cacheLong: options?.cacheLong,
