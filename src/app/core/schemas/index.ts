@@ -18,5 +18,7 @@ export * from './user/activity-stream.schema';
 export * from './user/profile.schema';
 
 // Caravan schemas
+export * from './configuration/app-info.schema';
 export * from './configuration/configuration.schema';
+
 export * from './notification/notification.schema';

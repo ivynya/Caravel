@@ -71,7 +71,7 @@ export abstract class APIBaseService {
       }
 
       // Low bandwidth mode extends the time limit to set value or short value + 20 seconds.
-      const reducedNetwork = <boolean>this.configService.get("networking", "stop_calls_if_cached").value;
+      const reducedNetwork = this.configService.getVal<boolean>("networking", "stop_calls_if_cached");
       const cacheMaxLongDuration = options?.cacheLong ?? cacheMaxShortDuration + 20000;
       if (reducedNetwork && cacheElapsedTime < cacheMaxLongDuration) {
         this.notifService.notify("Low Bandwith Mode: You might be seeing stale data.", 1);
@@ -80,7 +80,7 @@ export abstract class APIBaseService {
     }
 
     // If offline mode (frozen data) is enabled, stop API requests.
-    const offlineMode = <boolean>this.configService.get("networking", "offline_mode").value;
+    const offlineMode = this.configService.getVal<boolean>("networking", "offline_mode");
     if (offlineMode) {
       this.notifService.notify("Your data is frozen. Network requests to get new data are paused.", 0);
       return;
@@ -92,7 +92,7 @@ export abstract class APIBaseService {
     const callStart = new Date();
 
     // Get app domain for API calls
-    const domain = <string>this.configService.get("caravan", "domain").value;
+    const domain = this.configService.getVal<string>("caravan", "domain");
     if (!domain) {
       this.notifService.notify("There is a caravan.domain configuration error.", 0);
       return;
@@ -103,6 +103,7 @@ export abstract class APIBaseService {
     const base = `https://${domain}/api/v1/${this.scope}`;
     const params = `access_token=${token}&${options?.params?.toString()}`;
     const url = `${base}/${endpoint}?${params}`;
+
     // API is always fetched with a CORS proxy due to Canvas limitations
     // Advisable to set up your own (secure) CORS proxy
     await fetch(`https://cors.sdbagel.com/${url}`,
@@ -154,7 +155,11 @@ export abstract class APIBaseService {
       });
   }
   
-  private buildPaginationInfo<T>(link: string, callback: ResultHandler<T>, options?: XOptions): PaginationInfo {
+  private buildPaginationInfo<T>(
+      link: string, 
+      callback: ResultHandler<T>,
+      options?: XOptions): PaginationInfo {
+    // Split header into list of links
     const pageInfo = {};
     const links = link.split(',');
     
@@ -177,14 +182,14 @@ export abstract class APIBaseService {
       }
 
       // Generate a callable function to load data
+      const newOpts: XOptions = {
+        cacheShort: options?.cacheShort,
+        cacheLong: options?.cacheLong,
+        params: params,
+        page: pageNumber
+      };
       pageInfo[key] = async () => {
-        this.xfetch(endpoint, callback,
-          {
-            cacheShort: options?.cacheShort,
-            cacheLong: options?.cacheLong,
-            params: params,
-            page: pageNumber
-          });
+        this.xfetch(endpoint, callback, newOpts);
       };
     });
 

@@ -25,10 +25,12 @@ export class CourseHomeComponent implements OnInit {
 
   constructor(private configService: ConfigurationService,
               private courseService: CourseService,
-              private userService: UserService,
-              private sanitizer: DomSanitizer,
+              private roundDate: RoundDatePipe,
               private route: ActivatedRoute,
-              private roundDate: RoundDatePipe) { }
+              private sanitizer: DomSanitizer,
+              private userService: UserService) {
+    this.useRedesign = this.configService.getVal<boolean>("course", "use_redesign");
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {

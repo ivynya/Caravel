@@ -4,6 +4,7 @@ import { NavigationStart, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
 import { ConfigurationService, ModalService, StorageService } from './core/services';
+import { AppInfo } from './core/schemas';
 
 @Component({
   selector: 'app-root',
@@ -13,14 +14,14 @@ import { ConfigurationService, ModalService, StorageService } from './core/servi
 export class AppComponent implements OnInit {
   @ViewChild('whatsNew') template: TemplateRef<any>;
   isLoaded = false;
-  appInfo: { version: string, updateInfo: any[] };
+  appInfo: AppInfo;
 
   constructor(private configService: ConfigurationService,
+              private modal: ModalService,
+              private router: Router,
               private storageService: StorageService,
               private titleService: Title,
-              private translate: TranslateService,
-              private router: Router,
-              private modal: ModalService) {
+              private translate: TranslateService) {
     this.translate.setDefaultLang('en');
   }
 

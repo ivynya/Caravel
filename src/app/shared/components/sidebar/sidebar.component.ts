@@ -20,10 +20,10 @@ export class SidebarComponent implements OnInit {
 
   ttOffset = 90;
   
-  constructor(private courseService: CourseService,
-              private storage: StorageService,
+  constructor(private config: ConfigurationService,
+              private courseService: CourseService,
               private router: Router,
-              private config: ConfigurationService) {
+              private storage: StorageService) {
     config.config.subscribe({next: data => {
       this.useCompact = <boolean>data["sidebar"]["compact_mode"].value;
       this.enumerateClasses = <boolean>data["sidebar"]["enumerate_courses"].value;
@@ -46,7 +46,7 @@ export class SidebarComponent implements OnInit {
       return;
     }
 
-    this.courseService.listCourses(courses => this.courses = courses);
+    this.courseService.listCourses(c => this.courses = c);
   }
 
   toggleCompact(): void {

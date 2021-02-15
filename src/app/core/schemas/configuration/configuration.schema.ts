@@ -5,15 +5,15 @@ export interface Configuration {
   }
 }
 
-export interface Configurable {
+export interface Configurable<T = any> {
   // Display name of config value
   name: string,
   // Determines if display toggle, slider, etc.
   type: string,
   // Default value of config
-  default: boolean,
+  default: T,
   // Actual value of config
-  value: any,
+  value: T,
   // If type "select", these are valid options
   options?: string[]
 }

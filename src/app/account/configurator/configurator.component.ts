@@ -5,7 +5,7 @@ import {
   ConfigurationService,
   NotificationService
 } from '../../core/services';
-import { Configuration } from '../../core/schemas';
+import { AppInfo, Configuration } from '../../core/schemas';
 
 @Component({
   selector: 'app-configurator',
@@ -13,7 +13,7 @@ import { Configuration } from '../../core/schemas';
   styleUrls: ['./configurator.component.scss']
 })
 export class ConfiguratorComponent implements OnInit {
-  appInfo: { version: string };
+  appInfo: AppInfo;
   configuration: Configuration;
 
   constructor(private cache: CacheService,
