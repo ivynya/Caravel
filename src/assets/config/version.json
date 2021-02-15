@@ -1,31 +1,31 @@
 
 {
-  "version": "0.2.2C-dev",
+  "version": "0.3.0",
   "updateInfo": [
     {
-      "title": "Stylistically Superior",
-      "desc": "Caravan is all about ~style~ and we got loads of it in this update, along with regular performance improvements."
+      "title": "Restrictions B Gone",
+      "desc": "We bypassed restrictions that stopped external content from being displayed. Assignments, course pages, wiki pages, etc. will all load content as Canvas would."
     },
     {
-      "title": "Supercharged Sidebar",
-      "desc": "Use compact sidebar? You'll see a new, more consistent design that shows a fancy tooltip with link names."
+      "title": "Whuh-wha-Wiki Page?",
+      "desc": "Caravan now supports Wiki Pages, including showing locked pages on the dashboard. Check it out!"
     },
     {
-      "title": "Course Navigation",
-      "desc": "Laptop and desktop users: you'll see a new design for the expanded course navigation bar, which shows the active page in the sleek style of the rest of the app. If your window is resized too small, you'll see the expandable version."
+      "title": "Thematic Developments",
+      "desc": "PC too potato to change system themes? We've got you covered. You can now change themes in settings."
     },
     {
       "title": "Cracking Modules",
-      "stage": "Alpha",
-      "desc": "Course modules have been re-stylized to be easier to read and use. The 10 item and module limit still persists."
+      "stage": "Release",
+      "desc": "Load as many modules and items as you wish, without any limits, with the same great performance."
     },
     {
       "title": "Features on the Side",
       "desc": "With extra dipping sauce.",
       "features": [
-        "The dashboard now uses significantly less bandwidth.",
-        "App-wide optimization means much less data is used and pages load significantly faster.",
-        "Refreshing certain pages will no longer result in 404's."
+        "Lots of behind-the-scenes stuff for performance.",
+        "Preparations for mobile and tablet experiences.",
+        "Fixed a few theming quirks here and there."
       ]
     }
   ]
