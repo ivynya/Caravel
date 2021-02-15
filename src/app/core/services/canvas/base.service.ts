@@ -51,14 +51,21 @@ export abstract class APIBaseService {
       throw new Error("No oauth_token value found.");
     }
 
-    // Return the cached value, if it exists
+    // Check that the cache exists, if so, return it
     const cacheId = options?.params ? `${endpoint}.${options.params.toString()}` : endpoint;
-    const cached = this.getCached(cacheId);
+    const cached = this.cacheService.getCached(this.scope, cacheId);
     if (cached && cached.value) {
+      // Generate pagination info from cache (if applicable)
+      let pageInfo: PaginationInfo = undefined;
+      if (cached.link)
+        pageInfo = this.buildPaginationInfo<T>(cached.link, callback, options);
+
+      // Return the cached value and additional info
       callback({
         data: JSON.parse(cached.value),
         isCache: true,
-        page: options?.page ?? 0
+        page: options?.page ?? 0,
+        pagination: pageInfo
       });
 
       // If cache less than max short duration, stop network request.
@@ -116,13 +123,14 @@ export abstract class APIBaseService {
 
         // If pagination info exists, build response object
         let pageInfo: PaginationInfo = undefined;
+        let linkHeader: string = undefined;
         if (response.headers.has('link')) {
-          const linkHeader = response.headers.get('link');
+          linkHeader = response.headers.get('link');
           pageInfo = this.buildPaginationInfo<T>(linkHeader, callback, options);
         }
 
-        // Cache in localstorage with cacheId
-        this.cache(cacheId, res);
+        // Cache in storage with cacheId and related info
+        this.cacheService.cache(this.scope, cacheId, res, linkHeader);
 
         // Resolve action (notifService handles informing user)
         this.notifService.triggerActionFinished();
@@ -194,16 +202,6 @@ export abstract class APIBaseService {
     });
 
     return pageInfo;
-  }
-
-  // Get cache with caching service
-  private getCached(endpoint: string): { cachedAt: number, value: string } | undefined {
-    return this.cacheService.getCached(this.scope, endpoint);
-  }
-
-  // Set cache of an endpoint
-  private cache(endpoint: string, value: string): void {
-    this.cacheService.cache(this.scope, endpoint, value);
   }
 
 }

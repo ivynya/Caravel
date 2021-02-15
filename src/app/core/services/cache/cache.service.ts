@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { StorageService } from '../storage/storage.service';
+import { CacheItem } from '../../../core/schemas';
 
 @Injectable({
   providedIn: 'root'
@@ -10,17 +11,22 @@ export class CacheService {
   constructor(private storage: StorageService) { }
 
   // Get cache value and age of an endpoint
-  getCached(scope: string, endpoint: string): { cachedAt: number, value: string } | undefined {
+  getCached(scope: string, endpoint: string): CacheItem | undefined {
     endpoint = endpoint.replace('/', '.').replace('?', '.');
     const item = JSON.parse(this.storage.get(`${scope}.${endpoint}`));
     if (!item) return undefined;
-    return { cachedAt: item.cachedAt, value: item.value };
+    else return item as CacheItem;
   }
 
   // Set cache of an endpoint with cache time (number, ms)
-  cache(scope: string, endpoint: string, value: string): void {
+  // Optionally includes pagination information (link header, string)
+  cache(scope: string, endpoint: string, value: string, pagination?: string): void {
     endpoint = endpoint.replace('/', '.').replace('?', '.');
-    const item = { cachedAt: new Date().getTime(), value: value };
+    const item: CacheItem = { 
+      cachedAt: new Date().getTime(),
+      link: pagination ?? undefined,
+      value: value
+    };
     this.storage.set(`${scope}.${endpoint}`, JSON.stringify(item));
   }
 
