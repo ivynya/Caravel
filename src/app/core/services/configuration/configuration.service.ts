@@ -59,6 +59,11 @@ export class ConfigurationService {
   }
 
   async updateApp(): Promise<boolean> {
+    // In the event there is no config, reset it.
+    if (!this._configuration)
+      await this.resetToDefault();
+
+    // Check against web version of Caravan
     return await fetch("/assets/config/version.json")
       .then(res => res.text())
       .then(async res => {

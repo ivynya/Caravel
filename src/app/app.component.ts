@@ -26,13 +26,13 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Set app theme on page load (from config)
-    const theme = this.configService.getVal<string>('caravan', 'theme');
-    document.documentElement.setAttribute('theme', theme);
-
     // Validate app version and update if needed
     this.configService.updateApp()
       .then(didUpdate => {
+        // Set app theme on page load (from config)
+        const theme = this.configService.getVal<string>('caravan', 'theme');
+        document.documentElement.setAttribute('theme', theme);
+
         this.appInfo = this.configService.getAppInfo();
         if (didUpdate)
           setTimeout(() => this.modal.openModal(this.template), 500);
