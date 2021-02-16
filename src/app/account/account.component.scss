@@ -6,14 +6,14 @@
 
   .header {
     display: flex;
+    flex-direction: row-reverse;
     align-items: center;
+    justify-content: space-between;
 
     img {
       border-radius: 50%;
-      margin-right: 30px;
-
-      width: 90px;
-      height: 90px;
+      height: 50px;
+      width: 50px;
     }
 
     h2, p {
@@ -26,6 +26,17 @@
 
     p {
       margin-top: 5px;
+    }
+
+    @media (min-width: 512px) {
+      flex-direction: row;
+      justify-content: unset;
+
+      img {
+        margin-right: 30px;
+        height: 90px;
+        width: 90px;
+      }
     }
   }
 

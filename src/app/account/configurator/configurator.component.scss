@@ -11,6 +11,7 @@
 
   h3 {
     margin: 0;
+    margin-bottom: 10px;
   }
 
   button {
@@ -18,9 +19,12 @@
     border: var(--border-primary) 2px solid;
     border-radius: 5px;
     color: var(--text-inverse-primary);
-    margin-left: 5px;
     padding: 5px 10px;
     transition-duration: 0.2s;
+
+    &:not(:first-of-type) {
+      margin-left: 5px;
+    }
 
     &:hover {
       border-color: var(--warning);
@@ -29,7 +33,7 @@
 
   .settings-title {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: space-between;
     width: 100%;
 
@@ -68,6 +72,17 @@
 
     @media (min-width: 992px) {
       width: 45%;
+    }
+  }
+
+  @media (min-width: 512px) {
+    h3 {
+      margin-bottom: 0;
+    }
+
+    .settings-title {
+      flex-direction: row;
+      align-items: center;
     }
   }
 }
