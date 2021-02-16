@@ -3,7 +3,7 @@ export interface PlannerItem {
   context_type: string, // course|group
   course_id: number,
   plannable_id: number,
-  planner_override: PlannerOverride,
+  planner_override?: PlannerOverride,
   plannable_type: string, // assignment|discussion_topic|planner_note|wiki_page|calendar_event
   new_activity: boolean,
   submissions: {
