@@ -21,6 +21,8 @@ import { AssignmentModule } from './course/assignment/assignment.module';
 import { HomeModule } from './home/home.module';
 
 import { AppComponent } from './app.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { AppConfig } from 'environments/environment';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -47,7 +49,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: AppConfig.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
