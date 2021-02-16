@@ -33,7 +33,7 @@
       <img src="/assets/icons/Icon_Dashboard.svg" alt="Dashboard">
       <span>Dashboard</span>
     </a>
-    <div class="sidebar-classes" *ngIf="this.enumerateClasses">
+    <ng-container *ngIf="this.enumerateClasses">
       <a class="nav-link nav-sub"
           [attr.data-tt]="course.name"
           [style.top]="ttOffset+'px'"
@@ -44,7 +44,7 @@
         <span class="icon">{{ course.name | abbreviateCourse }}</span>
         <span class="course-name">{{ course.name }}</span>
       </a>
-    </div>
+    </ng-container>
     <a class="nav-link"
         data-tt="Groups"
         [style.top]="ttOffset+'px'"
