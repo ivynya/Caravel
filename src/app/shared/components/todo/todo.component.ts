@@ -18,7 +18,6 @@ export class TodoComponent implements OnInit {
 
   constructor(private assignmentService: AssignmentService,
               private courseService: CourseService,
-              private notifService: NotificationService,
               private plannerService: PlannerService) { }
 
   ngOnInit(): void {

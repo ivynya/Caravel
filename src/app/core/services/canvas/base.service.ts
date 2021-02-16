@@ -51,45 +51,48 @@ export abstract class APIBaseService {
       throw new Error("No oauth_token value found.");
     }
 
-    // Check that the cache exists, if so, return it
+    // Skip caching if the request method isn't a GET request.
     const cacheId = options?.params ? `${endpoint}.${options.params.toString()}` : endpoint;
     const cached = this.cacheService.getCached(this.scope, cacheId);
-    if (cached && cached.value) {
-      // Generate pagination info from cache (if applicable)
-      let pageInfo: PaginationInfo = undefined;
-      if (cached.link)
-        pageInfo = this.buildPaginationInfo<T>(cached.link, callback, options);
+    if (options?.method ?? 'GET' === 'GET') {
+      // Check that the cache exists, if so, return it
+      if (cached && cached.value) {
+        // Generate pagination info from cache (if applicable)
+        let pageInfo: PaginationInfo = undefined;
+        if (cached.link)
+          pageInfo = this.buildPaginationInfo<T>(cached.link, callback, options);
 
-      // Return the cached value and additional info
-      callback({
-        data: JSON.parse(cached.value),
-        isCache: true,
-        page: options?.page ?? 0,
-        pagination: pageInfo
-      });
+        // Return the cached value and additional info
+        callback({
+          data: JSON.parse(cached.value),
+          isCache: true,
+          page: options?.page ?? 0,
+          pagination: pageInfo
+        });
 
-      // If cache less than max short duration, stop network request.
-      const cacheElapsedTime = new Date().getTime() - cached.cachedAt;
-      // Either a specified value in options or fifteen seconds.
-      const cacheMaxShortDuration = options?.cacheShort ?? 15000;
-      if (cacheElapsedTime < cacheMaxShortDuration) {
-        this.notifService.notify("Loaded cached data.", 2);
-        return;
-      }
+        // If cache less than max short duration, stop network request.
+        const cacheElapsedTime = new Date().getTime() - cached.cachedAt;
+        // Either a specified value in options or fifteen seconds.
+        const cacheMaxShortDuration = options?.cacheShort ?? 15000;
+        if (cacheElapsedTime < cacheMaxShortDuration) {
+          this.notifService.notify("Loaded cached data.", 2);
+          return;
+        }
 
-      // Low bandwidth mode extends the time limit to set value or short value + 20 seconds.
-      const reducedNetwork = this.configService.getVal<boolean>("networking", "stop_calls_if_cached");
-      const cacheMaxLongDuration = options?.cacheLong ?? cacheMaxShortDuration + 20000;
-      if (reducedNetwork && cacheElapsedTime < cacheMaxLongDuration) {
-        this.notifService.notify("Low Bandwith Mode: You might be seeing stale data.", 1);
-        return;
+        // Low bandwidth mode extends the time limit to set value or short value + 20 seconds.
+        const reducedNetwork = this.configService.getVal<boolean>("networking", "stop_calls_if_cached");
+        const cacheMaxLongDuration = options?.cacheLong ?? cacheMaxShortDuration + 20000;
+        if (reducedNetwork && cacheElapsedTime < cacheMaxLongDuration) {
+          this.notifService.notify("Low Bandwith Mode: You might be seeing stale data.", 1);
+          return;
+        }
       }
     }
 
     // If offline mode (frozen data) is enabled, stop API requests.
     const offlineMode = this.configService.getVal<boolean>("networking", "offline_mode");
     if (offlineMode) {
-      this.notifService.notify("Your data is frozen. Network requests to get new data are paused.", 0);
+      this.notifService.notify("Your data is frozen. Network requests to get or set data are paused.", 0);
       return;
     }
 
@@ -129,8 +132,9 @@ export abstract class APIBaseService {
           pageInfo = this.buildPaginationInfo<T>(linkHeader, callback, options);
         }
 
-        // Cache in storage with cacheId and related info
-        this.cacheService.cache(this.scope, cacheId, res, linkHeader);
+        // Cache with cacheId and related info if is GET request
+        if (options?.method ?? 'GET' === 'GET')
+          this.cacheService.cache(this.scope, cacheId, res, linkHeader);
 
         // Resolve action (notifService handles informing user)
         this.notifService.triggerActionFinished();
