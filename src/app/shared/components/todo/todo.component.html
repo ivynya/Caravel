@@ -1,5 +1,5 @@
 <div class="todo">
-  <div class="actions">
+  <span class="actions">
     <label class="checkbox">
       <input 
         class="checkbox"
@@ -8,7 +8,7 @@
         (click)="toggleDismissed()">
       <span class="checkmark"></span>
     </label>
-  </div>
+  </span>
   <ng-container [ngSwitch]="item.plannable_type">
     <div *ngSwitchCase="'announcement'">
       <h3><a [routerLink]="item.html_url">
@@ -16,7 +16,8 @@
       </a></h3>
       <p class="subtext">
         <img *ngIf="isLocked" src="assets/icons/Icon_Locked.svg" alt="Locked">
-        <span>{{ item.plannable.created_at | date: "E L/d h:mm a"}}</span>
+        <span class="sm-show">{{ item.plannable.created_at | date: "h:mm a"}}</span>
+        <span class="sm-hide">{{ item.plannable.created_at | date: "E L/d h:mm a"}}</span>
         <span class="separator"></span>
         <span>Announcement</span>
         <span class="separator"></span>
@@ -31,7 +32,8 @@
       </a></h3>
       <p class="subtext">
         <img *ngIf="isLocked" src="assets/icons/Icon_Locked.svg" alt="Locked">
-        <span>{{ item.plannable_date | date: "E L/d h:mm a"}}</span>
+        <span class="sm-show">{{ item.plannable_date | date: "h:mm a"}}</span>
+        <span class="sm-hide">{{ item.plannable_date | date: "E L/d h:mm a"}}</span>
         <span class="separator"></span>
         <span>Peer Review</span>
         <span class="separator"></span>
@@ -44,7 +46,8 @@
       </a></h3>
       <p class="subtext">
         <img *ngIf="isLocked" src="assets/icons/Icon_Locked.svg" alt="Locked">
-        <span>Due {{ item.plannable.due_at | date: "E L/d h:mm a"}}</span>
+        <span class="sm-show">{{ item.plannable.due_at | date: "h:mm a"}}</span>
+        <span class="sm-hide">{{ item.plannable.due_at | date: "E L/d h:mm a"}}</span>
         <span class="separator"></span>
         <span>Assignment</span>
         <span class="separator"></span>
@@ -59,7 +62,8 @@
       </a></h3>
       <p class="subtext">
         <img *ngIf="isLocked" src="assets/icons/Icon_Locked.svg" alt="Locked">
-        <span>{{ item.plannable.start_at | date: "E L/d h:mm a"}}</span>
+        <span class="sm-show">{{ item.plannable.start_at | date: "h:mm a"}}</span>
+        <span class="sm-hide">{{ item.plannable.start_at | date: "E L/d h:mm a"}}</span>
         <span class="separator"></span>
         <span>Event</span>
         <span class="separator"></span>
@@ -72,7 +76,8 @@
       </a></h3>
       <p class="subtext">
         <img *ngIf="isLocked" src="assets/icons/Icon_Locked.svg" alt="Locked">
-        <span>Due {{ item.plannable_date | date: "E L/d h:mm a"}}</span>
+        <span class="sm-show">{{ item.plannable_date | date: "h:mm a"}}</span>
+        <span class="sm-hide">{{ item.plannable_date | date: "E L/d h:mm a"}}</span>
         <span class="separator"></span>
         <span>Quiz</span>
         <span class="separator"></span>
@@ -85,7 +90,8 @@
       </a></h3>
       <p class="subtext">
         <img *ngIf="isLocked" src="assets/icons/Icon_Locked.svg" alt="Locked">
-        <span>Due {{ item.plannable.todo_date | date: "E L/d h:mm a"}}</span>
+        <span class="sm-show">{{ item.plannable.todo_date | date: "h:mm a"}}</span>
+        <span class="sm-hide">{{ item.plannable.todo_date | date: "E L/d h:mm a"}}</span>
         <span class="separator"></span>
         <span>Wiki Page</span>
         <span class="separator"></span>

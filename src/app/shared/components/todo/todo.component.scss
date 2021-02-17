@@ -11,10 +11,19 @@
   padding: 15px 20px;
   overflow: hidden;
 
+  > div {
+    flex: 1 1;
+    max-width: 100%;
+  }
+
   h3 {
     font-size: 1.2rem;
     margin: 0;
     margin-bottom: 5px;
+    max-width: calc(100% - 40px);
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     a {
       text-decoration: none;
@@ -71,6 +80,18 @@
     
     > * {
       margin-right: 20px;
+    }
+  }
+
+  @media (max-width: 512px) {
+    .sm-hide {
+      display: none;
+    }
+  }
+
+  @media (min-width: 512px) {
+    .sm-show {
+      display: none;
     }
   }
 }
