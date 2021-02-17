@@ -5,6 +5,11 @@
     <img src="assets/icons/Icon_Home.svg" alt="">
     <span>Course Home</span>
   </a>
+  <a [routerLink]="['/courses/', course.id, 'announcements']"
+      routerLinkActive="active">
+    <img src="assets/icons/Icon_Default.svg" alt="">
+    <span>Announcements</span>
+  </a>
   <a [routerLink]="['/courses/', course.id, 'assignments']"
       routerLinkActive="active">
     <img src="assets/icons/Icon_Default.svg" alt="">

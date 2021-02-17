@@ -11,7 +11,7 @@
   </span>
   <ng-container [ngSwitch]="item.plannable_type">
     <div *ngSwitchCase="'announcement'">
-      <h3><a [routerLink]="item.html_url">
+      <h3><a [routerLink]="['/courses',item.course_id,'announcements',item.plannable.id]">
         {{ item.plannable.title }}
       </a></h3>
       <p class="subtext">

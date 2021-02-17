@@ -1,0 +1,17 @@
+
+<section class="announcement">
+  <p><b>Announcement: {{ course?.name }}</b></p>
+  <h1>{{ announcement?.title }}</h1>
+  <div class="info-bar">
+    <p>Published: {{ announcement?.created_at | date: 'medium' }}</p>
+    <p>
+      <span>Posted By: {{ announcement?.author.display_name }}</span>
+      <span *ngIf="announcement?.author.pronouns">
+        ({{ announcement?.author.pronouns }})
+      </span>
+    </p>
+  </div>
+  <hr><br>
+  <div [innerHtml]="announcementBody" class="xss-sanitize"></div>
+  <br><br>
+</section>
