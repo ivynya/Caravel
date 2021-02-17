@@ -1,8 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
 
-import { AssignmentService, CourseService, PlannerService } from '../../../core/services/canvas';
+import {
+  AssignmentService,
+  CourseService,
+  PlannerService
+} from '../../../core/services/canvas';
+import { ModalService } from '../../../core/services';
 import { Course, PlannerItem } from '../../../core/schemas';
-import { NotificationService } from 'app/core/services';
 
 @Component({
   selector: 'home-todo',
@@ -16,8 +20,12 @@ export class TodoComponent implements OnInit {
   isComplete = false;
   isLocked = false;
 
+  // Events open information in a modal.
+  @ViewChild('eventModal', { static: true }) template?: TemplateRef<any>;
+
   constructor(private assignmentService: AssignmentService,
               private courseService: CourseService,
+              private modalService: ModalService,
               private plannerService: PlannerService) { }
 
   ngOnInit(): void {
@@ -57,6 +65,11 @@ export class TodoComponent implements OnInit {
         this.item.plannable_type,
         this.item.plannable_id,
         true, res => {console.log(res)});
+  }
+
+  openModal(): void {
+    if (this.template)
+      this.modalService.openModal(this.template);
   }
 
 }

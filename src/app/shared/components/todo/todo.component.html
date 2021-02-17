@@ -57,7 +57,7 @@
       </p>
     </div>
     <div *ngSwitchCase="'calendar_event'">
-      <h3><a [href]="item.html_url">
+      <h3><a (click)="openModal()">
         {{ item.plannable.title }}
       </a></h3>
       <p class="subtext">
@@ -106,3 +106,16 @@
     </div>
   </ng-container>
 </div>
+
+<ng-template #eventModal>
+  <p>Event: {{ item.context_name }}</p>
+  <h2>{{ item.plannable.title }}</h2>
+  <p *ngIf="item.plannable.description">
+    <b>Description:</b> {{ item.plannable.description }}
+  </p>
+  <p *ngIf="item.plannable.location_name" class="wrap">
+    <b>Location:</b> {{ item.plannable.location_name }}
+  </p>
+  <p><b>Start At:</b> {{ item.plannable.start_at | date: "E L/d h:mm a" }}</p>
+  <p><b>End At:</b> {{ item.plannable.end_at | date: "E L/d h:mm a" }}</p>
+</ng-template>
