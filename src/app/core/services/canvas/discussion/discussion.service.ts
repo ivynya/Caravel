@@ -24,8 +24,7 @@ export class DiscussionService extends APIBaseService {
   getTopic(cId: number, tId: number, 
            callback: ResultHandler<DiscussionTopic>): void {
     this.xfetch<DiscussionTopic>(
-        `${cId}/discussion_topics/${tId}`, callback,
-        {  })
+        `${cId}/discussion_topics/${tId}`, callback)
       .catch(ex => console.error(ex));
   }
 
@@ -37,7 +36,7 @@ export class DiscussionService extends APIBaseService {
 
     this.xfetch<DiscussionTopic[]>(
         `${cId}/discussion_topics`, callback,
-        { params: new URLSearchParams(qp) })
+        { cacheShort: 1000000, params: new URLSearchParams(qp) })
       .catch(ex => console.error(ex));
   }
 
