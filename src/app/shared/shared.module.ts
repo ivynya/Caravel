@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 
 import {
+  DiscussionComponent,
   ExpandableComponent,
   IconLTIComponent,
   ModuleComponent,
@@ -19,7 +20,6 @@ import { WebviewDirective } from './directives/';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CoreModule } from 'app/core/core.module';
-import { AnnouncementComponent } from './components/announcement/announcement.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import { AnnouncementComponent } from './components/announcement/announcement.co
     TodoComponent,
     ToggleComponent,
     ExpandableComponent,
-    AnnouncementComponent
+    DiscussionComponent
   ],
   imports: [
     CommonModule,
@@ -54,7 +54,7 @@ import { AnnouncementComponent } from './components/announcement/announcement.co
     TodoComponent,
     ToggleComponent,
     ExpandableComponent,
-    AnnouncementComponent
+    DiscussionComponent
   ]
 })
 export class SharedModule {}

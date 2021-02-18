@@ -1,5 +1,5 @@
 
-<div class="announcement">
+<div class="discussion">
   <div>
     <h3><a [routerLink]="['/courses', course.id, 'announcements', item.id]">
       {{ item.title }}
@@ -8,6 +8,8 @@
       <span>Posted {{ item.posted_at | date: "E L/d h:mm a" }}</span>
       <span class="separator"></span>
       <span>{{ item.author.display_name }}</span>
+      <span class="separator"></span>
+      <span>{{ item.unread_count }} Unread Replies</span>
       <span class="separator"></span>
       <span>{{ item.read_state | titlecase }}</span>
     </p>

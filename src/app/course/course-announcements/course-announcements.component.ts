@@ -25,7 +25,6 @@ export class CourseAnnouncementsComponent implements OnInit {
       this.discussionService.listTopics(params.id, true, res => {
         this._announcements[res.page] = res.data;
         this.announcements = [].concat.apply([], this._announcements);
-        console.log(res);
 
         if (res.pagination?.next)
           res.pagination.next();
