@@ -29,4 +29,16 @@ export class DiscussionService extends APIBaseService {
       .catch(ex => console.error(ex));
   }
 
+  listTopics(cId: number, onlyAnnouncements: boolean,
+             callback: ResultHandler<DiscussionTopic[]>): void {
+    const qp = {
+      only_announcements: `${onlyAnnouncements}`
+    }
+
+    this.xfetch<DiscussionTopic[]>(
+        `${cId}/discussion_topics`, callback,
+        { params: new URLSearchParams(qp) })
+      .catch(ex => console.error(ex));
+  }
+
 }

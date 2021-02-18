@@ -1,0 +1,11 @@
+
+<section class="modules">
+  <h1>{{ course?.name }}: Announcements</h1>
+  <hr><br>
+  <app-announcement
+    *ngFor="let announcement of announcements"
+    [course]="course"
+    [item]="announcement">
+  </app-announcement>
+  <br><br>
+</section>

@@ -1,4 +1,5 @@
 
+export * from './announcement/announcement.component';
 export * from './expandable/expandable.component';
 export * from './icon-lti/icon-lti.component';
 export * from './modal/modal.component';

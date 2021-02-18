@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { CourseComponent } from './course.component';
 import { CourseAnnouncementComponent } from './course-announcement/course-announcement.component';
+import { CourseAnnouncementsComponent } from './course-announcements/course-announcements.component';
 import { AssignmentComponent } from './assignment/assignment.component';
 import { CourseHomeComponent } from './course-home/course-home.component';
 import { CourseModulesComponent } from './course-modules/course-modules.component';
@@ -17,6 +18,10 @@ const routes: Routes = [
       {
         path: '',
         component: CourseHomeComponent
+      },
+      {
+        path: 'announcements',
+        component: CourseAnnouncementsComponent
       },
       {
         path: 'announcements/:tId',

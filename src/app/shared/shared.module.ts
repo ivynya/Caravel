@@ -19,6 +19,7 @@ import { WebviewDirective } from './directives/';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CoreModule } from 'app/core/core.module';
+import { AnnouncementComponent } from './components/announcement/announcement.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CoreModule } from 'app/core/core.module';
     SidebarComponent,
     TodoComponent,
     ToggleComponent,
-    ExpandableComponent
+    ExpandableComponent,
+    AnnouncementComponent
   ],
   imports: [
     CommonModule,
@@ -51,7 +53,8 @@ import { CoreModule } from 'app/core/core.module';
     SidebarComponent,
     TodoComponent,
     ToggleComponent,
-    ExpandableComponent
+    ExpandableComponent,
+    AnnouncementComponent
   ]
 })
 export class SharedModule {}

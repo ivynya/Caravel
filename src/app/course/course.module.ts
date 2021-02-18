@@ -12,6 +12,7 @@ import { CourseHomeComponent } from './course-home/course-home.component';
 import { CourseModulesComponent } from './course-modules/course-modules.component';
 import { CoursePageComponent } from './course-page/course-page.component';
 import { CourseAnnouncementComponent } from './course-announcement/course-announcement.component';
+import { CourseAnnouncementsComponent } from './course-announcements/course-announcements.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CourseAnnouncementComponent } from './course-announcement/course-announ
     CourseHomeComponent,
     CourseModulesComponent,
     CoursePageComponent,
-    CourseAnnouncementComponent
+    CourseAnnouncementComponent,
+    CourseAnnouncementsComponent
   ],
   imports: [CommonModule, SharedModule, CourseRoutingModule],
   providers: [RoundDatePipe]
