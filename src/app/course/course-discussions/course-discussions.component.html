@@ -1,0 +1,11 @@
+
+<section>
+  <h1>{{ course?.name }}: Discussions</h1>
+  <hr>
+  <app-discussion
+    *ngFor="let discussion of discussions"
+    [course]="course"
+    [item]="discussion">
+  </app-discussion>
+  <br><br>
+</section>

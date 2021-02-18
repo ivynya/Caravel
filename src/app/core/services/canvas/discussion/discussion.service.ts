@@ -30,9 +30,7 @@ export class DiscussionService extends APIBaseService {
 
   listTopics(cId: number, onlyAnnouncements: boolean,
              callback: ResultHandler<DiscussionTopic[]>): void {
-    const qp = {
-      only_announcements: `${onlyAnnouncements}`
-    }
+    const qp = onlyAnnouncements ? 'only_announcements': '';
 
     this.xfetch<DiscussionTopic[]>(
         `${cId}/discussion_topics`, callback,

@@ -6,6 +6,7 @@ import { CourseComponent } from './course.component';
 import { CourseAnnouncementComponent } from './course-announcement/course-announcement.component';
 import { CourseAnnouncementsComponent } from './course-announcements/course-announcements.component';
 import { AssignmentComponent } from './assignment/assignment.component';
+import { CourseDiscussionsComponent } from './course-discussions/course-discussions.component';
 import { CourseHomeComponent } from './course-home/course-home.component';
 import { CourseModulesComponent } from './course-modules/course-modules.component';
 import { CoursePageComponent } from './course-page/course-page.component';
@@ -30,6 +31,10 @@ const routes: Routes = [
       {
         path: 'assignments/:aId',
         component: AssignmentComponent
+      },
+      {
+        path: 'discussions',
+        component: CourseDiscussionsComponent
       },
       {
         path: 'modules',

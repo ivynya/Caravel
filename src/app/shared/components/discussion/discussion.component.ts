@@ -10,6 +10,7 @@ import { Course, DiscussionTopic } from '../../../core/schemas';
 export class DiscussionComponent {
   @Input() course: Course;
   @Input() item: DiscussionTopic;
+  @Input() isAnnouncement = false;
 
   constructor() { }
 
