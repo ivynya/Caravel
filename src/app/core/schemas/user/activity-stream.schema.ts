@@ -4,18 +4,24 @@
 export interface ActivityStreamGeneric {
   created_at: string
   updated_at: string
+  posted_at: string
   id: number
   title: string
   message: string
-  read_state: boolean
+  read_state: string
+  unread_count: number
   context_type: string // course|group
   course_id: number
   group_id: number
   html_url: string
-  type: string // one of below types
+  type: string
 }
 
 export interface DiscussionTopic extends ActivityStreamGeneric {
+  author?: {
+    display_name: string,
+    pronouns: string
+  }
   discussion_topic_id: number
   total_root_discussion_entries: number
   require_initial_post: boolean
