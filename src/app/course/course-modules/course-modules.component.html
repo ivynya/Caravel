@@ -9,8 +9,6 @@
     <ng-container *ngFor="let block of mod.items">
       <app-module *ngFor="let item of block" [item]="item" [course]="course"></app-module>
     </ng-container>
-    <p *ngIf="mod.items?.length === 10">Not all module items may be loaded.</p>
   </app-expandable>
-  <p *ngIf="modules?.length === 10">Not all modules may be loaded.</p>
   <br><br>
 </section>
