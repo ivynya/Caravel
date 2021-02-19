@@ -1,31 +1,31 @@
 
 {
-  "version": "0.3.0",
+  "version": "0.4.0",
   "updateInfo": [
     {
-      "title": "Restrictions B Gone",
-      "desc": "We bypassed restrictions that stopped external content from being displayed. Assignments, course pages, wiki pages, etc. will all load content as Canvas would."
+      "title": "Caravan Goes Mobile",
+      "stage": "Beta",
+      "desc": "Groovy mobile optimizations come to split screen users and small screen havers of Caravan. Try installing the app using supported browsers on your smartphone by navigating to this site."
     },
     {
-      "title": "Whuh-wha-Wiki Page?",
-      "desc": "Caravan now supports Wiki Pages, including showing locked pages on the dashboard. Check it out!"
+      "title": "Previously On:",
+      "desc": "Load past items on the dashboard by clicking the up arrow icon, or refresh the view without reloading the whole page."
     },
     {
-      "title": "Thematic Developments",
-      "desc": "PC too potato to change system themes? We've got you covered. You can now change themes in settings."
+      "title": "Now Presenting...",
+      "desc": "Announcements and events are now able to be viewed in-app. This includes seeing all announcements in a course from the course page and dashboard items. Try it!"
     },
     {
-      "title": "Cracking Modules",
-      "stage": "Release",
-      "desc": "Load as many modules and items as you wish, without any limits, with the same great performance."
+      "title": "Ding!",
+      "desc": "Mark planner items done on your dashboard by checking the checkboxes next to each one."
     },
     {
       "title": "Features on the Side",
       "desc": "With extra dipping sauce.",
       "features": [
-        "Lots of behind-the-scenes stuff for performance.",
-        "Preparations for mobile and tablet experiences.",
-        "Fixed a few theming quirks here and there."
+        "Extra mobile style and layout optimizations.",
+        "Changed some styles in the app.",
+        "Added new in-app icons."
       ]
     }
   ]
