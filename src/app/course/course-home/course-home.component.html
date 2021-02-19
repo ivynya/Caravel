@@ -2,7 +2,9 @@
 <section class="course-home">
   <div class="title-row">
     <h1>{{ course?.name }}</h1>
-    <app-toggle [(value)]="useRedesign" (change)="syncConfig(useRedesign)">
+    <app-toggle class="sm-hide"
+      [(value)]="useRedesign"
+      (change)="syncConfig(useRedesign)">
       Use Redesign
     </app-toggle>
   </div>

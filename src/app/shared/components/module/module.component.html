@@ -1,6 +1,6 @@
 
 <div class="module">
-  <div class="spacer" [style.width]="item.indent*30 + 'px'"></div>
+  <div [style.width]="item.indent*30 + 'px'"></div>
   <ng-container [ngSwitch]="item.type">
     <div *ngSwitchCase="'Assignment'">
       <h3><a [routerLink]="['/courses', course.id, 'assignments', item.content_id]">
