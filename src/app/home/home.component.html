@@ -1,7 +1,20 @@
 <main class="page">
   <div class="content">
     <section class="home">
-      <h1>Your To Do</h1>
+      <div class="control-bar">
+        <h1>Your To Do</h1>
+        <div>
+          <p>{{ streamState.start | date }} - {{ streamState.end | date }}</p>
+          <br>
+          <span class="spacer"></span>
+          <button (click)="loadFromPreviousDay()" title="Load Past Items">
+            <img src="/assets/icons/Icon_UpArrow.svg" alt="Load Past Items">
+          </button>
+          <button (click)="loadFromToday()" title="Refresh/Reset View">
+            <img src="/assets/icons/Icon_Refresh.svg" alt="Refresh View">
+          </button>
+        </div>
+      </div>
       <hr>
       <div *ngFor="let group of stream">
         <h2>{{ group.id }}</h2>

@@ -1,7 +1,30 @@
 
 .home {
+  .control-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    > div {
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+    }
+
+    button {
+      margin-left: 5px;
+      height: 35px;
+      width: 35px;
+    }
+
+    @media (min-width: 512px) {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
   h2 {
     border-bottom: var(--text-inverse-tertiary) 1px solid;
-    padding-bottom: 5px;
+    width: max-content;
   }
 }

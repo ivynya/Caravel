@@ -26,21 +26,44 @@ export class HomeComponent implements OnInit {
               private userService: UserService) { }
 
   ngOnInit(): void {
+    this.loadFromToday();
+  }
+
+  loadFromToday(): void {
+    // Reset and rebuild stream
+    this._streamItems = [];
+    this.stream = [];
+
     // Initialize streamstate with date, rounded to 12AM.
     const now = this.roundDate.transform(new Date());
     this.streamState = { start: now, end: now };
 
     // Load intervals
-    this.getItems(2);
+    this.getItems(1);
+  }
+
+  loadFromPreviousDay(): void {
+    // Reset and rebuild stream
+    this._streamItems = [];
+    this.stream = [];
+
+    // Reset stream period to previous date
+    const prev = new Date(this.streamState.start.getTime() - 86400000);
+    this.streamState = { start: prev, end: prev };
+
+    this.getItems(1);
   }
 
   private getItems(to: number) {
-    const next = new Date(this.streamState.end.getTime() + 86400*1000*31);
-    this.userService.getPlanner(this.streamState.end, next, res => {
+    const next = new Date(this.streamState.start.getTime() + 86400*1000*31);
+    this.userService.getPlanner(this.streamState.start, next, res => {
+      const items = res.data;
+
       // Add or overwrite added items to memory
-      this._streamItems[res.page] = res.data;
-      this.streamState.end = new Date(res.data[res.data.length-1].plannable_date);
-      this.populateStream([].concat.apply([], this._streamItems));
+      this._streamItems[res.page] = items;
+      const concat = [].concat.apply([], this._streamItems);
+      this.streamState.end = new Date(concat[concat.length-1].plannable_date);
+      this.populateStream(concat);
 
       // If target not reached, do a recursion
       if (to > 0 && res.pagination?.next)

@@ -26,18 +26,9 @@
     }
 
     button {
-      background-color: var(--bg-control);
-      border: none;
-      border-radius: 3px;
-      color: var(--text-primary);
+      margin-left: 10px;
       height: 30px;
       width: 30px;
-      margin-left: 10px;
-      transition-duration: 0.2s;
-
-      &:hover {
-        background-color: var(--bg-control-hover);
-      }
     }
   }
 
