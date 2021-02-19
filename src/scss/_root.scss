@@ -151,3 +151,15 @@ a {
 .spacer {
   flex: 1 1;
 }
+
+@media (max-width: 512px) {
+  .sm-hide {
+    display: none;
+  }
+}
+
+@media (min-width: 512px) {
+  .sm-show {
+    display: none;
+  }
+}

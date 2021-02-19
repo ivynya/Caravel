@@ -21,12 +21,20 @@ export class HomeComponent implements OnInit {
     items: PlannerItem[];
     completed: PlannerItem[];
   }[] = [];
+  // Enables "selection mode" for items on mobile
+  // SM only affects the component at < 512px.
+  selectionMode = false;
 
   constructor(private roundDate: RoundDatePipe,
               private userService: UserService) { }
 
   ngOnInit(): void {
     this.loadFromToday();
+  }
+  
+  // Toggles selection mode on todo components
+  toggleSelectionMode(): void {
+    this.selectionMode = !this.selectionMode;
   }
 
   loadFromToday(): void {

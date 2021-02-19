@@ -13,16 +13,35 @@
           <button (click)="loadFromToday()" title="Refresh/Reset View">
             <img src="/assets/icons/Icon_Refresh.svg" alt="Refresh View">
           </button>
+          <button class="sm-show"
+            (click)="toggleSelectionMode()"
+            title="Toggle Selection Mode">
+            <!-- Repurposed icons? Never... -->
+            <img *ngIf="!selectionMode"
+              src="/assets/icons/Icon_Default.svg"
+              alt="Toggle Selection Mode">
+            <img *ngIf="selectionMode"
+              src="/assets/icons/Icon_Home.svg"
+              alt="Toggle Selection Mode">
+          </button>
         </div>
       </div>
       <hr>
       <div *ngFor="let group of stream">
         <h2>{{ group.id }}</h2>
-        <home-todo *ngFor="let item of group.items" [item]="item"></home-todo>
+        <home-todo
+          *ngFor="let item of group.items"
+          [selectable]="selectionMode"
+          [item]="item">
+        </home-todo>
         <app-expandable
             *ngIf="group.completed.length > 0"
             [name]="'Completed Items ('+group.completed.length+')'">
-          <home-todo *ngFor="let item of group.completed" [item]="item"></home-todo>
+          <home-todo
+            *ngFor="let item of group.completed"
+            [selectable]="selectionMode"
+            [item]="item">
+          </home-todo>
         </app-expandable>
       </div>
       <br><br>

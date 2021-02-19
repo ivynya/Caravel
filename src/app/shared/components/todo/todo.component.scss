@@ -73,25 +73,22 @@
 
     opacity: 0.2;
   }
+
   .actions {
-    display: flex;
+    display: none;
     flex-direction: row;
     align-items: center;
     
     > * {
       margin-right: 20px;
     }
-  }
 
-  @media (max-width: 512px) {
-    .sm-hide {
-      display: none;
+    &.shown {
+      display: flex;
     }
-  }
 
-  @media (min-width: 512px) {
-    .sm-show {
-      display: none;
+    @media (min-width: 512px) {
+      display: flex;
     }
   }
 }

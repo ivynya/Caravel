@@ -16,6 +16,7 @@ import { Course, PlannerItem } from '../../../core/schemas';
 export class TodoComponent implements OnInit {
   course: Course;
   @Input() item: PlannerItem;
+  @Input() selectable = true;
 
   isComplete = false;
   isLocked = false;
