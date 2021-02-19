@@ -12,10 +12,11 @@
       </a>
     </h3>
     <p class="subtext">
-      <span>Posted {{ item.posted_at | date: "E L/d h:mm a" }}</span>
+      <span class="sm-hide">Posted </span>
+      <span>{{ item.posted_at | date: "E L/d h:mm a" }}</span>
       <span class="separator"></span>
-      <span *ngIf="item.author.display_name">{{ item.author.display_name }}</span>
-      <span *ngIf="item.author.display_name" class="separator"></span>
+      <span *ngIf="item.author.display_name" class="sm-hide">{{ item.author.display_name }}</span>
+      <span *ngIf="item.author.display_name" class="separator sm-hide"></span>
       <span>{{ item.unread_count }} Unread Replies</span>
       <span class="separator"></span>
       <span>{{ item.read_state | titlecase }}</span>
