@@ -15,6 +15,9 @@ export class AssignmentComponent implements OnInit {
   assignmentBody: SafeHtml;
   course: Course;
 
+  // True if possibility that assignment can be graded.
+  isAssignmentGraded = true;
+
   latestSubmission: Submission;
   unlimitedAttempts: boolean;
   isFocusSubmission = true;
@@ -26,32 +29,36 @@ export class AssignmentComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const courseId = parseInt(this.route.parent.snapshot.paramMap.get("id"));
-    this.route.params.subscribe(params => {
+    const cId = parseInt(this.route.parent.snapshot.paramMap.get("id"));
+    this.route.params.subscribe(p => {
       // Get assignment from API/Cache
-      this.assignmentService.getAssignment(courseId, params.aId, a => this.setAssignment(a));
-
-      // API limitation means that only the latest submission can be
-      // retrived. No further submissions, unless admin privileges.
-      this.assignmentService.getLatestSubmission(courseId, params.aId, submission => {
-        this.latestSubmission = submission;
-        
-        // If no submission, remove viewing option
-        if (!submission.submitted_at)
-          this.isFocusSubmission = false;
-      });
+      this.assignmentService.getAssignment(cId, p.aId, a => this.setAssignment(cId, a));
     });
   }
 
-  private setAssignment(assignment: Assignment): void {
+  private setAssignment(cId: number, assignment: Assignment): void {
     // Set assignment information.
     this.assignment = assignment;
     this.assignmentBody = this.sanitizer.bypassSecurityTrustHtml(assignment.description);
-    this.unlimitedAttempts = (assignment.allowed_attempts === -1);
+    this.isAssignmentGraded = assignment.submission_types.join() !== 'not_graded';
     this.titleService.setTitle(`${assignment.name} | Caravan`);
 
     // Get related course
-    this.courseService.getCourse(this.assignment.course_id, course => this.course = course);
+    this.courseService.getCourse(cId, course => this.course = course);
+
+    // Only get submissions if the assignment is graded.
+    if (this.isAssignmentGraded) {
+      // TODO: Refactor to Submissions API
+      this.assignmentService.getLatestSubmission(cId, assignment.id, s => {
+        this.latestSubmission = s;
+        
+        // If no submission, remove viewing option
+        if (!s.submitted_at) this.isFocusSubmission = false;
+      });
+  
+      // -1 attempts denotes unlimited submissions possible.
+      this.unlimitedAttempts = assignment.allowed_attempts === -1;
+    }
   }
 
   focusSubmission(t: boolean): void {
