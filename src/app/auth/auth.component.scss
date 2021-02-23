@@ -12,6 +12,9 @@
   .dialog {
     border: var(--border-primary) 3px solid;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 
     padding: 25px 50px;
 
@@ -35,6 +38,7 @@
     .cta {
       border-radius: 5px;
       display: flex;
+      justify-content: center;
       overflow: hidden;
 
       input {
@@ -53,7 +57,7 @@
       }
 
       button {
-        background-color: var(--accent-primary);
+        background-color: var(--accent-secondary);
         border: none;
         border-radius: 0;
         font-family: inherit;
@@ -63,9 +67,17 @@
         transition-duration: 0.2s;
 
         &:hover {
-          background-color: var(--accent-secondary);
+          background-color: var(--accent-primary);
         }
       }
+    }
+
+    p {
+      margin-top: 0;
+    }
+
+    button {
+      padding: 10px;
     }
   }
 }

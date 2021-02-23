@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { StorageService } from '../core/services';
 
@@ -9,12 +9,20 @@ import { StorageService } from '../core/services';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
+  isMobileAuth = false;
   token: string;
   
-  constructor(private storage: StorageService,
-              private router: Router) { }
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private storage: StorageService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    const token = atob(this.route.snapshot.params.token);
+    if (token) {
+      this.token = token;
+      this.isMobileAuth = true;
+    }
+  }
 
   tryAuthorize(): void {
     // In a real OAuth context, retrieve the token based

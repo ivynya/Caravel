@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: 'auth',
     component: AuthComponent
+  },
+  {
+    path: 'auth/:token',
+    component: AuthComponent
   }
 ];
 

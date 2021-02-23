@@ -98,5 +98,7 @@
   "engines": {
     "node": ">=10.13.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "angular2-qrcode": "2.0.3"
+  }
 }

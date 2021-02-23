@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { QRCodeModule } from 'angular2-qrcode';
 
 import { AccountRoutingModule } from './account-routing.module';
 
@@ -9,6 +10,6 @@ import { ConfiguratorComponent } from './configurator/configurator.component';
 
 @NgModule({
   declarations: [AccountComponent, ConfiguratorComponent],
-  imports: [CommonModule, SharedModule, AccountRoutingModule]
+  imports: [CommonModule, SharedModule, QRCodeModule, AccountRoutingModule]
 })
 export class AccountModule {}

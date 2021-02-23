@@ -13,7 +13,6 @@ import { AppInfo, Configuration } from '../../core/schemas';
   styleUrls: ['./configurator.component.scss']
 })
 export class ConfiguratorComponent implements OnInit {
-  appInfo: AppInfo;
   configuration: Configuration;
 
   constructor(private cache: CacheService,
@@ -28,7 +27,6 @@ export class ConfiguratorComponent implements OnInit {
       const theme = this.configuration["caravan"]["theme"].value;
       document.documentElement.setAttribute('theme', theme);
     });
-    this.appInfo = this.config.getAppInfo();
   }
 
   // Updates an item in the cache
@@ -43,7 +41,6 @@ export class ConfiguratorComponent implements OnInit {
     await this.config.resetToDefault();
     await this.config.updateApp();
     this.configuration = this.config.getAll();
-    this.appInfo = this.config.getAppInfo();
     this.notif.notify(`Cleared cache and freed ${freed}KB.`, 2);
   }
 
@@ -52,7 +49,6 @@ export class ConfiguratorComponent implements OnInit {
     await this.config.resetToDefault();
     await this.config.updateApp();
     this.configuration = this.config.getAll();
-    this.appInfo = this.config.getAppInfo();
     this.notif.notify('Reset configuration to default.', 2);
   }
 

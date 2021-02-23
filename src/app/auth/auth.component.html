@@ -5,10 +5,14 @@
         <img src="assets/icons/favicon.png" alt="Caravan Icon">
         <h1>Caravan</h1>
       </div>
-      <div class="cta">
+      <div class="cta" *ngIf="!isMobileAuth">
         <input type="text" placeholder="User Token" [(ngModel)]="token">
         <button (click)="tryAuthorize()">Log In</button>
       </div>
+      <ng-container *ngIf="isMobileAuth">
+        <p>✅️ Mobile authorization detected.</p>
+        <button (click)="tryAuthorize()">Continue</button>
+      </ng-container>
       <br>
     </div>
   </div>

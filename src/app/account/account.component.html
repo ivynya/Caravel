@@ -15,7 +15,21 @@
       <p>{{ profile?.bio }}</p>
       <br>
       <app-configurator></app-configurator>
+      <br>
+      <div class="app-info">
+        <span>App Version: {{ appInfo.version }}</span>
+        <button (click)="openAuthorizer()">Mobile Login</button>
+      </div>
       <br><br>
     </section>
   </div>
 </main>
+
+<ng-template #mobileAuthorizer>
+  <h2>Authorize on Mobile</h2>
+  <p>Scan this QR code using your device's camera app or a supported scanner to sign in.</p>
+  <p><b>WARNING: Anyone can use this code!</b> Hover over or click the code when you are ready and minimize the time the code is shown.</p>
+  <div class="auth-hover-show" tabindex="0">
+    <qr-code [value]="mobileAuthUrl" [size]="250"></qr-code>
+  </div>
+</ng-template>
