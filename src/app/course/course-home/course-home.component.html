@@ -18,7 +18,7 @@
   <h2>Recent Feedback</h2>
   <div class="recent-item-bar">
     <div class="item" *ngFor="let submission of recent">
-      <h3><a [routerLink]="'/c/'+course?.id+'/a/'+submission.assignment.id">
+      <h3><a [routerLink]="'/courses/'+course?.id+'/assignments/'+submission.assignment.id">
         {{ submission.assignment.name }}
       </a></h3>
       <em>
