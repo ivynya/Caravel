@@ -1,19 +1,19 @@
 
 {
-  "version": "0.4.0",
+  "version": "0.4.1",
   "updateInfo": [
     {
       "title": "Caravan Goes Mobile",
       "stage": "Beta",
-      "desc": "Groovy mobile optimizations come to split screen users and small screen havers of Caravan. Try installing the app using supported browsers on your smartphone by navigating to this site."
+      "desc": "Groovy mobile optimizations come to split screen users and small screen havers of Caravan. Try installing the app on your smartphone by using the mobile auth QR code in account settings."
     },
     {
       "title": "Previously On:",
-      "desc": "Load past items on the dashboard by clicking the up arrow icon, or refresh the view without reloading the whole page."
+      "desc": "Load past items on the dashboard by clicking the arrow, or refresh without reloading the page."
     },
     {
       "title": "Now Presenting...",
-      "desc": "Announcements and events are now able to be viewed in-app. This includes seeing all announcements in a course from the course page and dashboard items. Try it!"
+      "desc": "Announcements and events are now able to be viewed in-app, including announcements listed on the course page."
     },
     {
       "title": "Ding!",
@@ -24,8 +24,7 @@
       "desc": "With extra dipping sauce.",
       "features": [
         "Extra mobile style and layout optimizations.",
-        "Changed some styles in the app.",
-        "Added new in-app icons."
+        "v0.4.1: Open assignments in Canvas to submit."
       ]
     }
   ]
