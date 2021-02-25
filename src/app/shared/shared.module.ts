@@ -20,6 +20,7 @@ import { WebviewDirective } from './directives/';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CoreModule } from 'app/core/core.module';
+import { OpenFromHereComponent } from './components/open-from-here/open-from-here.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CoreModule } from 'app/core/core.module';
     TodoComponent,
     ToggleComponent,
     ExpandableComponent,
-    DiscussionComponent
+    DiscussionComponent,
+    OpenFromHereComponent
   ],
   imports: [
     CommonModule,
@@ -54,7 +56,8 @@ import { CoreModule } from 'app/core/core.module';
     TodoComponent,
     ToggleComponent,
     ExpandableComponent,
-    DiscussionComponent
+    DiscussionComponent,
+    OpenFromHereComponent
   ]
 })
 export class SharedModule {}
