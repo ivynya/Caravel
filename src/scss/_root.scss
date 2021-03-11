@@ -108,6 +108,20 @@
   --info: #00F2D2;
 }
 
+:root[theme="amoled-dark"] {
+  --bg-primary: #000;
+  --bg-secondary: #333;
+  --bg-tertiary: #112;
+
+  --text-primary: #fff;
+  --text-secondary: #ddd;
+  --text-tertiary: #aab;
+
+  --text-inverse-primary: #fff;
+  --text-inverse-secondary: #eee;
+  --text-inverse-tertiary: #999;
+}
+
 ::selection {
   background-color: var(--accent-primary);
 }

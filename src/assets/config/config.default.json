@@ -15,7 +15,8 @@
       "options": [
         "system",
         "dark",
-        "light"
+        "light",
+        "amoled-dark"
       ]
     }
   },

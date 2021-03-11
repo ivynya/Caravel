@@ -1,30 +1,18 @@
 
 {
-  "version": "0.4.1",
+  "version": "0.4.2",
   "updateInfo": [
     {
-      "title": "Caravan Goes Mobile",
+      "title": "Incremental Update",
       "stage": "Beta",
-      "desc": "Groovy mobile optimizations come to split screen users and small screen havers of Caravan. Try installing the app on your smartphone by using the mobile auth QR code in account settings."
-    },
-    {
-      "title": "Previously On:",
-      "desc": "Load past items on the dashboard by clicking the arrow, or refresh without reloading the page."
-    },
-    {
-      "title": "Now Presenting...",
-      "desc": "Announcements and events are now able to be viewed in-app, including announcements listed on the course page."
-    },
-    {
-      "title": "Ding!",
-      "desc": "Mark planner items done on your dashboard by checking the checkboxes next to each one."
+      "desc": "A standard Caravan update. Requires a configuration refresh (automatically done for you)."
     },
     {
       "title": "Features on the Side",
       "desc": "With extra dipping sauce.",
       "features": [
         "Extra mobile style and layout optimizations.",
-        "v0.4.1: Open assignments in Canvas to submit."
+        "AMOLED dark theme added in theme settings."
       ]
     }
   ]
