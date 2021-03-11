@@ -14,9 +14,10 @@
       "value": "system",
       "options": [
         "system",
+        "amoled",
         "dark",
         "light",
-        "amoled-dark"
+        "light-alt"
       ]
     }
   },

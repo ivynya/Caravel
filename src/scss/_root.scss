@@ -108,7 +108,7 @@
   --info: #00F2D2;
 }
 
-:root[theme="amoled-dark"] {
+:root[theme="amoled"] {
   --bg-primary: #000;
   --bg-secondary: #333;
   --bg-tertiary: #112;
@@ -120,6 +120,42 @@
   --text-inverse-primary: #eee;
   --text-inverse-secondary: #ddd;
   --text-inverse-tertiary: #999;
+}
+
+:root[theme="light-alt"] {
+  --bg-primary: #fff;
+  --bg-secondary: #aaa;
+  --bg-tertiary: #fafafa;
+
+  --box-shadow-primary: #ccc;
+  --box-shadow-secondary: #ddd;
+
+  --border-primary: #777;
+  --border-secondary: #bbb;
+
+  --bg-control: #eee;
+  --bg-control-hover: #ddd;
+
+  --bg-accent: #aaa;
+  --bg-dialog: #aaa;
+
+  --text-primary: #000;
+  --text-secondary: #000;
+  --text-tertiary: #000;
+
+  --text-inverse-primary: #000;
+  --text-inverse-secondary: #000;
+  --text-inverse-tertiary: #000;
+
+  --scrollbar-primary: var(--bg-accent);
+  --scrollbar-secondary: #555;
+
+  --accent-primary: #3cEcb9;
+  --accent-secondary: #00b5c2;
+
+  --error: #F50;
+  --warning: #FA0;
+  --info: #3cEcb9;
 }
 
 ::selection {
