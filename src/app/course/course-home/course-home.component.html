@@ -40,7 +40,7 @@
   </ng-container>
   <ng-container *ngIf="useRedesign">
     <h2>Course Stream</h2>
-    <home-todo *ngFor="let item of stream" [item]="item"></home-todo>
+    <home-todo *ngFor="let item of stream" [item]="item" [showCourse]="false"></home-todo>
     <br><br>
   </ng-container>
 </section>

@@ -17,6 +17,7 @@ export class TodoComponent implements OnInit {
   course: Course;
   @Input() item: PlannerItem;
   @Input() selectable = true;
+  @Input() showCourse = true;
 
   isComplete = false;
   isLocked = false;
