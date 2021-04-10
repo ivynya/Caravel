@@ -31,7 +31,7 @@ export class UserService extends APIBaseService {
     
     this.xfetch<PlannerItem[]>(
         `self/planner/items`, callback,
-        { params: new URLSearchParams(qp) })
+        { params: new URLSearchParams(qp), cacheShort: 5000 })
       .catch(ex => console.error(ex));
   }
 
