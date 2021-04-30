@@ -73,6 +73,14 @@ export class HomeComponent implements OnInit {
       this.streamState.end = new Date(concat[concat.length-1].plannable_date);
       this.populateStream(concat);
 
+      let unpopulated = true;
+      this.stream.forEach(day => {
+        if (day.items.length > 0)
+          unpopulated = false;
+      });
+      if (unpopulated && res.pagination?.next)
+        { to--; res.pagination.next(); }
+
       // If target not reached, do a recursion
       if (to > 0 && res.pagination?.next)
         { to--; res.pagination.next(); }
