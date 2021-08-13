@@ -56,7 +56,8 @@ export class CourseService extends APIBaseService {
   listCourses(callback: (data: Course[]) => void): void {
     this.xfetch<Course[]>(
         '', res => {callback(res.data)},
-        { cacheShort: 360000000, cacheLong: 864000000 })
+        { cacheShort: 360000000, cacheLong: 864000000,
+					params: new URLSearchParams('enrollment_state=active') })
       .catch(ex => console.error(ex));
   }
 
