@@ -1,19 +1,15 @@
 
 {
-  "version": "0.4.2",
+  "version": "0.4.3",
   "updateInfo": [
     {
-      "title": "Incremental Update",
+      "title": "Y21K Fixes",
       "stage": "Beta",
-      "desc": "A standard Caravan update. Requires a configuration refresh (automatically done for you)."
+      "desc": "Auto-show active courses only. This fixes several potential errors with access control to completed courses."
     },
-    {
-      "title": "Features on the Side",
-      "desc": "With extra dipping sauce.",
-      "features": [
-        "Extra mobile style and layout optimizations.",
-        "AMOLED dark theme added in theme settings."
-      ]
-    }
+		{
+			"title": "Latest and Greatest",
+			"desc": "Updated to latest app framework and package versions to ensure security and stability."
+		}
   ]
 }
