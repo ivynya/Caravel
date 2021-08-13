@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { OpenFromHereComponent } from './open-from-here.component';
 
@@ -6,7 +6,7 @@ describe('OpenFromHereComponent', () => {
   let component: OpenFromHereComponent;
   let fixture: ComponentFixture<OpenFromHereComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ OpenFromHereComponent ]
     })

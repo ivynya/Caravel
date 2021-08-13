@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CourseHomeComponent } from './course-home.component';
 import { RoundDatePipe } from '../../core/pipes';
@@ -7,7 +7,7 @@ describe('CourseHomeComponent', () => {
   let component: CourseHomeComponent;
   let fixture: ComponentFixture<CourseHomeComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ CourseHomeComponent ],
       providers: [ RoundDatePipe ]
