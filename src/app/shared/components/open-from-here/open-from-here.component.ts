@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ConfigurationService } from 'app/core/services';
+import { ConfigurationService } from '../../../core/services';
 
 @Component({
   selector: 'app-open-from-here',
