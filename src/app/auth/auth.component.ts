@@ -27,6 +27,7 @@ export class AuthComponent implements OnInit {
   tryAuthorize(): void {
     // In a real OAuth context, retrieve the token based
     // off of a server running using the developer key.
+    // note how our school rejected this key.
     this.storage.set("oauth_token", this.token);
     console.log(this.storage.get("oauth_token"));
 
