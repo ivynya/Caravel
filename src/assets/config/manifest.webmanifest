@@ -1,7 +1,7 @@
 {
-  "name": "Caravan",
-  "short_name": "Caravan",
-  "theme_color": "#11111F",
+  "name": "Caravel",
+  "short_name": "Caravel",
+  "theme_color": "#fff",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "/",

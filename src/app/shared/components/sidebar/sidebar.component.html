@@ -1,7 +1,7 @@
 <nav class="sidebar" [ngClass]="{'compact': useCompact}">
   <div *ngIf="!isAuthorized">
     <div class="sidebar-title">
-      <h2>Caravan</h2>
+      <app-brand-badge *ngIf="!useCompact"></app-brand-badge>
     </div>
     <a routerLink="/auth"
         class="nav-link"
@@ -11,7 +11,7 @@
   </div>
   <div *ngIf="isAuthorized">
     <div class="sidebar-title">
-      <h2>Caravan</h2>
+      <app-brand-badge *ngIf="!useCompact"></app-brand-badge>
       <button (click)="toggleCompact()">≡</button>
     </div>
     <a class="nav-link"

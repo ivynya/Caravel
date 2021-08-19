@@ -17,7 +17,7 @@ export * from './todo/event.schema';
 export * from './user/activity-stream.schema';
 export * from './user/profile.schema';
 
-// Caravan schemas
+// Caravel schemas
 export * from './cache/cache.schema';
 
 export * from './configuration/app-info.schema';

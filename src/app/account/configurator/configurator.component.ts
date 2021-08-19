@@ -24,7 +24,7 @@ export class ConfiguratorComponent implements OnInit {
       this.configuration = data;
 
       // Change app theme if it is updated
-      const theme = this.configuration["caravan"]["theme"].value;
+      const theme = this.configuration["caravel"]["theme"].value;
       document.documentElement.setAttribute('theme', theme);
     });
   }

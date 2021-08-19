@@ -41,7 +41,7 @@ export class AssignmentComponent implements OnInit {
     this.assignment = assignment;
     this.assignmentBody = this.sanitizer.bypassSecurityTrustHtml(assignment.description);
     this.isAssignmentGraded = assignment.submission_types.join() !== 'not_graded';
-    this.titleService.setTitle(`${assignment.name} | Caravan`);
+    this.titleService.setTitle(`${assignment.name} | Caravel`);
 
     // Get related course
     this.courseService.getCourse(cId, course => this.course = course);

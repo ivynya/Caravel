@@ -19,6 +19,7 @@
     border: var(--border-primary) 2px solid;
     border-radius: 5px;
     color: var(--text-inverse-primary);
+    font-family: inherit;
     padding: 5px 10px;
 
     &:not(:first-of-type) {

@@ -19,11 +19,7 @@
   .sidebar-title {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
-
-    h2 {
-      margin: 0;
-    }
+    padding: 20px 30px;
 
     button {
       margin-left: 10px;
@@ -115,10 +111,6 @@
   .sidebar-title {
     justify-content: center;
     padding: 20px 0;
-
-    h2 {
-      display: none;
-    }
 
     button {
       margin-left: 0;

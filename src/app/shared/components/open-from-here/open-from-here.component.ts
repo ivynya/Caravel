@@ -18,7 +18,7 @@ export class OpenFromHereComponent implements OnInit {
   ngOnInit(): void {
     if (!this.url) {
       this.route.params.subscribe(() => {
-        const domain = this.config.getVal<string>("caravan", "domain");
+        const domain = this.config.getVal<string>("caravel", "domain");
         this.url = `https://${domain}${this.router.url}`;
       });
     }

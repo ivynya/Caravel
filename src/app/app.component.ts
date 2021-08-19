@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
     this.configService.updateApp()
       .then(didUpdate => {
         // Set app theme on page load (from config)
-        const theme = this.configService.getVal<string>('caravan', 'theme');
+        const theme = this.configService.getVal<string>('caravel', 'theme');
         document.documentElement.setAttribute('theme', theme);
 
         this.appInfo = this.configService.getAppInfo();
@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
         this.router.navigateByUrl("/auth");
 
       // Set default page title
-      this.titleService.setTitle("Caravan");
+      this.titleService.setTitle("Caravel");
     });
   }
 }

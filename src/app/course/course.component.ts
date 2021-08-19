@@ -22,7 +22,7 @@ export class CourseComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.courseService.getCourse(params.id, course => {
         this.course = course;
-        this.titleService.setTitle(`${course.name} | Caravan`);
+        this.titleService.setTitle(`${course.name} | Caravel`);
       });
     });
   }

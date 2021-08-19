@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 
 import {
+  BrandBadgeComponent,
   DiscussionComponent,
   ExpandableComponent,
   IconLTIComponent,
   ModuleComponent,
   ModalComponent,
   NotificationBannerComponent,
+  OpenFromHereComponent,
   PageNotFoundComponent,
   SidebarComponent,
   TodoComponent,
@@ -19,8 +21,7 @@ import {
 import { WebviewDirective } from './directives/';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { CoreModule } from 'app/core/core.module';
-import { OpenFromHereComponent } from './components/open-from-here/open-from-here.component';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { OpenFromHereComponent } from './components/open-from-here/open-from-her
     ToggleComponent,
     ExpandableComponent,
     DiscussionComponent,
-    OpenFromHereComponent
+    OpenFromHereComponent,
+    BrandBadgeComponent
   ],
   imports: [
     CommonModule,

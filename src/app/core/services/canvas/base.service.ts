@@ -102,9 +102,9 @@ export abstract class APIBaseService {
     const callStart = new Date();
 
     // Get app domain for API calls
-    const domain = this.configService.getVal<string>("caravan", "domain");
+    const domain = this.configService.getVal<string>("caravel", "domain");
     if (!domain) {
-      this.notifService.notify("There is a caravan.domain configuration error.", 0);
+      this.notifService.notify("There is a caravel.domain configuration error.", 0);
       return;
     }
 
