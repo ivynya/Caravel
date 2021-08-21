@@ -26,8 +26,8 @@
   --scrollbar-primary: var(--bg-accent);
   --scrollbar-secondary: #64a;
 
-  --accent-primary: #00F2D2;
-  --accent-secondary: #00C2A2;
+  --accent-primary: #abf;
+  --accent-secondary: #78c;
 
   --error: #F50;
   --warning: #FA0;
@@ -62,12 +62,12 @@
   --scrollbar-primary: var(--bg-accent);
   --scrollbar-secondary: #64a;
 
-  --accent-primary: #00F2D2;
-  --accent-secondary: #00b5c2;
+  --accent-primary: #abf;
+  --accent-secondary: #78c;
 
   --error: #F50;
   --warning: #FA0;
-  --info: #00F2D2;
+  --info: #00FFC2;
 }
 
 @media (prefers-color-scheme: light) {
@@ -125,7 +125,7 @@
   --scrollbar-primary: var(--bg-accent);
   --scrollbar-secondary: #555;
 
-  --accent-primary: #abc;
+  --accent-primary: #abf;
   --accent-secondary: #78c;
 
   --error: #F50;
