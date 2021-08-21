@@ -10,8 +10,8 @@
     "theme": {
       "name": "App Theme",
       "type": "select",
-      "default": "system",
-      "value": "system",
+      "default": "caravel-light",
+      "value": "caravel-light",
       "options": [
         "system",
         "caravel-dark",

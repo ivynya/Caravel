@@ -18,6 +18,7 @@ export class AuthComponent implements OnInit {
 
   ngOnInit(): void {
     const token = atob(this.route.snapshot.params.token);
+    console.log(token);
     if (token) {
       this.token = token;
       this.isMobileAuth = true;

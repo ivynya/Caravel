@@ -33,7 +33,7 @@ export class AccountComponent implements OnInit {
   openAuthorizer(): void {
     const token = btoa(this.storageService.get("oauth_token"));
     console.log(token);
-    this.mobileAuthUrl = `https://caravan.sdbagel.com/auth/${token}`;
+    this.mobileAuthUrl = `https://caravel.sdbagel.com/auth/${token}`;
     this.modalService.openModal(this.template);
   }
 
