@@ -92,11 +92,10 @@
   .accessor {
     background-color: var(--bg-control);
     border-radius: 5px;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    color: var(--accent-primary);
     text-decoration: none;
 
     padding: 10px;
@@ -106,8 +105,16 @@
     transition-duration: 0.2s;
 
     &:hover {
-      background-color: var(--bg-control-hover);
+      background-color: var(--control-hover);
       transform: scale(1.05);
+    }
+
+    span {
+      background-image: linear-gradient(-135deg, #00a1ff, #ffa0ff);
+      background-clip: text;
+      color: transparent;
+      font-family: renogare;
+      font-size: 1.5rem;
     }
   }
 }

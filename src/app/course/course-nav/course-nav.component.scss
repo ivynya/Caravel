@@ -40,7 +40,7 @@
     }
 
     &:hover, &:focus, &.active {
-      background-color: var(--bg-control-hover);
+      background-color: var(--control-hover);
       border-width: 6px;
       border-color: var(--accent-primary);
     }
@@ -75,7 +75,7 @@
       border-radius: 0;
       border-top-left-radius: 5px;
       border-bottom-left-radius: 5px;
-      color: var(--text-inverse-primary);
+      color: var(--text-primary);
 
       img {
         display: none;

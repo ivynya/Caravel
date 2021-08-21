@@ -16,10 +16,9 @@
 
   button {
     background-color: transparent;
-    border: var(--border-primary) 2px solid;
+    border: var(--border-primary) 1.5px solid;
     border-radius: 5px;
-    color: var(--text-inverse-primary);
-    font-family: inherit;
+    color: var(--text-primary);
     padding: 5px 10px;
 
     &:not(:first-of-type) {
@@ -59,7 +58,7 @@
           border: none;
           border-radius: 3px;
           box-sizing: border-box;
-          color: var(--text-primary);
+          color: var(--text-control);
           padding: 5px 10px;
           width: 150px;
         }

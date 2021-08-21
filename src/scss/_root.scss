@@ -9,12 +9,12 @@
 }
 
 ::-webkit-scrollbar-track {
-  background-color: var(--scrollbar-primary);
+  background-color: var(--scrollbar-track);
   border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar-secondary);
+  background-color: var(--scrollbar-thumb);
   border-radius: 2px;
 }
 

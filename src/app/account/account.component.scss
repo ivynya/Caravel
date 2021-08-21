@@ -56,9 +56,9 @@
 
     button {
       background-color: transparent;
-      border: var(--border-primary) 2px solid;
+      border: var(--border-primary) 1.5px solid;
       border-radius: 5px;
-      color: var(--text-inverse-primary);
+      color: var(--text-primary);
       padding: 5px 10px;
   
       &:hover {

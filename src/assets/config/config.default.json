@@ -14,10 +14,11 @@
       "value": "system",
       "options": [
         "system",
-        "amoled",
-        "dark",
-        "light",
-        "light-alt"
+        "caravel-dark",
+        "caravel-light",
+        "caravel-light-alt",
+        "soulless-dark",
+        "soulless-light"
       ]
     }
   },

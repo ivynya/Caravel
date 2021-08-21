@@ -3,14 +3,15 @@ button {
   background-color: var(--bg-control);
   border: none;
   border-radius: 3px;
-  color: var(--text-primary);
+  color: var(--text-control);
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: inherit;
   transition-duration: 0.2s;
 
   &:hover {
-    background-color: var(--bg-control-hover);
+    background-color: var(--control-hover);
   }
 
   img {

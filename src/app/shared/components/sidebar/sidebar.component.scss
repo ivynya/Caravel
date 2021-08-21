@@ -1,8 +1,8 @@
 .sidebar {
-  background-color: var(--bg-tertiary);
+  background-color: var(--bg-inverse-primary);
   box-shadow: var(--box-shadow-primary) 0 0 20px;
   box-sizing: border-box;
-  color: var(--text-primary);
+  color: var(--text-inverse-primary);
 
   display: flex;
   flex-direction: column;
@@ -22,14 +22,19 @@
     padding: 20px 30px;
 
     button {
+      color: var(--text-control-alt);
       margin-left: 10px;
       height: 30px;
       width: 30px;
     }
+
+    button:not(:hover) {
+      background-color: var(--bg-control-alt);
+    }
   }
 
   .nav-link {
-    color: var(--text-primary);
+    color: var(--text-inverse-primary);
     font-size: 1.2rem;
     text-decoration: none;
     white-space: nowrap;
@@ -45,8 +50,11 @@
     padding-right: 20px;
     transition-duration: 0.3s;
 
-    &:hover, &.active {
-      background-color: var(--bg-control-hover);
+    &:hover {
+      background-color: var(--bg-inverse-secondary);
+    }
+    &.active {
+      background-color: var(--bg-inverse-tertiary);
     }
 
     &.nav-sub {
