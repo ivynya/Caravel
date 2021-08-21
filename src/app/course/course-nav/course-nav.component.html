@@ -2,37 +2,37 @@
 <nav class="course-nav">
   <a [routerLink]="['/courses/', course.id]"
       routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-    <img src="assets/icons/Icon_Home.svg" alt="">
+    <svg><use xlink:href="/assets/icons/icon.svg#home"/></svg>
     <span>Course Home</span>
   </a>
   <a [routerLink]="['/courses/', course.id, 'announcements']"
       routerLinkActive="active">
-    <img src="assets/icons/Icon_Announcements.svg" alt="">
+    <svg><use xlink:href="/assets/icons/icon.svg#announcements"/></svg>
     <span>Announcements</span>
   </a>
   <a [routerLink]="['/courses/', course.id, 'assignments']"
       routerLinkActive="active">
-    <img src="assets/icons/Icon_Assignments.svg" alt="">
+    <svg><use xlink:href="/assets/icons/icon.svg#assignments"/></svg>
     <span>Assignments</span>
   </a>
   <a [routerLink]="['/courses/', course.id, 'discussions']"
       routerLinkActive="active">
-    <img src="assets/icons/Icon_Discussions.svg" alt="">
+    <svg><use xlink:href="/assets/icons/icon.svg#discussions"/></svg>
     <span>Discussions</span>
   </a>
   <a [routerLink]="['/courses/', course.id, 'grades']"
       routerLinkActive="active">
-    <img src="assets/icons/Icon_Default.svg" alt="">
+    <svg><use xlink:href="/assets/icons/icon.svg#default"/></svg>
     <span>Grades</span>
   </a>
   <a [routerLink]="['/courses/', course.id, 'modules']"
       routerLinkActive="active">
-    <img src="assets/icons/Icon_Modules.svg" alt="">
+    <svg><use xlink:href="/assets/icons/icon.svg#modules"/></svg>
     <span>Modules</span>
   </a>
   <a [routerLink]="['/courses/', course.id, 'quizzes']"
       routerLinkActive="active">
-    <img src="assets/icons/Icon_Default.svg" alt="">
+    <svg><use xlink:href="/assets/icons/icon.svg#default"/></svg>
     <span>Quizzes</span>
   </a>
 </nav>
