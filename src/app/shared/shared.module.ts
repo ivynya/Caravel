@@ -59,7 +59,8 @@ import { CoreModule } from '../core/core.module';
     ToggleComponent,
     ExpandableComponent,
     DiscussionComponent,
-    OpenFromHereComponent
+    OpenFromHereComponent,
+    BrandBadgeComponent
   ]
 })
 export class SharedModule {}

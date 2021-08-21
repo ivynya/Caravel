@@ -1,15 +1,18 @@
 
 {
-  "version": "0.5.1",
+  "version": "0.5.2",
   "updateInfo": [
     {
-      "title": "Y21K Fixes",
-      "stage": "Beta",
-      "desc": "Auto-show active courses only. This fixes several potential errors with access control to completed courses."
+      "title": "The Next Evolution",
+      "desc": "Canvas. New technologies. Better than ever before. Set sail for new possibilities with Caravel, the next evolution of education software."
     },
 		{
-			"title": "Latest and Greatest",
-			"desc": "Updated to latest app framework and package versions to ensure security and stability."
+			"title": "Clean Sails",
+			"desc": "A new palette and adjusted app theme sets are available in Caravel improving consistency and legibility. Adjust your app theme in the Account page."
+		},
+		{
+			"title": "New Horizons",
+			"desc": "The journey doesn't end here. Stay tuned for more."
 		}
   ]
 }

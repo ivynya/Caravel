@@ -9,7 +9,8 @@
 </div>
 
 <ng-template #whatsNew>
-  <h2>What's New: Caravel v{{ appInfo.version }}</h2>
+  <app-brand-badge></app-brand-badge>
+  <h3>version update v{{ appInfo.version }}</h3>
   <div *ngFor="let item of appInfo.updateInfo" class="update-info">
     <h4 class="title">
       <span>{{ item.title }}</span>

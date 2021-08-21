@@ -44,8 +44,11 @@
   // https://stackoverflow.com/a/49308475/9627251
   .modal ::ng-deep {
     h2, p {
-      margin-top: 0;
-      margin-bottom: 10px;
+      margin: 0;
+    }
+
+    h3 {
+      margin: 10px 0;
     }
 
     .spacer {
