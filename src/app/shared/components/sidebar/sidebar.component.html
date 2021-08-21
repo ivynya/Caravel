@@ -20,7 +20,7 @@
         (mouseenter)="alignTT($event)"
         routerLink="/account"
         routerLinkActive="active">
-      <img src="/assets/icons/Icon_Account.svg" alt="Account">
+      <svg><use xlink:href="/assets/icons/icon.svg#account"/></svg>
       <span>Account</span>
     </a>
     <a class="nav-link"
@@ -30,7 +30,7 @@
         routerLink="/home"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }">
-      <img src="/assets/icons/Icon_Dashboard.svg" alt="Dashboard">
+      <svg><use xlink:href="/assets/icons/icon.svg#dashboard"/></svg>
       <span>Dashboard</span>
     </a>
     <ng-container *ngIf="this.enumerateClasses">
@@ -51,7 +51,7 @@
         (mouseenter)="alignTT($event)"
         routerLink="/groups"
         routerLinkActive="active">
-      <img src="/assets/icons/Icon_Group.svg" alt="Groups">
+      <svg><use xlink:href="/assets/icons/icon.svg#group"/></svg>
       <span>Groups</span>
     </a>
     <a class="nav-link"
@@ -60,7 +60,7 @@
         (mouseenter)="alignTT($event)"
         routerLink="/inbox"
         routerLinkActive="active">
-      <img src="/assets/icons/Icon_Inbox.svg" alt="Inbox">
+      <svg><use xlink:href="/assets/icons/icon.svg#inbox"/></svg>
       <span>Inbox</span>
     </a>
     <a class="nav-link"
@@ -69,7 +69,7 @@
         (mouseenter)="alignTT($event)"
         routerLink="/calendar"
         routerLinkActive="active">
-      <img src="/assets/icons/Icon_Calendar.svg" alt="Calendar">
+      <svg><use xlink:href="/assets/icons/icon.svg#calendar"/></svg>
       <span>Calendar</span>
     </a>
     <a class="nav-link"
@@ -78,7 +78,7 @@
         (mouseenter)="alignTT($event)"
         routerLink="/studio"
         routerLinkActive="active">
-      <img src="/assets/icons/Icon_Studio.svg" alt="Studio">
+      <svg><use xlink:href="/assets/icons/icon.svg#studio"/></svg>
       <span>Studio</span>
     </a>
   </div>

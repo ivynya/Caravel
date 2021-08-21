@@ -54,7 +54,8 @@
     white-space: nowrap;
     margin: 0;
 
-    img {
+    svg {
+      fill: var(--accent-primary);
       height: 16px;
       width: 16px;
       margin-right: 3px;

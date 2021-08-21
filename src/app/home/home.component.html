@@ -8,21 +8,21 @@
           <br>
           <span class="spacer"></span>
           <button (click)="loadFromPreviousDay()" title="Load Past Items">
-            <img src="/assets/icons/Icon_UpArrow.svg" alt="Load Past Items">
+            <svg><use xlink:href="/assets/icons/icon.svg#uparrow"/></svg>
           </button>
           <button (click)="loadFromToday()" title="Refresh/Reset View">
-            <img src="/assets/icons/Icon_Refresh.svg" alt="Refresh View">
+            <svg><use xlink:href="/assets/icons/icon.svg#refresh"/></svg>
           </button>
           <button class="sm-show"
             (click)="toggleSelectionMode()"
             title="Toggle Selection Mode">
             <!-- Repurposed icons? Never... -->
-            <img *ngIf="!selectionMode"
-              src="/assets/icons/Icon_Default.svg"
-              alt="Toggle Selection Mode">
-            <img *ngIf="selectionMode"
-              src="/assets/icons/Icon_Home.svg"
-              alt="Toggle Selection Mode">
+            <svg *ngIf="!selectionMode">
+              <use xlink:href="/assets/icons/icon.svg#default"/>
+            </svg>
+            <svg *ngIf="selectionMode">
+              <use xlink:href="/assets/icons/icon.svg#home"/>
+            </svg>
           </button>
         </div>
       </div>

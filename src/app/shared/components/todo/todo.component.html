@@ -15,7 +15,7 @@
         {{ item.plannable.title }}
       </a></h3>
       <p class="subtext">
-        <img *ngIf="isLocked" src="assets/icons/Icon_Locked.svg" alt="Locked">
+        <svg *ngIf="isLocked"><use xlink:href="/assets/icons/icon.svg#locked"/></svg>
         <span class="sm-show">{{ item.plannable.created_at | date: "h:mm a"}}</span>
         <span class="sm-hide">{{ item.plannable.created_at | date: "E L/d h:mm a"}}</span>
         <span class="separator"></span>
@@ -33,7 +33,7 @@
         {{ item.plannable.title }}
       </a></h3>
       <p class="subtext">
-        <img *ngIf="isLocked" src="assets/icons/Icon_Locked.svg" alt="Locked">
+        <svg *ngIf="isLocked"><use xlink:href="/assets/icons/icon.svg#locked"/></svg>
         <span class="sm-show">{{ item.plannable_date | date: "h:mm a"}}</span>
         <span class="sm-hide">{{ item.plannable_date | date: "E L/d h:mm a"}}</span>
         <span class="separator"></span>
@@ -49,7 +49,7 @@
         {{ item.plannable.title }}
       </a></h3>
       <p class="subtext">
-        <img *ngIf="isLocked" src="assets/icons/Icon_Locked.svg" alt="Locked">
+        <svg *ngIf="isLocked"><use xlink:href="/assets/icons/icon.svg#locked"/></svg>
         <span class="sm-show">{{ item.plannable.due_at | date: "h:mm a"}}</span>
         <span class="sm-hide">{{ item.plannable.due_at | date: "E L/d h:mm a"}}</span>
         <span class="separator"></span>
@@ -69,7 +69,7 @@
         {{ item.plannable.title }}
       </a></h3>
       <p class="subtext">
-        <img *ngIf="isLocked" src="assets/icons/Icon_Locked.svg" alt="Locked">
+        <svg *ngIf="isLocked"><use xlink:href="/assets/icons/icon.svg#locked"/></svg>
         <span class="sm-show">{{ item.plannable.start_at | date: "h:mm a"}}</span>
         <span class="sm-hide">{{ item.plannable.start_at | date: "E L/d h:mm a"}}</span>
         <span class="separator"></span>
@@ -85,7 +85,7 @@
         {{ item.plannable.title }}
       </a></h3>
       <p class="subtext">
-        <img *ngIf="isLocked" src="assets/icons/Icon_Locked.svg" alt="Locked">
+        <svg *ngIf="isLocked"><use xlink:href="/assets/icons/icon.svg#locked"/></svg>
         <span class="sm-show">{{ item.plannable_date | date: "h:mm a"}}</span>
         <span class="sm-hide">{{ item.plannable_date | date: "E L/d h:mm a"}}</span>
         <span class="separator"></span>
@@ -101,7 +101,7 @@
         {{ item.plannable.title }}
       </a></h3>
       <p class="subtext">
-        <img *ngIf="isLocked" src="assets/icons/Icon_Locked.svg" alt="Locked">
+        <svg *ngIf="isLocked"><use xlink:href="/assets/icons/icon.svg#locked"/></svg>
         <span class="sm-show">{{ item.plannable.todo_date | date: "h:mm a"}}</span>
         <span class="sm-hide">{{ item.plannable.todo_date | date: "E L/d h:mm a"}}</span>
         <span class="separator"></span>

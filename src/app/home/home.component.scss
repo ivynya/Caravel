@@ -18,6 +18,11 @@
       &:first-of-type {
         margin-left: 15px;
       }
+
+      svg {
+        fill: var(--accent-primary);
+        height: 100%;
+      }
     }
 
     @media (min-width: 512px) {

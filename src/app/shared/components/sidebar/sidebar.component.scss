@@ -71,7 +71,8 @@
       }
     }
 
-    img {
+    svg {
+      fill: var(--accent-primary);
       height: 25px;
       width: 25px;
       margin-right: 10px;
@@ -126,13 +127,13 @@
     padding-left: 0;
     padding-right: 0;
 
-    img {
+    svg {
       height: 35px;
       width: 35px;
       margin-right: 0;
     }
 
-    img + span {
+    svg + span {
       display: none;
     }
 
