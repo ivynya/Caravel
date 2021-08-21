@@ -22,7 +22,7 @@
   &:before {
     background-color: var(--bg-primary);
     border: var(--accent-primary) 1px solid;
-    color: var(--text-inverse-primary);
+    color: var(--text-primary);
     content: attr(data-tt);
     padding: 8px 14px;
     line-height: 18px;
