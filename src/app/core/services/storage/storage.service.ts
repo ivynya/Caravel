@@ -22,10 +22,20 @@ export class StorageService {
     this.lstore.setItem(key, value);
   }
 
+  remove(key: string): void {
+    this.lstore.removeItem(key);
+  }
+
+  // Returns estimated KB used in storage
+  getSize(): number {
+    const bytes = JSON.stringify(this.lstore).length;
+    return Math.round(bytes / 1000);
+  }
+
   // Clear storage and return KB freed.
   clear(): number {
-    const bytes = JSON.stringify(this.lstore).length;
+    const bytes = this.getSize();
     this.lstore.clear();
-    return Math.round(bytes / 1000);
+    return bytes;
   }
 }

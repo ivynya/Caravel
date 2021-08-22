@@ -5,7 +5,7 @@ import {
   ConfigurationService,
   NotificationService
 } from '../../core/services';
-import { AppInfo, Configuration } from '../../core/schemas';
+import { Configuration } from '../../core/schemas';
 
 @Component({
   selector: 'app-configurator',
@@ -35,16 +35,14 @@ export class ConfiguratorComponent implements OnInit {
   }
 
   // Clear all user cache. Does not sign user out.
-  // This resets the user configuration as well.
   async clearCache(): Promise<void> {
     const freed = this.cache.clear();
-    await this.config.resetToDefault();
     await this.config.updateApp();
     this.configuration = this.config.getAll();
     this.notif.notify(`Cleared cache and freed ${freed}KB.`, 2);
   }
 
-  // Reset configuration in localstorage.
+  // Reset config in localstorage. Does not sign user out.
   async resetConfig(): Promise<void> {
     await this.config.resetToDefault();
     await this.config.updateApp();

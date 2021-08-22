@@ -30,12 +30,14 @@ export class CacheService {
     this.storage.set(cacheId, JSON.stringify(item));
   }
 
-  // Clear everything except oauth_token. Return KB freed.
+  // Clear storage's cache only. Return KB freed.
   clear(): number {
-    const token = this.storage.get('oauth_token');
-    const kbFree = this.storage.clear();
-    this.storage.set('oauth_token', token);
-    return kbFree;
+    let bytesFreed = this.storage.getSize();
+    for (const key in this.storage.lstore) {
+      if (key.startsWith('.')) this.storage.remove(key);
+    }
+    bytesFreed -= this.storage.getSize();
+    return bytesFreed;
   }
 
   // replace all non-alphanumeric characters with a single dot
