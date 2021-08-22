@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import {
   CacheService,
   ConfigurationService,
-  NotificationService
+  NotificationService,
+  StorageService
 } from '../../core/services';
 import { Configuration } from '../../core/schemas';
 
@@ -14,10 +15,12 @@ import { Configuration } from '../../core/schemas';
 })
 export class ConfiguratorComponent implements OnInit {
   configuration: Configuration;
+  storageUsed: number; // KB
 
   constructor(private cache: CacheService,
               private config: ConfigurationService,
-              private notif: NotificationService) { }
+              private notif: NotificationService,
+              private storage: StorageService) { }
 
   ngOnInit(): void {
     this.config.config.subscribe(data => {
@@ -27,6 +30,7 @@ export class ConfiguratorComponent implements OnInit {
       const theme = this.configuration["caravel"]["theme"].value;
       document.documentElement.setAttribute('theme', theme);
     });
+    this.storageUsed = this.storage.getSize();
   }
 
   // Updates an item in the cache
@@ -40,6 +44,7 @@ export class ConfiguratorComponent implements OnInit {
     await this.config.updateApp();
     this.configuration = this.config.getAll();
     this.notif.notify(`Cleared cache and freed ${freed}KB.`, 2);
+    this.storageUsed = this.storage.getSize();
   }
 
   // Reset config in localstorage. Does not sign user out.
@@ -48,6 +53,7 @@ export class ConfiguratorComponent implements OnInit {
     await this.config.updateApp();
     this.configuration = this.config.getAll();
     this.notif.notify('Reset configuration to default.', 2);
+    this.storageUsed = this.storage.getSize();
   }
 
 }

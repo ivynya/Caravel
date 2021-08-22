@@ -7,32 +7,35 @@
       <button (click)="clearCache()">Clear Cache</button>
     </div>
   </div>
-  <div *ngFor="let scope of configuration | keyvalue" class="config-scope">
-    <h4>{{ scope.key }}</h4>
-    <div *ngFor="let conf of scope.value | keyvalue" class="configurable">
-      <app-toggle *ngIf="conf.value.type === 'toggle'"
-        [(value)]="conf.value.value"
-        (change)="upd(scope.key, conf.key, conf.value.value)">
-        {{ conf.value.name }}
-      </app-toggle>
-      <div *ngIf="conf.value.type === 'text'">
-        <label>{{ conf.value.name }}</label>
-        <input type="text"
-          [(ngModel)]="conf.value.value"
+  <section class="configurator-scopes">
+    <div *ngFor="let scope of configuration | keyvalue" class="config-scope">
+      <h4>{{ scope.key }}</h4>
+      <div *ngFor="let conf of scope.value | keyvalue" class="configurable">
+        <app-toggle *ngIf="conf.value.type === 'toggle'"
+          [(value)]="conf.value.value"
           (change)="upd(scope.key, conf.key, conf.value.value)">
-      </div>
-      <div *ngIf="conf.value.type === 'select'">
-        <label>{{ conf.value.name }}</label>
-        <select 
+          {{ conf.value.name }}
+        </app-toggle>
+        <div *ngIf="conf.value.type === 'text'">
+          <label>{{ conf.value.name }}</label>
+          <input type="text"
             [(ngModel)]="conf.value.value"
             (change)="upd(scope.key, conf.key, conf.value.value)">
-          <option
-            *ngFor="let opt of conf.value.options"
-            [value]="opt">
-            {{ opt }}
-          </option>
-        </select>
+        </div>
+        <div *ngIf="conf.value.type === 'select'">
+          <label>{{ conf.value.name }}</label>
+          <select 
+              [(ngModel)]="conf.value.value"
+              (change)="upd(scope.key, conf.key, conf.value.value)">
+            <option
+              *ngFor="let opt of conf.value.options"
+              [value]="opt">
+              {{ opt }}
+            </option>
+          </select>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+  <p class="app-stats">{{storageUsed}}KB Storage Used</p>
 </div>

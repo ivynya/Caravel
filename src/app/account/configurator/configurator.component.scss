@@ -2,9 +2,6 @@
 .configurator {
   border: var(--border-secondary) 2px solid;
   border-radius: 5px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
 
   margin-top: 20px;
   padding: 20px;
@@ -39,6 +36,17 @@
     .actions {
       display: flex;
     }
+  }
+
+  .configurator-scopes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .app-stats {
+    margin: 0;
+    text-align: right;
   }
 
   .config-scope {
