@@ -67,10 +67,21 @@ export class ConfigurationService {
     return await fetch("/assets/config/version.json")
       .then(res => res.text())
       .then(async res => {
+        // If version mismatch, perform app update
         if (this.storage.get('version') != res) {
-          this.cache.clear();
-          await this.resetToDefault();
-          console.log(`[LOG] Updated Caravel to ${JSON.parse(res).version}`);
+          const remoteVersion = JSON.parse(res);
+          const localVersion = JSON.parse(this.storage.get("version"));
+
+          // Only refresh config/cache if required
+          if (localVersion.version != remoteVersion.previous ||
+              localVersion.version != remoteVersion.version ||
+              remoteVersion.requiresRefresh) {
+            this.cache.clear();
+            await this.resetToDefault();
+            console.log("[LOG] Performed Caravel app refresh.");
+          }
+
+          console.log(`[LOG] Updated Caravel to ${remoteVersion.version as string}`);
           this.storage.set('version', res);
           return true;
         }
