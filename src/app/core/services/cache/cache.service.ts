@@ -12,7 +12,7 @@ export class CacheService {
 
   // Get cache value and age of an endpoint
   getCached(scope: string, endpoint: string): CacheItem | undefined {
-    const cacheId = this.sanitize(`${scope}.${endpoint}`);
+    const cacheId = this.sanitize(`.${scope}.${endpoint}`);
     const item = JSON.parse(this.storage.get(cacheId));
     if (!item) return undefined;
     else return item as CacheItem;
@@ -26,7 +26,7 @@ export class CacheService {
       link: pagination ?? undefined,
       value: value
     };
-    const cacheId = this.sanitize(`${scope}.${endpoint}`);
+    const cacheId = this.sanitize(`.${scope}.${endpoint}`);
     this.storage.set(cacheId, JSON.stringify(item));
   }
 
