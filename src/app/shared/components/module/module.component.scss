@@ -22,7 +22,7 @@
   }
 
   a {
-    color: var(--text-inverse-primary);
+    color: var(--text-primary);
     text-decoration-color: var(--bg-secondary);
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -39,7 +39,7 @@
     flex-direction: row;
     align-items: center;
 
-    color: var(--text-inverse-tertiary);
+    color: var(--text-tertiary);
     font-size: 0.9rem;
     margin: 0;
     margin-top: 5px;
@@ -52,7 +52,7 @@
   }
 
   .separator::before {
-    background-color: var(--text-inverse-tertiary);
+    background-color: var(--text-tertiary);
     border-radius: 50%;
     content: "";
     display: block;
