@@ -46,7 +46,7 @@
   // Included as text and in notifications
   --error: #F50;
   --warning: #FA0;
-  --info: #0FA;
+  --info: #0FC;
 }
 
 @mixin theme-light {
@@ -97,7 +97,7 @@
   // Included as text and in notifications
   --error: #F50;
   --warning: #FA0;
-  --info: #0FA;
+  --info: #0FC;
 }
 
 @media (prefers-color-scheme: light) {
@@ -157,7 +157,7 @@
   // Included as text and in notifications
   --error: #F50;
   --warning: #FA0;
-  --info: #0FA;
+  --info: #0FC;
 }
 
 :root[theme="soulless-dark"] {
