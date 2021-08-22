@@ -10,6 +10,7 @@ import { CourseDiscussionsComponent } from './course-discussions/course-discussi
 import { CourseHomeComponent } from './course-home/course-home.component';
 import { CourseModulesComponent } from './course-modules/course-modules.component';
 import { CoursePageComponent } from './course-page/course-page.component';
+import { PageNotFoundComponent } from '../shared/components';
 
 const routes: Routes = [
   {
@@ -29,6 +30,10 @@ const routes: Routes = [
         component: CourseAnnouncementComponent
       },
       {
+        path: 'assignments',
+        component: PageNotFoundComponent
+      },
+      {
         path: 'assignments/:aId',
         component: AssignmentComponent
       },
@@ -37,8 +42,16 @@ const routes: Routes = [
         component: CourseDiscussionsComponent
       },
       {
+        path: 'grades',
+        component: PageNotFoundComponent
+      },
+      {
         path: 'modules',
         component: CourseModulesComponent
+      },
+      {
+        path: 'quizzes',
+        component: PageNotFoundComponent
       },
       {
         path: 'pages/:pId',
