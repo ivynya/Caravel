@@ -16,6 +16,7 @@
     </div>
   </ng-container>
   <h2>Recent Feedback</h2>
+  <p *ngIf="recent.length === 0">No recent feedback for this course.</p>
   <div class="recent-item-bar">
     <div class="item" *ngFor="let submission of recent">
       <h3><a [routerLink]="'/courses/'+course?.id+'/assignments/'+submission.assignment.id">
