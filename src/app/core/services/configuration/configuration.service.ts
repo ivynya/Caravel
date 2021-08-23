@@ -70,11 +70,11 @@ export class ConfigurationService {
         // If version mismatch, perform app update
         if (this.storage.get('version') != res) {
           const remoteVersion = JSON.parse(res);
-          const localVersion = JSON.parse(this.storage.get("version"));
+          const localVersion = JSON.parse(this.storage.get("version") ?? "");
 
           // Only refresh config/cache if required
-          if (localVersion.version != remoteVersion.previous ||
-              localVersion.version != remoteVersion.version ||
+          if (localVersion?.version != remoteVersion.previous ||
+              localVersion?.version != remoteVersion.version ||
               remoteVersion.requiresRefresh) {
             this.cache.clear();
             await this.resetToDefault();
