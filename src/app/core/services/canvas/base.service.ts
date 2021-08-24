@@ -111,7 +111,7 @@ export abstract class APIBaseService {
     // Construct the endpoint URL
     const token = this.storageService.get("oauth_token");
     const base = `https://${domain}/api/v1/${this.scope}`;
-    const params = `access_token=${token}&${options?.params?.toString()}`;
+    const params = options?.params?.toString() ?? "";
     const url = `${base}/${endpoint}?${params}`;
 
     // API is always fetched with a CORS proxy due to Canvas limitations
@@ -119,7 +119,7 @@ export abstract class APIBaseService {
     await fetch(`https://cors.sdbagel.com/${url}`,
                 {
                   method: options?.method ?? "GET",
-                  headers: { 'accept': 'application/json' }
+                  headers: { 'Accept': 'application/json', 'Authorization': `Bearer ${token}` }
                 })
       .then(async response => {
         const res = await response.text();
