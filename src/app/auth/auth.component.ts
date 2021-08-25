@@ -17,9 +17,8 @@ export class AuthComponent implements OnInit {
               private storage: StorageService) { }
 
   ngOnInit(): void {
-    const token = atob(this.route.snapshot.params.token);
-    console.log(token);
-    if (token) {
+    const token = this.route.snapshot.params.token;
+    if (token && token.length > 60 && token.length < 100) {
       this.token = token;
       this.isMobileAuth = true;
     }

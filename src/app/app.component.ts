@@ -1,6 +1,6 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { NavigationStart, Router } from '@angular/router';
+import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
 import { ConfigurationService, ModalService, StorageService } from './core/services';
@@ -16,7 +16,8 @@ export class AppComponent implements OnInit {
   isLoaded = false;
   appInfo: AppInfo;
 
-  constructor(private configService: ConfigurationService,
+  constructor(private activatedRoute: ActivatedRoute,
+              private configService: ConfigurationService,
               private modal: ModalService,
               private router: Router,
               private storageService: StorageService,
@@ -39,13 +40,14 @@ export class AppComponent implements OnInit {
       })
       .then(() => { this.isLoaded = true; });
 
+    // Prompt auth if no token found
+    if (!this.storageService.has("oauth_token") &&
+        !this.activatedRoute.snapshot.toString().includes("auth"))
+      this.router.navigateByUrl("/auth");
+
     // Subscribe to route change for default ops
     this.router.events.subscribe((e) => {
       if (!(e instanceof NavigationStart)) return;
-
-      // Prompt auth if no token found
-      if (!this.storageService.has("oauth_token"))
-        this.router.navigateByUrl("/auth");
 
       // Set default page title
       this.titleService.setTitle("Caravel");
