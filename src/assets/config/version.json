@@ -1,7 +1,7 @@
 
 {
-  "version": "0.5.5",
-	"previous": "0.5.3",
+  "version": "0.5.6",
+	"previous": "0.5.5",
 	"requiresRefresh": false,
   "updateInfo": [
     {
@@ -12,7 +12,9 @@
 			"title": "New Horizons",
 			"desc": "The journey doesn't end here.",
 			"features": [
-				"App updates no longer delete app settings unnecessarily.",
+				"Fixed application first authorization.",
+				"Upgraded application security for requests.",
+				"App updates try not to delete app settings.",
 				"Error handling extended to course navigation.",
 				"Fixed missing images in course navigation.",
 				"Allow clearing cache data only from account page.",
