@@ -16,13 +16,14 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AuthModule } from './auth/auth.module';
 import { AccountModule } from './account/account.module';
-import { CourseModule } from './course/course.module';
 import { AssignmentModule } from './course/assignment/assignment.module';
+import { CourseModule } from './course/course.module';
+import { CoursesModule } from './courses/courses.module';
 import { HomeModule } from './home/home.module';
 
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { AppConfig } from 'environments/environment';
+import { AppConfig } from '../environments/environment';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -41,6 +42,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     AccountModule,
     AssignmentModule,
     CourseModule,
+    CoursesModule,
     HomeModule,
     AppRoutingModule,
     TranslateModule.forRoot({

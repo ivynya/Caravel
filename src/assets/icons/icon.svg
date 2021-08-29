@@ -46,6 +46,15 @@
 	</g>
 </symbol>
 
+<symbol id="courses" viewBox="0 0 256 256">
+  <title>Courses</title>
+	<g>
+		<path d="M198,48a10,10,0,0,1,10,10V198a10,10,0,0,1-10,10H58a10,10,0,0,1-10-10V58A10,10,0,0,1,58,48H198m0-20H58A30,30,0,0,0,28,58V198a30,30,0,0,0,30,30H198a30,30,0,0,0,30-30V58a30,30,0,0,0-30-30Z" />
+		<rect x="112.27" y="66" width="80.73" height="124" rx="10" />
+		<rect x="63" y="66" width="31.45" height="124" rx="10" />
+	</g>
+</symbol>
+
 <symbol id="dashboard" viewBox="0 0 256 256">
   <title>Dashboard</title>
 	<g>

@@ -33,6 +33,16 @@
       <svg><use xlink:href="/assets/icons/icon.svg#dashboard"/></svg>
       <span>Dashboard</span>
     </a>
+    <a class="nav-link" *ngIf="!this.enumerateClasses"
+        data-tt="Courses"
+        [style.top]="ttOffset+'px'"
+        (mouseenter)="alignTT($event)"
+        routerLink="/courses"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">
+      <svg><use xlink:href="/assets/icons/icon.svg#courses"/></svg>
+      <span>Courses</span>
+    </a>
     <ng-container *ngIf="this.enumerateClasses">
       <a class="nav-link nav-sub"
           [attr.data-tt]="course.name"

@@ -1,0 +1,21 @@
+
+<main class="page">
+  <div class="content">
+    <section class="courses">
+			<h1>Your Courses</h1>
+      <hr>
+			<h2>Active Enrollment</h2>
+			<div class="course" *ngFor="let course of courses">
+				<h3><a [routerLink]="['/courses', course.id]">{{ course.name }}</a></h3>
+				<p class="subtext">
+					<span>{{ course.open_enrollment ? 'Open Enrollment' : 'Closed Enrollment' }}</span>
+					<span class="separator"></span>
+					<span>{{ course.start_at | date }} - {{ course.end_at ? (course.end_at | date) : 'Ongoing' }}</span>
+					<span class="separator"></span>
+					<span>{{ course.course_code }}</span>
+				</p>
+			</div>
+      <br><br>
+    </section>
+  </div>
+</main>
