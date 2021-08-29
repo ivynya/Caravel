@@ -168,17 +168,19 @@ export abstract class APIBaseService {
   }
   
   private buildPaginationInfo<T>(
-      link: string, 
-      callback: ResultHandler<T>,
-      options?: XOptions): PaginationInfo {
+    link: string, 
+    callback: ResultHandler<T>,
+    options?: XOptions): PaginationInfo {
     // Split header into list of links
     const pageInfo = {};
     const links = link.split(',');
     
     links.forEach(l => {
       // Get the key (current, next, etc.) and API URL
-      const key = l.match(/rel="(.+)"/)[1];
-      const url = l.match(/<(.+)>;/)[1];
+      const keyMatcher = /rel="(.+)"/;
+      const key = keyMatcher.exec(l)[1];
+      const urlMatcher = /<(.+)>/;
+      const url = urlMatcher.exec(l)[1];
       // Get the endpoint and params from the URL
       let endpoint = "";
       const urlMatch = url.match(/api\/v1\/[^\/]+\/(.+)\?/);
@@ -200,7 +202,7 @@ export abstract class APIBaseService {
         params: params,
         page: pageNumber
       };
-      pageInfo[key] = async () => {
+      pageInfo[key] = () => {
         this.xfetch(endpoint, callback, newOpts);
       };
     });
