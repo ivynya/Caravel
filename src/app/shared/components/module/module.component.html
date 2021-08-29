@@ -10,7 +10,7 @@
         <span *ngIf="!item.quiz_lti">Assignment</span>
         <span *ngIf="item.quiz_lti">Quiz</span>
         <span class="separator"></span>
-        <span>Opens with Caravel</span>
+        <span>Caravel</span>
       </p>
     </div>
     <div *ngSwitchCase="'ExternalUrl'">
@@ -20,7 +20,7 @@
       <p class="subtext">
         <span>External URL</span>
         <span class="separator"></span>
-        <span>Opens with Caravel</span>
+        <span>Caravel</span>
       </p>
     </div>
     <div *ngSwitchCase="'Page'">
@@ -30,7 +30,7 @@
       <p class="subtext">
         <span>Page</span>
         <span class="separator"></span>
-        <span>Opens with Caravel</span>
+        <span>Caravel</span>
       </p>
     </div>
     <div *ngSwitchCase="'SubHeader'">
@@ -43,7 +43,7 @@
       <p class="subtext">
         <span>{{ item.type }}</span>
         <span class="separator"></span>
-        <span>Opens with Canvas</span>
+        <span>Canvas</span>
         <span class="separator"></span>
         <span>{{ item.html_url }}</span>
       </p>
