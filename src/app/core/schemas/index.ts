@@ -23,4 +23,6 @@ export * from './cache/cache.schema';
 export * from './configuration/app-info.schema';
 export * from './configuration/configuration.schema';
 
+export * from './course/shortcut.schema';
+
 export * from './notification/notification.schema';

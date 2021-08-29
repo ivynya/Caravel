@@ -12,7 +12,12 @@
   <ng-container *ngIf="useRedesign">
     <div class="quick-access">
       <app-icon-lti *ngFor="let lti of tools" [lti]="lti" [label]="lti.name"></app-icon-lti>
-      <a class="accessor"><span>+</span></a>
+      <a class="accessor" *ngFor="let s of shortcuts" [href]="s.url" target="_blank" [title]="s.name">
+        <span>{{ s.name | abbreviate }}</span>
+      </a>
+      <button class="accessor" (click)="this.openAddQuickAccessModal()">
+        <span>+</span>
+      </button>
     </div>
   </ng-container>
   <h2>Recent Feedback</h2>
@@ -45,3 +50,14 @@
     <br><br>
   </ng-container>
 </section>
+
+<ng-template #addQuickAccessModal>
+  <h2>Create a Quick Access Link</h2>
+  <br>
+  <form (ngSubmit)="addQuickAccessItem()" #createQAForm>
+    <input [(ngModel)]="createQAFormURL" name="url" type="text" placeholder="URL" required>
+    <input [(ngModel)]="createQAFormName" name="name" type="text" placeholder="Name" required>
+    <p class="error"><sub>{{ createQAFormError }}</sub></p>
+    <button type="submit" class="button-right">Create</button>
+  </form>
+</ng-template>

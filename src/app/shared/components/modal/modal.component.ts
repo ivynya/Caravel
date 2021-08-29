@@ -17,6 +17,9 @@ export class ModalComponent implements OnInit {
     this.modalService.modalOpened.subscribe({
       next: this.show.bind(this)
     });
+    this.modalService.modalClosed.subscribe({
+      next: () => { this.collapse(); }
+    });
   }
 
   show(template: TemplateRef<any> | undefined): void {

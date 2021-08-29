@@ -5,8 +5,9 @@ import { CourseRoutingModule } from './course-routing.module';
 
 import { CourseComponent } from './course.component';
 import { SharedModule } from '../shared/shared.module';
+import { CoreModule } from '../core/core.module';
 
-import { RoundDatePipe } from 'app/core/pipes/round-date/round-date.pipe';
+import { RoundDatePipe } from '../core/pipes';
 import { CourseNavComponent } from './course-nav/course-nav.component';
 import { CourseHomeComponent } from './course-home/course-home.component';
 import { CourseModulesComponent } from './course-modules/course-modules.component';
@@ -26,7 +27,7 @@ import { CourseDiscussionsComponent } from './course-discussions/course-discussi
     CourseAnnouncementsComponent,
     CourseDiscussionsComponent
   ],
-  imports: [CommonModule, SharedModule, CourseRoutingModule],
+  imports: [CommonModule, SharedModule, CourseRoutingModule, CoreModule],
   providers: [RoundDatePipe]
 })
 export class CourseModule {}

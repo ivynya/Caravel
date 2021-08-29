@@ -83,6 +83,7 @@
 .quick-access {
   border-bottom: var(--border-primary) 2px solid;
   display: flex;
+  column-gap: 15px;
 
   margin: 20px 0;
   margin-bottom: 30px;
@@ -91,16 +92,16 @@
 
   .accessor {
     background-color: var(--bg-control);
-    border-radius: 5px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: var(--accent-primary);
+    display: grid;
+    place-items: center;
     text-decoration: none;
 
     padding: 10px;
-    height: 30px;
-    width: 30px;
+    height: 50px;
+    width: 50px;
 
     transition-duration: 0.2s;
 
@@ -110,11 +111,12 @@
     }
 
     span {
-      background-image: linear-gradient(-135deg, #00a1ff, #ffa0ff);
-      background-clip: text;
-      color: transparent;
       font-family: renogare;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
     }
   }
+}
+
+.error {
+  color: var(--error);
 }
