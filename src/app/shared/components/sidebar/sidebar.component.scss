@@ -1,5 +1,6 @@
 .sidebar {
   background-color: var(--bg-inverse-primary);
+  border-top-right-radius: 10px;
   box-shadow: var(--box-shadow-primary) 0 0 20px;
   box-sizing: border-box;
   color: var(--text-inverse-primary);
@@ -88,6 +89,7 @@
   }
 
   @media (max-width: 512px) {
+    border-top-right-radius: 0;
     flex-direction: row;
     height: unset;
     width: 100%;
@@ -169,6 +171,7 @@
   }
 
   @media (min-width: 512px) {
+    border-top-right-radius: 6px;
     position: relative;
     width: 70px;
   }
