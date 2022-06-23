@@ -43,5 +43,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-src/assets/fonts/Renogare.ttf
-src/assets/fonts/Renogare.otf
