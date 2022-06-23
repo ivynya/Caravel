@@ -1,7 +1,7 @@
 
 {
-  "version": "0.5.6",
-	"previous": "0.5.5",
+  "version": "0.5.7",
+	"previous": "0.5.6",
 	"requiresRefresh": false,
   "updateInfo": [
     {
@@ -9,18 +9,10 @@
       "desc": "Canvas. New technologies. Better than ever before. Set sail for new possibilities with Caravel, the next evolution of education software."
     },
 		{
-			"title": "New Horizons",
-			"desc": "The journey doesn't end here.",
+			"title": "Account Update",
+			"desc": "",
 			"features": [
-				"Fixed application first authorization.",
-				"Upgraded application security for requests.",
-				"App updates try not to delete app settings.",
-				"Error handling extended to course navigation.",
-				"Fixed missing images in course navigation.",
-				"Allow clearing cache data only from account page.",
-				"Show total storage used in account page.",
-				"Tweaked tooltip animation to be less jittery.",
-				"Tweaked theme colors to fix contrast and color."
+				"Uses preferred name in account settings."
 			]
 		}
   ]

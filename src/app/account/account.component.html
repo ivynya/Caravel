@@ -6,7 +6,7 @@
       <div class="header">
         <img [src]="profile?.avatar_url" alt="Your Avatar">
         <div>
-          <h2>{{ profile?.name }}</h2>
+          <h2>{{ profile?.short_name || profile?.name }}</h2>
           <p><b>{{ profile?.pronouns }}</b></p>
           <p>Primary Email: {{ profile?.primary_email }}</p>
         </div>
