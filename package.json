@@ -23,11 +23,10 @@
   "private": true,
   "scripts": {
     "ng": "ng",
-    "start": "ng serve -c web -o",
+    "start": "ng serve -o",
     "build": "ng build --base-href /",
-    "build:dev": "npm run build -- -c dev",
     "build:prod": "npm run build -- -c production",
-    "ng:serve": "ng serve -c web -o --host 0.0.0.0",
+    "ng:serve": "ng serve -o --host 0.0.0.0",
     "test": "ng test --watch=false",
     "test:watch": "ng test",
     "lint": "ng lint"
