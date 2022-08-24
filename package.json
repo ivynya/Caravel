@@ -23,14 +23,13 @@
   "private": true,
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve -c web -o",
     "build": "ng build --base-href /",
     "build:dev": "npm run build -- -c dev",
     "build:prod": "npm run build -- -c production",
     "ng:serve": "ng serve -c web -o --host 0.0.0.0",
     "test": "ng test --watch=false",
     "test:watch": "ng test",
-    "version": "conventional-changelog -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
     "lint": "ng lint"
   },
   "devDependencies": {
@@ -61,7 +60,6 @@
     "@typescript-eslint/eslint-plugin-tslint": "3.9.0",
     "@typescript-eslint/parser": "3.9.0",
     "chai": "4.2.0",
-    "conventional-changelog-cli": "2.0.34",
     "core-js": "3.6.5",
     "cross-env": "7.0.2",
     "eslint": "7.6.0",
