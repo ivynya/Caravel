@@ -81,6 +81,8 @@
     "node": "~18"
   },
   "dependencies": {
-    "angular2-qrcode": "2.0.3"
+    "angular2-qrcode": "2.0.3",
+    "carbon-components": "10.56.0",
+    "carbon-components-angular": "4.59.12"
   }
 }
