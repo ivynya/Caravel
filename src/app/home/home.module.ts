@@ -5,11 +5,12 @@ import { HomeRoutingModule } from './home-routing.module';
 
 import { HomeComponent } from './home.component';
 import { SharedModule } from '../shared/shared.module';
-import { RoundDatePipe } from 'app/core/pipes/round-date/round-date.pipe';
+import { RoundDatePipe } from '../core/pipes/round-date/round-date.pipe';
+import { ButtonModule, DatePickerModule, IconModule } from 'carbon-components-angular';
 
 @NgModule({
   declarations: [HomeComponent],
-  imports: [CommonModule, SharedModule, HomeRoutingModule],
+  imports: [CommonModule, SharedModule, HomeRoutingModule, ButtonModule, IconModule, DatePickerModule],
   providers: [RoundDatePipe]
 })
 export class HomeModule {}

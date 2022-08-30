@@ -3,28 +3,18 @@
     <section class="home">
       <div class="control-bar">
         <h1>Your To Do</h1>
-        <div>
-          <p>{{ streamState.start | date }} - {{ streamState.end | date }}</p>
-          <br>
-          <span class="spacer"></span>
-          <button (click)="loadFromPreviousDay()" title="Load Past Items">
-            <svg><use xlink:href="/assets/icons/icon.svg#uparrow"/></svg>
-          </button>
-          <button (click)="loadFromToday()" title="Refresh/Reset View">
-            <svg><use xlink:href="/assets/icons/icon.svg#refresh"/></svg>
-          </button>
-          <button class="sm-show"
-            (click)="toggleSelectionMode()"
-            title="Toggle Selection Mode">
-            <!-- Repurposed icons? Never... -->
-            <svg *ngIf="!selectionMode">
-              <use xlink:href="/assets/icons/icon.svg#default"/>
-            </svg>
-            <svg *ngIf="selectionMode">
-              <use xlink:href="/assets/icons/icon.svg#home"/>
-            </svg>
-          </button>
-        </div>
+        <span class="spacer"></span>
+        <ibm-date-picker [range]="true" size="sm" [(ngModel)]="streamState" (ngModelChange)="load()"></ibm-date-picker>
+        <button ibmButton="tertiary" [iconOnly]="true" size="sm" (click)="loadFromPreviousDay()">
+          <svg class="bx--btn__icon" ibmIcon="arrow--up" size="20"></svg>
+        </button>
+        <button ibmButton="tertiary" [iconOnly]="true" size="sm" (click)="loadFromToday()">
+          <svg class="bx--btn__icon" ibmIcon="restart" size="20"></svg>
+        </button>
+        <button [ibmButton] [iconOnly]="true" size="sm" class="sm-show" (click)="toggleSelectionMode()">
+          <svg *ngIf="!selectionMode" class="bx--btn__icon" ibmIcon="list--checked" size="20" />
+          <svg *ngIf="selectionMode" class="bx--btn__icon" ibmIcon="list--bulleted" size="20" />
+        </button>
       </div>
       <hr>
       <div *ngFor="let group of stream">

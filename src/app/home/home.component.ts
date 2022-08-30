@@ -5,6 +5,9 @@ import { PlannerItem } from '../core/schemas';
 
 import { RoundDatePipe } from '../core/pipes';
 
+import { ArrowUp20, ListBulleted20, ListChecked20, Restart20 } from '@carbon/icons';
+import { IconService } from 'carbon-components-angular';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,7 +17,7 @@ export class HomeComponent implements OnInit {
   // Unprocessed stream items for sorting
   private _streamItems: PlannerItem[][] = [];
   // Records what portion of the stream is loaded.
-  streamState: { start: Date, end: Date };
+  streamState: [Date, Date];
   // Holds all stream items (planner) by date.
   stream: {
     id: string
@@ -25,16 +28,27 @@ export class HomeComponent implements OnInit {
   // SM only affects the component at < 512px.
   selectionMode = false;
 
-  constructor(private roundDate: RoundDatePipe,
+  constructor(private iconService: IconService,
+              private roundDate: RoundDatePipe,
               private userService: UserService) { }
 
   ngOnInit(): void {
+    this.iconService.registerAll([ArrowUp20, ListBulleted20, ListChecked20, Restart20]);
     this.loadFromToday();
   }
   
   // Toggles selection mode on todo components
   toggleSelectionMode(): void {
     this.selectionMode = !this.selectionMode;
+  }
+
+  load(): void {
+    // Reset and rebuild stream
+    this._streamItems = [];
+    this.stream = [];
+
+    // Load intervals
+    this.getItems(1);
   }
 
   loadFromToday(): void {
@@ -44,7 +58,7 @@ export class HomeComponent implements OnInit {
 
     // Initialize streamstate with date, rounded to 12AM.
     const now = this.roundDate.transform(new Date());
-    this.streamState = { start: now, end: now };
+    this.streamState = [now, now];
 
     // Load intervals
     this.getItems(1);
@@ -56,21 +70,21 @@ export class HomeComponent implements OnInit {
     this.stream = [];
 
     // Reset stream period to previous date
-    const prev = new Date(this.streamState.start.getTime() - 86400000);
-    this.streamState = { start: prev, end: prev };
+    const prev = new Date(this.streamState[0].getTime() - 86400000);
+    this.streamState = [prev, prev];
 
     this.getItems(1);
   }
 
   private getItems(to: number) {
-    const next = new Date(this.streamState.start.getTime() + 86400*1000*31);
-    this.userService.getPlanner(this.streamState.start, next, res => {
+    const next = new Date(this.streamState[0].getTime() + 86400*1000*31);
+    this.userService.getPlanner(this.streamState[0], next, res => {
       const items = res.data;
 
       // Add or overwrite added items to memory
       this._streamItems[res.page] = items;
-      const concat = [].concat.apply([], this._streamItems);
-      this.streamState.end = new Date(concat[concat.length-1].plannable_date);
+      const concat = [].concat(...this._streamItems);
+      this.streamState = [this.streamState[0], new Date(concat[concat.length-1].plannable_date)];
       this.populateStream(concat);
 
       let unpopulated = true;
@@ -79,11 +93,11 @@ export class HomeComponent implements OnInit {
           unpopulated = false;
       });
       if (unpopulated && res.pagination?.next)
-        { to--; res.pagination.next(); }
+        to--; res.pagination.next();
 
       // If target not reached, do a recursion
       if (to > 0 && res.pagination?.next)
-        { to--; res.pagination.next(); }
+        to--; res.pagination.next();
     });
   }
 
