@@ -7,9 +7,10 @@ import { AccountRoutingModule } from './account-routing.module';
 import { AccountComponent } from './account.component';
 import { SharedModule } from '../shared/shared.module';
 import { ConfiguratorComponent } from './configurator/configurator.component';
+import { InputModule, TilesModule } from 'carbon-components-angular';
 
 @NgModule({
   declarations: [AccountComponent, ConfiguratorComponent],
-  imports: [CommonModule, SharedModule, QRCodeModule, AccountRoutingModule]
+  imports: [CommonModule, SharedModule, QRCodeModule, AccountRoutingModule, TilesModule, InputModule]
 })
 export class AccountModule {}

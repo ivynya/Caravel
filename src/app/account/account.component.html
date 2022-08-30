@@ -6,13 +6,15 @@
       <div class="header">
         <img [src]="profile?.avatar_url" alt="Your Avatar">
         <div>
-          <h2>{{ profile?.short_name || profile?.name }}</h2>
+          <h3>{{ profile?.short_name || profile?.name }}</h3>
           <p><b>{{ profile?.pronouns }}</b></p>
-          <p>Primary Email: {{ profile?.primary_email }}</p>
+          <p>{{ profile?.primary_email }}</p>
         </div>
       </div>
       <h3>Biography</h3>
-      <p>{{ profile?.bio }}</p>
+      <ibm-label>
+        <textarea ibmTextArea placeholder="Biography">{{ profile?.bio }}</textarea>
+      </ibm-label>
       <br>
       <app-configurator></app-configurator>
       <br>
