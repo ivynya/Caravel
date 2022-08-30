@@ -24,9 +24,9 @@
   <p *ngIf="recent?.length === 0">No recent feedback for this course.</p>
   <div class="recent-item-bar">
     <div class="item" *ngFor="let submission of recent">
-      <h3><a [routerLink]="'/courses/'+course?.id+'/assignments/'+submission.assignment.id">
+      <h5><a [routerLink]="'/courses/'+course?.id+'/assignments/'+submission.assignment.id">
         {{ submission.assignment.name }}
-      </a></h3>
+      </a></h5>
       <em>
         <span>Submitted {{ submission.submitted_at | date }}</span>
         <span *ngIf="submission.late" class="late">(Late)</span>
