@@ -1,4 +1,7 @@
 {
+  "angularCompilerOptions": {
+    "strictTemplates": true
+  },
   "compileOnSave": false,
   "compilerOptions": {
     "module": "es2020",
@@ -24,6 +27,7 @@
     "src/polyfills.ts"
   ],
   "include": [
+    "src/**/*.ts",
     "src/**/*.d.ts"
   ],
   "exclude": [
