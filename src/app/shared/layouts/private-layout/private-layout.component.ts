@@ -1,7 +1,9 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+
 import { AppInfo, Course } from '../../../core/schemas';
+
 import { ConfigurationService, ModalService, StorageService } from '../../../core/services';
 import { CourseService } from '../../../core/services/canvas';
 
@@ -42,10 +44,6 @@ export class PrivateLayoutComponent implements OnInit {
         !this.activatedRoute.snapshot.toString().includes("auth"))
       this.router.navigateByUrl("/auth");
 
-    this.checkAuthAndUpdateInfo();
-  }
-
-  checkAuthAndUpdateInfo(): void {
     this.courseService.listCourses(c => this.courses = c);
   }
 
