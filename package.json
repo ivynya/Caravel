@@ -23,7 +23,7 @@
   "private": true,
   "scripts": {
     "ng": "ng",
-    "start": "ng serve -o --hmr",
+    "start": "ng serve -o",
     "build": "ng build --base-href /",
     "build:prod": "npm run build -- -c production",
     "ng:serve": "ng serve -o --host 0.0.0.0",
