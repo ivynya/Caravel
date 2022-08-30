@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { AccountComponent } from './account.component';
-import { PrivateLayoutComponent } from '../shared/layouts';
+import { IndexComponent } from './index.component';
+import { PublicLayoutComponent } from '../shared/layouts/public-layout/public-layout.component';
 
 const routes: Routes = [
   {
-    path: 'account',
-    component: PrivateLayoutComponent,
+    path: '',
+    component: PublicLayoutComponent,
     children: [
       {
         path: '',
-        component: AccountComponent
+        component: IndexComponent
       }
     ]
   }
@@ -22,4 +22,4 @@ const routes: Routes = [
   imports: [CommonModule, RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AccountRoutingModule {}
+export class IndexRoutingModule {}

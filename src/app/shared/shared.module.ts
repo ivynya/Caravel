@@ -16,7 +16,14 @@ import {
   SidebarComponent,
   TodoComponent,
   ToggleComponent
-} from './components/';
+} from './components';
+
+import {
+  PrivateLayoutComponent, 
+  PublicLayoutComponent
+} from './layouts';
+
+import { HeaderModule, IconModule } from "carbon-components-angular";
 
 import { WebviewDirective } from './directives/';
 import { FormsModule } from '@angular/forms';
@@ -37,14 +44,18 @@ import { CoreModule } from '../core/core.module';
     ExpandableComponent,
     DiscussionComponent,
     OpenFromHereComponent,
-    BrandBadgeComponent
+    BrandBadgeComponent,
+    PublicLayoutComponent,
+    PrivateLayoutComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     TranslateModule,
     FormsModule,
-    CoreModule
+    CoreModule,
+    HeaderModule,
+    IconModule
   ],
   exports: [
     TranslateModule, 

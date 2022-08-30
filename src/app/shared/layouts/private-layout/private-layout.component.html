@@ -1,0 +1,40 @@
+<ibm-header brand="Caravel" name="LCS">
+  <ibm-hamburger></ibm-hamburger>
+  <ibm-header-navigation>
+    <ibm-header-item [route]="['/account']">Account</ibm-header-item>
+    <ibm-header-item [route]="['/home']">Dashboard</ibm-header-item>
+    <ibm-header-menu title="Classes">
+      <ibm-header-item *ngFor="let course of courses" 
+      [routerLink]="'/courses/'+course.id">{{course.name}}</ibm-header-item>
+    </ibm-header-menu>
+    <ibm-header-item [route]="['/inbox']">Inbox</ibm-header-item>
+    <ibm-header-item [route]="['/calendar']">Calendar</ibm-header-item>
+  </ibm-header-navigation>
+  <ibm-header-global>
+    <ibm-header-action title="action">
+      <svg ibmIcon="fade" size="20"></svg>
+    </ibm-header-action>
+  </ibm-header-global>
+</ibm-header>
+<div class="app" *ngIf="isLoaded">
+  <div class="app-content">
+    <app-notification-banner></app-notification-banner>
+    <router-outlet></router-outlet>
+  </div>
+  <app-modal></app-modal>
+</div>
+
+<ng-template #whatsNew>
+  <app-brand-badge></app-brand-badge>
+  <h3>version update v{{ appInfo.version }}</h3>
+  <div *ngFor="let item of appInfo.updateInfo" class="update-info">
+    <h4 class="title">
+      <span>{{ item.title }}</span>
+      <span *ngIf="item.stage" class="stage"> | {{ item.stage}}</span>
+    </h4>
+    <p class="desc">{{ item.desc }}</p>
+    <ul><li *ngFor="let feature of item.features">
+      <p>{{ feature }}</p>
+    </li></ul>
+  </div>
+</ng-template>

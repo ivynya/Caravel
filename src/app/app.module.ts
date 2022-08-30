@@ -20,6 +20,7 @@ import { AssignmentModule } from './course/assignment/assignment.module';
 import { CourseModule } from './course/course.module';
 import { CoursesModule } from './courses/courses.module';
 import { HomeModule } from './home/home.module';
+import { IndexModule } from './index/index.module';
 
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -44,6 +45,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     CourseModule,
     CoursesModule,
     HomeModule,
+    IndexModule,
     AppRoutingModule,
     TranslateModule.forRoot({
       loader: {

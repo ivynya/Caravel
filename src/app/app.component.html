@@ -1,24 +1,2 @@
 
-<div class="app" *ngIf="isLoaded">
-  <app-sidebar></app-sidebar>
-  <div class="app-content">
-    <app-notification-banner></app-notification-banner>
-    <router-outlet></router-outlet>
-  </div>
-  <app-modal></app-modal>
-</div>
-
-<ng-template #whatsNew>
-  <app-brand-badge></app-brand-badge>
-  <h3>version update v{{ appInfo.version }}</h3>
-  <div *ngFor="let item of appInfo.updateInfo" class="update-info">
-    <h4 class="title">
-      <span>{{ item.title }}</span>
-      <span *ngIf="item.stage" class="stage"> | {{ item.stage}}</span>
-    </h4>
-    <p class="desc">{{ item.desc }}</p>
-    <ul><li *ngFor="let feature of item.features">
-      <p>{{ feature }}</p>
-    </li></ul>
-  </div>
-</ng-template>
+<router-outlet></router-outlet>

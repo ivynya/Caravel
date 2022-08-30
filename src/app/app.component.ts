@@ -1,10 +1,9 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
-import { ConfigurationService, ModalService, StorageService } from './core/services';
-import { AppInfo } from './core/schemas';
+import { ConfigurationService } from './core/services';
 
 @Component({
   selector: 'app-root',
@@ -12,15 +11,9 @@ import { AppInfo } from './core/schemas';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  @ViewChild('whatsNew') template: TemplateRef<any>;
-  isLoaded = false;
-  appInfo: AppInfo;
-
-  constructor(private activatedRoute: ActivatedRoute,
-              private configService: ConfigurationService,
-              private modal: ModalService,
+  
+  constructor(private configService: ConfigurationService,
               private router: Router,
-              private storageService: StorageService,
               private titleService: Title,
               private translate: TranslateService) {
     this.translate.setDefaultLang('en');
@@ -29,21 +22,11 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     // Validate app version and update if needed
     this.configService.updateApp()
-      .then(didUpdate => {
+      .then(() => {
         // Set app theme on page load (from config)
         const theme = this.configService.getVal<string>('caravel', 'theme');
         document.documentElement.setAttribute('theme', theme);
-
-        this.appInfo = this.configService.getAppInfo();
-        if (didUpdate)
-          setTimeout(() => this.modal.openModal(this.template), 500);
       })
-      .then(() => { this.isLoaded = true; });
-
-    // Prompt auth if no token found
-    if (!this.storageService.has("oauth_token") &&
-        !this.activatedRoute.snapshot.toString().includes("auth"))
-      this.router.navigateByUrl("/auth");
 
     // Subscribe to route change for default ops
     this.router.events.subscribe((e) => {

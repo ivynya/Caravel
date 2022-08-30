@@ -9,11 +9,6 @@ import { HomeRoutingModule } from './home/home-routing.module';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
-  {
     path: '**',
     component: PageNotFoundComponent
   }
@@ -21,7 +16,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
+    RouterModule.forRoot(routes),
     AuthRoutingModule,
     AccountRoutingModule,
     CourseRoutingModule,

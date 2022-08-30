@@ -1,69 +1,76 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { Routes, RouterModule } from "@angular/router";
 
-import { CourseComponent } from './course.component';
-import { CourseAnnouncementComponent } from './course-announcement/course-announcement.component';
-import { CourseAnnouncementsComponent } from './course-announcements/course-announcements.component';
-import { AssignmentComponent } from './assignment/assignment.component';
-import { CourseDiscussionsComponent } from './course-discussions/course-discussions.component';
-import { CourseHomeComponent } from './course-home/course-home.component';
-import { CourseModulesComponent } from './course-modules/course-modules.component';
-import { CoursePageComponent } from './course-page/course-page.component';
-import { PageNotFoundComponent } from '../shared/components';
+import { CourseComponent } from "./course.component";
+import { CourseAnnouncementComponent } from "./course-announcement/course-announcement.component";
+import { CourseAnnouncementsComponent } from "./course-announcements/course-announcements.component";
+import { AssignmentComponent } from "./assignment/assignment.component";
+import { CourseDiscussionsComponent } from "./course-discussions/course-discussions.component";
+import { CourseHomeComponent } from "./course-home/course-home.component";
+import { CourseModulesComponent } from "./course-modules/course-modules.component";
+import { CoursePageComponent } from "./course-page/course-page.component";
+import { PageNotFoundComponent } from "../shared/components";
+import { PrivateLayoutComponent } from "../shared/layouts";
 
 const routes: Routes = [
   {
-    path: 'courses/:id',
-    component: CourseComponent,
+    path: "courses",
+    component: PrivateLayoutComponent,
     children: [
       {
-        path: '',
-        component: CourseHomeComponent
+        path: ":id",
+        component: CourseComponent,
+        children: [
+          {
+            path: "",
+            component: CourseHomeComponent,
+          },
+          {
+            path: "announcements",
+            component: CourseAnnouncementsComponent,
+          },
+          {
+            path: "announcements/:tId",
+            component: CourseAnnouncementComponent,
+          },
+          {
+            path: "assignments",
+            component: PageNotFoundComponent,
+          },
+          {
+            path: "assignments/:aId",
+            component: AssignmentComponent,
+          },
+          {
+            path: "discussions",
+            component: CourseDiscussionsComponent,
+          },
+          {
+            path: "grades",
+            component: PageNotFoundComponent,
+          },
+          {
+            path: "modules",
+            component: CourseModulesComponent,
+          },
+          {
+            path: "quizzes",
+            component: PageNotFoundComponent,
+          },
+          {
+            path: "pages/:pId",
+            component: CoursePageComponent,
+          },
+        ],
       },
-      {
-        path: 'announcements',
-        component: CourseAnnouncementsComponent
-      },
-      {
-        path: 'announcements/:tId',
-        component: CourseAnnouncementComponent
-      },
-      {
-        path: 'assignments',
-        component: PageNotFoundComponent
-      },
-      {
-        path: 'assignments/:aId',
-        component: AssignmentComponent
-      },
-      {
-        path: 'discussions',
-        component: CourseDiscussionsComponent
-      },
-      {
-        path: 'grades',
-        component: PageNotFoundComponent
-      },
-      {
-        path: 'modules',
-        component: CourseModulesComponent
-      },
-      {
-        path: 'quizzes',
-        component: PageNotFoundComponent
-      },
-      {
-        path: 'pages/:pId',
-        component: CoursePageComponent
-      }
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
   declarations: [],
   imports: [CommonModule, RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class CourseRoutingModule {}
