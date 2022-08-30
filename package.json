@@ -23,7 +23,7 @@
   "private": true,
   "scripts": {
     "ng": "ng",
-    "start": "ng serve -o",
+    "start": "ng serve -o --hmr",
     "build": "ng build --base-href /",
     "build:prod": "npm run build -- -c production",
     "ng:serve": "ng serve -o --host 0.0.0.0",
@@ -81,6 +81,7 @@
     "node": "~18"
   },
   "dependencies": {
+    "@carbon/icons": "11.7.0",
     "angular2-qrcode": "2.0.3",
     "carbon-components": "10.56.0",
     "carbon-components-angular": "4.59.12"
