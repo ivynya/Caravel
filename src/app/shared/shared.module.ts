@@ -13,7 +13,6 @@ import {
   NotificationBannerComponent,
   OpenFromHereComponent,
   PageNotFoundComponent,
-  SidebarComponent,
   TodoComponent,
   ToggleComponent
 } from './components';
@@ -38,7 +37,6 @@ import { CoreModule } from '../core/core.module';
     ModalComponent,
     ModuleComponent,
     NotificationBannerComponent,
-    SidebarComponent,
     TodoComponent,
     ToggleComponent,
     ExpandableComponent,
@@ -65,7 +63,6 @@ import { CoreModule } from '../core/core.module';
     ModalComponent,
     ModuleComponent,
     NotificationBannerComponent,
-    SidebarComponent,
     TodoComponent,
     ToggleComponent,
     ExpandableComponent,
