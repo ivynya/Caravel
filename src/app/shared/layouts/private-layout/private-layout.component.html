@@ -16,13 +16,13 @@
     </ibm-header-action>
   </ibm-header-global>
 </ibm-header>
-<div class="app" *ngIf="isLoaded">
+<main class="app" *ngIf="isLoaded">
   <div class="app-content">
     <app-notification-banner></app-notification-banner>
     <router-outlet></router-outlet>
   </div>
   <app-modal></app-modal>
-</div>
+</main>
 
 <ng-template #whatsNew>
   <app-brand-badge></app-brand-badge>
