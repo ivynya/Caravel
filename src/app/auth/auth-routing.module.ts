@@ -2,15 +2,22 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthComponent } from './auth.component';
+import { PublicLayoutComponent } from '../shared/layouts';
 
 const routes: Routes = [
   {
     path: 'auth',
-    component: AuthComponent
-  },
-  {
-    path: 'auth/:token',
-    component: AuthComponent
+    component: PublicLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: AuthComponent
+      },
+      {
+        path: ':token',
+        component: AuthComponent
+      }
+    ]
   }
 ];
 

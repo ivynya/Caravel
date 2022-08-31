@@ -1,19 +1,27 @@
 <main class="page">
   <div class="content auth">
-    <div class="dialog">
+    <ibm-tile>
       <div class="title">
         <img src="assets/icons/favicon.png" alt="Caravel Icon">
         <h1>Caravel</h1>
       </div>
+      <ibm-label>
+        Institution Domain
+        <input ibmText type="text" placeholder="canvas.x.edu" size="md" [(ngModel)]="domain">
+      </ibm-label>
+      <br>
       <div class="cta" *ngIf="!isMobileAuth">
-        <input type="text" placeholder="User Token" [(ngModel)]="token">
-        <button (click)="tryAuthorize()">Log In</button>
+        <ibm-label>
+          User Token
+          <input ibmText type="text" placeholder="User Token" size="md" [(ngModel)]="token">
+        </ibm-label>
+        <button [ibmButton] size="field" (click)="tryAuthorize()">Log In</button>
       </div>
       <ng-container *ngIf="isMobileAuth">
         <p>✅️ Mobile authorization detected.</p>
         <button (click)="tryAuthorize()">Continue</button>
       </ng-container>
       <br>
-    </div>
+    </ibm-tile>
   </div>
 </main>
