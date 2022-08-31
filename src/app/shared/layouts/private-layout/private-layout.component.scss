@@ -1,6 +1,7 @@
 
 main {
   background-color: var(--bg-primary);
+  height: 100vh;
   max-height: calc(100vh - 48px);
   margin-top: 48px;
   overflow-y: auto;
