@@ -18,21 +18,22 @@
         </app-toggle>
         <div *ngIf="conf.value.type === 'text'">
           <label>{{ conf.value.name }}</label>
-          <input type="text"
+          <input type="text" ibmText size="sm"
             [(ngModel)]="conf.value.value"
             (change)="upd(scope.key, conf.key, conf.value.value)">
         </div>
         <div *ngIf="conf.value.type === 'select'">
           <label>{{ conf.value.name }}</label>
-          <select 
-              [(ngModel)]="conf.value.value"
-              (change)="upd(scope.key, conf.key, conf.value.value)">
+          <ibm-select size="sm"
+            [(ngModel)]="conf.value.value"
+            (change)="upd(scope.key, conf.key, conf.value.value)">
             <option
               *ngFor="let opt of conf.value.options"
               [value]="opt">
               {{ opt }}
             </option>
-          </select>
+          </ibm-select>
+
         </div>
       </div>
     </div>

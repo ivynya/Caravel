@@ -61,8 +61,8 @@
         align-items: center;
         justify-content: space-between;
 
-        input, select {
-          width: 150px;
+        :last-child {
+          width: 170px;
         }
 
         select {
