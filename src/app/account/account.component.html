@@ -33,6 +33,6 @@
   <br>
   <p><b>WARNING: Anyone can use this code!</b> Hover over or click the code when you are ready and minimize the time the code is shown.</p>
   <div class="auth-hover-show" tabindex="0">
-    <qr-code [value]="mobileAuthUrl" [size]="250"></qr-code>
+    <qrcode [qrdata]="mobileAuthUrl" [width]="250" errorCorrectionLevel="M"></qrcode>
   </div>
 </ng-template>

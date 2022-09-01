@@ -82,7 +82,7 @@
   },
   "dependencies": {
     "@carbon/icons": "11.7.0",
-    "angular2-qrcode": "2.0.3",
+    "angularx-qrcode": "14.0.0",
     "carbon-components": "10.56.0",
     "carbon-components-angular": "4.59.12"
   }

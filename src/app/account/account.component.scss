@@ -75,7 +75,7 @@
   margin-top: 10px;
   transition-duration: 0.2s;
 
-  ::ng-deep img {
+  ::ng-deep canvas {
     filter: contrast(0);
     transition-delay: 0s;
     transition-duration: 0.2s;
@@ -84,7 +84,7 @@
   &:hover, &:focus {
     border-left: 5px solid var(--warning);
 
-    ::ng-deep img {
+    ::ng-deep canvas {
       filter: contrast(1);
       transition-delay: 0.5s;
     }
