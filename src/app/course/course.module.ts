@@ -16,10 +16,12 @@ import { CourseAnnouncementComponent } from './course-announcement/course-announ
 import { CourseAnnouncementsComponent } from './course-announcements/course-announcements.component';
 import { CourseDiscussionsComponent } from './course-discussions/course-discussions.component';
 import { IconModule, SideNavModule, TilesModule } from 'carbon-components-angular';
+import { CoursesComponent } from './courses/courses.component';
 
 @NgModule({
   declarations: [
     CourseComponent,
+    CoursesComponent,
     CourseNavComponent,
     CourseHomeComponent,
     CourseModulesComponent,

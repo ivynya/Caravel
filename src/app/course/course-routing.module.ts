@@ -2,6 +2,8 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { Routes, RouterModule } from "@angular/router";
 
+import { CoursesComponent } from "./courses/courses.component";
+
 import { CourseComponent } from "./course.component";
 import { CourseAnnouncementComponent } from "./course-announcement/course-announcement.component";
 import { CourseAnnouncementsComponent } from "./course-announcements/course-announcements.component";
@@ -18,6 +20,10 @@ const routes: Routes = [
     path: "courses",
     component: PrivateLayoutComponent,
     children: [
+      {
+        path: "",
+        component: CoursesComponent
+      },
       {
         path: ":id",
         component: CourseComponent,

@@ -18,7 +18,6 @@ import { AuthModule } from './auth/auth.module';
 import { AccountModule } from './account/account.module';
 import { AssignmentModule } from './course/assignment/assignment.module';
 import { CourseModule } from './course/course.module';
-import { CoursesModule } from './courses/courses.module';
 import { HomeModule } from './home/home.module';
 import { IndexModule } from './index/index.module';
 
@@ -43,7 +42,6 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     AccountModule,
     AssignmentModule,
     CourseModule,
-    CoursesModule,
     HomeModule,
     IndexModule,
     AppRoutingModule,
