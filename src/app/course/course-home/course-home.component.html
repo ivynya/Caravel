@@ -33,10 +33,9 @@
   <h2>Recent Feedback</h2>
   <p *ngIf="recent?.length === 0">No recent feedback for this course.</p>
   <div class="recent-item-bar">
-    <div class="item" *ngFor="let submission of recent">
-      <h5><a [routerLink]="'/courses/'+course?.id+'/assignments/'+submission.assignment.id">
-        {{ submission.assignment.name }}
-      </a></h5>
+    <ibm-clickable-tile *ngFor="let submission of recent"
+      [route]="['/courses', course?.id, 'assignments', submission.assignment.id]">
+      <h5>{{ submission.assignment.name }}</h5>
       <em>
         <span>Submitted {{ submission.submitted_at | date }}</span>
         <span *ngIf="submission.late" class="late">(Late)</span>
@@ -47,7 +46,7 @@
         <span *ngIf="!submission.graded_at">ungraded</span>
         / {{ submission.assignment.points_possible }}
       </blockquote>
-    </div>
+    </ibm-clickable-tile>
   </div>
   <ng-container *ngIf="!useRedesign">
     <hr>

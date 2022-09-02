@@ -14,22 +14,20 @@
 .recent-item-bar {
   display: flex;
 
-  margin-bottom: 30px;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
   padding-bottom: 10px;
   width: 100%;
 
   overflow: auto;
 
-  .item {
-    border: var(--border-secondary) 2px solid;
-    border-radius: 5px;
+  > * {
     display: flex;
     flex-direction: column;
 
     flex: 1 1;
     min-height: 80px;
     min-width: 180px;
-    padding: 20px;
 
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -81,7 +79,7 @@
     }
 
     &:hover {
-      flex: 1.5 1;
+      flex: 1.25 1;
     }
   }
 }
