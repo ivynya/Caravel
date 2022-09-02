@@ -1,0 +1,15 @@
+
+// Allow icons in overflow menu & fix centering
+button.bx--overflow-menu-options__btn {
+  display: block;
+
+  div {
+    display: flex;
+    align-items: center;
+    column-gap: 0.75rem;
+  }
+
+  svg {
+    min-width: 16px;
+  }
+}

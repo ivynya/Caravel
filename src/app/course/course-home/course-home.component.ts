@@ -78,8 +78,9 @@ export class CourseHomeComponent implements OnInit {
   }
 
   // Synchronize config with settings here.
-  syncConfig(val: boolean): void {
-    this.configService.set("course", "use_redesign", val);
+  toggleRedesign(): void {
+    this.useRedesign = !this.useRedesign;
+    this.configService.set("course", "use_redesign", this.useRedesign);
   }
 
   // Open modal to add a quick access item
