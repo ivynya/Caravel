@@ -14,26 +14,10 @@
     margin-bottom: 0;
   }
 
-  .settings-title {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-
-    .actions {
-      display: flex;
-    }
-  }
-
   .configurator-scopes {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-  }
-
-  .app-stats {
-    margin: 0;
-    text-align: right;
   }
 
   .config-scope {
@@ -43,12 +27,5 @@
 
     margin-bottom: 20px;
     width: 100%;
-  }
-
-  @media (min-width: 512px) {
-    .settings-title {
-      flex-direction: row;
-      align-items: center;
-    }
   }
 }

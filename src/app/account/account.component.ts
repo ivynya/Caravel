@@ -1,12 +1,14 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 
 import {
+  CacheService,
   ConfigurationService,
   ModalService,
+  NotificationService,
   StorageService
 } from '../core/services';
 import { UserService } from '../core/services/canvas';
-import { AppInfo, Profile } from '../core/schemas';
+import { AppInfo, Configuration, Profile } from '../core/schemas';
 
 import { Information24 } from "@carbon/icons";
 import { IconService } from 'carbon-components-angular';
@@ -21,13 +23,16 @@ export class AccountComponent implements OnInit {
   profile: Profile;
   mobileAuthUrl?: string;
 
+  configuration: Configuration;
   storageUsed: number; // in KB
 
   @ViewChild('mobileAuthorizer') template?: TemplateRef<any>;
   
-  constructor(private configService: ConfigurationService,
+  constructor(private cacheService: CacheService,
+              private configService: ConfigurationService,
               private iconService: IconService,
               private modalService: ModalService,
+              private notifService: NotificationService,
               private storageService: StorageService,
               private userService: UserService) { }
 
@@ -42,6 +47,22 @@ export class AccountComponent implements OnInit {
     const token = this.storageService.get("oauth_token");
     this.mobileAuthUrl = `https://caravel.sdbagel.com/auth/${token}`;
     this.modalService.openModal(this.template);
+  }
+
+  // Clear all user cache. Does not sign user out.
+  async clearCache(): Promise<void> {
+    const freed = this.cacheService.clear();
+    await this.configService.updateApp();
+    this.configuration = this.configService.getAll();
+    this.notifService.notify(`Cleared cache and freed ${freed}KB.`, 2);
+  }
+
+  // Reset config in localstorage. Does not sign user out.
+  async resetConfig(): Promise<void> {
+    await this.configService.resetToDefault();
+    await this.configService.updateApp();
+    this.configuration = this.configService.getAll();
+    this.notifService.notify('Reset configuration to default.', 2);
   }
 
 }

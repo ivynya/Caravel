@@ -11,6 +11,10 @@
         <button [ibmButton] size="field" (click)="openAuthorizer()">Mobile Login</button>
       </ibm-tile>
       <ibm-tile>
+        <button ibmButton="danger--tertiary" size="field" (click)="clearCache()">Clear Cache</button>
+        <button ibmButton="danger" size="field" (click)="resetConfig()">Reset Config</button>
+      </ibm-tile>
+      <ibm-tile>
         <p>Storage Used: {{ storageUsed }}KB</p>
         <p>App Version: {{ appInfo.version }}</p>
       </ibm-tile>

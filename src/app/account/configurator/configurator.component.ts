@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import {
-  CacheService,
-  ConfigurationService,
-  NotificationService
-} from '../../core/services';
+import { ConfigurationService } from '../../core/services';
 import { Configuration } from '../../core/schemas';
 
 @Component({
@@ -15,9 +11,7 @@ import { Configuration } from '../../core/schemas';
 export class ConfiguratorComponent implements OnInit {
   configuration: Configuration;
 
-  constructor(private cache: CacheService,
-              private config: ConfigurationService,
-              private notif: NotificationService) { }
+  constructor(private config: ConfigurationService) { }
 
   ngOnInit(): void {
     this.config.config.subscribe(data => {
@@ -33,21 +27,4 @@ export class ConfiguratorComponent implements OnInit {
   upd(scope: string, key: string, val: any): void {
     this.config.set(scope, key, val);
   }
-
-  // Clear all user cache. Does not sign user out.
-  async clearCache(): Promise<void> {
-    const freed = this.cache.clear();
-    await this.config.updateApp();
-    this.configuration = this.config.getAll();
-    this.notif.notify(`Cleared cache and freed ${freed}KB.`, 2);
-  }
-
-  // Reset config in localstorage. Does not sign user out.
-  async resetConfig(): Promise<void> {
-    await this.config.resetToDefault();
-    await this.config.updateApp();
-    this.configuration = this.config.getAll();
-    this.notif.notify('Reset configuration to default.', 2);
-  }
-
 }
