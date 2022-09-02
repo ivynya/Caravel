@@ -1,8 +1,5 @@
 
 .course-nav {
-  background-color: var(--bg-secondary);
-  border-radius: 5px;
-  box-shadow: var(--box-shadow-secondary) 2px 2px 10px;
   display: flex;
   flex-direction: row;
 
@@ -44,7 +41,7 @@
   @media (min-width: 1300px) {
     background-color: transparent;
     box-shadow: none;
-    width: 230px;
+    width: 220px;
     margin-right: 3rem;
   }
 }
