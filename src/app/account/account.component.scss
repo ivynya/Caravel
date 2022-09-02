@@ -1,70 +1,35 @@
 
-.account {
-  > div {
-    margin-bottom: 20px;
+.content {
+  column-gap: 50px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  width: 240px;
+
+  img {
+    display: block;
+    margin-bottom: 1rem;
+    width: 100%;
   }
 
-  .header {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: space-between;
-
-    img {
-      border-radius: 50%;
-      height: 50px;
-      width: 50px;
-    }
-
-    h2, p {
-      margin: 0;
-    }
-
-    h2 {
-      margin-bottom: 0;
-    }
-
-    p {
-      margin-top: 5px;
-    }
-
-    @media (min-width: 512px) {
-      flex-direction: row;
-      justify-content: unset;
-
-      img {
-        margin-right: 30px;
-        height: 90px;
-        width: 90px;
-      }
-    }
+  .profile {
+    line-height: 2;
+    margin-bottom: 1rem;
   }
 
-  h3 {
-    margin-bottom: 0;
+  p {
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
-
-  .app-info {
-    border: var(--border-secondary) 1px solid;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    margin-top: 20px;
-    padding: 20px;
-
-    button {
-      background-color: transparent;
-      border: var(--border-primary) 1.5px solid;
-      border-radius: 5px;
-      color: var(--text-primary);
-      padding: 5px 10px;
   
-      &:hover {
-        border-color: var(--accent-primary);
-      }
-    }
+  button {
+    width: 100%;
   }
 }
 

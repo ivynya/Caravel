@@ -6,11 +6,23 @@ import { AccountRoutingModule } from './account-routing.module';
 import { AccountComponent } from './account.component';
 import { SharedModule } from '../shared/shared.module';
 import { ConfiguratorComponent } from './configurator/configurator.component';
-import { InputModule, SelectModule, TilesModule } from 'carbon-components-angular';
+import { ButtonModule, DialogModule, IconModule, InputModule, SelectModule, TilesModule, ToggleModule } from 'carbon-components-angular';
 import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   declarations: [AccountComponent, ConfiguratorComponent],
-  imports: [CommonModule, SharedModule, QRCodeModule, AccountRoutingModule, TilesModule, InputModule, SelectModule]
+  imports: [
+    CommonModule,
+    SharedModule,
+    QRCodeModule,
+    AccountRoutingModule,
+    TilesModule,
+    IconModule,
+    InputModule,
+    ToggleModule,
+    SelectModule,
+    ButtonModule,
+    DialogModule
+  ]
 })
 export class AccountModule {}

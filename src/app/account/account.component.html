@@ -1,28 +1,30 @@
 <main class="page">
   <div class="content">
+    <div class="sidebar">
+      <ibm-tile>
+        <img [src]="profile?.avatar_url" alt="Your Avatar">
+        <div class="profile">
+          <h3>{{ profile?.short_name || profile?.name }}</h3>
+          <p><b>{{ profile?.pronouns }}</b></p>
+          <ibm-tooltip-definition [content]="profile?.primary_email">{{ profile?.primary_email }}</ibm-tooltip-definition>
+        </div>
+        <button [ibmButton] size="field" (click)="openAuthorizer()">Mobile Login</button>
+      </ibm-tile>
+      <ibm-tile>
+        <p>Storage Used: {{ storageUsed }}KB</p>
+        <p>App Version: {{ appInfo.version }}</p>
+      </ibm-tile>
+    </div>
     <section class="account">
       <h1>Your Account</h1>
       <hr><br>
-      <div class="header">
-        <img [src]="profile?.avatar_url" alt="Your Avatar">
-        <div>
-          <h3>{{ profile?.short_name || profile?.name }}</h3>
-          <p><b>{{ profile?.pronouns }}</b></p>
-          <p>{{ profile?.primary_email }}</p>
-        </div>
-      </div>
       <h3>Biography</h3>
+      <br>
       <ibm-label>
         <textarea ibmTextArea placeholder="Biography">{{ profile?.bio }}</textarea>
       </ibm-label>
       <br>
       <app-configurator></app-configurator>
-      <br>
-      <div class="app-info">
-        <span>App Version: {{ appInfo.version }}</span>
-        <button (click)="openAuthorizer()">Mobile Login</button>
-      </div>
-      <br><br>
     </section>
   </div>
 </main>
