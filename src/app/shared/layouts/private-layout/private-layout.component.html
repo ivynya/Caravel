@@ -5,7 +5,8 @@
     <ibm-header-item [routerLink]="['/home']">Dashboard</ibm-header-item>
     <ibm-header-menu title="Classes">
       <ibm-header-item *ngFor="let course of courses" 
-      [routerLink]="'/courses/'+course.id">{{course.name}}</ibm-header-item>
+      [routerLink]="'/courses/'+course.id">{{course.name.slice(0, 20)}}</ibm-header-item>
+      <ibm-header-item [routerLink]="['/courses']">All Courses</ibm-header-item>
     </ibm-header-menu>
     <ibm-header-item [routerLink]="['/inbox']">Inbox</ibm-header-item>
     <ibm-header-item [routerLink]="['/calendar']">Calendar</ibm-header-item>
