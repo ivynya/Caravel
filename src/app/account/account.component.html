@@ -9,6 +9,7 @@
           <ibm-tooltip-definition [content]="profile?.primary_email">{{ profile?.primary_email }}</ibm-tooltip-definition>
         </div>
         <button [ibmButton] size="field" (click)="openAuthorizer()">Mobile Login</button>
+        <button ibmButton="tertiary" size="field" disabled>Upload ID Card</button>
       </ibm-tile>
       <ibm-tile>
         <button ibmButton="danger--tertiary" size="field" (click)="clearCache()">Clear Cache</button>
