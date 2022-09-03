@@ -13,3 +13,12 @@ button.bx--overflow-menu-options__btn {
     min-width: 16px;
   }
 }
+
+// Reduce spacing in side menu icons
+.bx--side-nav__item .bx--side-nav__link {
+  min-height: 2.5rem;
+
+  .bx--side-nav__icon:not(.bx--side-nav__submenu-chevron) {
+    margin-right: 0.75rem;
+  }
+}
