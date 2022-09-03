@@ -1,12 +1,10 @@
 
 @use 'scss/themes';
-@use 'scss/typography';
 
-@use 'scss/root.scss';
-@use 'scss/page.scss';
+@use 'scss/root';
+@use 'scss/page';
 @use 'scss/external';
 
-@use 'scss/button';
 @use 'scss/checkbox';
 
 @use 'scss/modifiers';
