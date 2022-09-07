@@ -12,7 +12,9 @@
   img {
     display: block;
     margin-bottom: 1rem;
-    width: 100%;
+
+    aspect-ratio: 1 / 1;
+    min-width: 100%;
   }
 
   .profile {
@@ -22,10 +24,13 @@
 
   p {
     font-size: 0.875rem;
-    margin-top: 0.5rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  p:not(:first-of-type) {
+    margin-top: 0.5rem;
   }
   
   button {
