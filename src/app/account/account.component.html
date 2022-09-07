@@ -21,14 +21,17 @@
       </ibm-tile>
     </div>
     <section class="account">
-      <h1>Your Account</h1>
-      <hr><br>
-      <h3>Biography</h3>
-      <br>
+      <h1>
+        Account Settings 
+        <ibm-tooltip-icon content="These only affect Caravel and not your Canvas account.">
+          <svg class="bx--btn__icon" ibmIcon="information" size="24"></svg>
+        </ibm-tooltip-icon>
+      </h1>
+      <hr><br><br>
       <ibm-label>
-        <textarea ibmTextArea placeholder="Biography">{{ profile?.bio }}</textarea>
+        Biography
+        <textarea ibmTextArea placeholder="Biography" readonly>{{ profile?.bio }}</textarea>
       </ibm-label>
-      <br>
       <app-configurator></app-configurator>
     </section>
   </div>
