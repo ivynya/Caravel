@@ -15,7 +15,7 @@ import { CoursePageComponent } from './course-page/course-page.component';
 import { CourseAnnouncementComponent } from './course-announcement/course-announcement.component';
 import { CourseAnnouncementsComponent } from './course-announcements/course-announcements.component';
 import { CourseDiscussionsComponent } from './course-discussions/course-discussions.component';
-import { DialogModule, IconModule, SideNavModule, TilesModule } from 'carbon-components-angular';
+import { BreadcrumbModule, ButtonModule, DialogModule, IconModule, SideNavModule, TilesModule } from 'carbon-components-angular';
 import { CoursesComponent } from './courses/courses.component';
 
 @NgModule({
@@ -30,7 +30,18 @@ import { CoursesComponent } from './courses/courses.component';
     CourseAnnouncementsComponent,
     CourseDiscussionsComponent
   ],
-  imports: [CommonModule, SharedModule, CourseRoutingModule, CoreModule, SideNavModule, IconModule, TilesModule, DialogModule],
+  imports: [
+    CommonModule,
+    SharedModule,
+    CourseRoutingModule,
+    CoreModule,
+    SideNavModule,
+    IconModule,
+    TilesModule,
+    DialogModule,
+    ButtonModule,
+    BreadcrumbModule
+  ],
   providers: [RoundDatePipe]
 })
 export class CourseModule {}

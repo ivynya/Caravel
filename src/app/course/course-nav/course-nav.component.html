@@ -28,4 +28,30 @@
       </ibm-sidenav-item>
     </ul>
   </ibm-tile>
+  <ibm-tile>
+    <ul>
+      <ibm-sidenav-item *ngFor="let lti of tools">
+        <svg ibmIcon="fade" size="16"></svg>
+        {{lti.name}}
+      </ibm-sidenav-item>
+      <ibm-sidenav-item *ngFor="let sc of shortcuts" [href]="sc.url">
+        <svg ibmIcon="fade" size="16"></svg>
+        {{sc.name}}
+      </ibm-sidenav-item>
+      <button ibmButton="tertiary" size="sm" (click)="openAddQuickAccessModal()">
+        Add Shortcut<svg class="bx--btn__icon" ibmIcon="fade" size="16"></svg>
+      </button>
+    </ul>
+  </ibm-tile>
 </div>
+
+<ng-template #addQuickAccessModal>
+  <h2>Create a Quick Access Link</h2>
+  <br>
+  <form (ngSubmit)="addQuickAccessItem()" #createQAForm>
+    <input [(ngModel)]="createQAFormURL" name="url" type="text" placeholder="URL" required>
+    <input [(ngModel)]="createQAFormName" name="name" type="text" placeholder="Name" required>
+    <p class="error"><sub>{{ createQAFormError }}</sub></p>
+    <button type="submit" class="button-right">Create</button>
+  </form>
+</ng-template>
