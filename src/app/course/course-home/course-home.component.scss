@@ -29,6 +29,7 @@
     min-height: 80px;
     min-width: 180px;
 
+    position: relative;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -39,16 +40,6 @@
       margin: 0;
       text-overflow: ellipsis;
       overflow: hidden;
-    }
-
-    a {
-      color: var(--text-primary);
-      text-decoration-color: var(--bg-secondary);
-      transition-duration: 0.1s;
-  
-      &:hover {
-        color: var(--accent-secondary)
-      }
     }
 
     em {
@@ -74,12 +65,14 @@
       overflow: hidden;
     }
 
-    &:not(:last-child) {
-      margin-right: 25px;
+    svg {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
     }
 
-    &:hover {
-      flex: 1.25 1;
+    &:not(:last-child) {
+      margin-right: 2rem;
     }
   }
 }
