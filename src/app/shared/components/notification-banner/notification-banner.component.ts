@@ -68,13 +68,12 @@ export class NotificationBannerComponent implements OnInit {
     }, this.notifs[0]?.duration);
   }
 
-  // Converts a notification type enum to CSS string
+  // Converts a notification type enum to string
   convertNotifStyle(style: C$NotificationType): string {
-    const useCompact = this.configService.get("notifications", "compact_banners").value;
+    //const useCompact = this.configService.get("notifications", "compact_banners").value;
     switch (style) {
       case C$NotificationType.Info:
-        if (useCompact) return 'info compact';
-        else return 'info';
+        return 'info';
       case C$NotificationType.Warning:
         return 'warning';
       case C$NotificationType.Error:

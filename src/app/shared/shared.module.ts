@@ -22,7 +22,7 @@ import {
   PublicLayoutComponent
 } from './layouts';
 
-import { HeaderModule, IconModule } from "carbon-components-angular";
+import { HeaderModule, IconModule, NotificationModule } from "carbon-components-angular";
 
 import { WebviewDirective } from './directives/';
 import { FormsModule } from '@angular/forms';
@@ -53,7 +53,8 @@ import { CoreModule } from '../core/core.module';
     FormsModule,
     CoreModule,
     HeaderModule,
-    IconModule
+    IconModule,
+    NotificationModule
   ],
   exports: [
     TranslateModule, 

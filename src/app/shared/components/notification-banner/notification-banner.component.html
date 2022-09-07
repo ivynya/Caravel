@@ -2,6 +2,12 @@
 <div class="notification-banner">
   <div class="loading-bar" [ngClass]="{'shown': waitingOn > 0}"></div>
   <div class="notifications" [class]="bannerStyle" [ngClass]="{'shown': notifs.length > 0}">
-    <p *ngFor="let n of notifs" [class]="n.style">{{ n.notif.msg }}</p>
+    <ibm-notification *ngFor="let n of notifs" [notificationObj]="{
+      type: n.style,
+      title: n.style,
+      message: n.notif.msg,
+      showClose: false,
+      lowContrast: true}">
+    </ibm-notification>
   </div>
 </div>
