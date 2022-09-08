@@ -19,6 +19,13 @@
     </ibm-overflow-menu>
   </div>
   <hr>
+  <div class="quick-access">
+    <a *ngFor="let link of extractedLinks"
+      ibmButton="tertiary" size="field"
+      [href]="link.href" target="_blank">
+      {{link.title || link.href}}
+    </a>
+  </div>
   <h2>Recent Feedback</h2>
   <p *ngIf="recent?.length === 0">No recent feedback for this course.</p>
   <div class="recent-item-bar">

@@ -21,6 +21,7 @@ export class CourseHomeComponent implements OnInit {
 
   // Front page if using legacy home page
   frontPage: SafeHtml;
+  extractedLinks: {title: string, href: string}[];
 
   // Quick access links and helpers
 
@@ -50,6 +51,12 @@ export class CourseHomeComponent implements OnInit {
       // Course front page is used in legacy mode
       this.courseService.getCourseFrontPage(params.id, page => {
         this.frontPage = this.sanitizer.bypassSecurityTrustHtml(page.body);
+
+        // Extracts URLs from home page
+        const docExtractor = document.createElement("html");
+        docExtractor.innerHTML = page.body;
+        this.extractedLinks = Array.from(docExtractor.getElementsByTagName("a"))
+          .map(l => {return { title: l.innerText || l.getAttribute("title"), href: l.getAttribute("href") }});
       });
     });
   }
