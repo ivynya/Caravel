@@ -14,9 +14,9 @@
 .recent-item-bar {
   display: flex;
 
-  margin-top: 1rem;
+  margin-top: 0.75rem;
   margin-bottom: 2rem;
-  padding-bottom: 10px;
+  padding-bottom: 0.75rem;
   width: 100%;
 
   overflow: auto;
@@ -72,15 +72,21 @@
     }
 
     &:not(:last-child) {
-      margin-right: 2rem;
+      margin-right: 0.75rem;
     }
   }
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-weight: normal;
+  text-transform: uppercase;
 }
 
 .quick-access {
   display: flex;
   column-gap: 0.75rem;
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
   margin-bottom: 1rem;
 
   a {
