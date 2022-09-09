@@ -1,18 +1,18 @@
 
 {
-  "version": "0.5.8",
-	"previous": "0.5.7",
+  "version": "0.6.0",
+	"previous": "0.5.8",
 	"requiresRefresh": false,
   "updateInfo": [
     {
-      "title": "The Next Evolution",
-      "desc": "Canvas. New technologies. Better than ever before. Set sail for new possibilities with Caravel, the next evolution of education software."
+      "title": "Data-Driven",
+      "desc": "Changelog TBA"
     },
 		{
-			"title": "Account Update",
+			"title": "Visual Overhaul",
 			"desc": "",
 			"features": [
-				"Uses preferred name in account settings."
+				"a"
 			]
 		}
   ]

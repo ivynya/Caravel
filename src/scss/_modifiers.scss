@@ -22,3 +22,25 @@ button.bx--overflow-menu-options__btn {
     margin-right: 0.75rem;
   }
 }
+
+/* Apply user accent color to IBM components */
+
+a, button {
+  &.bx--btn--primary {
+    background-color: var(--accent-primary);
+  }
+  &.bx--btn--tertiary {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+  }
+  &.bx--btn--ghost {
+    color: var(--accent-primary);
+  }
+  &.bx--btn--primary:hover,
+  &.bx--btn--tertiary:hover {
+    background-color: var(--accent-secondary);
+  }
+  &.bx--btn--ghost:hover {
+    color: var(--accent-secondary);
+  }
+}

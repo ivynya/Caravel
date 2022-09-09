@@ -25,7 +25,7 @@ export class AuthComponent implements OnInit {
       this.isMobileAuth = true;
     }
 
-    this.domain = this.config.get("caravel", "domain").default as string;
+    this.domain = this.config.get("canvas", "domain").default as string;
   }
 
   tryAuthorize(): void {
@@ -35,7 +35,7 @@ export class AuthComponent implements OnInit {
     console.log(this.storage.get("oauth_token"));
 
     // Update institution domain before data load
-    this.config.set("caravel", "domain", this.domain);
+    this.config.set("canvas", "domain", this.domain);
 
     // Redirect back
     this.router.navigateByUrl("/home");

@@ -1,14 +1,33 @@
 
 {
-  "caravel": {
+  "canvas": {
     "domain": {
       "name": "App Domain",
       "type": "text",
-      "default": "mvla.instructure.com",
-      "value": "mvla.instructure.com"
+      "default": "foothillcollege.instructure.com",
+      "value": "foothillcollege.instructure.com"
+    },
+    "use_redesign": {
+      "name": "Use Redesigned Home",
+      "type": "toggle",
+      "default": true,
+      "value": true
+    }
+  },
+  "caravel": {
+    "accent": {
+      "name": "Accent Color",
+      "type": "select",
+      "default": "ibm-blue",
+      "value": "ibm-blue",
+      "options": [
+        "ibm-blue",
+        "vyne-green",
+        "vyne-teal"
+      ]
     },
     "theme": {
-      "name": "App Theme",
+      "name": "Theme",
       "type": "select",
       "default": "caravel-light",
       "value": "caravel-light",
@@ -16,18 +35,9 @@
         "system",
         "caravel-dark",
         "caravel-light",
-        "caravel-light-alt",
         "soulless-dark",
         "soulless-light"
       ]
-    }
-  },
-  "course": {
-    "use_redesign": {
-      "name": "Use Redesigned Home",
-      "type": "toggle",
-      "default": true,
-      "value": true
     }
   },
   "networking": {

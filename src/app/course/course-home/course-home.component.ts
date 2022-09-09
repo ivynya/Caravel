@@ -31,7 +31,7 @@ export class CourseHomeComponent implements OnInit {
               private route: ActivatedRoute,
               private sanitizer: DomSanitizer,
               private userService: UserService) {
-    this.useRedesign = this.configService.getVal<boolean>("course", "use_redesign");
+    this.useRedesign = this.configService.getVal<boolean>("canvas", "use_redesign");
   }
 
   ngOnInit(): void {
@@ -64,7 +64,7 @@ export class CourseHomeComponent implements OnInit {
   // Synchronize config with settings here.
   toggleRedesign(): void {
     this.useRedesign = !this.useRedesign;
-    this.configService.set("course", "use_redesign", this.useRedesign);
+    this.configService.set("canvas", "use_redesign", this.useRedesign);
   }
 
 }

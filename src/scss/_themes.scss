@@ -1,4 +1,6 @@
 
+@use "sass:color";
+
 :root, :root[theme="caravel-dark"] {
   // Used for "A on B" UI elements
   --bg-primary: #11111F;
@@ -110,56 +112,6 @@
   @include theme-light;
 }
 
-:root[theme="caravel-light-alt"] {
-  // Used for "A on B" UI elements
-  --bg-primary: #fff;
-  --bg-secondary: #eee;
-  --bg-tertiary: #ccc;
-
-  --text-primary: #333;
-  --text-secondary: #555;
-  --text-tertiary: #777;
-
-  // Used for "B on A" UI elements
-  --bg-inverse-primary: #fafafa;
-  --bg-inverse-secondary: #eee;
-  --bg-inverse-tertiary: #eee;
-
-  --text-inverse-primary: #000;
-  --text-inverse-secondary: #000;
-  --text-inverse-tertiary: #000;
-  
-  // Element borders
-  --border-primary: #abf;
-  --border-secondary: #567;
-
-  // Element shadows
-  --box-shadow-primary: #ccc;
-  --box-shadow-secondary: #ddd;
-
-  // Used for app icons, links
-  --accent-primary: #89f;
-  // Used for highlighted links
-  --accent-secondary: #89f;
-
-  // Used for interactive UI elements
-  --bg-control: #e0e0e0;
-  --bg-control-alt: #ddd;
-  --control-hover: #ccc;
-  --control-active: #ccc;
-
-  --control-enabled: var(--accent-primary);
-  --text-control: var(--text-inverse-primary);
-
-  --scrollbar-track: var(--bg-control);
-  --scrollbar-thumb: var(--accent-primary);
-
-  // Included as text and in notifications
-  --error: #F50;
-  --warning: #FA0;
-  --info: #0FC;
-}
-
 :root[theme="soulless-dark"] {
   // Used for "A on B" UI elements
   --bg-primary: #111;
@@ -258,4 +210,19 @@
   --error: #F50;
   --warning: #FA0;
   --info: var(--accent-primary);
+}
+
+:root[accent="ibm-blue"] {
+  --accent-primary: #0f62fe;
+  --accent-secondary: #0353e9;
+}
+
+:root[accent="vyne-green"] {
+  --accent-primary: #6b7c32;
+  --accent-secondary: #556327;
+}
+
+:root[accent="vyne-teal"] {
+  --accent-primary: #00b8a5;
+  --accent-secondary: #009e8e;
 }
