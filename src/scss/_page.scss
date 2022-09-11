@@ -18,7 +18,7 @@
     display: flex;
 
     margin: 0 auto;
-    max-width: 900px;
+    max-width: 95%;
     width: 100%;
   
     position: relative;
@@ -37,12 +37,8 @@
       min-width: 0;
     }
 
-    @media (min-width: 1200px) {
-      max-width: 1000px;
-    }
-
-    @media (min-width: 1500px) {
-      max-width: 1200px;
+    @media (min-width: 1600px) {
+      max-width: 1520px;
     }
   }
 
