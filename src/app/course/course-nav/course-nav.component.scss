@@ -2,7 +2,7 @@
 .course-nav {
   display: flex;
   flex-direction: row;
-  row-gap: 1rem;
+  row-gap: 1.5rem;
 
   height: max-content;
   margin-bottom: 2rem;
@@ -15,6 +15,7 @@
   transition-delay: 0.1s;
 
   ul {
+    border-right: 1.5px solid var(--border-secondary);
     list-style: none;
   }
 
@@ -31,7 +32,7 @@
   @media (max-width: 1300px) and (min-width: 512px) {
     &:hover {
       width: 200px;
-      margin-right: calc(-150px + 3rem);
+      margin-right: calc(-150px + 3.5rem);
   
       a span {
         display: unset;
@@ -47,6 +48,6 @@
     background-color: transparent;
     box-shadow: none;
     width: 220px;
-    margin-right: 3rem;
+    margin-right: 5rem;
   }
 }

@@ -1,48 +1,44 @@
 
 <div class="course-nav">
-  <ibm-tile>
-    <ul>
-      <ibm-sidenav-item [routerLink]="['/courses/', course.id]">
-        <svg ibmIcon="fade" size="16"></svg>
-        Course Home
-      </ibm-sidenav-item>
-      <ibm-sidenav-item [routerLink]="['/courses/', course.id, 'announcements']">
-        <svg ibmIcon="fade" size="16"></svg>
-        Announcements
-      </ibm-sidenav-item>
-      <ibm-sidenav-item [routerLink]="['/courses/', course.id, 'assignments']">
-        <svg ibmIcon="fade" size="16"></svg>
-        Assignments
-      </ibm-sidenav-item>
-      <ibm-sidenav-item [routerLink]="['/courses/', course.id, 'discussions']">
-        <svg ibmIcon="fade" size="16"></svg>
-        Discussions
-      </ibm-sidenav-item>
-      <ibm-sidenav-item [routerLink]="['/courses/', course.id, 'grades']">
-        <svg ibmIcon="fade" size="16"></svg>
-        Grades
-      </ibm-sidenav-item>
-      <ibm-sidenav-item [routerLink]="['/courses/', course.id, 'modules']">
-        <svg ibmIcon="fade" size="16"></svg>
-        Modules
-      </ibm-sidenav-item>
-    </ul>
-  </ibm-tile>
-  <ibm-tile>
-    <ul>
-      <ibm-sidenav-item *ngFor="let lti of tools">
-        <svg ibmIcon="fade" size="16"></svg>
-        {{lti.name}}
-      </ibm-sidenav-item>
-      <ibm-sidenav-item *ngFor="let sc of shortcuts" [href]="sc.url">
-        <svg ibmIcon="fade" size="16"></svg>
-        {{sc.name}}
-      </ibm-sidenav-item>
-      <button ibmButton="ghost" size="field" (click)="openAddQuickAccessModal()">
-        Add Shortcut<svg class="bx--btn__icon" ibmIcon="fade" size="16"></svg>
-      </button>
-    </ul>
-  </ibm-tile>
+  <ul>
+    <ibm-sidenav-item [routerLink]="['/courses/', course.id]">
+      <svg ibmIcon="fade" size="16"></svg>
+      Course Home
+    </ibm-sidenav-item>
+    <ibm-sidenav-item [routerLink]="['/courses/', course.id, 'announcements']">
+      <svg ibmIcon="fade" size="16"></svg>
+      Announcements
+    </ibm-sidenav-item>
+    <ibm-sidenav-item [routerLink]="['/courses/', course.id, 'assignments']">
+      <svg ibmIcon="fade" size="16"></svg>
+      Assignments
+    </ibm-sidenav-item>
+    <ibm-sidenav-item [routerLink]="['/courses/', course.id, 'discussions']">
+      <svg ibmIcon="fade" size="16"></svg>
+      Discussions
+    </ibm-sidenav-item>
+    <ibm-sidenav-item [routerLink]="['/courses/', course.id, 'grades']">
+      <svg ibmIcon="fade" size="16"></svg>
+      Grades
+    </ibm-sidenav-item>
+    <ibm-sidenav-item [routerLink]="['/courses/', course.id, 'modules']">
+      <svg ibmIcon="fade" size="16"></svg>
+      Modules
+    </ibm-sidenav-item>
+  </ul>
+  <ul>
+    <ibm-sidenav-item *ngFor="let lti of tools">
+      <svg ibmIcon="fade" size="16"></svg>
+      {{lti.name}}
+    </ibm-sidenav-item>
+    <ibm-sidenav-item *ngFor="let sc of shortcuts" [href]="sc.url">
+      <svg ibmIcon="fade" size="16"></svg>
+      {{sc.name}}
+    </ibm-sidenav-item>
+    <button ibmButton="ghost" size="field" (click)="openAddQuickAccessModal()">
+      Add Shortcut<svg class="bx--btn__icon" ibmIcon="fade" size="16"></svg>
+    </button>
+  </ul>
 </div>
 
 <ng-template #addQuickAccessModal>
