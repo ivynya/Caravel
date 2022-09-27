@@ -78,7 +78,7 @@
     "zone.js": "0.11.8"
   },
   "engines": {
-    "node": "~18"
+    "node": "18.x"
   },
   "dependencies": {
     "@carbon/icons": "11.7.0",
