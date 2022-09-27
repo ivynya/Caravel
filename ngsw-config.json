@@ -1,0 +1,9 @@
+{
+  "index": "/index.html",
+  "installMode": "prefetch",
+  "navigationRequestStrategy": "freshness",
+  "resources": {
+    "files": ["*.html", "*.js"]
+  },
+  "updateMode": "prefetch"
+}
