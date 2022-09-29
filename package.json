@@ -1,6 +1,6 @@
 {
   "name": "caravel",
-  "version": "0.5.8",
+  "version": "0.6.0",
   "description": "Modern, fast, and performant LMS client.",
   "homepage": "https://github.com/ivynya/Caravel",
   "author": {
@@ -16,7 +16,6 @@
     "windows",
     "mac",
     "linux",
-    "caravan",
     "caravel"
   ],
   "main": "main.js",
