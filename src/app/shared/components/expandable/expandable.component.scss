@@ -8,7 +8,7 @@
     user-select: none;
     transition-duration: 0.2s;
 
-    margin-bottom: 20px;
+    margin: 0.75rem 0;
     padding: 10px 20px;
   }
 
@@ -27,7 +27,7 @@
   }
 
   .items {
-    border-left: var(--border-primary) 3px solid;
+    border-left: var(--border-primary) 1.5px solid;
     border-radius: 2px;
     padding-left: 20px;
   }
