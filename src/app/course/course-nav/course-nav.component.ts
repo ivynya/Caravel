@@ -1,4 +1,6 @@
+import { Location } from '@angular/common';
 import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { Course, ExternalTool, Shortcut } from '../../core/schemas';
 import { ModalService, NotificationService, ShortcutService } from '../../core/services';
@@ -14,6 +16,8 @@ export class CourseNavComponent implements OnInit {
   shortcuts: Shortcut[];
   tools: ExternalTool[];
 
+  url: string = "";
+
   // Shortcut add helper
   @ViewChild('addQuickAccessModal') template: TemplateRef<any>;
   createQAFormURL: string;
@@ -21,6 +25,7 @@ export class CourseNavComponent implements OnInit {
   createQAFormError: string;
 
   constructor(private courseService: CourseService,
+              private location: Location,
               private modalService: ModalService,
               private notificationService: NotificationService,
               private shortcutService: ShortcutService) { }
@@ -31,6 +36,11 @@ export class CourseNavComponent implements OnInit {
 
     this.shortcutService.shortcuts.subscribe(shortcuts => {
       this.shortcuts = shortcuts[this.course.id];
+    });
+
+    // "" for home, "/announcements", etc...
+    this.location.onUrlChange(url => {
+      this.url = url.replace(`/courses/${this.course.id}`, "");
     });
   }
 
