@@ -26,7 +26,7 @@
   <div class="quick-access">
     <a *ngFor="let link of extractedLinks"
       ibmButton="tertiary" size="field"
-      [href]="link.href" target="_blank">
+      [href]="link.href" [target]="link.target">
       {{link.title || link.href}}
     </a>
   </div>

@@ -23,7 +23,7 @@ export class CourseHomeComponent implements OnInit {
 
   // Front page if using legacy home page
   frontPage: SafeHtml;
-  extractedLinks: {title: string, href: string}[];
+  extractedLinks: {target: string, title: string, href: string}[];
 
   // Quick access links and helpers
 
@@ -58,7 +58,21 @@ export class CourseHomeComponent implements OnInit {
         const docExtractor = document.createElement("html");
         docExtractor.innerHTML = page.body;
         this.extractedLinks = Array.from(docExtractor.getElementsByTagName("a"))
-          .map(l => {return { title: l.innerText || l.getAttribute("title"), href: l.getAttribute("href") }});
+          .map(l => {
+            return {
+              target: "_blank",
+              title: l.innerText || l.getAttribute("title"),
+              href: l.getAttribute("href")
+            }
+          })
+          .map(l => {
+            const institutionURL = this.configService.get<string>("canvas", "domain").value;
+            if (l.href.includes(`https://${institutionURL}`)) {
+              l.href = l.href.replace(`https://${institutionURL}`, "");
+              l.target = "_self";
+            }
+            return l;
+          });
       });
     });
   }

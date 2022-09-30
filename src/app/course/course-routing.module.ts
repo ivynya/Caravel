@@ -61,6 +61,10 @@ const routes: Routes = [
             component: CourseModulesComponent,
           },
           {
+            path: "modules/:mId",
+            component: CourseModulesComponent,
+          },
+          {
             path: "quizzes",
             component: PageNotFoundComponent,
           },
