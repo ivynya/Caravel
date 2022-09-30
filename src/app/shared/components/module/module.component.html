@@ -13,6 +13,16 @@
         <span>Caravel</span>
       </p>
     </div>
+    <div *ngSwitchCase="'Discussion'">
+      <h3><a [href]="item.html_url" target="_blank">
+        {{ item.title }}
+      </a></h3>
+      <p class="subtext">
+        <span>Discussion</span>
+        <span class="separator"></span>
+        <span>Canvas</span>
+      </p>
+    </div>
     <div *ngSwitchCase="'ExternalUrl'">
       <h3><a [href]="item.html_url" target="_blank">
         {{ item.title }}

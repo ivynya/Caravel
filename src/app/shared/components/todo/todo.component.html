@@ -80,6 +80,22 @@
         </ng-container>
       </p>
     </div>
+    <div *ngSwitchCase="'discussion_topic'">
+      <h3><a [href]="item.html_url" target="_blank">
+        {{ item.plannable.title }}
+      </a></h3>
+      <p class="subtext">
+        <svg *ngIf="isLocked"><use xlink:href="/assets/icons/icon.svg#locked"/></svg>
+        <span class="sm-show">{{ item.plannable.start_at | date: "h:mm a"}}</span>
+        <span class="sm-hide">{{ item.plannable.start_at | date: "E L/d h:mm a"}}</span>
+        <span class="separator"></span>
+        <span>Discussion</span>
+        <ng-container *ngIf="showCourse">
+          <span class="separator"></span>
+          <span><a [routerLink]="'/courses/'+item.course_id">{{ item.context_name }}</a></span>
+        </ng-container>
+      </p>
+    </div>
     <div *ngSwitchCase="'quiz'">
       <h3><a [href]="item.html_url">
         {{ item.plannable.title }}
