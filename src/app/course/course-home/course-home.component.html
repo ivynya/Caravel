@@ -5,7 +5,11 @@
     <ibm-overflow-menu [flip]="true" [offset]="{x:0,y:50}">
       <ibm-overflow-menu-option (selected)="setOpen()">
         <svg class="bx--btn__icon" ibmIcon="edit" size="16"></svg>
-        Set Nickname
+        Edit Nickname
+      </ibm-overflow-menu-option>
+      <ibm-overflow-menu-option (selected)="setOpen()">
+        <svg class="bx--btn__icon" ibmIcon="edit" size="16"></svg>
+        Edit Shortcuts
       </ibm-overflow-menu-option>
       <ibm-overflow-menu-option (selected)="toggleRedesign()">
         <svg *ngIf="useRedesign" class="bx--btn__icon" ibmIcon="checkmark" size="16"></svg>
