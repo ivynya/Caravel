@@ -15,7 +15,7 @@ import { CoursePageComponent } from './course-page/course-page.component';
 import { CourseAnnouncementComponent } from './course-announcement/course-announcement.component';
 import { CourseAnnouncementsComponent } from './course-announcements/course-announcements.component';
 import { CourseDiscussionsComponent } from './course-discussions/course-discussions.component';
-import { BreadcrumbModule, ButtonModule, DialogModule, IconModule, SideNavModule, TilesModule } from 'carbon-components-angular';
+import { BreadcrumbModule, ButtonModule, DialogModule, IconModule, ModalModule, SideNavModule, TilesModule } from 'carbon-components-angular';
 import { CoursesComponent } from './courses/courses.component';
 
 @NgModule({
@@ -40,7 +40,8 @@ import { CoursesComponent } from './courses/courses.component';
     TilesModule,
     DialogModule,
     ButtonModule,
-    BreadcrumbModule
+    BreadcrumbModule,
+    ModalModule
   ],
   providers: [RoundDatePipe]
 })

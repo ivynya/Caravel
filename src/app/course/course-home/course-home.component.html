@@ -3,7 +3,7 @@
   <div class="title-row">
     <h1>{{ course?.name }}</h1>
     <ibm-overflow-menu [flip]="true" [offset]="{x:0,y:50}">
-      <ibm-overflow-menu-option>
+      <ibm-overflow-menu-option (selected)="setOpen()">
         <svg class="bx--btn__icon" ibmIcon="edit" size="16"></svg>
         Set Nickname
       </ibm-overflow-menu-option>
@@ -57,3 +57,23 @@
     <br><br>
   </ng-container>
 </section>
+
+<ibm-modal [open]="open" (overlaySelected)="open = false">
+  <ibm-modal-header (closeSelect)="open = false" [showCloseButton]="true">
+    <p class="bx--modal-header__label bx--type-delta">CE.500 NOT IMPLEMENTED</p>
+    <p class="bx--modal-header__heading bx--type-beta">Nickname this course</p>
+  </ibm-modal-header>
+  <div class="bx--modal-content">
+    <p>This nickname is only visible to you.</p>
+  </div>
+  <ibm-modal-footer>
+    <ng-container>
+      <button
+        ibmButton="primary"
+        (click)="open = false"
+        [attr.modal-primary-focus]="true">
+        Okay
+      </button>
+    </ng-container>
+  </ibm-modal-footer>
+</ibm-modal>

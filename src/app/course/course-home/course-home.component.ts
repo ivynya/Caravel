@@ -19,6 +19,8 @@ export class CourseHomeComponent implements OnInit {
   recent: Submission[];
   stream: PlannerItem[];
 
+  open = false;
+
   // Front page if using legacy home page
   frontPage: SafeHtml;
   extractedLinks: {title: string, href: string}[];
@@ -65,6 +67,10 @@ export class CourseHomeComponent implements OnInit {
   toggleRedesign(): void {
     this.useRedesign = !this.useRedesign;
     this.configService.set("canvas", "use_redesign", this.useRedesign);
+  }
+
+  setOpen(): void {
+    this.open = true;
   }
 
 }
