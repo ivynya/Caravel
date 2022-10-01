@@ -15,6 +15,8 @@ export class MapSubmitTypePipe implements PipeTransform {
         return 'File Upload';
       case 'media_recording':
         return 'Media Recording';
+      case 'external_tool':
+        return 'External Tool';
       default:
         return 'Unknown';
     }
