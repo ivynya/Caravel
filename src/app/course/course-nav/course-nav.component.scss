@@ -1,12 +1,14 @@
 
 .course-nav {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   row-gap: 1.5rem;
 
   height: max-content;
   margin-bottom: 2rem;
-  width: max-content;
+  margin-left: -5vw;
+  margin-right: 3rem;
+  width: 200px;
 
   overflow: hidden;
   position: relative;
@@ -21,27 +23,6 @@
 
   button {
     width: 100%;
-  }
-
-  @media (min-width: 512px) {
-    flex-direction: column;
-    margin-right: 3rem;
-    width: 50px;
-  }
-
-  @media (max-width: 1300px) and (min-width: 512px) {
-    &:hover {
-      width: 200px;
-      margin-right: calc(-150px + 3.5rem);
-  
-      a span {
-        display: unset;
-      }
-
-      svg {
-        margin-right: 10px;
-      }
-    }
   }
 
   @media (min-width: 1300px) {
