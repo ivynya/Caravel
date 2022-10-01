@@ -80,6 +80,22 @@
         </ng-container>
       </p>
     </div>
+    <div *ngSwitchCase="'planner_note'">
+      <h3><a (click)="openModal()">
+        {{ item.plannable.title }}
+      </a></h3>
+      <p class="subtext">
+        <svg *ngIf="isLocked"><use xlink:href="/assets/icons/icon.svg#locked"/></svg>
+        <span class="sm-show">{{ item.plannable.todo_date | date: "h:mm a"}}</span>
+        <span class="sm-hide">{{ item.plannable.todo_date | date: "E L/d h:mm a"}}</span>
+        <span class="separator"></span>
+        <span>Planner</span>
+        <ng-container *ngIf="showCourse">
+          <span class="separator"></span>
+          <span>{{ item.context_name || "Personal" }}</span>
+        </ng-container>
+      </p>
+    </div>
     <div *ngSwitchCase="'discussion_topic'">
       <h3><a [href]="item.html_url" target="_blank">
         {{ item.plannable.title }}
@@ -137,15 +153,21 @@
   </ng-container>
 </div>
 
-<ng-template #eventModal>
-  <p>Event: {{ item.context_name }}</p>
-  <h2>{{ item.plannable.title }}</h2>
-  <p *ngIf="item.plannable.description">
-    <b>Description:</b> {{ item.plannable.description }}
-  </p>
-  <p *ngIf="item.plannable.location_name" class="wrap">
-    <b>Location:</b> {{ item.plannable.location_name }}
-  </p>
-  <p><b>Start At:</b> {{ item.plannable.start_at | date: "E L/d h:mm a" }}</p>
-  <p><b>End At:</b> {{ item.plannable.end_at | date: "E L/d h:mm a" }}</p>
-</ng-template>
+<ibm-modal [open]="open" (overlaySelected)="open = false" size="xs">
+  <ibm-modal-header (closeSelect)="open = false" [showCloseButton]="true">
+    <p class="bx--modal-header__label bx--type-delta">Your To Do</p>
+    <p class="bx--modal-header__heading bx--type-beta">Event: {{ item.context_name || "Planner" }}</p>
+  </ibm-modal-header>
+  <div class="bx--modal-content">
+    <h5>{{ item.plannable.title }}</h5>
+    <p *ngIf="item.plannable.description">
+      <b>Description:</b> {{ item.plannable.description }}
+    </p>
+    <p *ngIf="item.plannable.location_name" class="wrap">
+      <b>Location:</b> {{ item.plannable.location_name }}
+    </p>
+    <p><b>Start At:</b> {{ item.plannable.start_at | date: "E L/d h:mm a" }}</p>
+    <p><b>End At:</b> {{ item.plannable.end_at | date: "E L/d h:mm a" }}</p>
+    <p><b>To Do:</b> {{ item.plannable.todo_date | date: "E L/d h:mm a" }}</p>
+  </div>
+</ibm-modal>
