@@ -11,6 +11,7 @@ export interface Assignment {
   has_overrides: boolean,
   course_id: number,
   html_url: string,
+  url: string,
   submissions_download_url: string,
   assignment_group_id: number,
   due_date_required: boolean,

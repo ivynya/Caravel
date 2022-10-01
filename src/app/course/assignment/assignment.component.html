@@ -28,8 +28,11 @@
     <p>Due: {{ assignment?.due_at | date: 'medium' }}</p>
   </div>
   <hr>
+  <br>
   <p *ngIf="this.assignment?.lock_explanation">{{ assignment?.lock_explanation }}</p>
   <div [innerHtml]="assignmentBody" class="xss-sanitize"></div>
+  <br>
+  <p><a ibmButton="primary" href="{{ ltiLauncher.url }}" target="_blank">Open {{ ltiLauncher.name }} in a new tab</a></p>
   <br><br>
   <div class="assignment-submitter" *ngIf="isAssignmentGraded">
     <div class="attempts">

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml, Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 
-import { Assignment, Course, Submission } from '../../core/schemas';
+import { Assignment, Course, SessionlessLaunch, Submission } from '../../core/schemas';
 import { AssignmentService, CourseService } from '../../core/services/canvas';
 
 @Component({
@@ -14,6 +14,8 @@ export class AssignmentComponent implements OnInit {
   assignment: Assignment;
   assignmentBody: SafeHtml;
   course: Course;
+
+  ltiLauncher: SessionlessLaunch // if external_tool & lti launch
 
   // True if possibility that assignment can be graded.
   isAssignmentGraded = true;
@@ -42,6 +44,13 @@ export class AssignmentComponent implements OnInit {
     this.assignmentBody = this.sanitizer.bypassSecurityTrustHtml(assignment.description);
     this.isAssignmentGraded = assignment.submission_types.join() !== 'not_graded';
     this.titleService.setTitle(`${assignment.name} | Caravel`);
+
+    // If LTI, generate link
+    if (assignment.url && assignment.external_tool_tag_attributes) {
+      this.courseService.getExternalSessionlessLaunch(cId, assignment.id, "assessment", res => {
+        this.ltiLauncher = res;
+      })
+    }
 
     // Get related course
     this.courseService.getCourse(cId, course => this.course = course);

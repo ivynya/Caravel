@@ -6,9 +6,10 @@ import { SharedModule } from '../../shared/shared.module';
 import { AssignmentComponent } from './assignment.component';
 import { SubmitterComponent } from './submitter/submitter.component';
 import { SubmissionComponent } from './submission/submission.component';
+import { ButtonModule } from 'carbon-components-angular';
 
 @NgModule({
   declarations: [AssignmentComponent, SubmitterComponent, SubmissionComponent],
-  imports: [CommonModule, CoreModule, SharedModule]
+  imports: [CommonModule, CoreModule, SharedModule, ButtonModule]
 })
 export class AssignmentModule {}

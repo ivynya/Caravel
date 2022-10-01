@@ -56,3 +56,9 @@ export interface ExternalTool {
   icon_url: string,
   not_selectable: boolean
 }
+
+export interface SessionlessLaunch {
+  id: string
+  name: string
+  url: string
+}

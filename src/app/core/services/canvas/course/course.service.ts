@@ -13,6 +13,7 @@ import {
   Module,
   ModuleItem,
   Page,
+  SessionlessLaunch,
   Submission
 } from '../../../schemas';
 
@@ -65,6 +66,18 @@ export class CourseService extends APIBaseService {
     this.xfetch<ExternalTool[]>(
         `${cId}/external_tools`, res => {callback(res.data)},
         { cacheShort: 360000000, cacheLong: 864000000 })
+      .catch(ex => console.error(ex));
+  }
+
+  getExternalSessionlessLaunch(cId: number, aId: number, type: string, callback: (data: SessionlessLaunch) => void): void {
+    const qp = {
+      assignment_id: aId.toString(),
+      launch_type: type
+    }
+    this.xfetch<SessionlessLaunch>(
+        `${cId}/external_tools/sessionless_launch`, res => {callback(res.data)},
+        { cacheShort: 0, cacheLong: 0,
+          params: new URLSearchParams(qp) })
       .catch(ex => console.error(ex));
   }
 
