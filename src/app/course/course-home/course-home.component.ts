@@ -44,7 +44,11 @@ export class CourseHomeComponent implements OnInit {
         this.nickname = course.name;
       });
       this.courseService.listCourseRecentSubmissions(params.id, data => {
-        this.recent = data.slice(0, 3);
+        data = data.slice(0, 3).map(s => {
+          if (s.graded_at) s.score = Math.round(s.score * 100)/100;
+          return { ...s };
+        });
+        this.recent = data;
       });
 
       // Get course stream (max 10 items or 7 days)
