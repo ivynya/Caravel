@@ -4,10 +4,8 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 
 import {
-  BrandBadgeComponent,
   DiscussionComponent,
   ExpandableComponent,
-  IconLTIComponent,
   ModuleComponent,
   ModalComponent,
   NotificationBannerComponent,
@@ -31,7 +29,6 @@ import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [
-    IconLTIComponent,
     PageNotFoundComponent,
     WebviewDirective,
     ModalComponent,
@@ -42,7 +39,6 @@ import { CoreModule } from '../core/core.module';
     ExpandableComponent,
     DiscussionComponent,
     OpenFromHereComponent,
-    BrandBadgeComponent,
     PublicLayoutComponent,
     PrivateLayoutComponent
   ],
@@ -62,7 +58,6 @@ import { CoreModule } from '../core/core.module';
     TranslateModule, 
     WebviewDirective, 
     FormsModule,
-    IconLTIComponent,
     ModalComponent,
     ModuleComponent,
     NotificationBannerComponent,
@@ -70,8 +65,7 @@ import { CoreModule } from '../core/core.module';
     ToggleComponent,
     ExpandableComponent,
     DiscussionComponent,
-    OpenFromHereComponent,
-    BrandBadgeComponent
+    OpenFromHereComponent
   ]
 })
 export class SharedModule {}
