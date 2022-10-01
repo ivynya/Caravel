@@ -60,4 +60,21 @@ export class UserService extends APIBaseService {
       .catch(ex => console.error(ex));
   }
 
+  setCourseNickname(cId: number, nickname: string, callback: (data: any) => void): void {
+    this.xfetch<any>(
+        `self/course_nicknames/${cId}`,
+        res => { callback(res.data) },
+        { method: "PUT",
+          params: new URLSearchParams({ nickname }) })
+      .catch(ex => console.error(ex));
+  }
+
+  deleteCourseNickname(cId: number, callback: (data: any) => void): void {
+    this.xfetch<any>(
+        `self/course_nicknames/${cId}`,
+        res => { callback(res.data) },
+        { method: "DELETE" })
+      .catch(ex => console.error(ex));
+  }
+
 }

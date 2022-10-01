@@ -31,9 +31,12 @@ export class CacheService {
   }
 
   // Clear storage's cache only. Return KB freed.
-  clear(): number {
+  // Optional: Clear a specific key
+  clear(scope = "", endpoint = ""): number {
     let bytesFreed = this.storage.getSize();
     for (const key in this.storage.lstore) {
+      if (scope && endpoint && key === `.${scope}.${endpoint}`) {
+        this.storage.remove(key); return; }
       if (key.startsWith('.')) this.storage.remove(key);
     }
     bytesFreed -= this.storage.getSize();

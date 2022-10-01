@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 
-import { ConfigurationService } from '../../core/services';
+import { CacheService, ConfigurationService } from '../../core/services';
 import { CourseService, UserService } from '../../core/services/canvas';
 import { Course, PlannerItem, Submission } from '../../core/schemas';
 
@@ -27,7 +27,8 @@ export class CourseHomeComponent implements OnInit {
 
   // Quick access links and helpers
 
-  constructor(private configService: ConfigurationService,
+  constructor(private cacheService: CacheService,
+              private configService: ConfigurationService,
               private courseService: CourseService,
               private roundDate: RoundDatePipe,
               private route: ActivatedRoute,
@@ -38,7 +39,10 @@ export class CourseHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.courseService.getCourse(params.id, course => this.course = course);
+      this.courseService.getCourse(params.id, course => {
+        this.course = course;
+        this.nickname = course.name;
+      });
       this.courseService.listCourseRecentSubmissions(params.id, data => {
         this.recent = data.slice(0, 3);
       });
@@ -74,6 +78,24 @@ export class CourseHomeComponent implements OnInit {
             return l;
           });
       });
+    });
+  }
+
+  // Updates course nickname and updates UI
+  nickname: string;
+  setNickname(): void {
+    this.userService.setCourseNickname(this.course.id, this.nickname || this.course.name, () => {
+      this.cacheService.clear("courses", `${this.course.id}`); // clear this page cache
+      this.cacheService.clear("courses", `enrollment.state.active`); // clear navbar cache
+      this.courseService.getCourse(this.course.id, course => this.course = course);
+    });
+  }
+
+  deleteNickname(): void {
+    this.userService.deleteCourseNickname(this.course.id, () => {
+      this.cacheService.clear("courses", `${this.course.id}`); // clear this page cache
+      this.cacheService.clear("courses", `enrollment.state.active`); // clear navbar cache
+      this.courseService.getCourse(this.course.id, course => this.course = course);
     });
   }
 

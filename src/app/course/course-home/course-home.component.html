@@ -7,7 +7,7 @@
         <svg class="bx--btn__icon" ibmIcon="edit" size="16"></svg>
         Edit Nickname
       </ibm-overflow-menu-option>
-      <ibm-overflow-menu-option (selected)="setOpen()">
+      <ibm-overflow-menu-option [disabled]="true">
         <svg class="bx--btn__icon" ibmIcon="edit" size="16"></svg>
         Edit Shortcuts
       </ibm-overflow-menu-option>
@@ -62,21 +62,32 @@
   </ng-container>
 </section>
 
-<ibm-modal [open]="open" (overlaySelected)="open = false">
+<ibm-modal [open]="open" (overlaySelected)="open = false" size="sm">
   <ibm-modal-header (closeSelect)="open = false" [showCloseButton]="true">
-    <p class="bx--modal-header__label bx--type-delta">CE.500 NOT IMPLEMENTED</p>
+    <p class="bx--modal-header__label bx--type-delta">Edit Course</p>
     <p class="bx--modal-header__heading bx--type-beta">Nickname this course</p>
   </ibm-modal-header>
   <div class="bx--modal-content">
     <p>This nickname is only visible to you.</p>
+    <br>
+    <ibm-label>
+      Course Nickname
+      <input ibmText type="text" [(ngModel)]="nickname">
+    </ibm-label>
   </div>
   <ibm-modal-footer>
     <ng-container>
       <button
-        ibmButton="primary"
-        (click)="open = false"
+        ibmButton="danger"
+        (click)="deleteNickname(); open = false"
         [attr.modal-primary-focus]="true">
-        Okay
+        Delete Nickname
+      </button>
+      <button
+        ibmButton="primary"
+        (click)="setNickname(); open = false"
+        [attr.modal-primary-focus]="true">
+        Set Nickname
       </button>
     </ng-container>
   </ibm-modal-footer>
