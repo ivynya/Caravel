@@ -1,9 +1,12 @@
 import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { IconService } from 'carbon-components-angular';
 
 import { Course, ExternalTool, Shortcut } from '../../core/schemas';
 import { NotificationService, ShortcutService } from '../../core/services';
 import { CourseService } from '../../core/services/canvas';
+
+import { Bullhorn16, Home16, Idea16, Launch16, Link16, Overlay16, Pen16 } from "@carbon/icons";
 
 @Component({
   selector: 'course-nav',
@@ -23,11 +26,14 @@ export class CourseNavComponent implements OnInit {
   createQAFormName: string;
 
   constructor(private courseService: CourseService,
+              private iconService: IconService,
               private location: Location,
               private notificationService: NotificationService,
               private shortcutService: ShortcutService) { }
 
   ngOnInit(): void {
+    this.iconService.registerAll([Bullhorn16, Home16, Idea16, Launch16, Link16, Overlay16, Pen16]);
+
     this.courseService.listExternalTools(this.course.id, data => this.tools = data);
     this.shortcuts = this.shortcutService.listCourseShortcuts(this.course.id);
 

@@ -2,19 +2,19 @@
 <div class="course-nav">
   <ul>
     <ibm-sidenav-item [active]="url === ''" [routerLink]="['/courses/', course.id]">
-      <svg ibmIcon="fade" size="16"></svg>
+      <svg ibmIcon="home" size="16"></svg>
       Course Home
     </ibm-sidenav-item>
     <ibm-sidenav-item [active]="url === '/announcements'" [routerLink]="['/courses/', course.id, 'announcements']">
-      <svg ibmIcon="fade" size="16"></svg>
+      <svg ibmIcon="bullhorn" size="16"></svg>
       Announcements
     </ibm-sidenav-item>
     <ibm-sidenav-item [active]="url === '/assignments'" [routerLink]="['/courses/', course.id, 'assignments']">
-      <svg ibmIcon="fade" size="16"></svg>
+      <svg ibmIcon="pen" size="16"></svg>
       Assignments
     </ibm-sidenav-item>
     <ibm-sidenav-item [active]="url === '/discussions'" [routerLink]="['/courses/', course.id, 'discussions']">
-      <svg ibmIcon="fade" size="16"></svg>
+      <svg ibmIcon="idea" size="16"></svg>
       Discussions
     </ibm-sidenav-item>
     <ibm-sidenav-item [active]="url === '/grades'" [routerLink]="['/courses/', course.id, 'grades']">
@@ -22,21 +22,21 @@
       Grades
     </ibm-sidenav-item>
     <ibm-sidenav-item [active]="url === '/modules'"[routerLink]="['/courses/', course.id, 'modules']">
-      <svg ibmIcon="fade" size="16"></svg>
+      <svg ibmIcon="overlay" size="16"></svg>
       Modules
     </ibm-sidenav-item>
   </ul>
   <ul>
     <ibm-sidenav-item *ngFor="let lti of tools">
-      <svg ibmIcon="fade" size="16"></svg>
+      <svg ibmIcon="launch" size="16"></svg>
       {{lti.name}}
     </ibm-sidenav-item>
     <ibm-sidenav-item *ngFor="let sc of shortcuts" [href]="sc.url">
-      <svg ibmIcon="fade" size="16"></svg>
+      <svg ibmIcon="link" size="16"></svg>
       {{sc.name}}
     </ibm-sidenav-item>
     <button ibmButton="ghost" size="field" (click)="openAddShortcutModal()">
-      Add Shortcut<svg class="bx--btn__icon" ibmIcon="fade" size="16"></svg>
+      Add Shortcut<svg class="bx--btn__icon" ibmIcon="link" size="16"></svg>
     </button>
   </ul>
 </div>
