@@ -1,9 +1,8 @@
 import { Location } from '@angular/common';
-import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { Course, ExternalTool, Shortcut } from '../../core/schemas';
-import { ModalService, NotificationService, ShortcutService } from '../../core/services';
+import { NotificationService, ShortcutService } from '../../core/services';
 import { CourseService } from '../../core/services/canvas';
 
 @Component({
@@ -19,14 +18,12 @@ export class CourseNavComponent implements OnInit {
   url: string = "";
 
   // Shortcut add helper
-  @ViewChild('addQuickAccessModal') template: TemplateRef<any>;
+  showAddShortcutModal = false;
   createQAFormURL: string;
   createQAFormName: string;
-  createQAFormError: string;
 
   constructor(private courseService: CourseService,
               private location: Location,
-              private modalService: ModalService,
               private notificationService: NotificationService,
               private shortcutService: ShortcutService) { }
 
@@ -45,14 +42,14 @@ export class CourseNavComponent implements OnInit {
   }
 
   // Open modal to add a quick access item
-  openAddQuickAccessModal(): void {
-    this.modalService.openModal(this.template);
+  openAddShortcutModal(): void {
+    this.showAddShortcutModal = true;
   }
 
   // Save new QA Link and close the modal
   addQuickAccessItem(): void {
     if (!this.createQAFormURL || !this.createQAFormName) {
-      this.createQAFormError = "Please fill in both fields.";
+      this.notificationService.notify("Error creating shortcut - please fill in both fields.", 0);
       return;
     }
     
@@ -61,9 +58,7 @@ export class CourseNavComponent implements OnInit {
 
     this.createQAFormName = null;
     this.createQAFormURL = null;
-    this.createQAFormError = null;
 
-    this.modalService.closeModal();
     this.notificationService.notify("Created shortcut.", 2);
   }
 
