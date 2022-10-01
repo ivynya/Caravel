@@ -1,9 +1,8 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import {
   CacheService,
   ConfigurationService,
-  ModalService,
   NotificationService,
   StorageService
 } from '../core/services';
@@ -26,12 +25,11 @@ export class AccountComponent implements OnInit {
   configuration: Configuration;
   storageUsed: number; // in KB
 
-  @ViewChild('mobileAuthorizer') template?: TemplateRef<any>;
+  showMobileAuthorizer = false;
   
   constructor(private cacheService: CacheService,
               private configService: ConfigurationService,
               private iconService: IconService,
-              private modalService: ModalService,
               private notifService: NotificationService,
               private storageService: StorageService,
               private userService: UserService) { }
@@ -46,7 +44,7 @@ export class AccountComponent implements OnInit {
   openAuthorizer(): void {
     const token = this.storageService.get("oauth_token");
     this.mobileAuthUrl = `https://caravel.sdbagel.com/auth/${token}`;
-    this.modalService.openModal(this.template);
+    this.showMobileAuthorizer = true;
   }
 
   // Clear all user cache. Does not sign user out.
