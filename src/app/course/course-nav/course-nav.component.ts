@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { IconService } from 'carbon-components-angular';
 
@@ -26,6 +27,7 @@ export class CourseNavComponent implements OnInit, OnChanges {
 
   constructor(private courseService: CourseService,
               private iconService: IconService,
+              private location: Location,
               private notificationService: NotificationService,
               private shortcutService: ShortcutService) { }
 
@@ -37,6 +39,10 @@ export class CourseNavComponent implements OnInit, OnChanges {
 
     this.shortcutService.shortcuts.subscribe(shortcuts => {
       this.shortcuts = shortcuts[this.course.id];
+    });
+
+    this.location.onUrlChange(url => {
+      this.url = url.replace(`/courses/${this.course.id}`, "");
     });
   }
 

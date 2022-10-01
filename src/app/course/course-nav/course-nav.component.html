@@ -5,23 +5,23 @@
       <svg ibmIcon="home" size="16"></svg>
       Course Home
     </ibm-sidenav-item>
-    <ibm-sidenav-item [active]="url === '/announcements'" [routerLink]="['/courses/', course.id, 'announcements']">
+    <ibm-sidenav-item [active]="url.startsWith('/announcements')" [routerLink]="['/courses/', course.id, 'announcements']">
       <svg ibmIcon="bullhorn" size="16"></svg>
       Announcements
     </ibm-sidenav-item>
-    <ibm-sidenav-item [active]="url === '/assignments'" [routerLink]="['/courses/', course.id, 'assignments']">
+    <ibm-sidenav-item [active]="url.startsWith('/assignments')" [routerLink]="['/courses/', course.id, 'assignments']">
       <svg ibmIcon="pen" size="16"></svg>
       Assignments
     </ibm-sidenav-item>
-    <ibm-sidenav-item [active]="url === '/discussions'" [routerLink]="['/courses/', course.id, 'discussions']">
+    <ibm-sidenav-item [active]="url.startsWith('/discussions')" [routerLink]="['/courses/', course.id, 'discussions']">
       <svg ibmIcon="idea" size="16"></svg>
       Discussions
     </ibm-sidenav-item>
-    <ibm-sidenav-item [active]="url === '/grades'" [routerLink]="['/courses/', course.id, 'grades']">
+    <ibm-sidenav-item [active]="url.startsWith('/grades')" [routerLink]="['/courses/', course.id, 'grades']">
       <svg ibmIcon="fade" size="16"></svg>
       Grades
     </ibm-sidenav-item>
-    <ibm-sidenav-item [active]="url === '/modules'"[routerLink]="['/courses/', course.id, 'modules']">
+    <ibm-sidenav-item [active]="url.startsWith('/modules')"[routerLink]="['/courses/', course.id, 'modules']">
       <svg ibmIcon="overlay" size="16"></svg>
       Modules
     </ibm-sidenav-item>
