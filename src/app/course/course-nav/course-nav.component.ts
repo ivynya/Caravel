@@ -1,5 +1,4 @@
-import { Location } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { IconService } from 'carbon-components-angular';
 
 import { Course, ExternalTool, Shortcut } from '../../core/schemas';
@@ -13,7 +12,7 @@ import { Bullhorn16, Home16, Idea16, Launch16, Link16, Overlay16, Pen16 } from "
   templateUrl: './course-nav.component.html',
   styleUrls: ['./course-nav.component.scss']
 })
-export class CourseNavComponent implements OnInit {
+export class CourseNavComponent implements OnInit, OnChanges {
   @Input() course: Course;
   shortcuts: Shortcut[];
   tools: ExternalTool[];
@@ -27,7 +26,6 @@ export class CourseNavComponent implements OnInit {
 
   constructor(private courseService: CourseService,
               private iconService: IconService,
-              private location: Location,
               private notificationService: NotificationService,
               private shortcutService: ShortcutService) { }
 
@@ -40,11 +38,12 @@ export class CourseNavComponent implements OnInit {
     this.shortcutService.shortcuts.subscribe(shortcuts => {
       this.shortcuts = shortcuts[this.course.id];
     });
+  }
 
-    // "" for home, "/announcements", etc...
-    this.location.onUrlChange(url => {
-      this.url = url.replace(`/courses/${this.course.id}`, "");
-    });
+  ngOnChanges(): void {
+    this.url = window.location.pathname.replace(`/courses/${this.course.id}`, "");
+    this.courseService.listExternalTools(this.course.id, data => this.tools = data);
+    this.shortcuts = this.shortcutService.listCourseShortcuts(this.course.id);
   }
 
   // Open modal to add a quick access item
