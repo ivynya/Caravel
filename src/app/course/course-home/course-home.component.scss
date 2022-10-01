@@ -13,6 +13,7 @@
 
 .recent-item-bar {
   display: flex;
+  column-gap: 0.25rem;
 
   margin-top: 0.75rem;
   margin-bottom: 2rem;
@@ -69,10 +70,6 @@
       position: absolute;
       bottom: 1rem;
       right: 1rem;
-    }
-
-    &:not(:last-child) {
-      margin-right: 0.75rem;
     }
   }
 }
