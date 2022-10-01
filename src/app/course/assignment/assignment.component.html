@@ -35,24 +35,21 @@
   <p><a ibmButton="primary" href="{{ ltiLauncher.url }}" target="_blank">Open {{ ltiLauncher.name }} in a new tab</a></p>
   <br><br>
   <div class="assignment-submitter" *ngIf="isAssignmentGraded">
-    <div class="attempts">
-      <button [ngClass]="{'active': isFocusSubmission}" (click)="focusSubmission(true)">
+    <ibm-tab-header-group type="container" [followFocus]="true" [cacheActive]="true" [isNavigation]="false">
+      <ibm-tab-header [paneReference]="submission">
         Latest Submission ({{ latestSubmission?.attempt }})
-      </button>
-      <button [ngClass]="{'active': !isFocusSubmission}" (click)="focusSubmission(false)">
+      </ibm-tab-header>
+      <ibm-tab-header [paneReference]="submitter">
         New Submission
-      </button>
-    </div>
-    <hr>
-    <div class="submitter">
-      <assignment-submission 
-        *ngIf="isFocusSubmission" 
-        [submission]="latestSubmission">
-      </assignment-submission>
-      <assignment-submitter 
-        *ngIf="!isFocusSubmission"
-        [assignment]="assignment">
-      </assignment-submitter>
-    </div>
+      </ibm-tab-header>
+    </ibm-tab-header-group>
+    <ibm-tile>
+      <ibm-tab #submission>
+        <assignment-submission [submission]="latestSubmission"></assignment-submission>
+      </ibm-tab>
+      <ibm-tab #submitter>
+        <assignment-submitter [assignment]="assignment"></assignment-submitter>
+      </ibm-tab>
+    </ibm-tile>
   </div>
 </section>

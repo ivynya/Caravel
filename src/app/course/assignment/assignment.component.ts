@@ -22,7 +22,6 @@ export class AssignmentComponent implements OnInit {
 
   latestSubmission: Submission;
   unlimitedAttempts: boolean;
-  isFocusSubmission = true;
 
   constructor(private assignmentService: AssignmentService,
               private courseService: CourseService,
@@ -60,18 +59,11 @@ export class AssignmentComponent implements OnInit {
       // TODO: Refactor to Submissions API
       this.assignmentService.getLatestSubmission(cId, assignment.id, s => {
         this.latestSubmission = s;
-        
-        // If no submission, remove viewing option
-        if (!s.submitted_at) this.isFocusSubmission = false;
       });
   
       // -1 attempts denotes unlimited submissions possible.
       this.unlimitedAttempts = assignment.allowed_attempts === -1;
     }
-  }
-
-  focusSubmission(t: boolean): void {
-    this.isFocusSubmission = t;
   }
 
 }
