@@ -17,3 +17,19 @@ main {
   height: 20px;
   width: 20px;
 }
+
+.update-info {
+  .stage {
+    color: var(--warning);
+  }
+
+  ul {
+    font-size: 0.9rem;
+    margin: 3px 0;
+    padding-left: 10px;
+
+    li p {
+      margin: 2px 0;
+    }
+  }
+}
