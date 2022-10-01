@@ -1,18 +1,29 @@
 
 {
-  "version": "0.6.0",
+  "version": "0.6.0-rc.1",
 	"previous": "0.5.8",
 	"requiresRefresh": false,
   "updateInfo": [
     {
-      "title": "Data-Driven",
-      "desc": "Changelog TBA"
+      "title": "Using IBM Carbon",
+      "desc": "Caravel now uses IBM Carbon, a data-driven & open-source user interface framework."
+    },
+    {
+      "title": "Nickname Courses",
+      "desc": "On the course homepage, use the new overflow menu (top right) to nickname your courses."
+    },
+    {
+      "title": "Visual Acuity",
+      "desc": "Change your app accent color without changing your whole theme."
     },
 		{
-			"title": "Visual Overhaul",
+			"title": "Quality of Life",
 			"desc": "",
 			"features": [
-				"a"
+				"Open unloadable resources in a new tab with new prompt",
+				"Links from Canvas home pages will be extracted in the redesign",
+				"Dashboard now has a date range picker to load assignments",
+				"Until supported, discussions now link to Canvas"
 			]
 		}
   ]

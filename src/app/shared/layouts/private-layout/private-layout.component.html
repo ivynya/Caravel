@@ -25,17 +25,35 @@
   <app-modal></app-modal>
 </main>
 
-<ng-template #whatsNew>
-  <app-brand-badge></app-brand-badge>
-  <h3>version update v{{ appInfo.version }}</h3>
-  <div *ngFor="let item of appInfo.updateInfo" class="update-info">
-    <h4 class="title">
-      <span>{{ item.title }}</span>
-      <span *ngIf="item.stage" class="stage"> | {{ item.stage}}</span>
-    </h4>
-    <p class="desc">{{ item.desc }}</p>
-    <ul><li *ngFor="let feature of item.features">
-      <p>{{ feature }}</p>
-    </li></ul>
+<ibm-modal [open]="showWhatsNew" (overlaySelected)="showWhatsNew = false" size="xs">
+  <ibm-modal-header (closeSelect)="showWhatsNew = false" [showCloseButton]="true">
+    <p class="bx--modal-header__label bx--type-delta">Updated from v{{ appInfo.previous }} to v{{ appInfo.version}}</p>
+    <p class="bx--modal-header__heading bx--type-beta">
+      <img class="logo" src="/assets/icons/favicon.png" alt="">
+      Caravel v{{ appInfo.version }}
+    </p>
+  </ibm-modal-header>
+  <div class="bx--modal-content">
+    <div *ngFor="let item of appInfo.updateInfo" class="update-info">
+      <h5 class="title">
+        <span>{{ item.title }}</span>
+        <span *ngIf="item.stage" class="stage"> | {{ item.stage}}</span>
+      </h5>
+      <p class="desc">{{ item.desc }}</p>
+      <ul><li *ngFor="let feature of item.features">
+        <p>{{ feature }}</p>
+      </li></ul>
+      <br>
+    </div>
   </div>
-</ng-template>
+  <ibm-modal-footer>
+    <ng-container>
+      <button
+        ibmButton="primary"
+        (click)="showWhatsNew = false"
+        [attr.modal-primary-focus]="true">
+        Okay!
+      </button>
+    </ng-container>
+  </ibm-modal-footer>
+</ibm-modal>

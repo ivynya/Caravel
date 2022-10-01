@@ -1,10 +1,10 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
 import { AppInfo, Course } from '../../../core/schemas';
 
-import { ConfigurationService, ModalService, StorageService } from '../../../core/services';
+import { ConfigurationService, StorageService } from '../../../core/services';
 import { CourseService } from '../../../core/services/canvas';
 
 @Component({
@@ -13,16 +13,15 @@ import { CourseService } from '../../../core/services/canvas';
   styleUrls: ['./private-layout.component.scss']
 })
 export class PrivateLayoutComponent implements OnInit {
-  @ViewChild('whatsNew') template: TemplateRef<any>;
   isLoaded = false;
   appInfo: AppInfo;
+  showWhatsNew = false;
 
   courses: Course[];
 
   constructor(private activatedRoute: ActivatedRoute,
               private configService: ConfigurationService,
               private courseService: CourseService,
-              private modal: ModalService,
               private router: Router,
               private storageService: StorageService,
               private translate: TranslateService) {
@@ -34,8 +33,7 @@ export class PrivateLayoutComponent implements OnInit {
     this.configService.updateApp()
       .then(didUpdate => {
         this.appInfo = this.configService.getAppInfo();
-        if (didUpdate)
-          setTimeout(() => this.modal.openModal(this.template), 500);
+        if (didUpdate) this.showWhatsNew = true;
       })
       .then(() => { this.isLoaded = true; });
 
