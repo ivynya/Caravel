@@ -7,7 +7,6 @@ import {
   DiscussionComponent,
   ExpandableComponent,
   ModuleComponent,
-  ModalComponent,
   NotificationBannerComponent,
   OpenFromHereComponent,
   PageNotFoundComponent,
@@ -31,7 +30,6 @@ import { CoreModule } from '../core/core.module';
   declarations: [
     PageNotFoundComponent,
     WebviewDirective,
-    ModalComponent,
     ModuleComponent,
     NotificationBannerComponent,
     TodoComponent,
@@ -58,7 +56,6 @@ import { CoreModule } from '../core/core.module';
     TranslateModule, 
     WebviewDirective, 
     FormsModule,
-    ModalComponent,
     ModuleComponent,
     NotificationBannerComponent,
     TodoComponent,

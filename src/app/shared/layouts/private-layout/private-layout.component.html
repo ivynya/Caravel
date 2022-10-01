@@ -18,11 +18,8 @@
   </ibm-header-global>
 </ibm-header>
 <main class="app" *ngIf="isLoaded">
-  <div class="app-content">
-    <app-notification-banner></app-notification-banner>
-    <router-outlet></router-outlet>
-  </div>
-  <app-modal></app-modal>
+  <app-notification-banner></app-notification-banner>
+  <router-outlet></router-outlet>
 </main>
 
 <ibm-modal [open]="showWhatsNew" (overlaySelected)="showWhatsNew = false" size="xs">
