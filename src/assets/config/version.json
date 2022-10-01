@@ -6,7 +6,10 @@
   "updateInfo": [
     {
       "title": "Using IBM Carbon",
-      "desc": "Caravel now uses IBM Carbon, a data-driven & open-source user interface framework."
+      "desc": "Caravel now uses IBM Carbon, a data-driven & open-source user interface framework.",
+			"features": [
+				"fix: Modal no longer flashes on page load"
+			]
     },
     {
       "title": "Nickname Courses",
@@ -20,6 +23,7 @@
 			"title": "Quality of Life",
 			"desc": "",
 			"features": [
+				"Page not found now prompts to open in Canvas",
 				"Open unloadable resources in a new tab with new prompt",
 				"Links from Canvas home pages will be extracted in the redesign",
 				"Dashboard now has a date range picker to load assignments",
