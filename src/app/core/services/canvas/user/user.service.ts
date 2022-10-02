@@ -7,7 +7,7 @@ import {
   NotificationService,
   StorageService
 } from '../../';
-import { PlannerItem, Profile } from '../../../schemas';
+import { Assignment, PlannerItem, Profile } from '../../../schemas';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,14 @@ export class UserService extends APIBaseService {
               cacheService: CacheService,
               configService: ConfigurationService) {
     super("users", storage, notifService, cacheService, configService);
+  }
+
+  // Lists assignments for user in a course
+  listAssignments(cId: number, callback: ResultHandler<Assignment[]>): void {
+    this.xfetch<Assignment[]>(
+        `self/courses/${cId}/assignments`, callback,
+        { cacheShort: 30000 })
+      .catch(ex => console.error(ex));
   }
 
   // Gets user planner items (assignments, events, etc.)

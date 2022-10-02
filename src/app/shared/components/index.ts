@@ -1,4 +1,5 @@
 
+export * from './assignment/assignment.component';
 export * from './discussion/discussion.component';
 export * from './expandable/expandable.component';
 export * from './module/module.component';

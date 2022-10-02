@@ -8,6 +8,7 @@ import { CourseComponent } from "./course.component";
 import { CourseAnnouncementComponent } from "./course-announcement/course-announcement.component";
 import { CourseAnnouncementsComponent } from "./course-announcements/course-announcements.component";
 import { AssignmentComponent } from "./assignment/assignment.component";
+import { CourseAssignmentsComponent } from "./course-assignments/course-assignments.component";
 import { CourseDiscussionsComponent } from "./course-discussions/course-discussions.component";
 import { CourseHomeComponent } from "./course-home/course-home.component";
 import { CourseModulesComponent } from "./course-modules/course-modules.component";
@@ -42,7 +43,7 @@ const routes: Routes = [
           },
           {
             path: "assignments",
-            component: PageNotFoundComponent,
+            component: CourseAssignmentsComponent,
           },
           {
             path: "assignments/:aId",

@@ -1,0 +1,11 @@
+
+<section>
+  <h1>{{ course?.name }}: Assignments</h1>
+  <hr>
+  <app-assignment
+    *ngFor="let assignment of assignments"
+    [course]="course"
+    [item]="assignment">
+  </app-assignment>
+  <br><br>
+</section>

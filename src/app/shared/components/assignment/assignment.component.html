@@ -1,0 +1,21 @@
+
+<div class="assignment">
+  <div>
+    <h3>
+      <a [routerLink]="['/courses', course.id, 'assignments', item.id]">
+      {{ item.name }}
+      </a>
+    </h3>
+    <p class="subtext">
+      <svg *ngIf="isLocked"><use xlink:href="/assets/icons/icon.svg#locked"/></svg>
+      <span class="sm-show">{{ item.due_at | date: "h:mm a"}}</span>
+      <span class="sm-hide">{{ item.due_at | date: "E L/d h:mm a"}}</span>
+      <span class="separator"></span>
+      <span>Assignment</span>
+      <ng-container *ngIf="item.points_possible">
+        <span class="separator"></span>
+        <span>{{ item.points_possible }}pts</span>
+      </ng-container>
+    </p>
+  </div>
+</div>

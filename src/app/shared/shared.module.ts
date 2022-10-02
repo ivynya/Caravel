@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 
 import {
+  AssignmentComponent,
   DiscussionComponent,
   ExpandableComponent,
   ModuleComponent,
@@ -35,6 +36,7 @@ import { CoreModule } from '../core/core.module';
     TodoComponent,
     ToggleComponent,
     ExpandableComponent,
+    AssignmentComponent,
     DiscussionComponent,
     OpenFromHereComponent,
     PublicLayoutComponent,
@@ -61,6 +63,7 @@ import { CoreModule } from '../core/core.module';
     TodoComponent,
     ToggleComponent,
     ExpandableComponent,
+    AssignmentComponent,
     DiscussionComponent,
     OpenFromHereComponent
   ]

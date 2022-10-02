@@ -17,6 +17,7 @@ import { CourseAnnouncementsComponent } from './course-announcements/course-anno
 import { CourseDiscussionsComponent } from './course-discussions/course-discussions.component';
 import { BreadcrumbModule, ButtonModule, DialogModule, IconModule, InputModule, ModalModule, SideNavModule, TilesModule } from 'carbon-components-angular';
 import { CoursesComponent } from './courses/courses.component';
+import { CourseAssignmentsComponent } from './course-assignments/course-assignments.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { CoursesComponent } from './courses/courses.component';
     CoursePageComponent,
     CourseAnnouncementComponent,
     CourseAnnouncementsComponent,
+    CourseAssignmentsComponent,
     CourseDiscussionsComponent
   ],
   imports: [
