@@ -7,7 +7,7 @@ import { CourseComponent } from './course.component';
 import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
 
-import { RoundDatePipe } from '../core/pipes';
+import { ConvertUrlPipe, RoundDatePipe } from '../core/pipes';
 import { CourseNavComponent } from './course-nav/course-nav.component';
 import { CourseHomeComponent } from './course-home/course-home.component';
 import { CourseModulesComponent } from './course-modules/course-modules.component';
@@ -46,6 +46,6 @@ import { CourseAssignmentsComponent } from './course-assignments/course-assignme
     ModalModule,
     InputModule
   ],
-  providers: [RoundDatePipe]
+  providers: [ConvertUrlPipe, RoundDatePipe]
 })
 export class CourseModule {}

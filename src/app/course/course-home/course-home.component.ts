@@ -6,7 +6,7 @@ import { CacheService, ConfigurationService } from '../../core/services';
 import { CourseService, UserService } from '../../core/services/canvas';
 import { Course, PlannerItem, Submission } from '../../core/schemas';
 
-import { RoundDatePipe } from '../../core/pipes';
+import { ConvertUrlPipe, RoundDatePipe } from '../../core/pipes';
 @Component({
   selector: 'app-course-home',
   templateUrl: './course-home.component.html',
@@ -30,6 +30,7 @@ export class CourseHomeComponent implements OnInit {
   constructor(private cacheService: CacheService,
               private configService: ConfigurationService,
               private courseService: CourseService,
+              private convertUrl: ConvertUrlPipe,
               private roundDate: RoundDatePipe,
               private route: ActivatedRoute,
               private sanitizer: DomSanitizer,
@@ -74,11 +75,9 @@ export class CourseHomeComponent implements OnInit {
             }
           })
           .map(l => {
-            const institutionURL = this.configService.get<string>("canvas", "domain").value;
-            if (l.href.includes(`https://${institutionURL}`)) {
-              l.href = l.href.replace(`https://${institutionURL}`, "");
-              l.target = "_self";
-            }
+            const transform = this.convertUrl.transform(l.href);
+            if (transform !== l.href) l.target = "_self";
+            l.href = transform;
             return l;
           });
       });
