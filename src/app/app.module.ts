@@ -19,6 +19,7 @@ import { AccountModule } from './account/account.module';
 import { AssignmentModule } from './course/assignment/assignment.module';
 import { CourseModule } from './course/course.module';
 import { HomeModule } from './home/home.module';
+import { InboxModule } from './inbox/inbox.module';
 import { IndexModule } from './index/index.module';
 
 import { AppComponent } from './app.component';
@@ -43,6 +44,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     AssignmentModule,
     CourseModule,
     HomeModule,
+    InboxModule,
     IndexModule,
     AppRoutingModule,
     TranslateModule.forRoot({
