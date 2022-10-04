@@ -1,51 +1,51 @@
-
 ::selection {
-  background-color: var(--accent-primary);
+	background-color: var(--accent-primary);
 }
 
 ::-webkit-scrollbar {
-  height: 6px;
-  width: 6px;
+	height: 6px;
+	width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: var(--scrollbar-track);
-  border-radius: 2px;
+	background-color: var(--scrollbar-track);
+	border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar-thumb);
-  border-radius: 2px;
+	background-color: var(--scrollbar-thumb);
+	border-radius: 2px;
 }
 
-html, body {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  
-  margin: 0;
-  padding: 0;
+html,
+body {
+	background-color: var(--bg-primary);
+	color: var(--text-primary);
 
-  font-size: 14px;
+	margin: 0;
+	padding: 0;
 
-  transition-duration: 0.3s;
+	font-size: 14px;
+
+	transition-duration: 0.3s;
 }
 
 a {
-  color: var(--accent-primary);
+	color: var(--accent-primary);
 }
 
 .spacer {
-  flex: 1 1;
+	flex: 1 1;
 }
 
 @media (max-width: 512px) {
-  .sm-hide {
-    display: none;
-  }
+	.sm-hide {
+		display: none;
+	}
 }
 
 @media (min-width: 512px) {
-  .sm-show {
-    display: none;
-  }
+	.sm-show {
+		display: none;
+	}
 }

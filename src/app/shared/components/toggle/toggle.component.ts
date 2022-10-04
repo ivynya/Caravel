@@ -1,19 +1,18 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
-  selector: 'app-toggle',
-  templateUrl: './toggle.component.html',
-  styleUrls: ['./toggle.component.scss']
+	selector: "app-toggle",
+	templateUrl: "./toggle.component.html",
+	styleUrls: ["./toggle.component.scss"],
 })
 export class ToggleComponent {
-  @Input() value: boolean;
-  @Output() valueChange = new EventEmitter<boolean>();
+	@Input() value: boolean;
+	@Output() valueChange = new EventEmitter<boolean>();
 
-  constructor() { }
+	constructor() {}
 
-  change(newVal: boolean): void {
-    this.value = newVal;
-    this.valueChange.emit(this.value);
-  }
-
+	change(newVal: boolean): void {
+		this.value = newVal;
+		this.valueChange.emit(this.value);
+	}
 }

@@ -1,99 +1,99 @@
-
 .title-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 
-  h1 {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+	h1 {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
 }
 
 .recent-item-bar {
-  display: flex;
-  column-gap: 0.25rem;
+	display: flex;
+	column-gap: 0.25rem;
 
-  margin-top: 0.75rem;
-  margin-bottom: 2rem;
-  padding-bottom: 0.75rem;
-  width: 100%;
+	margin-top: 0.75rem;
+	margin-bottom: 2rem;
+	padding-bottom: 0.75rem;
+	width: 100%;
 
-  overflow: auto;
+	overflow: auto;
 
-  > * {
-    display: flex;
-    flex-direction: column;
+	> * {
+		display: flex;
+		flex-direction: column;
 
-    flex: 1 1;
-    min-height: 80px;
-    min-width: 180px;
+		flex: 1 1;
+		min-height: 80px;
+		min-width: 180px;
 
-    position: relative;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    transition-duration: 0.5s;
-    transition-delay: 0.1s;
+		position: relative;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		transition-duration: 0.5s;
+		transition-delay: 0.1s;
 
-    h5, p {
-      margin: 0;
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
+		h5,
+		p {
+			margin: 0;
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
 
-    em {
-      display: flex;
-      justify-content: space-between;
-      margin: 3px 0;
-      font-size: 0.9rem;
+		em {
+			display: flex;
+			justify-content: space-between;
+			margin: 3px 0;
+			font-size: 0.9rem;
 
-      .late {
-        color: var(--error);
-      }
-    }
+			.late {
+				color: var(--error);
+			}
+		}
 
-    blockquote {
-      border-left: var(--accent-primary) 2px solid;
-      margin: 0;
-      margin-top: 10px;
-      padding-left: 10px;
-      font-size: 0.9rem;
-      max-width: 100%;
-      
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
+		blockquote {
+			border-left: var(--accent-primary) 2px solid;
+			margin: 0;
+			margin-top: 10px;
+			padding-left: 10px;
+			font-size: 0.9rem;
+			max-width: 100%;
 
-    svg {
-      position: absolute;
-      bottom: 1rem;
-      right: 1rem;
-    }
-  }
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
+
+		svg {
+			position: absolute;
+			bottom: 1rem;
+			right: 1rem;
+		}
+	}
 }
 
 h2 {
-  font-size: 1.25rem;
-  font-weight: normal;
-  text-transform: uppercase;
+	font-size: 1.25rem;
+	font-weight: normal;
+	text-transform: uppercase;
 }
 
 .quick-access {
-  display: flex;
-  column-gap: 0.75rem;
-  row-gap: 0.75rem;
-  flex-wrap: wrap;
+	display: flex;
+	column-gap: 0.75rem;
+	row-gap: 0.75rem;
+	flex-wrap: wrap;
 
-  margin-top: 0.75rem;
-  margin-bottom: 1rem;
+	margin-top: 0.75rem;
+	margin-bottom: 1rem;
 
-  a {
-    min-width: 100px;
-  }
+	a {
+		min-width: 100px;
+	}
 }
 
 .error {
-  color: var(--error);
+	color: var(--error);
 }

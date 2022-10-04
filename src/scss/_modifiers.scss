@@ -1,46 +1,46 @@
-
 // Allow icons in overflow menu & fix centering
 button.bx--overflow-menu-options__btn {
-  display: block;
+	display: block;
 
-  div {
-    display: flex;
-    align-items: center;
-    column-gap: 0.75rem;
-  }
+	div {
+		display: flex;
+		align-items: center;
+		column-gap: 0.75rem;
+	}
 
-  svg {
-    min-width: 16px;
-  }
+	svg {
+		min-width: 16px;
+	}
 }
 
 // Reduce spacing in side menu icons
 .bx--side-nav__item .bx--side-nav__link {
-  min-height: 2.5rem;
+	min-height: 2.5rem;
 
-  .bx--side-nav__icon:not(.bx--side-nav__submenu-chevron) {
-    margin-right: 0.75rem;
-  }
+	.bx--side-nav__icon:not(.bx--side-nav__submenu-chevron) {
+		margin-right: 0.75rem;
+	}
 }
 
 /* Apply user accent color to IBM components */
 
-a, button {
-  &.bx--btn--primary {
-    background-color: var(--accent-primary);
-  }
-  &.bx--btn--tertiary {
-    border-color: var(--accent-primary);
-    color: var(--accent-primary);
-  }
-  &.bx--btn--ghost {
-    color: var(--accent-primary);
-  }
-  &.bx--btn--primary:hover,
-  &.bx--btn--tertiary:hover {
-    background-color: var(--accent-secondary);
-  }
-  &.bx--btn--ghost:hover {
-    color: var(--accent-secondary);
-  }
+a,
+button {
+	&.bx--btn--primary {
+		background-color: var(--accent-primary);
+	}
+	&.bx--btn--tertiary {
+		border-color: var(--accent-primary);
+		color: var(--accent-primary);
+	}
+	&.bx--btn--ghost {
+		color: var(--accent-primary);
+	}
+	&.bx--btn--primary:hover,
+	&.bx--btn--tertiary:hover {
+		background-color: var(--accent-secondary);
+	}
+	&.bx--btn--ghost:hover {
+		color: var(--accent-secondary);
+	}
 }

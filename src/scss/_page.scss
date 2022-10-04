@@ -1,52 +1,51 @@
-
 /* Default page with sidebar */
 
 .page {
-  box-sizing: border-box;
-  display: flex;
-  
-  padding: 40px 20px;
-  height: 100%;
-  
-  overflow: auto;
-  position: relative;
-  transition-duration: 0.3s;
+	box-sizing: border-box;
+	display: flex;
 
-  .content {
-    box-sizing: border-box;
-    color: var(--text-primary);
-    display: flex;
+	padding: 40px 20px;
+	height: 100%;
 
-    margin: 0 auto;
-    max-width: 95%;
-    width: 100%;
-  
-    position: relative;
-    flex: 1 1;
-  
-    h1 {
-      margin: 0;
-    }
+	overflow: auto;
+	position: relative;
+	transition-duration: 0.3s;
 
-    hr {
-      margin-bottom: 0;
-    }
+	.content {
+		box-sizing: border-box;
+		color: var(--text-primary);
+		display: flex;
 
-    section {
-      flex: 1 0;
-      min-width: 0;
-    }
+		margin: 0 auto;
+		max-width: 95%;
+		width: 100%;
 
-    @media (min-width: 1500px) {
-      max-width: 1300px;
-    }
-  }
+		position: relative;
+		flex: 1 1;
 
-  @media (min-width: 768px) {
-    padding: 50px 45px;
-  }
+		h1 {
+			margin: 0;
+		}
 
-  @media (min-width: 1000px) {
-    padding: 50px 70px;
-  }
+		hr {
+			margin-bottom: 0;
+		}
+
+		section {
+			flex: 1 0;
+			min-width: 0;
+		}
+
+		@media (min-width: 1500px) {
+			max-width: 1300px;
+		}
+	}
+
+	@media (min-width: 768px) {
+		padding: 50px 45px;
+	}
+
+	@media (min-width: 1000px) {
+		padding: 50px 70px;
+	}
 }

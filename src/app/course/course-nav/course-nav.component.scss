@@ -1,41 +1,40 @@
-
 .course-nav {
-  display: flex;
-  flex-direction: column;
-  row-gap: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	row-gap: 1.5rem;
 
-  height: max-content;
-  margin-bottom: 2rem;
-  margin-left: -5vw;
-  margin-right: 3rem;
-  width: 200px;
+	height: max-content;
+	margin-bottom: 2rem;
+	margin-left: -5vw;
+	margin-right: 3rem;
+	width: 200px;
 
-  overflow: hidden;
-  position: relative;
-  z-index: 1;
-  transition-duration: 0.25s;
-  transition-delay: 0.1s;
+	overflow: hidden;
+	position: relative;
+	z-index: 1;
+	transition-duration: 0.25s;
+	transition-delay: 0.1s;
 
-  ul {
-    border-right: 1.5px solid var(--border-secondary);
-    list-style: none;
-  }
+	ul {
+		border-right: 1.5px solid var(--border-secondary);
+		list-style: none;
+	}
 
-  button {
-    width: 100%;
-  }
+	button {
+		width: 100%;
+	}
 
-  @media (min-width: 1300px) {
-    background-color: transparent;
-    box-shadow: none;
-    width: 220px;
-    margin-left: 0;
-    margin-right: 5rem;
-  }
+	@media (min-width: 1300px) {
+		background-color: transparent;
+		box-shadow: none;
+		width: 220px;
+		margin-left: 0;
+		margin-right: 5rem;
+	}
 }
 
 .bx--modal-content {
-  display: flex;
-  flex-direction: column;
-  row-gap: 1rem;
+	display: flex;
+	flex-direction: column;
+	row-gap: 1rem;
 }

@@ -1,72 +1,71 @@
-
 /* W3 Schools modified custom CSS checkbox */
 
 .checkbox {
-  display: block;
-  cursor: pointer;
+	display: block;
+	cursor: pointer;
 
-  position: relative;
+	position: relative;
 
-  min-height: 20px;
-  min-width: 20px;
+	min-height: 20px;
+	min-width: 20px;
 
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 .checkbox input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
 }
 
 .checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 20px;
-  width: 20px;
-  
-  border: var(--border-primary) 1px solid;
-  border-radius: 2px;
-  transition-duration: 0.2s;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 20px;
+	width: 20px;
+
+	border: var(--border-primary) 1px solid;
+	border-radius: 2px;
+	transition-duration: 0.2s;
 }
 
 .checkbox:hover input ~ .checkmark {
-  border-color: var(--accent-primary);
+	border-color: var(--accent-primary);
 }
 
 .checkbox input:checked ~ .checkmark {
-  background-color: var(--accent-primary);
-  border-color: var(--accent-primary);
+	background-color: var(--accent-primary);
+	border-color: var(--accent-primary);
 }
 
 .checkbox input:disabled ~ .checkmark {
-  background-color: #aaa;
+	background-color: #aaa;
 }
 
 .checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
+	content: "";
+	position: absolute;
+	display: none;
 }
 
 .checkbox input:checked ~ .checkmark:after {
-  display: block;
+	display: block;
 }
 
 .checkbox .checkmark:after {
-  left: 6px;
-  top: 2px;
-  width: 5px;
-  height: 10px;
-  border: solid var(--bg-primary);
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
+	left: 6px;
+	top: 2px;
+	width: 5px;
+	height: 10px;
+	border: solid var(--bg-primary);
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
 }

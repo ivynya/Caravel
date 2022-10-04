@@ -1,58 +1,57 @@
-
 /* W3 Schools modified custom CSS slider */
 
 .toggle {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 
-  height: 26px;
-  padding-right: 50px;
-  position: relative;
+	height: 26px;
+	padding-right: 50px;
+	position: relative;
 
-  input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+	input {
+		opacity: 0;
+		width: 0;
+		height: 0;
 
-    &:checked + .slider {
-      background-color: var(--accent-primary);
-    }
+		&:checked + .slider {
+			background-color: var(--accent-primary);
+		}
 
-    &:focus + .slider {
-      box-shadow: 0 0 1px var(--box-shadow-primary);
-    }
+		&:focus + .slider {
+			box-shadow: 0 0 1px var(--box-shadow-primary);
+		}
 
-    &:checked + .slider:before {
-      -webkit-transform: translateX(24px);
-      -ms-transform: translateX(24px);
-      transform: translateX(24px);
-    }
-  }
+		&:checked + .slider:before {
+			-webkit-transform: translateX(24px);
+			-ms-transform: translateX(24px);
+			transform: translateX(24px);
+		}
+	}
 
-  .slider {
-    background-color: var(--bg-control);
-    border-radius: 34px;
-    cursor: pointer;
-  
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 50px;
-    transition-duration: 0.2s;
-  
-    &:before {
-      background-color: #fff;
-      border-radius: 50%;
-      content: "";
+	.slider {
+		background-color: var(--bg-control);
+		border-radius: 34px;
+		cursor: pointer;
 
-      position: absolute;
-      height: 18px;
-      width: 18px;
-      left: 4px;
-      bottom: 4px;
-      transition-duration: 0.2s;
-    }  
-  }
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: 50px;
+		transition-duration: 0.2s;
+
+		&:before {
+			background-color: #fff;
+			border-radius: 50%;
+			content: "";
+
+			position: absolute;
+			height: 18px;
+			width: 18px;
+			left: 4px;
+			bottom: 4px;
+			transition-duration: 0.2s;
+		}
+	}
 }

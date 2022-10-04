@@ -1,228 +1,228 @@
-
 @use "sass:color";
 
-:root, :root[theme="caravel-dark"] {
-  // Used for "A on B" UI elements
-  --bg-primary: #11111F;
-  --bg-secondary: #1A1A2F;
-  --bg-tertiary: #22223A;
+:root,
+:root[theme="caravel-dark"] {
+	// Used for "A on B" UI elements
+	--bg-primary: #11111f;
+	--bg-secondary: #1a1a2f;
+	--bg-tertiary: #22223a;
 
-  --text-primary: #eee;
-  --text-secondary: #ddd;
-  --text-tertiary: #aab;
+	--text-primary: #eee;
+	--text-secondary: #ddd;
+	--text-tertiary: #aab;
 
-  // Used for "B on A" UI elements
-  --bg-inverse-primary: #22223F;
-  --bg-inverse-secondary: #2C2C57;
-  --bg-inverse-tertiary: #33335F;
+	// Used for "B on A" UI elements
+	--bg-inverse-primary: #22223f;
+	--bg-inverse-secondary: #2c2c57;
+	--bg-inverse-tertiary: #33335f;
 
-  --text-inverse-primary: #eee;
-  --text-inverse-secondary: #ddd;
-  --text-inverse-tertiary: #aab;
-  
-  // Element borders
-  --border-primary: #437;
-  --border-secondary: #326;
+	--text-inverse-primary: #eee;
+	--text-inverse-secondary: #ddd;
+	--text-inverse-tertiary: #aab;
 
-  // Element shadows
-  --box-shadow-primary: #000;
-  --box-shadow-secondary: #111;
+	// Element borders
+	--border-primary: #437;
+	--border-secondary: #326;
 
-  // Used for app icons, links
-  --accent-primary: #abf;
-  // Used for highlighted links
-  --accent-secondary: #78c;
+	// Element shadows
+	--box-shadow-primary: #000;
+	--box-shadow-secondary: #111;
 
-  // Used for interactive UI elements
-  --bg-control: #335;
-  --bg-control-alt: #335;
-  --control-hover: #557;
-  --control-active: #557;
+	// Used for app icons, links
+	--accent-primary: #abf;
+	// Used for highlighted links
+	--accent-secondary: #78c;
 
-  --control-enabled: var(--accent-primary);
-  --text-control: var(--text-inverse-primary);
+	// Used for interactive UI elements
+	--bg-control: #335;
+	--bg-control-alt: #335;
+	--control-hover: #557;
+	--control-active: #557;
 
-  --scrollbar-track: var(--bg-control);
-  --scrollbar-thumb: var(--accent-primary);
+	--control-enabled: var(--accent-primary);
+	--text-control: var(--text-inverse-primary);
 
-  // Included as text and in notifications
-  --error: #F50;
-  --warning: #FA0;
-  --info: #0FC;
+	--scrollbar-track: var(--bg-control);
+	--scrollbar-thumb: var(--accent-primary);
+
+	// Included as text and in notifications
+	--error: #f50;
+	--warning: #fa0;
+	--info: #0fc;
 }
 
 @mixin theme-light {
-  // Used for "A on B" UI elements
-  --bg-primary: #fff;
-  --bg-secondary: #eee;
-  --bg-tertiary: #ccc;
+	// Used for "A on B" UI elements
+	--bg-primary: #fff;
+	--bg-secondary: #eee;
+	--bg-tertiary: #ccc;
 
-  --text-primary: #333;
-  --text-secondary: #555;
-  --text-tertiary: #777;
+	--text-primary: #333;
+	--text-secondary: #555;
+	--text-tertiary: #777;
 
-  // Used for "B on A" UI elements
-  --bg-inverse-primary: #22223F;
-  --bg-inverse-secondary: #2C2C57;
-  --bg-inverse-tertiary: #33335F;
+	// Used for "B on A" UI elements
+	--bg-inverse-primary: #22223f;
+	--bg-inverse-secondary: #2c2c57;
+	--bg-inverse-tertiary: #33335f;
 
-  --text-inverse-primary: #eee;
-  --text-inverse-secondary: #ddd;
-  --text-inverse-tertiary: #ccc;
-  
-  // Element borders
-  --border-primary: #abf;
-  --border-secondary: #567;
+	--text-inverse-primary: #eee;
+	--text-inverse-secondary: #ddd;
+	--text-inverse-tertiary: #ccc;
 
-  // Element shadows
-  --box-shadow-primary: #aaa;
-  --box-shadow-secondary: #777;
+	// Element borders
+	--border-primary: #abf;
+	--border-secondary: #567;
 
-  // Used for app icons, links
-  --accent-primary: #89f;
-  // Used for highlighted links
-  --accent-secondary: #89f;
+	// Element shadows
+	--box-shadow-primary: #aaa;
+	--box-shadow-secondary: #777;
 
-  // Used for interactive UI elements
-  --bg-control: #e0e0e0;
-  --bg-control-alt: #557;
-  --control-hover: #abf;
-  --control-active: #abf;
+	// Used for app icons, links
+	--accent-primary: #89f;
+	// Used for highlighted links
+	--accent-secondary: #89f;
 
-  --control-enabled: var(--accent-primary);
-  --text-control: #000;
-  --text-control-alt: #eee;
+	// Used for interactive UI elements
+	--bg-control: #e0e0e0;
+	--bg-control-alt: #557;
+	--control-hover: #abf;
+	--control-active: #abf;
 
-  --scrollbar-track: var(--bg-control);
-  --scrollbar-thumb: var(--accent-primary);
+	--control-enabled: var(--accent-primary);
+	--text-control: #000;
+	--text-control-alt: #eee;
 
-  // Included as text and in notifications
-  --error: #F50;
-  --warning: #FA0;
-  --info: #0FC;
+	--scrollbar-track: var(--bg-control);
+	--scrollbar-thumb: var(--accent-primary);
+
+	// Included as text and in notifications
+	--error: #f50;
+	--warning: #fa0;
+	--info: #0fc;
 }
 
 @media (prefers-color-scheme: light) {
-  :root {
-    @include theme-light;
-  }
+	:root {
+		@include theme-light;
+	}
 }
 
 :root[theme="caravel-light"] {
-  @include theme-light;
+	@include theme-light;
 }
 
 :root[theme="soulless-dark"] {
-  // Used for "A on B" UI elements
-  --bg-primary: #111;
-  --bg-secondary: #222;
-  --bg-tertiary: #333;
+	// Used for "A on B" UI elements
+	--bg-primary: #111;
+	--bg-secondary: #222;
+	--bg-tertiary: #333;
 
-  --text-primary: #eee;
-  --text-secondary: #ccc;
-  --text-tertiary: #aab;
+	--text-primary: #eee;
+	--text-secondary: #ccc;
+	--text-tertiary: #aab;
 
-  // Used for "B on A" UI elements
-  --bg-inverse-primary: var(--bg-secondary);
-  --bg-inverse-secondary: #333;
-  --bg-inverse-tertiary: #444;
+	// Used for "B on A" UI elements
+	--bg-inverse-primary: var(--bg-secondary);
+	--bg-inverse-secondary: #333;
+	--bg-inverse-tertiary: #444;
 
-  --text-inverse-primary: #eee;
-  --text-inverse-secondary: #ddd;
-  --text-inverse-tertiary: #999;
-  
-  // Element borders
-  --border-primary: #abc;
-  --border-secondary: #334455;
+	--text-inverse-primary: #eee;
+	--text-inverse-secondary: #ddd;
+	--text-inverse-tertiary: #999;
 
-  // Element shadows
-  --box-shadow-primary: transparent;
-  --box-shadow-secondary: transparent;
+	// Element borders
+	--border-primary: #abc;
+	--border-secondary: #334455;
 
-  // Used for app icons, links
-  --accent-primary: #abc;
-  // Used for highlighted links
-  --accent-secondary: #78e;
+	// Element shadows
+	--box-shadow-primary: transparent;
+	--box-shadow-secondary: transparent;
 
-  // Used for interactive UI elements
-  --bg-control: #222;
-  --bg-control-alt: #111;
-  --control-hover: #333;
-  --control-active: #333;
+	// Used for app icons, links
+	--accent-primary: #abc;
+	// Used for highlighted links
+	--accent-secondary: #78e;
 
-  --control-enabled: var(--accent-primary);
-  --text-control: var(--text-primary);
+	// Used for interactive UI elements
+	--bg-control: #222;
+	--bg-control-alt: #111;
+	--control-hover: #333;
+	--control-active: #333;
 
-  --scrollbar-track: var(--bg-control);
-  --scrollbar-thumb: var(--control-active);
+	--control-enabled: var(--accent-primary);
+	--text-control: var(--text-primary);
 
-  // Included as text and in notifications
-  --error: #F50;
-  --warning: #FA0;
-  --info: var(--accent-primary);
+	--scrollbar-track: var(--bg-control);
+	--scrollbar-thumb: var(--control-active);
+
+	// Included as text and in notifications
+	--error: #f50;
+	--warning: #fa0;
+	--info: var(--accent-primary);
 }
 
 :root[theme="soulless-light"] {
-  // Used for "A on B" UI elements
-  --bg-primary: #eee;
-  --bg-secondary: #ddd;
-  --bg-tertiary: #aaa;
+	// Used for "A on B" UI elements
+	--bg-primary: #eee;
+	--bg-secondary: #ddd;
+	--bg-tertiary: #aaa;
 
-  --text-primary: #333;
-  --text-secondary: #555;
-  --text-tertiary: #777;
+	--text-primary: #333;
+	--text-secondary: #555;
+	--text-tertiary: #777;
 
-  // Used for "B on A" UI elements
-  --bg-inverse-primary: #222;
-  --bg-inverse-secondary: #333;
-  --bg-inverse-tertiary: #444;
+	// Used for "B on A" UI elements
+	--bg-inverse-primary: #222;
+	--bg-inverse-secondary: #333;
+	--bg-inverse-tertiary: #444;
 
-  --text-inverse-primary: #eee;
-  --text-inverse-secondary: #ddd;
-  --text-inverse-tertiary: #999;
-  
-  // Element borders
-  --border-primary: #abc;
-  --border-secondary: #334455;
+	--text-inverse-primary: #eee;
+	--text-inverse-secondary: #ddd;
+	--text-inverse-tertiary: #999;
 
-  // Element shadows
-  --box-shadow-primary: transparent;
-  --box-shadow-secondary: transparent;
+	// Element borders
+	--border-primary: #abc;
+	--border-secondary: #334455;
 
-  // Used for app icons, links
-  --accent-primary: #abc;
-  // Used for highlighted links
-  --accent-secondary: #78e;
+	// Element shadows
+	--box-shadow-primary: transparent;
+	--box-shadow-secondary: transparent;
 
-  // Used for interactive UI elements
-  --bg-control: #222;
-  --bg-control-alt: #444;
-  --control-hover: #555;
-  --control-active: #555;
+	// Used for app icons, links
+	--accent-primary: #abc;
+	// Used for highlighted links
+	--accent-secondary: #78e;
 
-  --control-enabled: var(--accent-primary);
-  --text-control: var(--text-inverse-primary);
+	// Used for interactive UI elements
+	--bg-control: #222;
+	--bg-control-alt: #444;
+	--control-hover: #555;
+	--control-active: #555;
 
-  --scrollbar-track: var(--bg-control);
-  --scrollbar-thumb: var(--control-active);
+	--control-enabled: var(--accent-primary);
+	--text-control: var(--text-inverse-primary);
 
-  // Included as text and in notifications
-  --error: #F50;
-  --warning: #FA0;
-  --info: var(--accent-primary);
+	--scrollbar-track: var(--bg-control);
+	--scrollbar-thumb: var(--control-active);
+
+	// Included as text and in notifications
+	--error: #f50;
+	--warning: #fa0;
+	--info: var(--accent-primary);
 }
 
 :root[accent="ibm-blue"] {
-  --accent-primary: #0f62fe;
-  --accent-secondary: #0353e9;
+	--accent-primary: #0f62fe;
+	--accent-secondary: #0353e9;
 }
 
 :root[accent="vyne-green"] {
-  --accent-primary: #6b7c32;
-  --accent-secondary: #556327;
+	--accent-primary: #6b7c32;
+	--accent-secondary: #556327;
 }
 
 :root[accent="vyne-teal"] {
-  --accent-primary: #00b8a5;
-  --accent-secondary: #009e8e;
+	--accent-primary: #00b8a5;
+	--accent-secondary: #009e8e;
 }

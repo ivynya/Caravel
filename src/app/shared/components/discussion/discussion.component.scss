@@ -1,66 +1,65 @@
-
 .discussion {
-  border: var(--border-secondary) 1px solid;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  
-  max-width: 100%;
-  margin: 20px 0;
-  padding: 15px 20px;
-  overflow: hidden;
+	border: var(--border-secondary) 1px solid;
+	border-radius: 5px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 
-  h3 {
-    flex: 1 1;
-    font-size: 1.1rem;
-    margin: 0;
+	max-width: 100%;
+	margin: 20px 0;
+	padding: 15px 20px;
+	overflow: hidden;
 
-    a {
-      text-decoration: none;
-    }
-  }
+	h3 {
+		flex: 1 1;
+		font-size: 1.1rem;
+		margin: 0;
 
-  a {
-    color: var(--text-primary);
-    text-decoration-color: var(--bg-secondary);
-    white-space: nowrap;
-    text-overflow: ellipsis;
+		a {
+			text-decoration: none;
+		}
+	}
 
-    transition-duration: 0.1s;
+	a {
+		color: var(--text-primary);
+		text-decoration-color: var(--bg-secondary);
+		white-space: nowrap;
+		text-overflow: ellipsis;
 
-    &:hover {
-      color: var(--accent-secondary)
-    }
-  }
+		transition-duration: 0.1s;
 
-  .subtext {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+		&:hover {
+			color: var(--accent-secondary);
+		}
+	}
 
-    color: var(--text-tertiary);
-    font-size: 0.9rem;
-    margin: 0;
-    margin-top: 5px;
+	.subtext {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
 
-    img {
-      height: 16px;
-      width: 16px;
-      margin-right: 3px;
-    }
-  }
+		color: var(--text-tertiary);
+		font-size: 0.9rem;
+		margin: 0;
+		margin-top: 5px;
 
-  .separator::before {
-    background-color: var(--text-tertiary);
-    border-radius: 50%;
-    content: "";
-    display: block;
+		img {
+			height: 16px;
+			width: 16px;
+			margin-right: 3px;
+		}
+	}
 
-    width: 5px;
-    height: 5px;
-    margin: auto 10px;
+	.separator::before {
+		background-color: var(--text-tertiary);
+		border-radius: 50%;
+		content: "";
+		display: block;
 
-    opacity: 0.2;
-  }
+		width: 5px;
+		height: 5px;
+		margin: auto 10px;
+
+		opacity: 0.2;
+	}
 }

@@ -1,34 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 
-import { CourseService, UserService } from '../../core/services/canvas';
-import { Assignment, Course } from '../../core/schemas';
+import { CourseService, UserService } from "../../core/services/canvas";
+import { Assignment, Course } from "../../core/schemas";
 
 @Component({
-  selector: 'app-course-assignments',
-  templateUrl: './course-assignments.component.html',
-  styleUrls: ['./course-assignments.component.scss']
+	selector: "app-course-assignments",
+	templateUrl: "./course-assignments.component.html",
+	styleUrls: ["./course-assignments.component.scss"],
 })
 export class CourseAssignmentsComponent implements OnInit {
-  course: Course;
-  assignments: Assignment[];
-  private _assignments: Assignment[][] = [];
-  
-  constructor(private courseService: CourseService,
-              private route: ActivatedRoute,
-              private userService: UserService) { }
+	course: Course;
+	assignments: Assignment[];
+	private _assignments: Assignment[][] = [];
 
-  ngOnInit(): void {
-    this.route.parent.params.subscribe(params => {
-      this.courseService.getCourse(params.id, c => this.course = c);
+	constructor(
+		private courseService: CourseService,
+		private route: ActivatedRoute,
+		private userService: UserService
+	) {}
 
-      this.userService.listAssignments(params.id, res => {
-        this._assignments[res.page] = res.data;
-        this.assignments = [].concat.apply([], this._assignments);
+	ngOnInit(): void {
+		this.route.parent.params.subscribe((params) => {
+			this.courseService.getCourse(params.id, (c) => (this.course = c));
 
-        if (res.pagination?.next)
-          res.pagination.next();
-      });
-    });
-  }
+			this.userService.listAssignments(params.id, (res) => {
+				this._assignments[res.page] = res.data;
+				this.assignments = [].concat.apply([], this._assignments);
+
+				if (res.pagination?.next) res.pagination.next();
+			});
+		});
+	}
 }

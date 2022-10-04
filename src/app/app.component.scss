@@ -1,22 +1,21 @@
-
 .app {
-  display: flex;
-  flex-direction: column-reverse;
+	display: flex;
+	flex-direction: column-reverse;
 
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow: hidden;
 
-  .app-content {
-    flex: 1 1;
-    overflow: auto;
-    position: relative;
-  }
+	.app-content {
+		flex: 1 1;
+		overflow: auto;
+		position: relative;
+	}
 
-  @media (min-width: 512px) {
-    flex-direction: row;
-  }
+	@media (min-width: 512px) {
+		flex-direction: row;
+	}
 }

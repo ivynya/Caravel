@@ -17,71 +17,71 @@ import { PageNotFoundComponent } from "../shared/components";
 import { PrivateLayoutComponent } from "../shared/layouts";
 
 const routes: Routes = [
-  {
-    path: "courses",
-    component: PrivateLayoutComponent,
-    children: [
-      {
-        path: "",
-        component: CoursesComponent
-      },
-      {
-        path: ":id",
-        component: CourseComponent,
-        children: [
-          {
-            path: "",
-            component: CourseHomeComponent,
-          },
-          {
-            path: "announcements",
-            component: CourseAnnouncementsComponent,
-          },
-          {
-            path: "announcements/:tId",
-            component: CourseAnnouncementComponent,
-          },
-          {
-            path: "assignments",
-            component: CourseAssignmentsComponent,
-          },
-          {
-            path: "assignments/:aId",
-            component: AssignmentComponent,
-          },
-          {
-            path: "discussions",
-            component: CourseDiscussionsComponent,
-          },
-          {
-            path: "grades",
-            component: PageNotFoundComponent,
-          },
-          {
-            path: "modules",
-            component: CourseModulesComponent,
-          },
-          {
-            path: "modules/:mId",
-            component: CourseModulesComponent,
-          },
-          {
-            path: "quizzes",
-            component: PageNotFoundComponent,
-          },
-          {
-            path: "pages/:pId",
-            component: CoursePageComponent,
-          },
-        ],
-      },
-    ],
-  },
+	{
+		path: "courses",
+		component: PrivateLayoutComponent,
+		children: [
+			{
+				path: "",
+				component: CoursesComponent,
+			},
+			{
+				path: ":id",
+				component: CourseComponent,
+				children: [
+					{
+						path: "",
+						component: CourseHomeComponent,
+					},
+					{
+						path: "announcements",
+						component: CourseAnnouncementsComponent,
+					},
+					{
+						path: "announcements/:tId",
+						component: CourseAnnouncementComponent,
+					},
+					{
+						path: "assignments",
+						component: CourseAssignmentsComponent,
+					},
+					{
+						path: "assignments/:aId",
+						component: AssignmentComponent,
+					},
+					{
+						path: "discussions",
+						component: CourseDiscussionsComponent,
+					},
+					{
+						path: "grades",
+						component: PageNotFoundComponent,
+					},
+					{
+						path: "modules",
+						component: CourseModulesComponent,
+					},
+					{
+						path: "modules/:mId",
+						component: CourseModulesComponent,
+					},
+					{
+						path: "quizzes",
+						component: PageNotFoundComponent,
+					},
+					{
+						path: "pages/:pId",
+						component: CoursePageComponent,
+					},
+				],
+			},
+		],
+	},
 ];
 
 @NgModule({
-  declarations: [],
-  imports: [CommonModule, RouterModule.forChild(routes)],
-  exports: [RouterModule],
+	declarations: [],
+	imports: [CommonModule, RouterModule.forChild(routes)],
+	exports: [RouterModule],
 })
 export class CourseRoutingModule {}

@@ -1,12 +1,11 @@
+@use "scss/themes";
 
-@use 'scss/themes';
+@use "scss/root";
+@use "scss/page";
+@use "scss/external";
 
-@use 'scss/root';
-@use 'scss/page';
-@use 'scss/external';
+@use "scss/checkbox";
 
-@use 'scss/checkbox';
-
-@use 'scss/modifiers';
+@use "scss/modifiers";
 
 @import "~carbon-components/scss/globals/scss/styles.scss";

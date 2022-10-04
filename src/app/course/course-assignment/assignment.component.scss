@@ -1,17 +1,16 @@
-
 .assignment {
-  .info-bar {
-    display: flex;
-    align-items: center;
-    column-gap: 30px;
-    margin: 0.25rem 0;
-  }
-  
-  .assignment-submitter {
-    padding-bottom: 250px;
-  }
+	.info-bar {
+		display: flex;
+		align-items: center;
+		column-gap: 30px;
+		margin: 0.25rem 0;
+	}
 
-  .late {
-    color: var(--error);
-  }
+	.assignment-submitter {
+		padding-bottom: 250px;
+	}
+
+	.late {
+		color: var(--error);
+	}
 }

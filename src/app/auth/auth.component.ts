@@ -1,43 +1,45 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
 
-import { ConfigurationService, StorageService } from '../core/services';
+import { ConfigurationService, StorageService } from "../core/services";
 
 @Component({
-  selector: 'app-auth',
-  templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.scss']
+	selector: "app-auth",
+	templateUrl: "./auth.component.html",
+	styleUrls: ["./auth.component.scss"],
 })
 export class AuthComponent implements OnInit {
-  isMobileAuth = false;
-  domain: string;
-  token: string;
-  
-  constructor(private config: ConfigurationService,
-              private route: ActivatedRoute,
-              private router: Router,
-              private storage: StorageService) { }
+	isMobileAuth = false;
+	domain: string;
+	token: string;
 
-  ngOnInit(): void {
-    const token = this.route.snapshot.params.token;
-    if (token && token.length > 0 && token.length < 100) {
-      this.token = token;
-      this.isMobileAuth = true;
-    }
+	constructor(
+		private config: ConfigurationService,
+		private route: ActivatedRoute,
+		private router: Router,
+		private storage: StorageService
+	) {}
 
-    this.domain = this.config.get("canvas", "domain").default as string;
-  }
+	ngOnInit(): void {
+		const token = this.route.snapshot.params.token;
+		if (token && token.length > 0 && token.length < 100) {
+			this.token = token;
+			this.isMobileAuth = true;
+		}
 
-  tryAuthorize(): void {
-    // In a real OAuth context, retrieve the token based
-    // off of a server running using the developer key.
-    this.storage.set("oauth_token", this.token);
-    console.log(this.storage.get("oauth_token"));
+		this.domain = this.config.get("canvas", "domain").default as string;
+	}
 
-    // Update institution domain before data load
-    this.config.set("canvas", "domain", this.domain);
+	tryAuthorize(): void {
+		// In a real OAuth context, retrieve the token based
+		// off of a server running using the developer key.
+		this.storage.set("oauth_token", this.token);
+		console.log(this.storage.get("oauth_token"));
 
-    // Redirect back
-    this.router.navigateByUrl("/home");
-  }
+		// Update institution domain before data load
+		this.config.set("canvas", "domain", this.domain);
+
+		// Redirect back
+		this.router.navigateByUrl("/home");
+	}
 }

@@ -1,66 +1,66 @@
-
 .content {
-  column-gap: 50px;
+	column-gap: 50px;
 }
 
 .sidebar {
-  display: flex;
-  flex-direction: column;
-  row-gap: 1rem;
-  width: 250px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 1rem;
+	width: 250px;
 
-  img {
-    display: block;
-    margin-bottom: 1rem;
+	img {
+		display: block;
+		margin-bottom: 1rem;
 
-    aspect-ratio: 1 / 1;
-    min-width: 100%;
-  }
+		aspect-ratio: 1 / 1;
+		min-width: 100%;
+	}
 
-  .profile {
-    line-height: 2;
-    margin-bottom: 1rem;
-  }
+	.profile {
+		line-height: 2;
+		margin-bottom: 1rem;
+	}
 
-  p {
-    font-size: 0.875rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+	p {
+		font-size: 0.875rem;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
 
-  p:not(:first-of-type) {
-    margin-top: 0.5rem;
-  }
-  
-  button {
-    width: 100%;
-  }
+	p:not(:first-of-type) {
+		margin-top: 0.5rem;
+	}
 
-  button:not(:first-of-type) {
-    margin-top: 0.5rem;
-  }
+	button {
+		width: 100%;
+	}
+
+	button:not(:first-of-type) {
+		margin-top: 0.5rem;
+	}
 }
 
 .auth-hover-show {
-  border-left: 2px solid var(--error);
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-  transition-duration: 0.2s;
+	border-left: 2px solid var(--error);
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
+	transition-duration: 0.2s;
 
-  ::ng-deep canvas {
-    filter: contrast(0);
-    transition-delay: 0s;
-    transition-duration: 0.2s;
-  }
+	::ng-deep canvas {
+		filter: contrast(0);
+		transition-delay: 0s;
+		transition-duration: 0.2s;
+	}
 
-  &:hover, &:focus {
-    border-left: 5px solid var(--warning);
+	&:hover,
+	&:focus {
+		border-left: 5px solid var(--warning);
 
-    ::ng-deep canvas {
-      filter: contrast(1);
-      transition-delay: 0.5s;
-    }
-  }
+		::ng-deep canvas {
+			filter: contrast(1);
+			transition-delay: 0.5s;
+		}
+	}
 }
