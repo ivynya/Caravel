@@ -4,7 +4,7 @@
     <section class="courses">
 			<h1>Your Courses</h1>
       <hr>
-			<h2>Active Enrollment</h2>
+			<br>
 			<div class="course" *ngFor="let course of courses">
 				<h3><a [routerLink]="['/courses', course.id]">{{ course.name }}</a></h3>
 				<p class="subtext">
@@ -15,6 +15,8 @@
 					<span>{{ course.course_code }}</span>
 				</p>
 			</div>
+			<br>
+			<p>Past enrollments are not shown.</p>
       <br><br>
     </section>
   </div>
