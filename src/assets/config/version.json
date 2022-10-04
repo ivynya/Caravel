@@ -1,6 +1,6 @@
 
 {
-  "version": "0.6.0",
+  "version": "0.7.0",
 	"previous": "0.5.8",
 	"requiresRefresh": false,
   "updateInfo": [
@@ -8,26 +8,19 @@
       "title": "Using IBM Carbon",
       "desc": "Caravel now uses IBM Carbon, a data-driven & open-source user interface framework.",
 			"features": [
-				"fix: Modal no longer flashes on page load"
 			]
     },
-    {
-      "title": "Nickname Courses",
-      "desc": "On the course homepage, use the new overflow menu (top right) to nickname your courses."
-    },
-    {
-      "title": "Visual Acuity",
-      "desc": "Change your app accent color without changing your whole theme."
-    },
 		{
-			"title": "Quality of Life",
-			"desc": "",
+			"title": "In case you missed it:",
+			"desc": "These are the updates from v0.6.0.",
 			"features": [
-				"Page not found now prompts to open in Canvas",
-				"Open unloadable resources in a new tab with new prompt",
-				"Links from Canvas home pages will be extracted in the redesign",
-				"Dashboard now has a date range picker to load assignments",
-				"Until supported, discussions now link to Canvas"
+				"Modal no longer flashes on page load",
+				"Nickname courses on the course homepage",
+				"Page not found prompts to open in Canvas",
+				"Prompt to open unloadable resources in a new tab",
+				"Canvas home page links are automatically extracted",
+				"Dashboard has a date range picker to load assignments",
+				"Discussions now link to Canvas"
 			]
 		}
   ]

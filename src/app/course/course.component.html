@@ -2,6 +2,17 @@
   <div class="content">
     <course-nav *ngIf="course" [course]="course"></course-nav>
     <section>
+      <ibm-breadcrumb>
+        <ibm-breadcrumb-item href="#1">
+          Courses
+        </ibm-breadcrumb-item>
+        <ibm-breadcrumb-item href="#2">
+          Breadcrumb 2
+        </ibm-breadcrumb-item>
+        <ibm-breadcrumb-item href="#3">
+          Breadcrumb 3
+        </ibm-breadcrumb-item>
+      </ibm-breadcrumb>
       <router-outlet></router-outlet>
     </section>
   </div>

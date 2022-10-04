@@ -7,6 +7,12 @@
       "default": "foothillcollege.instructure.com",
       "value": "foothillcollege.instructure.com"
     },
+    "proxy": {
+      "name": "Content Proxy",
+      "type": "text",
+      "default": "foothillcollege.instructure.com",
+      "value": "foothillcollege.instructure.com"
+    },
     "use_redesign": {
       "name": "Use Redesigned Home",
       "type": "toggle",
