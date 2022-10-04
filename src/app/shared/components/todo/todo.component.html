@@ -102,8 +102,8 @@
       </a></h3>
       <p class="subtext">
         <svg *ngIf="isLocked"><use xlink:href="/assets/icons/icon.svg#locked"/></svg>
-        <span class="sm-show">{{ item.plannable.start_at | date: "h:mm a"}}</span>
-        <span class="sm-hide">{{ item.plannable.start_at | date: "E L/d h:mm a"}}</span>
+        <span class="sm-show">{{ item.plannable.due_at | date: "h:mm a"}}</span>
+        <span class="sm-hide">{{ item.plannable.due_at | date: "E L/d h:mm a"}}</span>
         <span class="separator"></span>
         <span>Discussion</span>
         <ng-container *ngIf="showCourse">
