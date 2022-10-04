@@ -12,7 +12,8 @@
         {{ conf.value.name }}
         <input ibmText type="text" theme="light"
           [(ngModel)]="conf.value.value"
-          (change)="upd(scope.key, conf.key, conf.value.value)">
+          (change)="upd(scope.key, conf.key, conf.value.value)"
+          [placeholder]="conf.value.default">
       </ibm-label>
       <ibm-select *ngIf="conf.value.type === 'select'" theme="light"
         [label]="conf.value.name"
