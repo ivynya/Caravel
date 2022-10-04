@@ -3,9 +3,51 @@ main {
   background-color: var(--bg-primary);
   height: 100vh;
   max-height: calc(100vh - 48px);
-  margin-top: 48px;
+  margin-bottom: 48px;
   overflow-y: auto;
+
+  @media (min-width: 1056px) {
+    margin-top: 48px;
+    margin-bottom: 0;
+  }
 }
+
+::ng-deep .bx--header {
+  display: none;
+
+  @media (min-width: 1056px) {
+    display: flex;
+  }
+}
+
+.mobile-nav {
+  background-color: #161616;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 48px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  @media (min-width: 1056px) {
+    display: none;
+  }
+
+  a {
+    display: grid;
+    place-items: center;
+    flex: 1 1;
+  }
+
+  svg {
+    fill: #f4f4f4;
+  }
+}
+
+// update info
 
 .bx--modal-header__heading.bx--type-beta {
   display: flex;

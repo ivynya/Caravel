@@ -21,6 +21,13 @@
   <app-notification-banner></app-notification-banner>
   <router-outlet></router-outlet>
 </main>
+<nav class="mobile-nav">
+  <a [routerLink]="['/account']"><svg ibmIcon="user" size="20"></svg></a>
+  <a [routerLink]="['/home']"><svg ibmIcon="list--checked" size="20"></svg></a>
+  <a [routerLink]="['/courses']"><svg ibmIcon="fade" size="20"></svg></a>
+  <a [routerLink]="['/inbox']"><svg ibmIcon="mail--all" size="20"></svg></a>
+  <a [routerLink]="['/calendar']"><svg ibmIcon="calendar" size="20"></svg></a>
+</nav>
 
 <ibm-modal [open]="showWhatsNew" (overlaySelected)="showWhatsNew = false" size="xs">
   <ibm-modal-header (closeSelect)="showWhatsNew = false" [showCloseButton]="true">
