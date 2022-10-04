@@ -7,13 +7,13 @@
       </div>
       <ibm-label>
         Institution Domain
-        <input ibmText type="text" placeholder="canvas.x.edu" size="md" [(ngModel)]="domain">
+        <input ibmText type="text" placeholder="canvas.x.edu" size="md" [(ngModel)]="domain" theme="light">
       </ibm-label>
       <br>
       <div class="cta" *ngIf="!isMobileAuth">
         <ibm-label>
           User Token
-          <input ibmText type="text" placeholder="User Token" size="md" [(ngModel)]="token">
+          <input ibmText type="text" placeholder="User Token" size="md" [(ngModel)]="token" theme="light">
         </ibm-label>
         <button [ibmButton] size="field" (click)="tryAuthorize()">Log In</button>
       </div>
