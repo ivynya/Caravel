@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 
+import { ConfigurationService } from '../core/services';
 import { CourseService } from '../core/services/canvas';
 import { Course } from '../core/schemas';
 
@@ -16,9 +17,11 @@ import { IconService } from 'carbon-components-angular';
 })
 export class CourseComponent implements OnInit {
   breadcrumbs: { href?: string, content: string, current?: boolean }[];
+  showBreadcrumbs = true;
   course: Course;
 
-  constructor(private courseService: CourseService,
+  constructor(private configService: ConfigurationService,
+              private courseService: CourseService,
               private iconService: IconService,
               private location: Location,
               private titleService: Title,
@@ -27,6 +30,8 @@ export class CourseComponent implements OnInit {
 
   ngOnInit(): void {
     this.iconService.registerAll([ArrowRight16, Checkmark16, Close16, Edit16]);
+
+    this.showBreadcrumbs = this.configService.getVal("course", "show_breadcrumbs");
 
     this.location.onUrlChange(url => {
       this.breadcrumbs = [{ content: this.course.name, href: `/courses/${this.course.id}` }];

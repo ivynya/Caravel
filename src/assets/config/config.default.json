@@ -12,12 +12,6 @@
       "type": "text",
       "default": "cors.sdbagel.com",
       "value": "cors.sdbagel.com"
-    },
-    "use_redesign": {
-      "name": "Use Redesigned Home",
-      "type": "toggle",
-      "default": true,
-      "value": true
     }
   },
   "caravel": {
@@ -46,6 +40,20 @@
       ]
     }
   },
+  "course": {
+    "show_breadcrumbs": {
+      "name": "Show Breadcrumbs",
+      "type": "toggle",
+      "default": true,
+      "value": true
+    },
+    "use_redesign": {
+      "name": "Use Redesigned Home",
+      "type": "toggle",
+      "default": true,
+      "value": true
+    }
+  },
   "networking": {
     "stop_calls_if_cached": {
       "name": "Low Bandwidth Mode",
@@ -69,20 +77,6 @@
     },
     "extend_critical_alerts": {
       "name": "Show Critical Alerts for Longer",
-      "type": "toggle",
-      "default": true,
-      "value": true
-    }
-  },
-  "sidebar": {
-    "compact_mode": {
-      "name": "Compact Sidebar",
-      "type": "toggle",
-      "default": false,
-      "value": false
-    },
-    "enumerate_courses": {
-      "name": "Enumerate Courses",
       "type": "toggle",
       "default": true,
       "value": true
