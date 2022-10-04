@@ -10,8 +10,8 @@
     "proxy": {
       "name": "Content Proxy",
       "type": "text",
-      "default": "foothillcollege.instructure.com",
-      "value": "foothillcollege.instructure.com"
+      "default": "cors.sdbagel.com",
+      "value": "cors.sdbagel.com"
     },
     "use_redesign": {
       "name": "Use Redesigned Home",
