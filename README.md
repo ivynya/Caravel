@@ -6,13 +6,17 @@ Caravel is a Canvas client that uses the Canvas Open API. It is designed as an S
 
 Caravel is also a **PWA** (desktop & mobile) meaning you can take it wherever you go.
 
+## Try It Out
+You can try out Caravel with an API token from your account (Profile > Settings > New User Token).
+
+- https://caravel.sdbagel.com `v0.5.8`
+- https://caravel-next.sdbagel.com  `Synced with GitHub - v0.7.x+` (Recommended)
+
 <hr>
 
 ## Contributing
 
 Please make an issue before you start coding to make sure your idea fits in with the goals of Caravel. After that, PRs are welcome.
-
-<hr>
 
 ## Instructure & Terms
 
