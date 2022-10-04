@@ -29,7 +29,7 @@
   <p *ngIf="this.assignment?.lock_explanation">{{ assignment?.lock_explanation }}</p>
   <div [innerHtml]="assignmentBody" class="xss-sanitize"></div>
   <br>
-  <p><a ibmButton="primary" href="{{ ltiLauncher.url }}" target="_blank">Open {{ ltiLauncher.name }} in a new tab</a></p>
+  <p *ngIf="ltiLauncher"><a ibmButton="primary" href="{{ ltiLauncher.url }}" target="_blank">Open {{ ltiLauncher.name }} in a new tab</a></p>
   <br><br>
   <div class="assignment-submitter" *ngIf="isAssignmentGraded">
     <ibm-tab-header-group type="container" [followFocus]="true" [cacheActive]="true" [isNavigation]="false">
