@@ -116,7 +116,8 @@ export abstract class APIBaseService {
 
     // API is always fetched with a CORS proxy due to Canvas limitations
     // Advisable to set up your own (secure) CORS proxy
-    await fetch(`https://cors.sdbagel.com/${url}`,
+    const proxy = this.configService.getVal<string>("canvas", "proxy");
+    await fetch(`https://${proxy}/${url}`,
                 {
                   method: options?.method ?? "GET",
                   headers: { 'Accept': 'application/json', 'Authorization': `Bearer ${token}` }
