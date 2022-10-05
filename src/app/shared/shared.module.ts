@@ -19,10 +19,13 @@ import { PrivateLayoutComponent, PublicLayoutComponent } from "./layouts";
 
 import {
 	ButtonModule,
+	DropdownModule,
 	HeaderModule,
 	IconModule,
 	ModalModule,
 	NotificationModule,
+	PanelModule,
+	TilesModule,
 } from "carbon-components-angular";
 
 import { WebviewDirective } from "./directives/";
@@ -52,6 +55,9 @@ import { CoreModule } from "../core/core.module";
 		FormsModule,
 		CoreModule,
 		HeaderModule,
+		PanelModule,
+		TilesModule,
+		DropdownModule,
 		IconModule,
 		NotificationModule,
 		ModalModule,

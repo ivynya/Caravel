@@ -46,6 +46,24 @@ main {
 	}
 }
 
+::ng-deep .bx--panel--overlay {
+	background-color: #f4f4f4;
+	width: 20rem;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	row-gap: 1rem;
+}
+
+pre {
+	font-size: 0.9rem;
+	height: min-content;
+	padding: 0.5rem 0;
+	overflow-x: auto;
+}
+
 // update info
 
 .bx--modal-header__heading.bx--type-beta {

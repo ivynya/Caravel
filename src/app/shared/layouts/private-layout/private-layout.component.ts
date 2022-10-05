@@ -5,6 +5,7 @@ import { TranslateService } from "@ngx-translate/core";
 import { IconService } from "carbon-components-angular";
 import {
 	Calendar20,
+  DataConnected20,
 	Home20,
 	ListChecked20,
 	MailAll20,
@@ -28,6 +29,10 @@ export class PrivateLayoutComponent implements OnInit {
 
 	courses: Course[];
 
+  items = [];
+  model: string;
+  data: any;
+
 	constructor(
 		private activatedRoute: ActivatedRoute,
 		private configService: ConfigurationService,
@@ -43,11 +48,19 @@ export class PrivateLayoutComponent implements OnInit {
 	ngOnInit(): void {
 		this.iconService.registerAll([
 			Calendar20,
+      DataConnected20,
 			Home20,
 			ListChecked20,
 			MailAll20,
 			User20,
 		]);
+
+		for (const key in this.storageService.lstore) {
+			if (key.startsWith(".")) this.items.push({
+        content: key,
+        selected: false
+      });
+		}
 
 		// Validate app version and update if needed
 		this.configService
@@ -69,4 +82,8 @@ export class PrivateLayoutComponent implements OnInit {
 
 		this.courseService.listCourses((c) => (this.courses = c));
 	}
+
+  changed(): void {
+    this.data = JSON.parse(JSON.parse(this.storageService.get(this.model))?.value);
+  }
 }

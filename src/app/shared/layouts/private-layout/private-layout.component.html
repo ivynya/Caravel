@@ -12,11 +12,30 @@
     <ibm-header-item [routerLink]="['/calendar']">Calendar</ibm-header-item>
   </ibm-header-navigation>
   <ibm-header-global>
-    <ibm-header-action title="action">
-      <svg ibmIcon="fade" size="20"></svg>
+    <ibm-header-action #dataExplorer title="Data Explorer">
+      <svg ibmIcon="data--connected" size="20"></svg>
     </ibm-header-action>
   </ibm-header-global>
 </ibm-header>
+<ibm-panel [expanded]="dataExplorer.active">
+  <ibm-tile>
+    <div class="form">
+      <h3>Data Explorer</h3>
+      <p>The data explorer is for advanced users. It shows the exact data Caravel gets from the Canvas API and may be useful if you believe data is being displayed incorrectly or not at all. If so, <a href="https://github.com/ivynya/Caravel" target="_blank">please file an issue on GitHub!</a></p>
+      <ibm-dropdown theme="light"
+        label="Selected Request"
+        placeholder="Select"
+        [(ngModel)]="model"
+        (selected)="changed()"
+        value="content">
+        <ibm-dropdown-list [items]="items"></ibm-dropdown-list>
+      </ibm-dropdown>
+      <pre>{{ data | json }}</pre>
+      <br>
+      <br>
+    </div>
+  </ibm-tile>
+</ibm-panel>
 <main class="app" *ngIf="isLoaded">
   <app-notification-banner></app-notification-banner>
   <router-outlet></router-outlet>
