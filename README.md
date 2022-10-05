@@ -16,7 +16,11 @@ You can try out Caravel with an API token from your account (Profile > Settings 
 
 ## Contributing
 
-Please make an issue before you start coding to make sure your idea fits in with the goals of Caravel. After that, PRs are welcome.
+Contributions of any size are welcome! Additionally, Caravel is participating in Hacktoberfest 2022 and valid issues will be given the appropriate labels for the event.
+
+For bug reports, please make an [issue](https://github.com/ivynya/Caravel/issues/new/choose) on this repository.
+
+For feature requests, please make an [issue](https://github.com/ivynya/Caravel/issues/new/choose) or post a [discussion thread](https://github.com/ivynya/Caravel/discussions/new) before you start coding - this ensures that duplicate work isn't done and the design is as good as it can be.
 
 ## Instructure & Terms
 
