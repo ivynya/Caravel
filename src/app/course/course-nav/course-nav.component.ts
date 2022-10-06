@@ -5,6 +5,17 @@ import { Course, ExternalTool, Shortcut } from "../../_core/schemas";
 import { NotificationService, ShortcutService } from "../../_core/services";
 import { CourseService } from "../../_core/services/canvas";
 
+import {
+	Bullhorn16,
+	Home16,
+	Idea16,
+	Launch16,
+	Link16,
+	Overlay16,
+	Pen16,
+} from "@carbon/icons";
+import { IconService } from "carbon-components-angular";
+
 @Component({
 	selector: "course-nav",
 	templateUrl: "./course-nav.component.html",
@@ -24,12 +35,23 @@ export class CourseNavComponent implements OnInit, OnChanges {
 
 	constructor(
 		private courseService: CourseService,
+		private iconService: IconService,
 		private location: Location,
 		private notificationService: NotificationService,
 		private shortcutService: ShortcutService
 	) {}
 
 	ngOnInit(): void {
+		this.iconService.registerAll([
+			Bullhorn16,
+			Home16,
+			Idea16,
+			Launch16,
+			Link16,
+			Overlay16,
+			Pen16
+		]);
+
 		this.courseService.listExternalTools(
 			this.course.id,
 			(data) => (this.tools = data)
