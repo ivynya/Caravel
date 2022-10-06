@@ -59,26 +59,22 @@ export class HomeComponent {
 		this.load();
 	}
 
-	private getItems(to: number) {
+	// Recursively gets items up to 1 month in advance
+	private getItems(to: number): void {
 		const next = new Date(this.streamStart.getTime() + 86400 * 1000 * 31);
 		this.user.getPlanner(this.streamStart, next, (res) => {
-			const items = res.data;
-
 			// Add or overwrite added items to memory
-			this._streamItems[res.page] = items;
-			const concat = [].concat(...this._streamItems);
-			this.populateStream(concat);
+			this._streamItems[res.page] = res.data;
+			this.populateStream([].concat(...this._streamItems));
 
-			let unpopulated = true;
-			this.stream.forEach((day) => {
-				if (day.items.length > 0) unpopulated = false;
-			});
-			if (unpopulated && res.pagination?.next) to--;
-			res.pagination.next();
+			// Indicates if items were successfully loaded
+			let populated = this.stream.map(d => d.items.length > 0).includes(true);
 
-			// If target not reached, do a recursion
-			if (to > 0 && res.pagination?.next) to--;
-			res.pagination.next();
+			// If more segments to load, or no items in period, continue
+			if ((!populated || to > 0) && res.pagination?.next) {
+				to--;
+				res.pagination.next();
+			}
 		});
 	}
 
