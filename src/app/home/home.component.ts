@@ -5,14 +5,6 @@ import { PlannerItem } from "../core/schemas";
 
 import { RoundDatePipe } from "../core/pipes";
 
-import {
-	ArrowUp20,
-	ListBulleted20,
-	ListChecked20,
-	Restart20,
-} from "@carbon/icons";
-import { IconService } from "carbon-components-angular";
-
 @Component({
 	selector: "app-home",
 	templateUrl: "./home.component.html",
@@ -34,18 +26,11 @@ export class HomeComponent implements OnInit {
 	selectionMode = false;
 
 	constructor(
-		private icon: IconService,
 		private roundDate: RoundDatePipe,
 		private user: UserService
 	) {}
 
 	ngOnInit(): void {
-		this.icon.registerAll([
-			ArrowUp20,
-			ListBulleted20,
-			ListChecked20,
-			Restart20,
-		]);
 		this.loadFromToday();
 	}
 

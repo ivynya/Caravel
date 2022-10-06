@@ -2,16 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
 
-import { IconService } from "carbon-components-angular";
-import {
-	Calendar20,
-  DataConnected20,
-	Home20,
-	ListChecked20,
-	MailAll20,
-	User20,
-} from "@carbon/icons";
-
 import { AppInfo, Course } from "../../../core/schemas";
 
 import { ConfigurationService, StorageService } from "../../../core/services";
@@ -37,7 +27,6 @@ export class PrivateLayoutComponent implements OnInit {
 		private activatedRoute: ActivatedRoute,
 		private configService: ConfigurationService,
 		private courseService: CourseService,
-		private iconService: IconService,
 		private router: Router,
 		private storageService: StorageService,
 		private translate: TranslateService
@@ -46,15 +35,6 @@ export class PrivateLayoutComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		this.iconService.registerAll([
-			Calendar20,
-      DataConnected20,
-			Home20,
-			ListChecked20,
-			MailAll20,
-			User20,
-		]);
-
 		for (const key in this.storageService.lstore) {
 			if (key.startsWith(".")) this.items.push({
         content: key,

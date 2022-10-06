@@ -7,9 +7,6 @@ import { ConfigurationService } from "../core/services";
 import { CourseService } from "../core/services/canvas";
 import { Course } from "../core/schemas";
 
-import { ArrowRight16, Checkmark16, Close16, Edit16 } from "@carbon/icons";
-import { IconService } from "carbon-components-angular";
-
 @Component({
 	selector: "app-course",
 	templateUrl: "./course.component.html",
@@ -23,15 +20,12 @@ export class CourseComponent implements OnInit {
 	constructor(
 		private config: ConfigurationService,
 		private courseService: CourseService,
-		private icon: IconService,
 		private location: Location,
 		private title: Title,
 		private route: ActivatedRoute
 	) {}
 
 	ngOnInit(): void {
-		this.icon.registerAll([ArrowRight16, Checkmark16, Close16, Edit16]);
-
 		this.showBreadcrumbs = this.config.getVal(
 			"course",
 			"show_breadcrumbs"

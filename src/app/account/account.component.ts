@@ -9,9 +9,6 @@ import {
 import { UserService } from "../core/services/canvas";
 import { AppInfo, Configuration, Profile } from "../core/schemas";
 
-import { Information24 } from "@carbon/icons";
-import { IconService } from "carbon-components-angular";
-
 @Component({
 	selector: "app-account",
 	templateUrl: "./account.component.html",
@@ -30,7 +27,6 @@ export class AccountComponent implements OnInit {
 	constructor(
 		private cache: CacheService,
 		private config: ConfigurationService,
-		private icon: IconService,
 		private notification: NotificationService,
 		private storage: StorageService,
 		private user: UserService
@@ -40,7 +36,6 @@ export class AccountComponent implements OnInit {
 		this.user.getProfile((data) => (this.profile = data));
 		this.appInfo = this.config.getAppInfo();
 		this.storageUsed = this.storage.getSize();
-		this.icon.register(Information24);
 	}
 
 	openAuthorizer(): void {
