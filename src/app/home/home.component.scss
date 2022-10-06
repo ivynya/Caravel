@@ -15,7 +15,7 @@
 			margin-left: 8px;
 
 			&:first-of-type {
-				margin-left: 15px;
+				margin-left: 12px;
 			}
 
 			svg {
@@ -26,6 +26,10 @@
 		@media (min-width: 512px) {
 			flex-direction: row;
 			align-items: center;
+		}
+
+		::ng-deep .bx--date-picker__input {
+			width: 9rem;
 		}
 	}
 

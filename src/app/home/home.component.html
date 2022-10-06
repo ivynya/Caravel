@@ -4,7 +4,7 @@
       <div class="control-bar">
         <h1>Your To Do</h1>
         <span class="spacer"></span>
-        <ibm-date-picker [range]="true" size="sm" [(ngModel)]="streamState" (ngModelChange)="load()"></ibm-date-picker>
+        <ibm-date-picker size="sm" [(ngModel)]="_streamStart" (ngModelChange)="ibmDateAdapter(); load()"></ibm-date-picker>
         <button ibmButton="tertiary" [iconOnly]="true" size="sm" (click)="loadFromPreviousDay()">
           <svg class="bx--btn__icon" ibmIcon="arrow--up" size="20"></svg>
         </button>
