@@ -48,7 +48,7 @@
   <a [routerLink]="['/calendar']"><svg ibmIcon="calendar" size="20"></svg></a>
 </nav>
 
-<ibm-modal [open]="showWhatsNew" (overlaySelected)="showWhatsNew = false" size="xs">
+<ibm-modal *ngIf="appInfo" [open]="showWhatsNew" (overlaySelected)="showWhatsNew = false" size="xs">
   <ibm-modal-header (closeSelect)="showWhatsNew = false" [showCloseButton]="true">
     <p class="bx--modal-header__label bx--type-delta">Updated from v{{ appInfo.previous }} to v{{ appInfo.version}}</p>
     <p class="bx--modal-header__heading bx--type-beta">
