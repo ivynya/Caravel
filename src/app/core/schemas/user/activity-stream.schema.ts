@@ -36,12 +36,6 @@ export interface Announcement extends ActivityStreamGeneric {
 	root_discussion_entries: any;
 }
 
-export interface Conversation extends ActivityStreamGeneric {
-	conversation_id: number;
-	private: boolean;
-	participant_count: number;
-}
-
 export interface Message extends ActivityStreamGeneric {
 	message_id: number;
 	notification_category: string;

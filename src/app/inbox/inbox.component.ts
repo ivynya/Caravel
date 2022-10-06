@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { Conversation } from "../core/schemas";
+import { ConversationService } from "../core/services/canvas/";
 
 @Component({
 	selector: "app-inbox",
@@ -6,7 +8,11 @@ import { Component, OnInit } from "@angular/core";
 	styleUrls: ["./inbox.component.scss"],
 })
 export class InboxComponent implements OnInit {
-	constructor() {}
+	conversations: Conversation[];
 
-	ngOnInit(): void {}
+	constructor(private conversation: ConversationService) {}
+
+	ngOnInit(): void {
+		this.conversation.listConversations("sent", c => this.conversations = c);
+	}
 }

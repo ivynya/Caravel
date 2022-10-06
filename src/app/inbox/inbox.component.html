@@ -1,1 +1,11 @@
-<p>inbox works!</p>
+<main class="page">
+  <div class="content">
+    <section class="home">
+      <h1>Inbox - Sent Messages</h1>
+      <hr>
+      <br>
+      <p *ngFor="let convo of conversations">{{ convo.subject }}</p>
+      <br><br>
+    </section>
+  </div>
+</main>
