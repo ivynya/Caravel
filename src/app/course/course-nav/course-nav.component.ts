@@ -49,7 +49,7 @@ export class CourseNavComponent implements OnInit, OnChanges {
 			Launch16,
 			Link16,
 			Overlay16,
-			Pen16
+			Pen16,
 		]);
 
 		this.courseService.listExternalTools(
