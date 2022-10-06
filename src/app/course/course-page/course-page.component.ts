@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 import { ActivatedRoute } from "@angular/router";
 
-import { CourseService } from "../../core/services/canvas";
-import { Course, Page } from "../../core/schemas";
-import { ConfigurationService } from "../../core/services";
+import { CourseService } from "../../_core/services/canvas";
+import { Course, Page } from "../../_core/schemas";
+import { ConfigurationService } from "../../_core/services";
 
 @Component({
 	selector: "app-course-page",

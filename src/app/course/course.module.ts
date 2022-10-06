@@ -4,10 +4,10 @@ import { CommonModule } from "@angular/common";
 import { CourseRoutingModule } from "./course-routing.module";
 
 import { CourseComponent } from "./course.component";
-import { SharedModule } from "../shared/shared.module";
-import { CoreModule } from "../core/core.module";
+import { SharedModule } from "../_shared/shared.module";
+import { CoreModule } from "../_core/core.module";
 
-import { ConvertUrlPipe, RoundDatePipe } from "../core/pipes";
+import { ConvertUrlPipe, RoundDatePipe } from "../_core/pipes";
 import { CourseNavComponent } from "./course-nav/course-nav.component";
 import { CourseHomeComponent } from "./course-home/course-home.component";
 import { CourseModulesComponent } from "./course-modules/course-modules.component";

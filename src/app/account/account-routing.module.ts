@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { Routes, RouterModule } from "@angular/router";
 import { AccountComponent } from "./account.component";
-import { PrivateLayoutComponent } from "../shared/layouts";
+import { PrivateLayoutComponent } from "../_shared/layouts";
 
 const routes: Routes = [
 	{

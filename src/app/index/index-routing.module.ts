@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { Routes, RouterModule } from "@angular/router";
 import { IndexComponent } from "./index.component";
-import { PublicLayoutComponent } from "../shared/layouts/public-layout/public-layout.component";
+import { PublicLayoutComponent } from "../_shared/layouts/public-layout/public-layout.component";
 
 const routes: Routes = [
 	{

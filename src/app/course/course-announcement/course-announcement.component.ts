@@ -2,8 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 import { ActivatedRoute } from "@angular/router";
 
-import { CourseService, DiscussionService } from "../../core/services/canvas";
-import { Course, DiscussionTopic } from "../../core/schemas";
+import { CourseService, DiscussionService } from "../../_core/services/canvas";
+import { Course, DiscussionTopic } from "../../_core/schemas";
 
 @Component({
 	selector: "app-course-announcement",

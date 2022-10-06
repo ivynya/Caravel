@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 
-import { CourseService, UserService } from "../../core/services/canvas";
-import { Assignment, Course } from "../../core/schemas";
+import { CourseService, UserService } from "../../_core/services/canvas";
+import { Assignment, Course } from "../../_core/schemas";
 
 @Component({
 	selector: "app-course-assignments",

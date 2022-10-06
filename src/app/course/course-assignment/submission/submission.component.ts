@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges } from "@angular/core";
 import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 
-import { Submission } from "../../../core/schemas";
+import { Submission } from "../../../_core/schemas";
 
 @Component({
 	selector: "assignment-submission",

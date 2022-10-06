@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
 import { CourseComponent } from "./course.component";
-import { RoundDatePipe } from "../core/pipes";
+import { RoundDatePipe } from "../_core/pipes";
 
 describe("CourseComponent", () => {
 	let component: CourseComponent;

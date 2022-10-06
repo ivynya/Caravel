@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
-import { ConfigurationService } from "../../core/services";
-import { Configuration } from "../../core/schemas";
+import { ConfigurationService } from "../../_core/services";
+import { Configuration } from "../../_core/schemas";
 
 @Component({
 	selector: "app-configurator",

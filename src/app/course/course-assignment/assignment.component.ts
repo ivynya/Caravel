@@ -7,8 +7,8 @@ import {
 	Course,
 	SessionlessLaunch,
 	Submission,
-} from "../../core/schemas";
-import { AssignmentService, CourseService } from "../../core/services/canvas";
+} from "../../_core/schemas";
+import { AssignmentService, CourseService } from "../../_core/services/canvas";
 
 @Component({
 	selector: "app-assignment",

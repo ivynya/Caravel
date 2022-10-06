@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 
-import { ConfigurationService, StorageService } from "../core/services";
+import { ConfigurationService, StorageService } from "../_core/services";
 
 @Component({
 	selector: "app-auth",

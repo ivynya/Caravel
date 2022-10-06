@@ -2,11 +2,11 @@ import { Component, OnInit } from "@angular/core";
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 import { ActivatedRoute } from "@angular/router";
 
-import { CacheService, ConfigurationService } from "../../core/services";
-import { CourseService, UserService } from "../../core/services/canvas";
-import { Course, PlannerItem, Submission } from "../../core/schemas";
+import { CacheService, ConfigurationService } from "../../_core/services";
+import { CourseService, UserService } from "../../_core/services/canvas";
+import { Course, PlannerItem, Submission } from "../../_core/schemas";
 
-import { ConvertUrlPipe, RoundDatePipe } from "../../core/pipes";
+import { ConvertUrlPipe, RoundDatePipe } from "../../_core/pipes";
 @Component({
 	selector: "app-course-home",
 	templateUrl: "./course-home.component.html",

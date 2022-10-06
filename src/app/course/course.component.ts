@@ -3,9 +3,9 @@ import { Component, OnInit } from "@angular/core";
 import { Title } from "@angular/platform-browser";
 import { ActivatedRoute } from "@angular/router";
 
-import { ConfigurationService } from "../core/services";
-import { CourseService } from "../core/services/canvas";
-import { Course } from "../core/schemas";
+import { ConfigurationService } from "../_core/services";
+import { CourseService } from "../_core/services/canvas";
+import { Course } from "../_core/schemas";
 
 @Component({
 	selector: "app-course",

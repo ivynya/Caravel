@@ -4,7 +4,7 @@ import { CommonModule } from "@angular/common";
 import { AuthRoutingModule } from "./auth-routing.module";
 
 import { AuthComponent } from "./auth.component";
-import { SharedModule } from "../shared/shared.module";
+import { SharedModule } from "../_shared/shared.module";
 import {
 	ButtonModule,
 	InputModule,

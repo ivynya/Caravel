@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { Conversation } from "../core/schemas";
-import { ConversationService } from "../core/services/canvas/";
+import { Conversation } from "../_core/schemas";
+import { ConversationService } from "../_core/services/canvas";
 
 @Component({
 	selector: "app-inbox",

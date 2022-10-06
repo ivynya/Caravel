@@ -4,8 +4,8 @@ import { CommonModule } from "@angular/common";
 import { HomeRoutingModule } from "./home-routing.module";
 
 import { HomeComponent } from "./home.component";
-import { SharedModule } from "../shared/shared.module";
-import { RoundDatePipe } from "../core/pipes/round-date/round-date.pipe";
+import { SharedModule } from "../_shared/shared.module";
+import { RoundDatePipe } from "../_core/pipes/round-date/round-date.pipe";
 import {
 	ButtonModule,
 	DatePickerModule,

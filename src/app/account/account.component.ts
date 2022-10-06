@@ -5,9 +5,9 @@ import {
 	ConfigurationService,
 	NotificationService,
 	StorageService,
-} from "../core/services";
-import { UserService } from "../core/services/canvas";
-import { AppInfo, Configuration, Profile } from "../core/schemas";
+} from "../_core/services";
+import { UserService } from "../_core/services/canvas";
+import { AppInfo, Configuration, Profile } from "../_core/schemas";
 
 @Component({
 	selector: "app-account",

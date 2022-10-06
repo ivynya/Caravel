@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { PageNotFoundComponent } from "./shared/components";
+import { PageNotFoundComponent } from "./_shared/components";
 
 import { AuthRoutingModule } from "./auth/auth-routing.module";
 import { AccountRoutingModule } from "./account/account-routing.module";

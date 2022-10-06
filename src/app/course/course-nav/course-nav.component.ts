@@ -1,9 +1,9 @@
 import { Location } from "@angular/common";
 import { Component, Input, OnChanges, OnInit } from "@angular/core";
 
-import { Course, ExternalTool, Shortcut } from "../../core/schemas";
-import { NotificationService, ShortcutService } from "../../core/services";
-import { CourseService } from "../../core/services/canvas";
+import { Course, ExternalTool, Shortcut } from "../../_core/schemas";
+import { NotificationService, ShortcutService } from "../../_core/services";
+import { CourseService } from "../../_core/services/canvas";
 
 @Component({
 	selector: "course-nav",

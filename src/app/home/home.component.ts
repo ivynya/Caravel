@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 
-import { UserService } from "../core/services/canvas";
-import { PlannerItem } from "../core/schemas";
+import { UserService } from "../_core/services/canvas";
+import { PlannerItem } from "../_core/schemas";
 
-import { RoundDatePipe } from "../core/pipes";
+import { RoundDatePipe } from "../_core/pipes";
 
 @Component({
 	selector: "app-home",

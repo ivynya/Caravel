@@ -13,8 +13,8 @@ import { CourseDiscussionsComponent } from "./course-discussions/course-discussi
 import { CourseHomeComponent } from "./course-home/course-home.component";
 import { CourseModulesComponent } from "./course-modules/course-modules.component";
 import { CoursePageComponent } from "./course-page/course-page.component";
-import { PageNotFoundComponent } from "../shared/components";
-import { PrivateLayoutComponent } from "../shared/layouts";
+import { PageNotFoundComponent } from "../_shared/components";
+import { PrivateLayoutComponent } from "../_shared/layouts";
 
 const routes: Routes = [
 	{

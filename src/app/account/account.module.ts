@@ -4,7 +4,7 @@ import { CommonModule } from "@angular/common";
 import { AccountRoutingModule } from "./account-routing.module";
 
 import { AccountComponent } from "./account.component";
-import { SharedModule } from "../shared/shared.module";
+import { SharedModule } from "../_shared/shared.module";
 import { ConfiguratorComponent } from "./configurator/configurator.component";
 import {
 	ButtonModule,

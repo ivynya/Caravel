@@ -27,7 +27,7 @@ import {
   User20,
 } from "@carbon/icons";
 
-import { ConfigurationService } from "./core/services";
+import { ConfigurationService } from "./_core/services";
 
 @Component({
   selector: "app-root",
