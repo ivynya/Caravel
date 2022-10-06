@@ -34,13 +34,13 @@ export class HomeComponent implements OnInit {
 	selectionMode = false;
 
 	constructor(
-		private iconService: IconService,
+		private icon: IconService,
 		private roundDate: RoundDatePipe,
-		private userService: UserService
+		private user: UserService
 	) {}
 
 	ngOnInit(): void {
-		this.iconService.registerAll([
+		this.icon.registerAll([
 			ArrowUp20,
 			ListBulleted20,
 			ListChecked20,
@@ -90,7 +90,7 @@ export class HomeComponent implements OnInit {
 
 	private getItems(to: number) {
 		const next = new Date(this.streamState[0].getTime() + 86400 * 1000 * 31);
-		this.userService.getPlanner(this.streamState[0], next, (res) => {
+		this.user.getPlanner(this.streamState[0], next, (res) => {
 			const items = res.data;
 
 			// Add or overwrite added items to memory

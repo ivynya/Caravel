@@ -21,18 +21,18 @@ export class CourseComponent implements OnInit {
 	course: Course;
 
 	constructor(
-		private configService: ConfigurationService,
+		private config: ConfigurationService,
 		private courseService: CourseService,
-		private iconService: IconService,
+		private icon: IconService,
 		private location: Location,
-		private titleService: Title,
+		private title: Title,
 		private route: ActivatedRoute
 	) {}
 
 	ngOnInit(): void {
-		this.iconService.registerAll([ArrowRight16, Checkmark16, Close16, Edit16]);
+		this.icon.registerAll([ArrowRight16, Checkmark16, Close16, Edit16]);
 
-		this.showBreadcrumbs = this.configService.getVal(
+		this.showBreadcrumbs = this.config.getVal(
 			"course",
 			"show_breadcrumbs"
 		);
@@ -56,7 +56,7 @@ export class CourseComponent implements OnInit {
 		this.route.params.subscribe((params) => {
 			this.courseService.getCourse(params.id, (course) => {
 				this.course = course;
-				this.titleService.setTitle(`${course.name} | Caravel`);
+				this.title.setTitle(`${course.name} | Caravel`);
 				this.breadcrumbs = [
 					{ content: this.course.name, href: `/courses/${this.course.id}` },
 				];
