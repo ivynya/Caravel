@@ -1,6 +1,6 @@
 ![icon-72-72](https://user-images.githubusercontent.com/35588499/175397393-182306fc-1307-4da3-bcaf-e26693dd4278.png)
 
-# Caravel
+# Caravel [![CodeQL](https://github.com/ivynya/Caravel/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/ivynya/Caravel/actions/workflows/codeql-analysis.yml)
 
 Caravel is a Canvas client that uses the Canvas Open API. It is designed as an SPA, rather than the MVC-style model that the official Canvas frontend uses. This means Caravel performs ***way faster*** with ***extremely good responsiveness***, especially on ***slow networks*** (found in many schools, public places, and other areas where students may find themselves). It also works offline!
 
