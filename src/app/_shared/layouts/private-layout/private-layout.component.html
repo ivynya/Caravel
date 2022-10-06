@@ -27,7 +27,7 @@
         placeholder="Select"
         [(ngModel)]="model"
         (selected)="changed()"
-        value="content">
+        itemValueKey="content">
         <ibm-dropdown-list [items]="items"></ibm-dropdown-list>
       </ibm-dropdown>
       <pre>{{ data | json }}</pre>
