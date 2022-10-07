@@ -1,14 +1,12 @@
-.todo {
-	border: var(--border-secondary) 1px solid;
-	border-radius: 5px;
+.bx--tile {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 
 	max-width: 100%;
-	margin: 0.75rem 0;
-	padding: 15px 20px;
 	overflow: hidden;
+	margin: 0.25rem 0;
+	padding: 15px 20px;
 
 	> div {
 		flex: 1 1;

@@ -1,13 +1,13 @@
 .expandable {
 	summary {
-		border: var(--border-secondary) 1px solid;
-		border-radius: 5px;
+		background-color: #f4f4f4;
+		border-left: transparent 0px solid;
 		cursor: pointer;
 		outline: none;
 		user-select: none;
 		transition-duration: 0.2s;
 
-		margin: 0.75rem 0;
+		margin: 0.25rem 0;
 		padding: 10px 20px;
 	}
 
@@ -16,18 +16,16 @@
 		padding: 15px 20px;
 	}
 
-	&[open] summary {
-		border-color: var(--border-primary);
-		border-width: 1.5px;
+	.items {
+		border-left: var(--accent-primary) 3px solid;
+		padding-left: 20px;
 	}
 
 	&[open] {
 		margin-bottom: 30px;
-	}
 
-	.items {
-		border-left: var(--border-primary) 1.5px solid;
-		border-radius: 2px;
-		padding-left: 20px;
+		summary {
+			border-left: var(--accent-primary) 3px solid;
+		}
 	}
 }

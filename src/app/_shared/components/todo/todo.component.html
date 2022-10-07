@@ -1,4 +1,4 @@
-<div class="todo">
+<ibm-tile>
   <span class="actions" [ngClass]="{'shown': selectable}">
     <label class="checkbox">
       <input 
@@ -151,7 +151,7 @@
       </p>
     </div>
   </ng-container>
-</div>
+</ibm-tile>
 
 <ibm-modal [open]="open" (overlaySelected)="open = false" size="xs">
   <ibm-modal-header (closeSelect)="open = false" [showCloseButton]="true">
