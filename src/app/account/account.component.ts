@@ -23,6 +23,7 @@ export class AccountComponent implements OnInit {
 	storageUsed: number; // in KB
 
 	showMobileAuthorizer = false;
+	showStorageGraph = false;
 
 	constructor(
 		private cache: CacheService,
@@ -44,6 +45,15 @@ export class AccountComponent implements OnInit {
 		this.showMobileAuthorizer = true;
 	}
 
+	openStorageGraph(): void {
+		this.showStorageGraph = true;
+	}
+
+	// Show app changelog modal thru config service
+	openWhatsNew(): void {
+		this.config.showUpdateInfo();
+	}
+
 	// Clear all user cache. Does not sign user out.
 	async clearCache(): Promise<void> {
 		const freed = this.cache.clear();
@@ -58,10 +68,5 @@ export class AccountComponent implements OnInit {
 		await this.config.updateApp();
 		this.configuration = this.config.getAll();
 		this.notification.notify("Reset configuration to default.", 2);
-	}
-
-	// Show app changelog modal thru config service
-	showWhatsNew(): void {
-		this.config.showUpdateInfo();
 	}
 }

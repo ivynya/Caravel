@@ -18,11 +18,11 @@
       <ibm-tile>
         <p>
           <span>Storage: {{ storageUsed }}KB</span>
-          <button ibmButton="ghost">View Graph</button>
+          <button ibmButton="ghost" (click)="openStorageGraph()">View Graph</button>
         </p>
         <p>
           <span>Version: {{ appInfo.version }}</span>
-          <button ibmButton="ghost" (click)="showWhatsNew()">What's New</button>
+          <button ibmButton="ghost" (click)="openWhatsNew()">What's New</button>
         </p>
       </ibm-tile>
     </div>
@@ -38,6 +38,16 @@
   </div>
 </main>
 
+<ibm-modal [open]="showStorageGraph" (overlaySelected)="showStorageGraph = false" size="sm">
+  <ibm-modal-header (closeSelect)="showStorageGraph = false" [showCloseButton]="true">
+    <p class="bx--modal-header__label bx--type-delta">Account</p>
+    <p class="bx--modal-header__heading bx--type-beta">Storage Graph</p>
+  </ibm-modal-header>
+  <div class="bx--modal-content">
+    <p>The storage graph is coming in a future version of Caravel.</p>
+  </div>
+</ibm-modal>
+
 <ibm-modal [open]="showMobileAuthorizer" (overlaySelected)="showMobileAuthorizer = false" size="xs">
   <ibm-modal-header (closeSelect)="showMobileAuthorizer = false" [showCloseButton]="true">
     <p class="bx--modal-header__label bx--type-delta">Account</p>
@@ -52,7 +62,3 @@
     </div>
   </div>
 </ibm-modal>
-
-<ng-template #mobileAuthorizer>
-  <h2>Authorize on Mobile</h2>
-</ng-template>
