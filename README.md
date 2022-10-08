@@ -12,8 +12,6 @@ You can try out Caravel with an API token from your account (Profile > Settings 
 - https://caravel.sdbagel.com `v0.5.8`
 - https://caravel-next.sdbagel.com  `Synced with GitHub - v0.7.x+` (Recommended)
 
-<hr>
-
 ## Contributing
 
 Contributions of any size are welcome! Additionally, Caravel is participating in Hacktoberfest 2022 and valid issues will be given the appropriate labels for the event.
@@ -22,6 +20,10 @@ For bug reports, please make an [issue](https://github.com/ivynya/Caravel/issues
 
 For feature requests, please make an [issue](https://github.com/ivynya/Caravel/issues/new/choose) or post a [discussion thread](https://github.com/ivynya/Caravel/discussions/new) before you start coding - this ensures that duplicate work isn't done and the design is as good as it can be.
 
-## Instructure & Terms
+For more information, see `CONTRIBUTING.md`.
 
-Caravel does not have any official affiliation with Instructure, nor has there been any communication or cooperation. No part of Canvas LMS source code has been used in this application aside from info from public API documentation. Deploying Caravel at scale may present issues as you would need a developer key from your school's management to avoid having users paste in API tokens.
+<hr>
+
+## Disclaimer
+
+Caravel does not have any official affiliation with Instructure, nor has there been any communication or cooperation. No part of Canvas LMS source code has been used in this application aside from info from public API documentation. Deploying Caravel at scale may present issues as you would need a developer key from your institution to avoid having users paste in API tokens.
