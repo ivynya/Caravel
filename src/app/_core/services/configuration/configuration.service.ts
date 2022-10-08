@@ -66,6 +66,7 @@ export class ConfigurationService {
 
 	showUpdateInfo(): void {
 		this._update.next(true);
+		this._update.next(false);
 	}
 
 	async updateApp(): Promise<boolean> {
@@ -93,7 +94,7 @@ export class ConfigurationService {
 					}
 
 					console.log(`[LOG] Updated Caravel to ${remoteVersion.version}`);
-					this._update.next(true);
+					this.showUpdateInfo();
 					this.storage.set("version", res);
 					return true;
 				} else return false;
