@@ -59,4 +59,9 @@ export class AccountComponent implements OnInit {
 		this.configuration = this.config.getAll();
 		this.notification.notify("Reset configuration to default.", 2);
 	}
+
+	// Show app changelog modal thru config service
+	showWhatsNew(): void {
+		this.config.showUpdateInfo();
+	}
 }

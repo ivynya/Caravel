@@ -9,6 +9,10 @@ import { AppInfo, Configurable, Configuration } from "../../schemas";
 	providedIn: "root",
 })
 export class ConfigurationService {
+	// Updated only on app update
+	update: Observable<boolean>;
+	private _update: BehaviorSubject<boolean>;
+	// Updated on user change & app update
 	config: Observable<Configuration>;
 	private _config: BehaviorSubject<Configuration>;
 	private _configuration: Configuration;
@@ -17,6 +21,9 @@ export class ConfigurationService {
 		this._configuration = this.getAll();
 		this._config = new BehaviorSubject(this._configuration);
 		this.config = this._config.asObservable();
+
+		this._update = new BehaviorSubject(false);
+		this.update = this._update.asObservable();
 	}
 
 	// Get the entire configurable from scope and key
@@ -57,6 +64,10 @@ export class ConfigurationService {
 		return JSON.parse(this.storage.get("version"));
 	}
 
+	showUpdateInfo(): void {
+		this._update.next(true);
+	}
+
 	async updateApp(): Promise<boolean> {
 		// In the event there is no config, reset it.
 		if (!this._configuration) await this.resetToDefault();
@@ -81,9 +92,8 @@ export class ConfigurationService {
 						console.log("[LOG] Performed Caravel app refresh.");
 					}
 
-					console.log(
-						`[LOG] Updated Caravel to ${remoteVersion.version as string}`
-					);
+					console.log(`[LOG] Updated Caravel to ${remoteVersion.version}`);
+					this._update.next(true);
 					this.storage.set("version", res);
 					return true;
 				} else return false;

@@ -39,6 +39,18 @@
 	button:not(:first-of-type) {
 		margin-top: 0.5rem;
 	}
+
+	p {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	p button {
+		min-height: unset;
+		padding: 0.25rem 0.5rem;
+		width: min-content;
+	}
 }
 
 .auth-hover-show {

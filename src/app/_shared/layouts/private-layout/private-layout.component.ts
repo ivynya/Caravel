@@ -19,9 +19,9 @@ export class PrivateLayoutComponent implements OnInit {
 
 	courses: Course[];
 
-  items = [];
-  model: string;
-  data: any;
+	items = [];
+	model: string;
+	data: any;
 
 	constructor(
 		private activatedRoute: ActivatedRoute,
@@ -35,35 +35,37 @@ export class PrivateLayoutComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		// For Data Explorer widget
 		for (const key in this.storageService.lstore) {
-			if (key.startsWith(".")) this.items.push({
-        content: key,
-        selected: false
-      });
+			if (key.startsWith(".")) {
+				this.items.push({
+					content: key,
+					selected: false,
+				});
+			}
 		}
 
 		// Validate app version and update if needed
-		this.configService
-			.updateApp()
-			.then((didUpdate) => {
-				this.appInfo = this.configService.getAppInfo();
-				if (didUpdate) this.showWhatsNew = true;
-			})
-			.then(() => {
-				this.isLoaded = true;
-			});
+		this.configService.update.subscribe((updated) => {
+			this.appInfo = this.configService.getAppInfo();
+			if (updated) this.showWhatsNew = true;
+		});
+		this.configService.updateApp().then(() => (this.isLoaded = true));
 
 		// Prompt auth if no token found
 		if (
 			!this.storageService.has("oauth_token") &&
 			!this.activatedRoute.snapshot.toString().includes("auth")
-		)
+		) {
 			this.router.navigateByUrl("/auth");
+		}
 
 		this.courseService.listCourses((c) => (this.courses = c));
 	}
 
-  changed(): void {
-    this.data = JSON.parse(JSON.parse(this.storageService.get(this.model))?.value);
-  }
+	changed(): void {
+		this.data = JSON.parse(
+			JSON.parse(this.storageService.get(this.model))?.value
+		);
+	}
 }

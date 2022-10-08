@@ -16,8 +16,14 @@
         <button ibmButton="danger" size="field" (click)="resetConfig()">Reset Config</button>
       </ibm-tile>
       <ibm-tile>
-        <p>Storage Used: {{ storageUsed }}KB</p>
-        <p>App Version: {{ appInfo.version }}</p>
+        <p>
+          <span>Storage: {{ storageUsed }}KB</span>
+          <button ibmButton="ghost">View Graph</button>
+        </p>
+        <p>
+          <span>Version: {{ appInfo.version }}</span>
+          <button ibmButton="ghost" (click)="showWhatsNew()">What's New</button>
+        </p>
       </ibm-tile>
     </div>
     <section class="account">
