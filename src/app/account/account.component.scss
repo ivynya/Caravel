@@ -1,35 +1,36 @@
 .content {
-	column-gap: 50px;
+	column-gap: 60px;
 }
 
 .sidebar {
 	display: flex;
 	flex-direction: column;
-	row-gap: 0.25rem;
-	width: 250px;
+	row-gap: 1.25rem;
+	width: 235px;
 
 	img {
-		display: block;
-		margin-bottom: 1rem;
-
 		aspect-ratio: 1 / 1;
+		display: block;
+		border-radius: 3px;
 		min-width: 100%;
 	}
 
 	.profile {
-		line-height: 2;
-		margin-bottom: 1rem;
+		display: flex;
+		flex-direction: column;
+		row-gap: 0.25rem;
 	}
 
 	p {
 		font-size: 0.875rem;
+		margin: 0;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 	}
 
-	p:not(:first-of-type) {
-		margin-top: 0.5rem;
+	hr {
+		width: 100%;
 	}
 
 	button {

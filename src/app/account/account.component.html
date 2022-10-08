@@ -1,21 +1,20 @@
 <main class="page">
   <div class="content">
     <div class="sidebar">
-      <ibm-tile>
-        <img [src]="profile?.avatar_url" alt="Your Avatar">
-        <div class="profile">
-          <h3>{{ profile?.short_name || profile?.name }}</h3>
-          <p><b>{{ profile?.pronouns }}</b></p>
-          <ibm-tooltip-definition [content]="profile?.primary_email">{{ profile?.primary_email }}</ibm-tooltip-definition>
-        </div>
+      <img [src]="profile?.avatar_url" alt="Your Avatar">
+      <div class="profile">
+        <h3>{{ profile?.short_name || profile?.name }}</h3>
+        <p><b>{{ profile?.pronouns }}</b></p>
+        <ibm-tooltip-definition [content]="profile?.primary_email">{{ profile?.primary_email }}</ibm-tooltip-definition>
+        <pre>{{ profile?.bio }}</pre>
+      </div>
+      <div>
         <button [ibmButton] size="field" (click)="openAuthorizer()">Mobile Login</button>
         <button ibmButton="tertiary" size="field" disabled>Upload ID Card</button>
-      </ibm-tile>
-      <ibm-tile>
-        <button ibmButton="danger--tertiary" size="field" (click)="clearCache()">Clear Cache</button>
-        <button ibmButton="danger" size="field" (click)="resetConfig()">Reset Config</button>
-      </ibm-tile>
-      <ibm-tile>
+      </div>
+      <span class="spacer"></span>
+      <hr>
+      <div>
         <p>
           <span>Storage: {{ storageUsed }}KB</span>
           <button ibmButton="ghost" (click)="openStorageGraph()">View Graph</button>
@@ -24,15 +23,11 @@
           <span>Version: {{ appInfo.version }}</span>
           <button ibmButton="ghost" (click)="openWhatsNew()">What's New</button>
         </p>
-      </ibm-tile>
+      </div>
     </div>
     <section class="account">
       <h1>Account Settings</h1>
-      <hr><br><br>
-      <ibm-label>
-        Biography
-        <textarea ibmTextArea placeholder="Biography" readonly>{{ profile?.bio }}</textarea>
-      </ibm-label>
+      <hr>
       <app-configurator></app-configurator>
     </section>
   </div>
@@ -45,6 +40,11 @@
   </ibm-modal-header>
   <div class="bx--modal-content">
     <p>The storage graph is coming in a future version of Caravel.</p>
+    <br><br>
+    <div>
+      <button ibmButton="danger--tertiary" size="field" (click)="clearCache()">Clear Cache</button>
+      <button ibmButton="danger" size="field" (click)="resetConfig()">Reset Config</button>
+    </div>
   </div>
 </ibm-modal>
 
