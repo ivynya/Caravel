@@ -5,11 +5,11 @@ import { IndexRoutingModule } from "./index-routing.module";
 
 import { IndexComponent } from "./index.component";
 
-import { IconModule } from "carbon-components-angular";
+import { ButtonModule, IconModule } from "carbon-components-angular";
 
 @NgModule({
 	declarations: [IndexComponent],
-	imports: [CommonModule, IndexRoutingModule, IconModule],
+	imports: [CommonModule, IndexRoutingModule, ButtonModule, IconModule],
 	providers: [],
 })
 export class IndexModule {}
