@@ -3,18 +3,18 @@
 }
 
 ::-webkit-scrollbar {
-	height: 6px;
-	width: 6px;
+	height: 7px;
+	width: 7px;
 }
 
 ::-webkit-scrollbar-track {
 	background-color: var(--scrollbar-track);
-	border-radius: 2px;
+	border-radius: 1px;
 }
 
 ::-webkit-scrollbar-thumb {
 	background-color: var(--scrollbar-thumb);
-	border-radius: 2px;
+	border-radius: 1px;
 }
 
 html,
