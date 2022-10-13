@@ -22,7 +22,7 @@ button.bx--overflow-menu-options__btn {
 	}
 }
 
-/* Apply user accent color to IBM components */
+/* Apply user theme color to IBM components */
 
 a,
 button {
@@ -43,4 +43,12 @@ button {
 	&.bx--btn--ghost:hover {
 		color: var(--accent-secondary);
 	}
+}
+
+.bx--tile {
+	background-color: var(--bg-secondary) !important;
+}
+
+.bx--label {
+	color: var(--text-tertiary) !important;
 }

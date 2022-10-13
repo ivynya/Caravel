@@ -8,17 +8,7 @@
 	--bg-tertiary: #22223a;
 
 	--text-primary: #eee;
-	--text-secondary: #ddd;
 	--text-tertiary: #aab;
-
-	// Used for "B on A" UI elements
-	--bg-inverse-primary: #22223f;
-	--bg-inverse-secondary: #2c2c57;
-	--bg-inverse-tertiary: #33335f;
-
-	--text-inverse-primary: #eee;
-	--text-inverse-secondary: #ddd;
-	--text-inverse-tertiary: #aab;
 
 	// Element borders
 	--border-primary: #437;
@@ -37,21 +27,11 @@
 @mixin theme-light {
 	// Used for "A on B" UI elements
 	--bg-primary: #fff;
-	--bg-secondary: #eee;
-	--bg-tertiary: #ccc;
+	--bg-secondary: #f4f4f4;
+	--bg-tertiary: #ddd;
 
 	--text-primary: #333;
-	--text-secondary: #555;
-	--text-tertiary: #777;
-
-	// Used for "B on A" UI elements
-	--bg-inverse-primary: #22223f;
-	--bg-inverse-secondary: #2c2c57;
-	--bg-inverse-tertiary: #33335f;
-
-	--text-inverse-primary: #eee;
-	--text-inverse-secondary: #ddd;
-	--text-inverse-tertiary: #ccc;
+	--text-tertiary: #525252;
 
 	// Element borders
 	--border-primary: #abf;
@@ -84,24 +64,14 @@
 	--bg-tertiary: #333;
 
 	--text-primary: #eee;
-	--text-secondary: #ccc;
 	--text-tertiary: #aab;
-
-	// Used for "B on A" UI elements
-	--bg-inverse-primary: var(--bg-secondary);
-	--bg-inverse-secondary: #333;
-	--bg-inverse-tertiary: #444;
-
-	--text-inverse-primary: #eee;
-	--text-inverse-secondary: #ddd;
-	--text-inverse-tertiary: #999;
 
 	// Element borders
 	--border-primary: #abc;
 	--border-secondary: #334455;
 
 	// Used for interactive UI elements
-	--bg-control: #222;
+	--bg-control: #333;
 	--scrollbar-track: var(--bg-control);
 	--scrollbar-thumb: var(--accent-primary);
 
@@ -117,17 +87,7 @@
 	--bg-tertiary: #aaa;
 
 	--text-primary: #333;
-	--text-secondary: #555;
 	--text-tertiary: #777;
-
-	// Used for "B on A" UI elements
-	--bg-inverse-primary: #222;
-	--bg-inverse-secondary: #333;
-	--bg-inverse-tertiary: #444;
-
-	--text-inverse-primary: #eee;
-	--text-inverse-secondary: #ddd;
-	--text-inverse-tertiary: #999;
 
 	// Element borders
 	--border-primary: #abc;
@@ -136,7 +96,7 @@
 	// Used for interactive UI elements
 	--bg-control: #222;
 	--scrollbar-track: var(--bg-control);
-	--scrollbar-thumb: var(--control-active);
+	--scrollbar-thumb: var(--accent-primary);
 
 	// Included as text and in notifications
 	--error: #f50;
