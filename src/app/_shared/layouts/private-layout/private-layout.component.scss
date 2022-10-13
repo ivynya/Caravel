@@ -1,13 +1,54 @@
 main {
 	background-color: var(--bg-primary);
+	box-sizing: border-box;
 	height: 100vh;
 	max-height: calc(100vh - 48px);
 	margin-bottom: 48px;
+	padding: 40px 20px;
 	overflow-y: auto;
+
+	position: relative;
+	transition-duration: 0.1s;
+
+	@media (min-width: 768px) {
+		padding: 50px 45px;
+	}
 
 	@media (min-width: 1056px) {
 		margin-top: 48px;
 		margin-bottom: 0;
+		padding: 50px 70px;
+	}
+
+	::ng-deep .content {
+		box-sizing: border-box;
+		color: var(--text-primary);
+		display: flex;
+
+		margin: 0 auto;
+		max-width: 95%;
+		min-height: 100%;
+		width: 100%;
+
+		position: relative;
+		flex: 1 1;
+
+		h1 {
+			margin: 0;
+		}
+
+		hr {
+			margin-bottom: 0;
+		}
+
+		section {
+			flex: 1 0;
+			min-width: 0;
+		}
+
+		@media (min-width: 1500px) {
+			max-width: 1300px;
+		}
 	}
 }
 

@@ -1,37 +1,35 @@
-<main class="page">
-  <div class="content">
-    <div class="sidebar">
-      <img [src]="profile?.avatar_url" alt="Your Avatar">
-      <div class="profile">
-        <h3>{{ profile?.short_name || profile?.name }}</h3>
-        <p><b>{{ profile?.pronouns }}</b></p>
-        <ibm-tooltip-definition [content]="profile?.primary_email">{{ profile?.primary_email }}</ibm-tooltip-definition>
-        <pre>{{ profile?.bio }}</pre>
-      </div>
-      <div>
-        <button [ibmButton] size="field" (click)="openAuthorizer()">Mobile Login</button>
-        <button ibmButton="tertiary" size="field" disabled>Upload ID Card</button>
-      </div>
-      <span class="spacer"></span>
-      <hr>
-      <div>
-        <p>
-          <span>Storage: {{ storageUsed }}KB</span>
-          <button ibmButton="ghost" (click)="openStorageGraph()">View Graph</button>
-        </p>
-        <p>
-          <span>Version: {{ appInfo.version }}</span>
-          <button ibmButton="ghost" (click)="openWhatsNew()">What's New</button>
-        </p>
-      </div>
+<div class="content">
+  <div class="sidebar">
+    <img [src]="profile?.avatar_url" alt="Your Avatar">
+    <div class="profile">
+      <h3>{{ profile?.short_name || profile?.name }}</h3>
+      <p><b>{{ profile?.pronouns }}</b></p>
+      <ibm-tooltip-definition [content]="profile?.primary_email">{{ profile?.primary_email }}</ibm-tooltip-definition>
+      <pre>{{ profile?.bio }}</pre>
     </div>
-    <section class="account">
-      <h1>Account Settings</h1>
-      <hr>
-      <app-configurator></app-configurator>
-    </section>
+    <div>
+      <button [ibmButton] size="field" (click)="openAuthorizer()">Mobile Login</button>
+      <button ibmButton="tertiary" size="field" disabled>Upload ID Card</button>
+    </div>
+    <span class="spacer"></span>
+    <hr>
+    <div>
+      <p>
+        <span>Storage: {{ storageUsed }}KB</span>
+        <button ibmButton="ghost" (click)="openStorageGraph()">View Graph</button>
+      </p>
+      <p>
+        <span>Version: {{ appInfo.version }}</span>
+        <button ibmButton="ghost" (click)="openWhatsNew()">What's New</button>
+      </p>
+    </div>
   </div>
-</main>
+  <section class="account">
+    <h1>Account Settings</h1>
+    <hr>
+    <app-configurator></app-configurator>
+  </section>
+</div>
 
 <ibm-modal [open]="showStorageGraph" (overlaySelected)="showStorageGraph = false" size="sm">
   <ibm-modal-header (closeSelect)="showStorageGraph = false" [showCloseButton]="true">

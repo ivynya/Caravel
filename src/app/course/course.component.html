@@ -1,9 +1,7 @@
-<main class="page">
-  <div class="content">
-    <course-nav *ngIf="course" [course]="course"></course-nav>
-    <section>
-      <ibm-breadcrumb *ngIf="showBreadcrumbs" [items]="breadcrumbs"></ibm-breadcrumb>
-      <router-outlet></router-outlet>
-    </section>
-  </div>
-</main>
+<div class="content">
+  <course-nav *ngIf="course" [course]="course"></course-nav>
+  <section>
+    <ibm-breadcrumb *ngIf="showBreadcrumbs" [items]="breadcrumbs"></ibm-breadcrumb>
+    <router-outlet></router-outlet>
+  </section>
+</div>

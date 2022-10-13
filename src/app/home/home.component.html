@@ -1,40 +1,38 @@
-<main class="page">
-  <div class="content">
-    <section class="home">
-      <div class="control-bar">
-        <h1>Your To Do</h1>
-        <span class="spacer"></span>
-        <ibm-date-picker size="sm" [(ngModel)]="_streamStart" (ngModelChange)="ibmDateAdapter(); load()"></ibm-date-picker>
-        <button ibmButton="tertiary" [iconOnly]="true" size="sm" (click)="loadFromPreviousDay()">
-          <svg class="bx--btn__icon" ibmIcon="arrow--up" size="20"></svg>
-        </button>
-        <button ibmButton="tertiary" [iconOnly]="true" size="sm" (click)="loadFromToday()">
-          <svg class="bx--btn__icon" ibmIcon="restart" size="20"></svg>
-        </button>
-        <button [ibmButton] [iconOnly]="true" size="sm" class="sm-show" (click)="toggleSelectionMode()">
-          <svg *ngIf="!selectionMode" class="bx--btn__icon" ibmIcon="list--checked" size="20" />
-          <svg *ngIf="selectionMode" class="bx--btn__icon" ibmIcon="list--bulleted" size="20" />
-        </button>
-      </div>
-      <hr>
-      <div *ngFor="let group of stream">
-        <h2>{{ group.id }}</h2>
+<div class="content">
+  <section class="home">
+    <div class="control-bar">
+      <h1>Your To Do</h1>
+      <span class="spacer"></span>
+      <ibm-date-picker size="sm" [(ngModel)]="_streamStart" (ngModelChange)="ibmDateAdapter(); load()"></ibm-date-picker>
+      <button ibmButton="tertiary" [iconOnly]="true" size="sm" (click)="loadFromPreviousDay()">
+        <svg class="bx--btn__icon" ibmIcon="arrow--up" size="20"></svg>
+      </button>
+      <button ibmButton="tertiary" [iconOnly]="true" size="sm" (click)="loadFromToday()">
+        <svg class="bx--btn__icon" ibmIcon="restart" size="20"></svg>
+      </button>
+      <button [ibmButton] [iconOnly]="true" size="sm" class="sm-show" (click)="toggleSelectionMode()">
+        <svg *ngIf="!selectionMode" class="bx--btn__icon" ibmIcon="list--checked" size="20" />
+        <svg *ngIf="selectionMode" class="bx--btn__icon" ibmIcon="list--bulleted" size="20" />
+      </button>
+    </div>
+    <hr>
+    <div *ngFor="let group of stream">
+      <h2>{{ group.id }}</h2>
+      <home-todo
+        *ngFor="let item of group.items"
+        [selectable]="selectionMode"
+        [item]="item">
+      </home-todo>
+      <app-expandable
+          *ngIf="group.completed.length > 0"
+          [name]="'Completed Items ('+group.completed.length+')'">
         <home-todo
-          *ngFor="let item of group.items"
+          *ngFor="let item of group.completed"
           [selectable]="selectionMode"
           [item]="item">
         </home-todo>
-        <app-expandable
-            *ngIf="group.completed.length > 0"
-            [name]="'Completed Items ('+group.completed.length+')'">
-          <home-todo
-            *ngFor="let item of group.completed"
-            [selectable]="selectionMode"
-            [item]="item">
-          </home-todo>
-        </app-expandable>
-      </div>
-      <br><br>
-    </section>
-  </div>
-</main>
+      </app-expandable>
+    </div>
+    <br><br>
+  </section>
+</div>
