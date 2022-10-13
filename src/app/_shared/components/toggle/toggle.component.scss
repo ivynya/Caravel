@@ -18,10 +18,6 @@
 			background-color: var(--accent-primary);
 		}
 
-		&:focus + .slider {
-			box-shadow: 0 0 1px var(--box-shadow-primary);
-		}
-
 		&:checked + .slider:before {
 			-webkit-transform: translateX(24px);
 			-ms-transform: translateX(24px);

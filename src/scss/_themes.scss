@@ -24,31 +24,14 @@
 	--border-primary: #437;
 	--border-secondary: #326;
 
-	// Element shadows
-	--box-shadow-primary: #000;
-	--box-shadow-secondary: #111;
-
-	// Used for app icons, links
-	--accent-primary: #abf;
-	// Used for highlighted links
-	--accent-secondary: #78c;
-
 	// Used for interactive UI elements
 	--bg-control: #335;
-	--bg-control-alt: #335;
-	--control-hover: #557;
-	--control-active: #557;
-
-	--control-enabled: var(--accent-primary);
-	--text-control: var(--text-inverse-primary);
-
 	--scrollbar-track: var(--bg-control);
 	--scrollbar-thumb: var(--accent-primary);
 
 	// Included as text and in notifications
 	--error: #f50;
 	--warning: #fa0;
-	--info: #0fc;
 }
 
 @mixin theme-light {
@@ -74,32 +57,14 @@
 	--border-primary: #abf;
 	--border-secondary: #567;
 
-	// Element shadows
-	--box-shadow-primary: #aaa;
-	--box-shadow-secondary: #777;
-
-	// Used for app icons, links
-	--accent-primary: #89f;
-	// Used for highlighted links
-	--accent-secondary: #89f;
-
 	// Used for interactive UI elements
 	--bg-control: #e0e0e0;
-	--bg-control-alt: #557;
-	--control-hover: #abf;
-	--control-active: #abf;
-
-	--control-enabled: var(--accent-primary);
-	--text-control: #000;
-	--text-control-alt: #eee;
-
 	--scrollbar-track: var(--bg-control);
 	--scrollbar-thumb: var(--accent-primary);
 
 	// Included as text and in notifications
 	--error: #f50;
 	--warning: #fa0;
-	--info: #0fc;
 }
 
 @media (prefers-color-scheme: light) {
@@ -135,31 +100,14 @@
 	--border-primary: #abc;
 	--border-secondary: #334455;
 
-	// Element shadows
-	--box-shadow-primary: transparent;
-	--box-shadow-secondary: transparent;
-
-	// Used for app icons, links
-	--accent-primary: #abc;
-	// Used for highlighted links
-	--accent-secondary: #78e;
-
 	// Used for interactive UI elements
 	--bg-control: #222;
-	--bg-control-alt: #111;
-	--control-hover: #333;
-	--control-active: #333;
-
-	--control-enabled: var(--accent-primary);
-	--text-control: var(--text-primary);
-
 	--scrollbar-track: var(--bg-control);
-	--scrollbar-thumb: var(--control-active);
+	--scrollbar-thumb: var(--accent-primary);
 
 	// Included as text and in notifications
 	--error: #f50;
 	--warning: #fa0;
-	--info: var(--accent-primary);
 }
 
 :root[theme="soulless-light"] {
@@ -185,31 +133,14 @@
 	--border-primary: #abc;
 	--border-secondary: #334455;
 
-	// Element shadows
-	--box-shadow-primary: transparent;
-	--box-shadow-secondary: transparent;
-
-	// Used for app icons, links
-	--accent-primary: #abc;
-	// Used for highlighted links
-	--accent-secondary: #78e;
-
 	// Used for interactive UI elements
 	--bg-control: #222;
-	--bg-control-alt: #444;
-	--control-hover: #555;
-	--control-active: #555;
-
-	--control-enabled: var(--accent-primary);
-	--text-control: var(--text-inverse-primary);
-
 	--scrollbar-track: var(--bg-control);
 	--scrollbar-thumb: var(--control-active);
 
 	// Included as text and in notifications
 	--error: #f50;
 	--warning: #fa0;
-	--info: var(--accent-primary);
 }
 
 :root[accent="ibm-blue"] {
