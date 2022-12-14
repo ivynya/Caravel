@@ -14,7 +14,7 @@ You can try out Caravel with an API token from your account (Profile > Settings 
 
 ## Contributing
 
-Contributions of any size are welcome! Additionally, Caravel is participating in Hacktoberfest 2022 and valid issues will be given the appropriate labels for the event.
+Contributions of any size are welcome!
 
 For bug reports, please make an [issue](https://github.com/ivynya/Caravel/issues/new/choose) on this repository.
 
