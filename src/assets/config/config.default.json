@@ -1,4 +1,3 @@
-
 {
   "canvas": {
     "domain": {
@@ -10,8 +9,8 @@
     "proxy": {
       "name": "Content Proxy",
       "type": "text",
-      "default": "cors.sdbagel.com",
-      "value": "cors.sdbagel.com"
+      "default": "caravel-api.deno.dev",
+      "value": "caravel-api.deno.dev"
     }
   },
   "caravel": {

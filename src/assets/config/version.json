@@ -1,34 +1,29 @@
-
 {
-  "version": "0.7.2",
-	"previous": "0.7.1",
+	"version": "0.7.3",
+	"previous": "0.7.2",
 	"requiresRefresh": false,
-  "updateInfo": [
-    {
-      "title": "Config Update",
-      "desc": "Removed and adjusted some config options. You will need to re-apply your settings.",
+	"updateInfo": [
+		{
+			"title": "Config Update",
+			"desc": "Removed and adjusted some config options. You will need to re-apply your settings.",
 			"stage": "Action Required",
-			"features": [
-			]
-    },
-    {
-      "title": "Optimizations",
-      "desc": "Performance improvements have been added to various pages.",
-			"features": [
-			]
-    },
-    {
-      "title": "Secure Proxy",
-      "desc": "Users are no longer required to trust a first-party secure content proxy when using Caravel's first-party deployment. Advanced users may fully configure their own underlying services.",
-			"features": [
-			]
-    },
-    {
-      "title": "Go Go Gadget Tablet",
-      "desc": "Caravel's next versions once again support tablet users. Mobile users may continue to use legacy 0.5.8 versions until support is re-added.",
-			"features": [
-			]
-    },
+			"features": []
+		},
+		{
+			"title": "Optimizations",
+			"desc": "Performance improvements have been added to various pages.",
+			"features": []
+		},
+		{
+			"title": "Secure Proxy",
+			"desc": "Users are no longer required to trust a first-party secure content proxy when using Caravel's first-party deployment. Advanced users may fully configure their own underlying services.",
+			"features": []
+		},
+		{
+			"title": "Go Go Gadget Tablet",
+			"desc": "Caravel's next versions once again support tablet users. Mobile users may continue to use legacy 0.5.8 versions until support is re-added.",
+			"features": []
+		},
 		{
 			"title": "In case you missed it:",
 			"desc": "These are the updates from v0.6.0.",
@@ -44,5 +39,5 @@
 				"Assignments root page is now populated"
 			]
 		}
-  ]
+	]
 }
