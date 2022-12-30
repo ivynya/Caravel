@@ -4,42 +4,45 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { ConfigurationService, StorageService } from "../_core/services";
 
 @Component({
-	selector: "app-auth",
-	templateUrl: "./auth.component.html",
-	styleUrls: ["./auth.component.scss"],
+  selector: "app-auth",
+  templateUrl: "./auth.component.html",
+  styleUrls: ["./auth.component.scss"],
 })
 export class AuthComponent implements OnInit {
-	isMobileAuth = false;
-	domain: string;
-	token: string;
+  isMobileAuth = false;
+  domain: string;
+  proxy: string;
+  token: string;
 
-	constructor(
-		private config: ConfigurationService,
-		private route: ActivatedRoute,
-		private router: Router,
-		private storage: StorageService
-	) {}
+  constructor(
+    private config: ConfigurationService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private storage: StorageService,
+  ) {}
 
-	ngOnInit(): void {
-		const token = this.route.snapshot.params.token;
-		if (token && token.length > 0 && token.length < 100) {
-			this.token = token;
-			this.isMobileAuth = true;
-		}
+  ngOnInit(): void {
+    const token = this.route.snapshot.params.token;
+    if (token && token.length > 0 && token.length < 100) {
+      this.token = token;
+      this.isMobileAuth = true;
+    }
 
-		this.domain = this.config.get("canvas", "domain").default as string;
-	}
+    this.domain = this.config.get("canvas", "domain").default as string;
+    this.proxy = this.config.get("canvas", "proxy").default as string;
+  }
 
-	tryAuthorize(): void {
-		// In a real OAuth context, retrieve the token based
-		// off of a server running using the developer key.
-		this.storage.set("oauth_token", this.token);
-		console.log(this.storage.get("oauth_token"));
+  tryAuthorize(): void {
+    // In a real OAuth context, retrieve the token based
+    // off of a server running using the developer key.
+    this.storage.set("oauth_token", this.token);
+    console.log(this.storage.get("oauth_token"));
 
-		// Update institution domain before data load
-		this.config.set("canvas", "domain", this.domain);
+    // Update institution domain before data load
+    this.config.set("canvas", "domain", this.domain);
+    this.config.set("canvas", "proxy", this.proxy);
 
-		// Redirect back
-		this.router.navigateByUrl("/home");
-	}
+    // Redirect back
+    this.router.navigateByUrl("/home");
+  }
 }

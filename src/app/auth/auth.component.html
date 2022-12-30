@@ -9,6 +9,11 @@
       <input ibmText type="text" placeholder="canvas.x.edu" size="md" [(ngModel)]="domain" theme="light">
     </ibm-label>
     <br>
+    <ibm-label>
+      Data Proxy Domain
+      <input ibmText type="text" placeholder="cors.proxy.tld" size="md" [(ngModel)]="proxy" theme="light">
+    </ibm-label>
+    <br>
     <div class="cta" *ngIf="!isMobileAuth">
       <ibm-label>
         User Token

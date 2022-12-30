@@ -9,8 +9,8 @@
     "proxy": {
       "name": "Content Proxy",
       "type": "text",
-      "default": "caravel-api.deno.dev",
-      "value": "caravel-api.deno.dev"
+      "default": "",
+      "value": ""
     }
   },
   "caravel": {
